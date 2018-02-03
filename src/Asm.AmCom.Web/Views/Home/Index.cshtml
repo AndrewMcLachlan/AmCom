@@ -1,0 +1,79 @@
+﻿@model HomeModel
+@{
+    ViewBag.Title = "Andrew McLachlan - Software Engineer";
+    ViewBag.Description = "The home of Andrew McLachlan, Software Engineer. Designing solutions that are built to last";
+    ViewBag.Keywords = "Andrew, McLachlan, MCPD, MCTS, C#, Developer, .NET, Software, Engineer";
+}
+
+@section Head
+    {
+    <meta property="og:title" content="Andrew McLachlan - Software Engineer" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="@Context.Request.Scheme://@Context.Request.Host" />
+    <meta property="og:image" content="@Context.Request.Scheme://@Context.Request.Host/images/andrewmclachlan.jpg" />
+}
+@section PageHeader
+    {
+    <div id="hero">
+        <div class="jumbotron @Model.Hero.ToLowerInvariant()">
+            @{Html.RenderPartial(Model.Hero);}
+        </div>
+    </div>
+}
+
+@section Scripts
+    {
+    <script type="application/ld+json">
+        {
+        "@@context": "http://schema.org/",
+        "@@type": "Person",
+        "jobTitle": "Software Engineer",
+        "url": "@Context.Request.Scheme://@Context.Request.Host",
+        "name": "Andrew McLachlan"
+        }
+    </script>
+}
+
+<div class="row summary">
+    <div class="col-md-4">
+        <section>
+            <header>
+                <h2>Octopus Notify</h2>
+            </header>
+            <ul>
+                <li>System tray tool for <a href="https://octopus.com">Octopus Deploy</a></li>
+                <li>Easy to read toast notifications</li>
+                <li>Free and Open Source!</li>
+            </ul>
+            <a class="btn btn-primary btn-wide" href="~/products/octopus-notify">More info</a>
+        </section>
+    </div>
+    <div class="col-md-4">
+        <section>
+            <header>
+                <h2>Consulting</h2>
+            </header>
+            <ul>
+                <li>Developing solutions that are built to last</li>
+                <li>Software architecture, design &amp; development</li>
+                <li>Over 13 years experience in the market</li>
+                <li>Successful projects with blue chip companies</li>
+            </ul>
+            <a class="btn btn-lg btn-primary btn-wide" href="~/consulting">More info</a>
+        </section>
+    </div>
+    <div class="col-md-4">
+        <section>
+            <header>
+                <h2>Carbs &amp; Cals</h2>
+            </header>
+            <ul>
+                <li>A <a href="http://www.carbsandcals.com">visual guide</a> to carb and calorie counting</li>
+                <li>Thousands of food and drink photos</li>
+                <li>Keep a diary of your meals</li>
+                <li>Easy to navigate app for your mobile</li>
+            </ul>
+            <a class="btn btn-primary btn-wide" href="~/products/carbs-and-cals">More info</a>
+        </section>
+    </div>
+</div>

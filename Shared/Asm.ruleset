@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="CodeAnalysis" ToolsVersion="10.0">
+  <Include Path="extendedcorrectnessrules.ruleset" Action="Default" />
+  <Include Path="extendeddesignguidelinerules.ruleset" Action="Default" />
+  <Include Path="securityrules.ruleset" Action="Default" />
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <Rule Id="CA1020" Action="None" />
+    <Rule Id="CA1021" Action="None" />
+    <Rule Id="CA1703" Action="None" />
+    <Rule Id="CA1704" Action="None" />
+  </Rules>
+</RuleSet>

@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <FileVersion>4.0.0.0</FileVersion>
+    <Authors>Andrew McLachlan</Authors>
+    <Company />
+    <Product>AndrewMcLachlan.com</Product>
+    <Copyright>Copyright Andrew McLachlan 2002</Copyright>
+    <Description />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Web\Mvc\RegexControllerActionInvoker.cs" />
+    <Compile Remove="Web\Mvc\RegexReflectedControllerDescriptor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Web\Mvc\RegexControllerActionInvoker.cs" />
+    <None Include="Web\Mvc\RegexReflectedControllerDescriptor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="2.0.1" />
+  </ItemGroup>
+
+</Project>

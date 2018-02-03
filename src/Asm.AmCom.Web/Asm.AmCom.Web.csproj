@@ -1,0 +1,114 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TypeScriptToolsVersion>2.4</TypeScriptToolsVersion>
+    <AssemblyVersion>4.0.0.0</AssemblyVersion>
+    <FileVersion>4.0.0.0</FileVersion>
+    <Description />
+    <Copyright>Copyright Andrew McLachlan 2002</Copyright>
+    <Product>AndrewMcLachlan.com</Product>
+    <Company />
+    <Authors>Anmdrew McLachlan</Authors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\images\Design.lnk" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="CSS\bootstrap.override.scss" />
+    <Content Include="CSS\fonts.css" />
+    <Content Include="CSS\fonts.scss" />
+    <Content Include="CSS\fonts.min.css" />
+    <Content Include="CSS\octopusdeploy.css" />
+    <Content Include="CSS\octopusdeploy.scss" />
+    <Content Include="CSS\octopusdeploy.min.css" />
+    <Content Include="CSS\regex.css" />
+    <Content Include="CSS\regex.scss" />
+    <Content Include="CSS\regex.min.css" />
+    <Content Include="CSS\site.scss" />
+    <Content Include="CSS\variables.scss" />
+    <Content Include="Footer.sitemap">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Web.sitemap">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="2.6.362" />
+    <PackageReference Include="BuildWebCompiler" Version="1.11.375" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.5.180" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Tools\Controllers\" />
+    <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\googlef2bff34593e83c37.html" />
+    <None Include="wwwroot\robots.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Asm.AmCom\Asm.AmCom.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\ContactResources.designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ContactResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Error.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Error.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\FooterResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FooterResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\PageTitles.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PageTitles.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\ContactResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContactResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Error.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Error.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\FooterResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FooterResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\PageTitles.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PageTitles.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

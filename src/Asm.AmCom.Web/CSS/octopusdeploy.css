@@ -1,0 +1,17 @@
+﻿.products.octopus-notify h1 {
+  background-image: none;
+  background-image: -moz-linear-gradient(top, #194A70 0, #2F93E0 100%);
+  background-image: linear-gradient(to bottom, #194A70, #2F93E0);
+  font-family: 'Segoe UI' sans-serif;
+  font-size: 2.5em;
+  color: #FF9D00;
+  padding-top: 0; }
+
+.products.octopus-notify .h1_2 {
+  font-weight: 100; }
+
+@media screen and (max-width: 504px) {
+  .products.octopus-notify #sample {
+    width: 100%;
+    height: auto; } }
+

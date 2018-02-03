@@ -1,0 +1,34 @@
+﻿[
+  {
+    "outputFile": "css/site.css",
+    "inputFile": "css/site.scss"
+  },
+  {
+    "outputFile": "css/site.responsive.css",
+    "inputFile": "css/site.responsive.scss"
+  },
+  {
+    "outputFile": "css/bootstrap.override.css",
+    "inputFile": "css/bootstrap.override.scss"
+  },
+  {
+    "outputFile": "css/egypt.css",
+    "inputFile": "css/egypt.scss"
+  },
+  {
+    "outputFile": "css/fonts.css",
+    "inputFile": "css/fonts.scss"
+  },
+  {
+    "outputFile": "css/octopusdeploy.css",
+    "inputFile": "css/octopusdeploy.scss"
+  },
+  {
+    "outputFile": "css/regex.css",
+    "inputFile": "css/regex.scss"
+  },
+  {
+    "outputFile": "css/colours.css",
+    "inputFile": "css/colours.scss"
+  }
+]

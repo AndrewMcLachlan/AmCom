@@ -1,0 +1,14 @@
+﻿@model MessageModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+@section PageHeader{
+    <h1>@Model.Heading</h1>
+}
+
+<section class="message">
+    @Html.Raw(Model.Message)
+</section>
+

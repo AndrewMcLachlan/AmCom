@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Base64 - Encode / Decode";
+    ViewBag.Canonical = "tools/base64";
+    ViewBag.Description = "Base64 encoding and decoding";
+}
+
+<h1 class="h2">Base64 Encode / Decode</h1>
+
+<section class="row">
+    <div class="col-md-9">
+        <fieldset>
+            <legend class="sr-only">Base 64 Encode / Decode</legend>
+            <div class="form-group">
+                <label for="theString" class="control-label">String to encode / decode</label>
+                <textarea class="form-control" id="source" spellcheck="false"></textarea>
+            </div>
+            <button class="btn btn-primary" id="encodeDecode">Encode / Decode</button>
+        </fieldset>
+    </div>
+</section>
+
+<section class="row">
+    <div class="col-md-9">
+        <div class="form-group">
+            <label for="result" class="control-label">Result</label>
+            <textarea type="text" class="form-control" id="result" spellcheck="false"></textarea>
+        </div>
+    </div>
+</section>

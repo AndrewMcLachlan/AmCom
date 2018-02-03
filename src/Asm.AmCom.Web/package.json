@@ -1,0 +1,19 @@
+{
+  "name": "asm.amcom.web",
+  "version": "1.0.0",
+  "description": "AndrewMcLachlan.com",
+  "main": " ",
+  "scripts": {
+    "test": " "
+  },
+  "repository": {
+    "type": "git",
+    "url": " "
+  },
+  "author": "Andrew McLachlan",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1"
+  }
+}

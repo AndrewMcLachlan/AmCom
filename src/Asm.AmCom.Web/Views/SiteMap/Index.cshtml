@@ -1,0 +1,18 @@
+﻿@model SiteMapModel
+
+@{
+    ViewBag.Title = "Site Map";
+    ViewBag.Description = "The site map for andrewmclachlan.com";
+    ViewBag.Canonical = "site-map";
+}
+
+@section PageHeader
+{
+    <h1>Site Map</h1>
+}
+
+<div class="row">
+    <div class="col-sm-offset-3 col-sm-6">
+        @Html.DisplayFor(m => m.Nodes, "SiteMapModelNodes", new { level = 1 })
+    </div>
+</div>

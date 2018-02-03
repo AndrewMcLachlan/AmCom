@@ -1,0 +1,28 @@
+﻿@using static Microsoft.AspNetCore.Mvc.Razor.RazorPageExtensions
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Head
+{
+    @RenderSection("Head", false)
+}
+
+@section Scripts
+{
+    <script type="text/javascript" src="~/js/tools.min.js"></script>
+    @RenderSection("Scripts", false)
+}
+
+
+<article>
+    <div class="container">
+        @RenderBody()
+    </div>
+</article>
+
+
+@section Footer
+{
+    @this.RenderSection("Footer", this.Html, "_Footer")
+}

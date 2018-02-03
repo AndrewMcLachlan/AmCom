@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" Condition="Exists('$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets')" />
+  <Import Project="$(MSBuildExtensionsPath)\Asm\Asm.Tasks.Targets" Condition="Exists('$(MSBuildExtensionsPath)\Asm\Asm.Tasks.Targets')" />
+
+  <PropertyGroup>
+    <SvnExe Condition="$(SvnExe) == ''">svn</SvnExe>
+    <AssemblyFileVersionMajor>0</AssemblyFileVersionMajor>
+    <AssemblyFileVersionMinor>0</AssemblyFileVersionMinor>
+    <AssemblyFileVersionBuild Condition="$(CCNetLabel) != ''">$(CCNetLabel)</AssemblyFileVersionBuild>
+    <AssemblyFileVersionBuild Condition="$(CCNetLabel) == ''">0</AssemblyFileVersionBuild>
+    <AssemblyFileVersionRevision>0</AssemblyFileVersionRevision>
+    <DynamicAssemblyInfo Condition="$(DynamicAssemblyInfo) == ''">Common\DynamicAssemblyInfo.cs</DynamicAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Nuspec Include="src\**\*.nuspec" />
+  </ItemGroup>
+
+  <Target Name="GetSvnRevision">
+    <GetSvnRevision Executable="$(SvnExe)" Username="$(SvnUsername)" Password="$(SvnPassword)" Url="$(SvnUrl)" Condition="$(SvnExe) != ''">
+      <Output TaskParameter="Revision" PropertyName="AssemblyFileVersionRevision" />
+    </GetSvnRevision>
+  </Target>
+  
+  <Target Name="SetDynamicAssemblyInfo" Condition="Exists('$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets') And Exists('$(MSBuildExtensionsPath)\Asm\Asm.Tasks.Targets')">
+    <ParseAssemblyInfo AssemblyInfoPath="$(DynamicAssemblyInfo)">
+      <Output TaskParameter="AssemblyFileVersionMajor" PropertyName="AssemblyFileVersionMajor" />
+      <Output TaskParameter="AssemblyFileVersionMinor" PropertyName="AssemblyFileVersionMinor" />
+    </ParseAssemblyInfo>
+    <AssemblyInfo CodeLanguage="CS" OutputFile="$(DynamicAssemblyInfo)" AssemblyFileVersion="$(AssemblyFileVersionMajor).$(AssemblyFileVersionMinor).$(AssemblyFileVersionBuild).$(AssemblyFileVersionRevision)" AssemblyConfiguration="$(Configuration)" />
+  </Target>
+
+  <Target Name="BuildNugetPackages">
+    <Exec Command="if $(Configuration) == Release &quot;$(WorkingDirectory).nuget\nuget.exe&quot; Pack &quot;%(Nuspec.FullPath)&quot; -OutputDirectory &quot;%(Nuspec.RootDir)%(Nuspec.Directory)bin\Release&quot; -Version $(AssemblyFileVersionMajor).$(AssemblyFileVersionMinor).$(AssemblyFileVersionBuild)" Condition="'%(Nuspec.FullPath)' != ''" />
+  </Target>
+
+  <Target Name="BuildSolution">
+    <MSBuild Projects="$(Solution)" />
+  </Target>
+
+  <Target Name="Build" DependsOnTargets="GetSvnRevision;SetDynamicAssemblyInfo;BuildSolution;BuildNugetPackages">
+  </Target>
+  
+  <Target Name="BuildNoSvn" DependsOnTargets="SetDynamicAssemblyInfo;BuildSolution;BuildNugetPackages">
+  </Target>
+</Project>
