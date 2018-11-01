@@ -15,5 +15,12 @@ namespace Asm.AmCom.Web.Mvc.Areas.Tools.Controllers
         {
             return View();
         }
+
+        [Route("ip")]
+        public ActionResult IP()
+        {
+            return View();
+        }
+
     }
 }

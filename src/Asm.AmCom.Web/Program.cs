@@ -21,6 +21,7 @@ namespace Asm.AmCom.Web
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .UseKestrel(o => o.AddServerHeader = false)
+                .UseIISIntegration()
                 .Build();
     }
 }
