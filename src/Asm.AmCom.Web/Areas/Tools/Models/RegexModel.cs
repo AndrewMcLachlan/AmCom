@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 using System.Web;
 using RegexGroup = System.Text.RegularExpressions.Group;
+using RegexCapture = System.Text.RegularExpressions.Capture;
 
 namespace Asm.AmCom.Web.Areas.Tools.Models
 {
@@ -22,21 +23,13 @@ namespace Asm.AmCom.Web.Areas.Tools.Models
     {
         public bool Success { get; set; }
 
-        public List<Group> Groups { get; set; }
+        public List<Group> Groups { get; set; } = new List<Group>();
 
-        public static RegexTestResponse FromMatch(Match match)
+        public RegexTestResponse(Match match)
         {
-            List<Group> groups = new List<Group>();
-            foreach (RegexGroup group in match.Groups)
-            {
-                groups.Add(Group.FromGroup(group));
-            }
+            Groups.AddRange(match.Groups.Select(g => new Group(g)));
 
-            return new RegexTestResponse
-            {
-                Success = match.Success,
-                Groups = groups,
-            };
+            Success = match.Success;
         }
     }
 
@@ -50,15 +43,31 @@ namespace Asm.AmCom.Web.Areas.Tools.Models
 
         public string Value { get; set; }
 
-        public static Group FromGroup(RegexGroup group)
+        public List<Capture> Captures { get; set; } = new List<Capture>();
+
+        public Group(RegexGroup group)
         {
-            return new Group
-            {
-                Success = group.Success,
-                Index = group.Index,
-                Length = group.Length,
-                Value = group.Value,
-            };
+            Captures.AddRange(group.Captures.Select(c => new Capture(c)));
+            Success = group.Success;
+            Index = group.Index;
+            Length = group.Length;
+            Value = group.Value;
+        }
+    }
+
+    public class Capture
+    {
+        public int Index { get; set; }
+
+        public int Length { get; set; }
+
+        public string Value { get; set; }
+
+        public Capture(RegexCapture capture)
+        {
+            Index = capture.Index;
+            Length = capture.Length;
+            Value = capture.Value;
         }
     }
 }
