@@ -12,7 +12,7 @@
                 body: JSON.stringify({ Regex: regex.value, Text: text.value }),
                 headers: new Headers({
                     "Content-Type": "application/json",
-                    "Accept": "applicaiton/json"
+                    "Accept": "application/json"
                 }),
             });
 
