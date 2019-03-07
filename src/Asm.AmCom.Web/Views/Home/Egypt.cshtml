@@ -3,4 +3,4 @@
 <div id="builtToLast"><img src="~/images/hero/builttolast.png" alt="are built to last" /></div>
 @*<div id="someSolutions"><p>Some solutions</p></div>
 <div id="builtToLast"><p>are built to last</p></div>*@
-@Html.Partial("_Header", new ViewDataDictionary(ViewData) { { "HeroClass", "egypt" } })
+@Html.PartialAsync("_Header", new ViewDataDictionary(ViewData) { { "HeroClass", "egypt" } })
