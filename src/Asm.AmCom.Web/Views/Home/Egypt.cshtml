@@ -1,6 +1,4 @@
 ﻿<img id="egypt" src="~/images/hero/egyptlong.jpg" width="2255" height="405" alt="The Sphinx and pyramid" />
 <div id="someSolutions"><img src="~/images/hero/somesolutions.png" alt="Some solutions" /></div>
 <div id="builtToLast"><img src="~/images/hero/builttolast.png" alt="are built to last" /></div>
-@*<div id="someSolutions"><p>Some solutions</p></div>
-<div id="builtToLast"><p>are built to last</p></div>*@
-@Html.PartialAsync("_Header", new ViewDataDictionary(ViewData) { { "HeroClass", "egypt" } })
+@await Html.PartialAsync("_Header", new ViewDataDictionary(ViewData) { { "HeroClass", "egypt" } })
