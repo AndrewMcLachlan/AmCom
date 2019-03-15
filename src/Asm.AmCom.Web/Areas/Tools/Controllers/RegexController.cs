@@ -21,15 +21,24 @@ namespace Asm.AmCom.Web.Mvc.Areas.Tools.Controllers
 
         [Route("api/regex")]
         [HttpPost]
-        public RegexTestResponse Test([FromBody]RegexTestRequest request)
+        public ActionResult<RegexTestResponse> Test([FromBody]RegexTestRequest request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
-            Regex reg = new Regex(request.Regex);
+            Regex reg;
+
+            try
+            {
+                reg = new Regex(request.Regex);
+            }
+            catch (ArgumentException)
+            {
+                return StatusCode(400, "Not a valid Regex");
+            }
 
             Match match = reg.Match(request.Text);
 
-            return new RegexTestResponse { Success = match.Success };
+            return new RegexTestResponse(match);
         }
     }
 }

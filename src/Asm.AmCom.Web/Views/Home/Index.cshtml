@@ -16,7 +16,7 @@
     {
     <div id="hero">
         <div class="jumbotron @Model.Hero.ToLowerInvariant()">
-            @{Html.RenderPartial(Model.Hero);}
+            @{await Html.RenderPartialAsync(Model.Hero);}
         </div>
     </div>
 }
