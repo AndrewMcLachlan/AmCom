@@ -13,7 +13,14 @@
   "author": "Andrew McLachlan",
   "license": "UNLICENSED",
   "dependencies": {
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.8.2",
+    "@types/redux": "^3.6.0",
     "bootstrap": "^3.3.7",
-    "jquery": "^3.2.1"
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "typescript": "^3.3.3333"
   }
 }

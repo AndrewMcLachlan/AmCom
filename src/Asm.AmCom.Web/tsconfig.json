@@ -1,13 +1,14 @@
 {
-  "compilerOptions": {
-    "noImplicitAny": false,
-    "noEmitOnError": true,
-    "removeComments": false,
-    "sourceMap": true,
-    "target": "es5",
-    "lib": [ "dom", "es5", "es2015.promise" ],
-    "module": "none"
-  },
+    "compilerOptions": {
+        "noImplicitAny": false,
+        "noEmitOnError": true,
+        "removeComments": false,
+        "sourceMap": true,
+        "target": "es5",
+        "lib": [ "dom", "es5", "es2015.promise" ],
+        "module": "es6",
+        "jsx": "react"
+    },
   "exclude": [
     "node_modules",
     "wwwroot"
