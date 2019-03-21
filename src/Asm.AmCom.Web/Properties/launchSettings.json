@@ -14,7 +14,7 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "commandLineArgs": ".\\bin\\debug\\netcoreapp2.1\\Asm.AmCom.Web.dll",
+      "commandLineArgs": ".\\bin\\debug\\netcoreapp2.2\\Asm.AmCom.Web.dll",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -22,11 +22,18 @@
     },
     "Asm.AmCom.Web": {
       "commandName": "Project",
-      "commandLineArgs": ".\\bin\\debug\\netcoreapp2.1\\Asm.AmCom.Web.dll",
+      "commandLineArgs": ".\\bin\\debug\\netcoreapp2.2\\Asm.AmCom.Web.dll",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "http://localhost:58123/"
+    },
+    "IIS": {
+      "commandName": "IIS",
+      "commandLineArgs": ".\\bin\\debug\\netcoreapp2.2\\Asm.AmCom.Web.dll",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
     }
   }
 }
