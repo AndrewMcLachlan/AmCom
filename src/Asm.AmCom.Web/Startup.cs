@@ -56,32 +56,21 @@ namespace Asm.AmCom.Web
                 Directory.CreateDirectory(wellKnown);
             }
 
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @".well-known")),
-                RequestPath = new PathString("/.well-known"),
-                ServeUnknownFileTypes = true // serve extensionless file
-            });
+            /* app.UseStaticFiles(new StaticFileOptions
+             {
+                 FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @".well-known")),
+                 RequestPath = new PathString("/.well-known"),
+                 ServeUnknownFileTypes = true // serve extensionless file
+             });*/
+            app.UseStaticFiles();
 
-            /*app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot", "Help")),
-                RequestPath = new PathString("/Help")
-            });
-
-            app.UseDirectoryBrowser(new DirectoryBrowserOptions
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot", "Help")),
-                RequestPath = new PathString("/Help")
-            });*/
-
-            using (StreamReader iisUrlRewriteConfig = File.OpenText("rewrite.config"))
+            /*using (StreamReader iisUrlRewriteConfig = File.OpenText("rewrite.config"))
             {
                 var options = new RewriteOptions()
                     .AddIISUrlRewrite(iisUrlRewriteConfig);
 
                 app.UseRewriter(options);
-            }
+            }*/
 
             app.UseMvc(routes =>
             {
