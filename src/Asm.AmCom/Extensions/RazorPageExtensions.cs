@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Microsoft.AspNetCore.Mvc.Razor
@@ -18,7 +13,7 @@ namespace Microsoft.AspNetCore.Mvc.Razor
             }
             else
             {
-                return html.Partial(defaultView);
+                return html.PartialAsync(defaultView).Result;
             }
         }
     }
