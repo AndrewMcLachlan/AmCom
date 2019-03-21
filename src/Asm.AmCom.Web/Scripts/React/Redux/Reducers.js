@@ -1,5 +1,4 @@
-//import { combineReducers } from 'redux'
-import * as Actions from './Actions';
+import { ActionTypes } from './Actions';
 export const initialState = {
     Regex: null,
     Input: null,
@@ -7,7 +6,7 @@ export const initialState = {
 };
 function state(state = initialState, action) {
     switch (action.type) {
-        case Actions.ActionTypes.Updating:
+        case ActionTypes.Updating:
             return Object.assign({}, state, { isUpdating: true });
         default:
             return state;

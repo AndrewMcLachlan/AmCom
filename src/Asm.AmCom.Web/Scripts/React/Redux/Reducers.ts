@@ -12,7 +12,7 @@ export const initialState: State = {
 
 function state(state = initialState, action: Actions.Action): State {
     switch (action.type) {
-        case Actions.ActionTypes.Updating:
+        case ActionTypes.Updating:
             return {
                 ...state,
                 isUpdating: true

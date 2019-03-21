@@ -1,6 +1,8 @@
 ﻿import * as React from "react"
 import { connect } from "react-redux"
-import {State } from "./global"
+
+import { State } from "./global"
+import  TextBox  from "./Components/TextBox"
 
 class RegexApp extends React.Component<RegexProps, any> {
     constructor(props) {
@@ -8,7 +10,25 @@ class RegexApp extends React.Component<RegexProps, any> {
     }
 
     render() {
-        return (<span>Hello</span>);
+        return (
+            <div>
+            <section className="row">
+                <div className="col-md-9">
+                    <fieldset>
+                        <legend className="sr-only">Regular Expression Tester</legend>
+                        <TextBox id="regex" label="Regular Expression" value={this.props.regex} />
+                        <TextBox id="text" label="Input" value={this.props.input} />
+                    </fieldset>
+                </div>
+            </section>
+
+            <section className="row">
+                <div className="col-md-4 regex-result">
+                    Match: <span id="result"></span>
+                </div>
+            </section>
+            </div>
+        );
     }
 }
 

@@ -33,6 +33,7 @@
   <ItemGroup>
     <None Remove="Scripts\App.tsx" />
     <None Remove="Scripts\global.d.ts" />
+    <None Remove="Scripts\React\Components\TextBox.tsx" />
     <None Remove="Scripts\React\Redux\Actions.ts" />
     <None Remove="Scripts\React\Redux\Reducers.ts" />
     <None Remove="Scripts\RegexApp.tsx" />
@@ -84,6 +85,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\React\App.tsx" />
+    <TypeScriptCompile Include="Scripts\React\Components\TextBox.tsx" />
     <TypeScriptCompile Include="Scripts\React\global.d.ts" />
     <TypeScriptCompile Include="Scripts\React\Redux\Actions.ts" />
     <TypeScriptCompile Include="Scripts\React\Redux\Reducers.ts" />
