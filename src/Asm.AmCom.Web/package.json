@@ -3,24 +3,27 @@
   "version": "1.0.0",
   "description": "AndrewMcLachlan.com",
   "main": " ",
-  "scripts": {
-    "test": " "
-  },
   "repository": {
     "type": "git",
     "url": " "
   },
   "author": "Andrew McLachlan",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "dependencies": {
-    "@types/react": "^16.8.8",
-    "@types/react-dom": "^16.8.2",
-    "@types/redux": "^3.6.0",
     "bootstrap": "^3.3.7",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
-    "redux": "^4.0.1",
-    "typescript": "^3.3.3333"
+    "redux": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.8.2",
+    "@types/react-redux": "^7.0.5",
+    "@types/redux": "^3.6.0",
+    "react-scripts": "^2.1.8"
+  },
+  "scripts": {
+    "build": "react-scripts build"
   }
 }

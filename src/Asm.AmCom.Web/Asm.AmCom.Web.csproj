@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup Label="Globals">
     <SccProjectName>SAK</SccProjectName>
@@ -9,7 +9,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <TypeScriptToolsVersion>3.3.3333</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>3.3</TypeScriptToolsVersion>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
     <FileVersion>4.0.0.0</FileVersion>
     <Description />
@@ -20,14 +20,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Scripts\React\node_modules\**" />
+    <Content Remove="Scripts\React\node_modules\**" />
+    <EmbeddedResource Remove="Scripts\React\node_modules\**" />
+    <None Remove="Scripts\React\node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\images\Design.lnk" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Scripts\App.tsx" />
     <None Remove="Scripts\global.d.ts" />
-    <None Remove="Scripts\Redux\Actions.ts" />
-    <None Remove="Scripts\Redux\Reducers.ts" />
+    <None Remove="Scripts\React\Redux\Actions.ts" />
+    <None Remove="Scripts\React\Redux\Reducers.ts" />
     <None Remove="Scripts\RegexApp.tsx" />
   </ItemGroup>
 
@@ -76,11 +83,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\App.tsx" />
-    <TypeScriptCompile Include="Scripts\global.d.ts" />
-    <TypeScriptCompile Include="Scripts\Redux\Actions.ts" />
-    <TypeScriptCompile Include="Scripts\Redux\Reducers.ts" />
-    <TypeScriptCompile Include="Scripts\RegexApp.tsx" />
+    <TypeScriptCompile Include="Scripts\React\App.tsx" />
+    <TypeScriptCompile Include="Scripts\React\global.d.ts" />
+    <TypeScriptCompile Include="Scripts\React\Redux\Actions.ts" />
+    <TypeScriptCompile Include="Scripts\React\Redux\Reducers.ts" />
+    <TypeScriptCompile Include="Scripts\React\RegexApp.tsx" />
   </ItemGroup>
 
   <ItemGroup>
