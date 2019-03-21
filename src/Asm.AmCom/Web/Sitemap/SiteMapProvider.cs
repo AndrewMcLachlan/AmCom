@@ -38,36 +38,6 @@ namespace Asm.AmCom.Web.Sitemap
             {
                 SetParent(node);
             }
-
-           /* var routeData = RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current));
-            RouteValueDictionary currentValues = routeData.Values;
-
-
-            if (currentValues.Keys.Contains("MS_DirectRouteMatches"))
-            {
-                currentValues = ((List<RouteData>)currentValues["MS_DirectRouteMatches"]).First().Values;
-            }
-
-            foreach (SiteMapNode child in rootNode.ChildNodes)
-            {
-                MenuItem item = new MenuItem { Name = child.Title, Url = child.Url };
-
-                RouteValueDictionary values = RouteTable.Routes.GetRouteData(GetFullyQualifiedUrl(child.Url)).Values;
-
-                if (values.Keys.Contains("MS_DirectRouteMatches"))
-                {
-                    values = ((List<RouteData>)values["MS_DirectRouteMatches"]).First().Values;
-                }
-
-                item.Selected = child == CurrentSiteMap.CurrentNode || (currentValues["controller"].Equals(values["controller"]) && currentValues["action"].Equals(values["action"])) || HasSelectedChild(child, currentValues);
-
-                item.Highlighted = child["custom"] == "highlight";
-
-                if (!"false".Equals(child["visible"], StringComparison.OrdinalIgnoreCase))
-                {
-                    Items.Add(item);
-                }
-            }*/
         }
 
         public SiteMapNode FindSiteMapNode(SiteMapNode node)
