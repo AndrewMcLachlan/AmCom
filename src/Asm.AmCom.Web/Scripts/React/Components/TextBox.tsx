@@ -1,6 +1,5 @@
 ﻿import * as React from "react"
 import { connect } from "react-redux"
-import { State } from "../global"
 
 class TextBox extends React.Component<TextBoxProps, any> {
     constructor(props) {
@@ -11,12 +10,12 @@ class TextBox extends React.Component<TextBoxProps, any> {
         return (
             <div className="form-group">
                 <label htmlFor={this.props.id} className="control-label">{this.props.label}</label>
-                <input type="text" className="form-control" id={this.props.id} value={this.props.value} />
+                <input type="text" className="form-control" id={this.props.id} value={this.props.value} onChange={this.props.onChange} onKeyUp={this.props.onKeyUp} />
             </div>);
     }
 }
 
-function mapProps(state: State, ownProps): any {
+function mapProps(state: any, ownProps): any {
     return {
         ...ownProps,
     };
@@ -28,4 +27,6 @@ interface TextBoxProps {
     id: string;
     label: string;
     value?: string;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }

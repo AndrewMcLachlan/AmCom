@@ -1,25 +1,51 @@
 ﻿//import { combineReducers } from 'redux'
 import * as Actions from './Actions'
 import { ActionTypes } from './Actions'
-import { State } from '../global'
+import { regex as globalRegex } from '../global'
 
 
-export const initialState: State = {
-    Regex: null,
-    Input: null,
-    isUpdating: false
-}
+export namespace regex {
+    export const initialState: globalRegex.State = {
+        regex: null,
+        input: null,
+        result: null,
+        isTesting: false
+    }
 
-function state(state = initialState, action: Actions.Action): State {
-    switch (action.type) {
-        case ActionTypes.Updating:
-            return {
-                ...state,
-                isUpdating: true
-            };
-        default:
-            return state;
+    export function reducer(state = initialState, action: Actions.ActionWithData<any>): globalRegex.State {
+        switch (action.type) {
+            case ActionTypes.RegexTester.GetTestResultRequest:
+                return {
+                    ...state,
+                    isTesting: true,
+                };
+            case ActionTypes.RegexTester.GetTestResultSuccess:
+                return {
+                    ...state,
+                    isTesting: false,
+                    result: action.data,
+                };
+            case ActionTypes.RegexTester.GetTestResultFailure:
+                return {
+                    ...state,
+                    isTesting: false,
+                    result: null,
+                }
+
+            case ActionTypes.RegexTester.RegexChanging:
+                return {
+                    ...state,
+                    regex: action.data
+                }
+
+            case ActionTypes.RegexTester.InputChanging:
+                return {
+                    ...state,
+                    input: action.data
+                }
+            default:
+                return state;
+        }
     }
 }
 
-export default state;

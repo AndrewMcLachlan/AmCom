@@ -1,41 +1,49 @@
 ﻿import * as React from "react"
 import * as ReactDOM from "react-dom"
 import { Provider } from "react-redux"
-import { createStore, Store, compose } from "redux"
-//import thunk from "redux-thunk"
+import { createStore, Store, compose, applyMiddleware } from "redux"
+import thunk from "redux-thunk"
 
-import reducer from "./Redux/Reducers"
-import { initialState } from "./Redux/Reducers"
-import { State } from "./global"
+import * as Reducers from "./Redux/Reducers"
+//import { initialState } from "./Redux/Reducers"
+import { regex } from "./global"
 import * as Actions from './Redux/Actions'
-//import { loadState, saveState } from "./LocalStorage"
 
-import Regex from "./regexapp"
+import { tools, Tool } from "./Tools/Tool"
 
-class App extends React.Component<any, any> {
+class App extends React.Component<AppProps, any> {
 
-    //octopus: Octopus;
-    store: Store<State>;
-    //settings: Settings;
+    store: Store<regex.State>;
+    tool: Tool;
 
-    constructor(props) {
+    constructor(props:AppProps) {
         super(props);
+
+        this.tool = tools.find((tool) => tool.name == props.tool);
+
+        if (!this.tool) {
+            throw Error("Unknown tool");
+        }
 
         const enhancedCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-        this.store = createStore<State, Actions.Action, any, any>(reducer, initialState);
+        this.store = createStore<any, Actions.Action, any, any>(this.tool.reducer, this.tool.initialState, enhancedCompose(applyMiddleware(thunk)));
     }
 
     render() {
 
+        let EntryPoint = this.tool.component;
+
         return (<Provider store={this.store}>
-            <Regex />
+            <EntryPoint />
         </Provider>);
     }
 }
 
-//var settings: Settings = null;
+interface AppProps {
+    tool: string;
+}
 
-
-
-ReactDOM.render(<App />, document.getElementById('app'));
+var appElement = document.getElementById('app');
+var tool = appElement.getAttribute("data-tool") || "regex";
+ReactDOM.render(<App tool={tool} />, appElement);

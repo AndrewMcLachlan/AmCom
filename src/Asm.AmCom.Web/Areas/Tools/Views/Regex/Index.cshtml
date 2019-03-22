@@ -10,7 +10,7 @@
 
 <h1 class="h2">.NET Regular Expression Tester</h1>
 
-<section class="row">
+@*<section class="row">
     <div class="col-md-9">
         <fieldset>
             <legend class="sr-only">Regular Expression Tester</legend>
@@ -30,10 +30,16 @@
     <div class="col-md-4 regex-result">
         Match: <span id="result"></span>
     </div>
-</section>
+</section>*@
 
-<div id="app"></div>
+<div id="app" data-tool="regex"></div>
 
 @section Scripts  {
+    <script type="text/javascript" src="~/js/polyfill.min.js"></script>
+    <script type="text/javascript" src="~/js/react.production.min.js"></script>
+    <script type="text/javascript" src="~/js/react-dom.production.min.js"></script>
+    <script type="text/javascript" src="~/js/redux.min.js"></script>
+    <script type="text/javascript" src="~/js/redux-thunk.min.js"></script>
+    <script type="text/javascript" src="~/js/react-redux.min.js"></script>
 <script type="text/javascript" src="~/js/regex.js"></script>
 }

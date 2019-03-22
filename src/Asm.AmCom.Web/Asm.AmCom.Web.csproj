@@ -33,9 +33,13 @@
   <ItemGroup>
     <None Remove="Scripts\App.tsx" />
     <None Remove="Scripts\global.d.ts" />
+    <None Remove="Scripts\React\Components\RegexResult.tsx" />
     <None Remove="Scripts\React\Components\TextBox.tsx" />
+    <None Remove="Scripts\React\Core.ts" />
     <None Remove="Scripts\React\Redux\Actions.ts" />
     <None Remove="Scripts\React\Redux\Reducers.ts" />
+    <None Remove="Scripts\React\Service.ts" />
+    <None Remove="Scripts\React\Tool.ts" />
     <None Remove="Scripts\RegexApp.tsx" />
   </ItemGroup>
 
@@ -85,11 +89,15 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\React\App.tsx" />
+    <TypeScriptCompile Include="Scripts\React\Components\RegexResult.tsx" />
     <TypeScriptCompile Include="Scripts\React\Components\TextBox.tsx" />
+    <TypeScriptCompile Include="Scripts\React\Core.ts" />
     <TypeScriptCompile Include="Scripts\React\global.d.ts" />
     <TypeScriptCompile Include="Scripts\React\Redux\Actions.ts" />
     <TypeScriptCompile Include="Scripts\React\Redux\Reducers.ts" />
-    <TypeScriptCompile Include="Scripts\React\RegexApp.tsx" />
+    <TypeScriptCompile Include="Scripts\React\Tools\Tool.ts" />
+    <TypeScriptCompile Include="Scripts\React\Tools\Regex.tsx" />
+    <TypeScriptCompile Include="Scripts\React\Tools\Service.ts" />
   </ItemGroup>
 
   <ItemGroup>

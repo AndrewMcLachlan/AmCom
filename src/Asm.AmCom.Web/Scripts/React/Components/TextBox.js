@@ -7,7 +7,7 @@ class TextBox extends React.Component {
     render() {
         return (React.createElement("div", { className: "form-group" },
             React.createElement("label", { htmlFor: this.props.id, className: "control-label" }, this.props.label),
-            React.createElement("input", { type: "text", className: "form-control", id: this.props.id, value: this.props.value })));
+            React.createElement("input", { type: "text", className: "form-control", id: this.props.id, value: this.props.value, onChange: this.props.onChange, onKeyUp: this.props.onKeyUp })));
     }
 }
 function mapProps(state, ownProps) {

@@ -10,11 +10,13 @@
   "author": "Andrew McLachlan",
   "license": "MIT",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "bootstrap": "^3.3.7",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
