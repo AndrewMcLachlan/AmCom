@@ -1,11 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28714.193
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asm.AmCom.Web", "src\Asm.AmCom.Web\Asm.AmCom.Web.csproj", "{68593E37-F08C-4BF0-A535-F1851CA257F9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asm.AmCom", "src\Asm.AmCom\Asm.AmCom.csproj", "{34D3ACD2-8273-4A47-8EB1-57F62944D3C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{23323CFA-58FD-4DE6-8D19-AEFC349F3AE6}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,17 +34,5 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {412F35BE-1E99-4999-B278-E61803FDAF02}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://andrewmclachlan.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = src\\Asm.AmCom.Web\\Asm.AmCom.Web.csproj
-		SccProjectName1 = src/Asm.AmCom.Web
-		SccLocalPath1 = src\\Asm.AmCom.Web
-		SccProjectUniqueName2 = src\\Asm.AmCom\\Asm.AmCom.csproj
-		SccProjectName2 = src/Asm.AmCom
-		SccLocalPath2 = src\\Asm.AmCom
 	EndGlobalSection
 EndGlobal
