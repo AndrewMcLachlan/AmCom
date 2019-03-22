@@ -16,21 +16,13 @@ class Regex extends React.Component<RegexProps, any> {
         super(props);
     }
 
-    componentDidMount() {
-
-        /*ready(() => {
-            let text = document.getElementById("text") as HTMLInputElement;
-            let regex = document.getElementById("regex") as HTMLInputElement;
-
-            if (regex) regex.addEventListener("keyup", this.doTest.bind(this));
-            if (text) text.addEventListener("keyup", this.doTest.bind(this));
-        });*/
-       // service.regexTest(this.props.regex, this.props.input);
+    regexChanged(e) {
+        this.props.regexChanged(e.target.value, this.props.input);
     }
 
-/*    doTest() {
-        this.props.dispatch(service.regexTest(this.props.regex, this.props.input));
-    }*/
+    inputChanged(e) {
+        this.props.inputChanged(this.props.regex, e.target.value);
+    }
 
     render() {
         return (
@@ -39,8 +31,8 @@ class Regex extends React.Component<RegexProps, any> {
                     <div className="col-md-9">
                         <fieldset>
                             <legend className="sr-only">Regular Expression Tester</legend>
-                            <TextBox id="regex" label="Regular Expression" value={this.props.regex} onChange={this.props.regexChanged} />
-                            <TextBox id="text" label="Input" value={this.props.input} onChange={this.props.inputChanged} />
+                            <TextBox id="regex" label="Regular Expression" value={this.props.regex} onChange={this.regexChanged.bind(this)} />
+                            <TextBox id="text" label="Input" value={this.props.input} onChange={this.inputChanged.bind(this)} />
                         </fieldset>
                     </div>
                 </section>
@@ -63,17 +55,17 @@ function mapProps(state: regex.State, ownProps): RegexProps {
     };
 }
 
-function mapDispatchToProps(dispatch, ownProps) {
-	return {
-		regexChanged: e => {
-            service.regexTest(e.target.value, this.props.input);
-			dispatch(RegexTester.regexChanging(e.target.value));
-		},
-		inputChanged: e => {
-            service.regexTest(this.props.regex, e.target.value);
-			dispatch(RegexTester.inputChanging(e.target.value));
-		},
-	}
+function mapDispatchToProps(dispatch) {
+    return {
+        regexChanged: (regex, input) => {
+            dispatch(service.regexTest(regex, input));
+            dispatch(RegexTester.regexChanging(regex));
+        },
+        inputChanged: (regex,input) => {
+            dispatch(service.regexTest(regex, input));
+            dispatch(RegexTester.inputChanging(input));
+        },
+    }
 }
 
 export default connect(mapProps, mapDispatchToProps)(Regex);
