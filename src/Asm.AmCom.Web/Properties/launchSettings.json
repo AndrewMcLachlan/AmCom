@@ -33,7 +33,8 @@
       "commandLineArgs": ".\\bin\\debug\\netcoreapp2.2\\Asm.AmCom.Web.dll",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "ancmHostingModel": "InProcess"
     }
   }
 }
