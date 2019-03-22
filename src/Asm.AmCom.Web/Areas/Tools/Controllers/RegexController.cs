@@ -10,6 +10,7 @@ namespace Asm.AmCom.Web.Mvc.Areas.Tools.Controllers
 {
     [Area("Tools")]
     [Route("tools")]
+    [ApiController]
     public class RegexController : Controller
     {
         [Route("")]
@@ -23,7 +24,8 @@ namespace Asm.AmCom.Web.Mvc.Areas.Tools.Controllers
         [HttpPost]
         public ActionResult<RegexTestResponse> Test([FromBody]RegexTestRequest request)
         {
-            if (request == null) throw new ArgumentNullException(nameof(request));
+            if (request == null) return StatusCode(400, "Request body missing or not valid");
+            if (String.IsNullOrWhiteSpace(request.Regex)) return StatusCode(400, "Regex must be supplied");
 
             Regex reg;
 
