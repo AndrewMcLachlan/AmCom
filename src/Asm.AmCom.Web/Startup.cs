@@ -49,19 +49,6 @@ namespace Asm.AmCom.Web
 
             app.UseStatusCodePagesWithReExecute("/error/error/{0}");
 
-            var wellKnown = Path.Combine(Directory.GetCurrentDirectory(), @".well-known");
-
-            if (!Directory.Exists(wellKnown))
-            {
-                Directory.CreateDirectory(wellKnown);
-            }
-
-            /* app.UseStaticFiles(new StaticFileOptions
-             {
-                 FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @".well-known")),
-                 RequestPath = new PathString("/.well-known"),
-                 ServeUnknownFileTypes = true // serve extensionless file
-             });*/
             app.UseStaticFiles();
 
             /*using (StreamReader iisUrlRewriteConfig = File.OpenText("rewrite.config"))
