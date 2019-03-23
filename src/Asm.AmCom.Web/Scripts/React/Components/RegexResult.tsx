@@ -9,11 +9,25 @@ class RegexResult extends React.Component<RegexResultProps, any> {
 
     render() {
 
-        if (!this.props.regexResult) return;
+        let res = this.props.regexResult;
+
+        if (!res) return (null);
+
+        if (!res.success) return (<span>No Match</span>);
+
+        let input = this.props.input || "";
+
+        let unmatchedStart = input.substr(0, res.groups[0].index);
+
+        let unmatchedEnd = input.substr(res.groups[0].index + res.groups[0].length);
+
+        let style = {
+            backgroundColor: 'green',
+        };
 
         let groups = new Array<JSX.Element>();
 
-        for (let group of this.props.regexResult.groups) {
+        for (let group of res.groups) {
 
             let captures = new Array<JSX.Element>();
 
@@ -30,16 +44,21 @@ class RegexResult extends React.Component<RegexResultProps, any> {
             }
         }
 
-        return (
+        return (<div>
+            <span>{unmatchedStart}</span>
+            <span style={style}>{res.groups[0].value}</span>
+            <span>{unmatchedEnd}</span>
             <ul>
                 {groups}
-            </ul>);
+            </ul>
+        </div>);
     }
 }
 
 function mapProps(state: regex.State, ownProps): RegexResultProps {
     return {
         ...ownProps,
+        input: state.input,
         regexResult: state.result,
     };
 }
@@ -47,5 +66,6 @@ function mapProps(state: regex.State, ownProps): RegexResultProps {
 export default connect(mapProps)(RegexResult);
 
 interface RegexResultProps {
+    input?: string;
     regexResult?: regex.RegexTestResponse;
 }

@@ -3,23 +3,11 @@ import { connect } from "react-redux";
 import { RegexTester } from "../Redux/Actions";
 import TextBox from "../Components/TextBox";
 import { service } from "./Service";
+import RegexResult from "../Components/RegexResult";
 class Regex extends React.Component {
     constructor(props) {
         super(props);
     }
-    componentDidMount() {
-        /*ready(() => {
-            let text = document.getElementById("text") as HTMLInputElement;
-            let regex = document.getElementById("regex") as HTMLInputElement;
-
-            if (regex) regex.addEventListener("keyup", this.doTest.bind(this));
-            if (text) text.addEventListener("keyup", this.doTest.bind(this));
-        });*/
-        // service.regexTest(this.props.regex, this.props.input);
-    }
-    /*    doTest() {
-            this.props.dispatch(service.regexTest(this.props.regex, this.props.input));
-        }*/
     regexChanged(e) {
         this.props.regexChanged(e.target.value, this.props.input);
     }
@@ -35,7 +23,9 @@ class Regex extends React.Component {
                         React.createElement(TextBox, { id: "regex", label: "Regular Expression", value: this.props.regex, onChange: this.regexChanged.bind(this) }),
                         React.createElement(TextBox, { id: "text", label: "Input", value: this.props.input, onChange: this.inputChanged.bind(this) })))),
             React.createElement("section", { className: "row" },
-                React.createElement("div", { className: "col-md-4 regex-result" }, "Match:"))));
+                React.createElement("div", { className: "col-md-4 regex-result" },
+                    "Match: ",
+                    React.createElement(RegexResult, null)))));
     }
 }
 function mapProps(state, ownProps) {

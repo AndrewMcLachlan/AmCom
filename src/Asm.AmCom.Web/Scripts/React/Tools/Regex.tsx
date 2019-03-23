@@ -1,7 +1,6 @@
 ﻿import * as React from "react"
 import { connect } from "react-redux"
 
-import { ready } from "../core"
 import { regex, DispatchProps } from "../global"
 
 import { RegexTester } from "../Redux/Actions"
@@ -39,7 +38,7 @@ class Regex extends React.Component<RegexProps, any> {
 
                 <section className="row">
                     <div className="col-md-4 regex-result">
-                        Match:
+                        Match: <RegexResult />
                     </div>
                 </section>
             </div>

@@ -5,10 +5,19 @@ class RegexResult extends React.Component {
         super(props);
     }
     render() {
-        if (!this.props.regexResult)
-            return;
+        let res = this.props.regexResult;
+        if (!res)
+            return (null);
+        if (!res.success)
+            return (React.createElement("span", null, "No Match"));
+        let input = this.props.input || "";
+        let unmatchedStart = input.substr(0, res.groups[0].index);
+        let unmatchedEnd = input.substr(res.groups[0].index + res.groups[0].length);
+        let style = {
+            backgroundColor: 'green',
+        };
         let groups = new Array();
-        for (let group of this.props.regexResult.groups) {
+        for (let group of res.groups) {
             let captures = new Array();
             if (group.captures && group.captures.length > 1) {
                 for (let capture of group.captures) {
@@ -22,11 +31,15 @@ class RegexResult extends React.Component {
                 groups.push(React.createElement("li", null, group.value));
             }
         }
-        return (React.createElement("ul", null, groups));
+        return (React.createElement("div", null,
+            React.createElement("span", null, unmatchedStart),
+            React.createElement("span", { style: style }, res.groups[0].value),
+            React.createElement("span", null, unmatchedEnd),
+            React.createElement("ul", null, groups)));
     }
 }
 function mapProps(state, ownProps) {
-    return Object.assign({}, ownProps, { regexResult: state.result });
+    return Object.assign({}, ownProps, { input: state.input, regexResult: state.result });
 }
 export default connect(mapProps)(RegexResult);
 //# sourceMappingURL=RegexResult.js.map
