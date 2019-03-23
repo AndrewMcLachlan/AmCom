@@ -1,4 +1,6 @@
-﻿declare global {
+﻿import { Action } from "redux"
+
+declare global {
 
     interface Window {
         __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
@@ -7,6 +9,13 @@
 
 export interface DispatchProps {
     dispatch?: Function;
+}
+
+export interface Action extends Action<string> {
+}
+
+export interface ActionWithData<T> extends Action {
+    data: T;
 }
 
 export namespace regex {

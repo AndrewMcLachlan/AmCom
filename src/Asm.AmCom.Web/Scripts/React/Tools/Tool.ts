@@ -1,7 +1,6 @@
 ﻿import { Reducer } from "redux"
 
 import * as Reducers from "../Redux/Reducers"
-import * as Actions from "../Redux/Actions"
 import Regex from "./Regex"
 
 export const tools:Array<Tool> = [

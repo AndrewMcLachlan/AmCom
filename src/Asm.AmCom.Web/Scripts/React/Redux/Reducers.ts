@@ -1,7 +1,5 @@
-﻿//import { combineReducers } from 'redux'
-import * as Actions from './Actions'
-import { ActionTypes } from './Actions'
-import { regex as globalRegex } from '../global'
+﻿import { ActionTypes } from './Actions'
+import { regex as globalRegex,  ActionWithData } from '../global'
 
 
 export namespace regex {
@@ -12,7 +10,7 @@ export namespace regex {
         isTesting: false
     }
 
-    export function reducer(state = initialState, action: Actions.ActionWithData<any>): globalRegex.State {
+    export function reducer(state = initialState, action: ActionWithData<any>): globalRegex.State {
         switch (action.type) {
             case ActionTypes.RegexTester.GetTestResultRequest:
                 return {

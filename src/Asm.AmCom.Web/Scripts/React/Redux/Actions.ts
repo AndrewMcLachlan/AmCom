@@ -1,4 +1,4 @@
-﻿import * as redux from "redux"
+﻿import {Action, ActionWithData } from "../global"
 
 export namespace ActionTypes {
 
@@ -38,11 +38,4 @@ export namespace RegexTester {
 
     export const inputChanging = (data): Action => dataAction(ActionTypes.RegexTester.InputChanging, data);
     export const inputChanged = (): Action => simpleAction(ActionTypes.RegexTester.InputChanged);
-}
-
-export interface Action extends redux.Action<string> {
-}
-
-export interface ActionWithData<T> extends Action {
-    data: T;
 }

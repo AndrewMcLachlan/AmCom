@@ -1,13 +1,13 @@
 ﻿import * as redux from "redux"
 
-import { regex } from '../global'
+import { regex, Action } from '../global'
 
 import * as Actions from "../Redux/Actions"
 
 export namespace service {
 
     export function regexTest(regex: string, input: string) {
-        return async (dispatch:redux.Dispatch<Actions.Action>) => {
+        return async (dispatch:redux.Dispatch<Action>) => {
 
             dispatch(Actions.RegexTester.getTestResultRequest());
 

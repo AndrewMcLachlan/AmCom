@@ -4,10 +4,7 @@ import { Provider } from "react-redux"
 import { createStore, Store, compose, applyMiddleware } from "redux"
 import thunk from "redux-thunk"
 
-import * as Reducers from "./Redux/Reducers"
-//import { initialState } from "./Redux/Reducers"
-import { regex } from "./global"
-import * as Actions from './Redux/Actions'
+import { regex, Action } from "./global"
 
 import { tools, Tool } from "./Tools/Tool"
 
@@ -27,7 +24,7 @@ class App extends React.Component<AppProps, any> {
 
         const enhancedCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-        this.store = createStore<any, Actions.Action, any, any>(this.tool.reducer, this.tool.initialState, enhancedCompose(applyMiddleware(thunk)));
+        this.store = createStore<any, Action, any, any>(this.tool.reducer, this.tool.initialState, enhancedCompose(applyMiddleware(thunk)));
     }
 
     render() {
