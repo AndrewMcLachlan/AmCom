@@ -1,21 +1,30 @@
 ﻿const path = require("path");
 
+var rootPath = path.join(__dirname, "scripts", "react");
+
 module.exports = {
-    entry: "./scripts/react/app.js",
+    entry: [path.join(rootPath, "app.tsx"), path.join(rootPath, "tools/regex.tsx") ],
+    watchOptions: {
+        ignored: ["**/*.js", "node_modules"],
+    },
     output: {
-        path: path.join(__dirname, "/wwwroot/js"),
+        path: path.join(__dirname, "wwwroot", "js"),
         filename: "regex.js"
     },
     module: {
         rules: [
+
             {
-                test: /\.js$/,
+                test: /\.tsx?$/,
                 exclude: /node_modules/,
-                use: {
+                use: [{
                     loader: "babel-loader"
                 },
+                {
+                    loader: "ts-loader"
+                }],
             }
-        ]
+        ],
     },
 
     externals: {
