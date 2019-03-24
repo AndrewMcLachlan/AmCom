@@ -47,7 +47,7 @@ namespace Asm.AmCom.Web.Controllers
             using (SmtpClient client = new SmtpClient(_configuration["Mail:Host"], _configuration.GetValue<int>("Mail:Port")))
             {
                 client.Credentials = new NetworkCredential(_configuration["Mail:UserName"], _configuration["Mail:Password"]);
-                MailAddress fromAddress = new MailAddress(_configuration["Mail:From"]);
+                MailAddress fromAddress = new MailAddress(_configuration["Mail:From:Address"], _configuration["Mail:From:Display"]);
                 MailAddress toAddress = new MailAddress(_configuration["Mail:To"]);
 
                 using (MailMessage message = new MailMessage(fromAddress, toAddress))
