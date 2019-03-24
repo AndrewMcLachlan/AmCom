@@ -47,12 +47,11 @@ namespace Asm.AmCom.Web.Controllers
             using (SmtpClient client = new SmtpClient(_configuration["Mail:Host"], _configuration.GetValue<int>("Mail:Port")))
             {
                 client.Credentials = new NetworkCredential(_configuration["Mail:UserName"], _configuration["Mail:Password"]);
-                MailAddress fromAddress = new MailAddress(model.Email, model.Name);
+                MailAddress fromAddress = new MailAddress(_configuration["Mail:From"]);
                 MailAddress toAddress = new MailAddress(_configuration["Mail:To"]);
 
                 using (MailMessage message = new MailMessage(fromAddress, toAddress))
                 {
-                    message.Sender = message.To[0];
                     message.Subject = String.Format(_configuration["Mail:SubjectFormat"], model.Name, model.Email);
                     message.Body = model.Message;
 
