@@ -7,6 +7,13 @@ module.exports = {
     watchOptions: {
         ignored: ["**/*.js", "node_modules"],
     },
+
+    devtool: "source-map",
+
+    resolve: {
+        extensions: [".ts", ".tsx", ".js"]
+    },
+
     output: {
         path: path.join(__dirname, "wwwroot", "js"),
         filename: "regex.js"
