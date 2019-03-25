@@ -28,6 +28,7 @@ export namespace service {
 
                 if (response.ok) {
                     let regexResult: regex.RegexTestResponse = await response.json();
+                    regexResult.input = input;
 
                     dispatch(Actions.RegexTester.getTestResultSuccess(regexResult));
                 }

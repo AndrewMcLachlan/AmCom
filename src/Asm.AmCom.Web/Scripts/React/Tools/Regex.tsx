@@ -10,6 +10,7 @@ import TextBox from "../Components/TextBox"
 
 import { service } from "./Service"
 import RegexResult from "../Components/RegexResult";
+import RegexResultSummary from "../Components/RegexResultSummary";
 
 class Regex extends React.Component<RegexProps, any> {
 
@@ -45,8 +46,13 @@ class Regex extends React.Component<RegexProps, any> {
                 </section>
 
                 <section className="row">
+                    <div className="col-md-4 regex-result-summary">
+                        <RegexResultSummary />
+                    </div>
+                </section>
+                <section className="row">
                     <div className="col-md-4 regex-result">
-                        Match: <RegexResult />
+                        <RegexResult />
                     </div>
                 </section>
             </div>

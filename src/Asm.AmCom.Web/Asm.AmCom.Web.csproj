@@ -34,6 +34,7 @@
     <None Remove="Scripts\App.tsx" />
     <None Remove="Scripts\global.d.ts" />
     <None Remove="Scripts\React\Components\RegexResult.tsx" />
+    <None Remove="Scripts\React\Components\RegexResultSummary.tsx" />
     <None Remove="Scripts\React\Components\TextBox.tsx" />
     <None Remove="Scripts\React\Core.ts" />
     <None Remove="Scripts\React\Redux\Actions.ts" />
@@ -89,6 +90,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\React\App.tsx" />
+    <TypeScriptCompile Include="Scripts\React\Components\RegexResultSummary.tsx" />
     <TypeScriptCompile Include="Scripts\React\Components\RegexResult.tsx" />
     <TypeScriptCompile Include="Scripts\React\Components\TextBox.tsx" />
     <TypeScriptCompile Include="Scripts\React\Core.ts" />

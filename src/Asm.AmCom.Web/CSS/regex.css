@@ -1,8 +1,8 @@
-﻿.regex-result {
+﻿.regex-result-summary {
   font-size: 2em; }
 
 .match {
-  color: #00FF00; }
+  background-color: #00FF00; }
 
 .nomatch {
   color: #FF0000; }

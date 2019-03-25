@@ -32,6 +32,7 @@ export namespace regex {
     }
 
     export interface RegexTestResponse {
+        input?: string;
         success?: boolean;
         groups?: Array<Group>;
     }
