@@ -75,7 +75,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Tools\Controllers\" />
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
