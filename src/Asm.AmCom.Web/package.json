@@ -36,6 +36,7 @@
   },
   "scripts": {
     "start": "webpack --mode development --watch --progress --info-verbosity verbose",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development"
   }
 }
