@@ -25,7 +25,7 @@
     "outputFileName": "wwwroot/js/tools.min.js",
     "inputFiles": [
       "scripts/standard/base64.js",
-      "scripts/standard/regex.js"
+      "wwwroot/js/regex.js"
     ],
     // Optionally specify minification options
     "minify": {
