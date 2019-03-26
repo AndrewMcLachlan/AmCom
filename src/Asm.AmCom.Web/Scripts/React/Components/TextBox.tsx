@@ -1,5 +1,6 @@
 ﻿import * as React from "react"
 import { connect } from "react-redux"
+import { ControlProps } from "../global"
 
 class TextBox extends React.Component<TextBoxProps, any> {
     constructor(props) {
@@ -23,9 +24,7 @@ function mapProps(state: any, ownProps): any {
 
 export default connect(mapProps)(TextBox);
 
-interface TextBoxProps {
-    id: string;
-    label: string;
+interface TextBoxProps extends ControlProps {
     value?: string;
     maxLength?: number;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;

@@ -6,8 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Asm.AmCom.Web.Areas.Tools.Controllers
 {
+    [Area("Tools")]
+    [Route("tools")]
     [ApiController]
-    public class CidrCalculator : Controller
+    public class CidrController : Controller
     {
+        [Route("cidr")]
+        public ActionResult Index()
+        {
+            return View();
+        }
     }
 }

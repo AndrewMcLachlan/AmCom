@@ -1,4 +1,5 @@
 ﻿import { Action } from "redux"
+import { IPv4Address, IPv4AddressWithCIDR } from "./IPv4Address"
 
 declare global {
 
@@ -16,6 +17,11 @@ export interface Action extends Action<string> {
 
 export interface ActionWithData<T> extends Action {
     data: T;
+}
+
+export interface ControlProps {
+    id: string;
+    label?: string;
 }
 
 export namespace regex {
@@ -50,5 +56,13 @@ export namespace regex {
         index?: number;
         length?: number;
         value?: string;
+    }
+}
+
+export namespace cidr {
+    export interface State {
+        ipAddress?: IPv4Address;
+        netMask?: IPv4Address;
+        cidr?: IPv4AddressWithCIDR;
     }
 }

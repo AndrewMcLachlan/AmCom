@@ -1,0 +1,23 @@
+﻿@{
+  ViewBag.Title = "CIDR Notation Helper";
+  ViewBag.Canonical = "tools/cidr";
+  ViewBag.Description = "CIDR Notation Helper";
+}
+
+@section Head {
+  <link rel="stylesheet" href="~/css/cidr.min.css" />
+}
+
+<h1 class="h2">CIDR Notation Helper</h1>
+
+<div id="app" data-tool="cidr"></div>
+
+@section Scripts  {
+  <script type="text/javascript" src="~/js/polyfill.min.js"></script>
+  <script type="text/javascript" src="~/js/react.production.min.js"></script>
+  <script type="text/javascript" src="~/js/react-dom.production.min.js"></script>
+  <script type="text/javascript" src="~/js/redux.min.js"></script>
+  <script type="text/javascript" src="~/js/redux-thunk.min.js"></script>
+  <script type="text/javascript" src="~/js/react-redux.min.js"></script>
+  <script type="text/javascript" src="~/js/reacttools.js"></script>
+}

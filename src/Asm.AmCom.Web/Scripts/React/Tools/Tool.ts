@@ -2,6 +2,7 @@
 
 import * as Reducers from "../Redux/Reducers"
 import Regex from "./Regex"
+import Cidr from "./Cidr"
 
 export const tools:Array<Tool> = [
     {
@@ -9,6 +10,12 @@ export const tools:Array<Tool> = [
         initialState: Reducers.regex.initialState,
         reducer: Reducers.regex.reducer,
         component: Regex
+    },
+    {
+        name: "cidr",
+        initialState: Reducers.cidr.initialState,
+        reducer: Reducers.cidr.reducer,
+        component: Cidr,
     }
 ];
 

@@ -28,6 +28,10 @@
     "inputFile": "css/regex.scss"
   },
   {
+    "outputFile": "css/cidr.css",
+    "inputFile": "css/cidr.scss"
+  },
+  {
     "outputFile": "css/colours.css",
     "inputFile": "css/colours.scss"
   }

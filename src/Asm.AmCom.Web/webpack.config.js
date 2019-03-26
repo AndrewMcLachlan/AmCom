@@ -3,7 +3,7 @@
 var rootPath = path.join(__dirname, "scripts", "react");
 
 module.exports = {
-    entry: [path.join(rootPath, "app.tsx"), path.join(rootPath, "tools/regex.tsx") ],
+    entry: path.join(rootPath, "app.tsx"),
     watchOptions: {
         ignored: ["**/*.js", "node_modules"],
     },
@@ -16,7 +16,7 @@ module.exports = {
 
     output: {
         path: path.join(__dirname, "wwwroot", "js"),
-        filename: "regex.js"
+        filename: "reacttools.js"
     },
     module: {
         rules: [

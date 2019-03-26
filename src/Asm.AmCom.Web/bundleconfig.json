@@ -18,6 +18,10 @@
     "inputFiles": [ "css/regex.css" ]
   },
   {
+    "outputFileName": "wwwroot/css/cidr.min.css",
+    "inputFiles": [ "css/cidr.css" ]
+  },
+  {
     "outputFileName": "wwwroot/css/colours.min.css",
     "inputFiles": [ "css/colours.css" ]
   },

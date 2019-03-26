@@ -1,5 +1,5 @@
 ﻿import { ActionTypes } from './Actions'
-import { regex as globalRegex,  ActionWithData } from '../global'
+import { regex as globalRegex, cidr as globalCidr, ActionWithData } from '../global'
 
 
 export namespace regex {
@@ -47,3 +47,14 @@ export namespace regex {
     }
 }
 
+export namespace cidr {
+    export const initialState: globalCidr.State = {
+        cidr: null,
+        ipAddress: null,
+        netMask: null,
+    }
+
+    export function reducer(state = initialState, action: ActionWithData<any>): globalCidr.State {
+        return state;
+    }
+}
