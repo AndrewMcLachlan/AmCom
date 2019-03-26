@@ -7,18 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="IPAddressHelperTests.feature.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="IPAddressHelperTests.feature.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>IPAddressHelperTests.feature</DependentUpon>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
     <PackageReference Include="SpecFlow" Version="3.0.181-beta" />
     <PackageReference Include="SpecFlow.xUnit" Version="3.0.181-beta" />
@@ -31,13 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Asm.AmCom\Asm.AmCom.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="IPAddressHelperTests.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>IPAddressHelperTests.feature.cs</LastGenOutput>
-    </None>
   </ItemGroup>
 
 </Project>
