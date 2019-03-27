@@ -13,6 +13,16 @@ export namespace ActionTypes {
         export const InputChanging = "InputChanging";
         export const InputChanged = "InputChanged";
     }
+
+    export namespace CidrNotation {
+        export const GetCidrRequest = "GetCidrRequest";
+        export const GetCidrSuccess = "GetCidrSuccess";
+        export const GetCidrFailure = "GetCidrFailure";
+
+        export const IPChanging = "IPChanging";
+
+        export const MaskChanging = "MaskChanging";
+    }
 }
 
 function simpleAction(type): Action {
@@ -38,4 +48,13 @@ export namespace RegexTester {
 
     export const inputChanging = (data): Action => dataAction(ActionTypes.RegexTester.InputChanging, data);
     export const inputChanged = (): Action => simpleAction(ActionTypes.RegexTester.InputChanged);
+}
+
+export namespace CidrNotation {
+    export const getCidrRequest = (): Action => simpleAction(ActionTypes.CidrNotation.GetCidrRequest)
+    export const getCidrSuccess = (data): Action => dataAction(ActionTypes.CidrNotation.GetCidrSuccess, data);
+    export const getCidrFailure = (data): Action => dataAction(ActionTypes.CidrNotation.GetCidrFailure, data);
+
+    export const ipChanging = (data): Action => dataAction(ActionTypes.CidrNotation.IPChanging, data);
+    export const maskChanging = (data): Action => dataAction(ActionTypes.CidrNotation.MaskChanging, data);
 }

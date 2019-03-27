@@ -63,6 +63,11 @@ export namespace cidr {
     export interface State {
         ipAddress?: IPv4Address;
         netMask?: IPv4Address;
-        cidr?: IPv4AddressWithCIDR;
+        cidr?: string;
+        isGetting: boolean;
+    }
+
+    export interface CidrResponse {
+        ipAddress?: string;
     }
 }

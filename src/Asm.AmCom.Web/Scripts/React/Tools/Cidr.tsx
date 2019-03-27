@@ -4,12 +4,13 @@ import debounce from "lodash.debounce"
 
 import { cidr, DispatchProps } from "../global"
 
-//import { CidrTester } from "../Redux/Actions"
-
-//import TextBox from "../Components/TextBox"
+import { CidrNotation } from "../Redux/Actions"
 
 import { service } from "./Service"
+
 import IPAddress from "../Components/IPAddress"
+import TextBox from "../Components/TextBox"
+
 import { IPv4Address, IPv4AddressWithCIDR } from "../IPv4Address";
 
 class Cidr extends React.Component<CidrProps, any> {
@@ -19,35 +20,42 @@ class Cidr extends React.Component<CidrProps, any> {
     constructor(props) {
         super(props);
 
-        //this.stateChangedDB = debounce(this.props.stateChanged, 250);
+        this.stateChangedDB = debounce(this.props.stateChanged, 250);
     }
 
-    CidrChanged(e) {
-       /* this.stateChangedDB(e.target.value, this.props.input);
-        this.props.CidrChanged(e.target.value);*/
+    ipChanged(e:IPv4Address) {
+        this.stateChangedDB(e, this.props.netMask);
+        this.props.ipChanged(e);
     };
 
-    inputChanged(e) {
-        /*this.stateChangedDB(this.props.Cidr, e.target.value);
-        this.props.inputChanged(e.target.value);*/
+    maskChanged(e:IPv4Address) {
+        this.stateChangedDB(this.props.ipAddress, e);
+        this.props.maskChanged(e);
     };
 
     render() {
+
+        let result = null;
+
+        if (this.props.cidr) {
+            result = <TextBox id="result" value={this.props.cidr} readonly={true} label="CIDR Notation" />;
+        }
+
         return (
             <div>
                 <section className="row">
                     <div className="col-md-9">
                         <fieldset>
-                            <legend className="sr-only">Regular Expression Tester</legend>
-                            <IPAddress id="address" label="IP Address" value={this.props.ipAddress} />
-                            <IPAddress id="mask" label="Subnet Mask" value={this.props.netMask} />
+                            <legend className="sr-only">CIDR Notation Converter</legend>
+                            <IPAddress id="address" label="IP Address" value={this.props.ipAddress} onChange={this.ipChanged.bind(this)} />
+                            <IPAddress id="mask" label="Subnet Mask" value={this.props.netMask} onChange={this.maskChanged.bind(this)} />
                         </fieldset>
                     </div>
                 </section>
 
                 <section className="row">
                     <div className="col-md-4 cidr-result">
-                        <span>{this.props.cidr}</span>
+                        {result}
                     </div>
                 </section>
             </div>
@@ -66,15 +74,16 @@ function mapProps(state: cidr.State, ownProps): CidrProps {
 
 function mapDispatchToProps(dispatch) {
     return {
-        /*stateChanged: (Cidr, input) => {
-            dispatch(service.CidrTest(Cidr, input));
+        stateChanged: (ip, mask) => {
+            if (ip === null || mask === null) return;
+            dispatch(service.cidrTest(ip, mask));
         },
-        CidrChanged: (Cidr) => {
-            dispatch(CidrTester.CidrChanging(Cidr))
+        ipChanged: (ip) => {
+            dispatch(CidrNotation.ipChanging(ip))
         },
-        inputChanged: (input) => {
-            dispatch(CidrTester.inputChanging(input));
-        },*/
+        maskChanged: (mask) => {
+            dispatch(CidrNotation.maskChanging(mask));
+        },
     }
 }
 
@@ -83,5 +92,8 @@ export default connect(mapProps, mapDispatchToProps)(Cidr);
 interface CidrProps extends DispatchProps {
     ipAddress?: IPv4Address;
     netMask?: IPv4Address;
-    cidr?: IPv4AddressWithCIDR;
+    cidr?: string;
+    stateChanged: Function;
+    ipChanged: Function;
+    maskChanged: Function;
 }
