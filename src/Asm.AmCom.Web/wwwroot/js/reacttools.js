@@ -544,56 +544,102 @@ function (_React$Component) {
   _inherits(IPaddress, _React$Component);
 
   function IPaddress(props) {
+    var _this;
+
     _classCallCheck(this, IPaddress);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(IPaddress).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(IPaddress).call(this, props));
+
+    _this.validateWithDotCheck = function (e) {
+      var charCode = e.charCode;
+
+      if (charCode == 46 && e.currentTarget.value.length > 0) {
+        e.currentTarget.nextElementSibling.focus();
+        e.stopPropagation();
+        e.preventDefault();
+      } else {
+        _this.validate(e);
+      }
+    };
+
+    _this.validate = function (e) {
+      var charCode = e.charCode;
+
+      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+    };
+
+    _this.validateMaxWithNext = function (e) {
+      _this.validateMax(e);
+
+      if (e.target.value.length == 3) {
+        e.currentTarget.nextElementSibling.focus();
+      }
+    };
+
+    _this.validateMax = function (e) {
+      var intval = parseInt(e.currentTarget.value);
+
+      if (intval > 255) {
+        e.currentTarget.value = "255";
+      }
+    };
+
+    return _this;
   }
 
   _createClass(IPaddress, [{
     key: "render",
     value: function render() {
-      var style = {
-        width: "50px"
-      };
       return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("fieldset", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", {
         htmlFor: this.props.id,
         className: "control-label"
       }, this.props.label), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
-        className: "form-inline"
+        className: "form-inline ip-address"
       }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", {
         type: "number",
         max: "255",
         min: "0",
         maxLength: 3,
-        className: "form-control xs",
+        className: "form-control",
         id: this.props.id + "_1",
-        value: this.props.value && this.props.value.octet1
+        value: this.props.value && this.props.value.octet1,
+        onChange: this.validateMaxWithNext,
+        onKeyPress: this.validateWithDotCheck
       }), "\xA0.\xA0", react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", {
         type: "number",
         max: "255",
         min: "0",
         maxLength: 3,
-        className: "form-control xs",
+        className: "form-control",
         id: this.props.id + "_2",
-        value: this.props.value && this.props.value.octet2
+        value: this.props.value && this.props.value.octet2,
+        onChange: this.validateMaxWithNext,
+        onKeyPress: this.validateWithDotCheck
       }), "\xA0.\xA0", react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", {
         type: "number",
         max: "255",
         min: "0",
         maxLength: 3,
-        className: "form-control xs",
+        className: "form-control",
         id: this.props.id + "_3",
-        value: this.props.value && this.props.value.octet3
+        value: this.props.value && this.props.value.octet3,
+        onChange: this.validateMaxWithNext,
+        onKeyPress: this.validateWithDotCheck
       }), "\xA0.\xA0", react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", {
         type: "number",
         max: "255",
         min: "0",
         maxLength: 3,
-        className: "form-control xs",
+        className: "form-control",
         id: this.props.id + "_4",
-        value: this.props.value && this.props.value.octet4
+        value: this.props.value && this.props.value.octet4,
+        onChange: this.validateMax,
+        onKeyPress: this.validate
       })));
     }
   }]);
