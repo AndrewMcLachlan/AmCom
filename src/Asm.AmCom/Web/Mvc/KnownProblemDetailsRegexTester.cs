@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Asm.AmCom.Web.Mvc
 {
-    public static class KnownProblemDetails
+    public static partial class KnownProblemDetails
     {
         public static class RegexTester
         {
