@@ -16,7 +16,7 @@
     <div class="col-md-9">
         <form method="post" asp-antiforgery="false">
             <fieldset>
-                <legend>Please use this form to contact me</legend>
+                <legend class="h2">Please use this form to contact me</legend>
                 @Html.ValidationSummary(String.Empty, new { @class = "alert alert-danger" })
                 <div class="form-group">
                     @Html.LabelFor(m => m.Name, new { @class = "control-label" })

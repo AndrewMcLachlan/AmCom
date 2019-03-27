@@ -3,53 +3,48 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
-    <title>@ViewBag.Title</title>
-    <link rel="Shortcut Icon" href="~/images/favicon.png" type="image/png" />
-    <meta charset="UTF-8" />
-    <meta name="msvalidate.01" content="5E5C3834A15FB140C2EB6BEB195C2A28" />
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
-    <canonical path="@ViewBag.Canonical" />
-    <meta name="description" content="@ViewBag.Description" />
-    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.min.css?v=10" />
-    @RenderSection("Head", false)
+  <title>@ViewBag.Title</title>
+  <link rel="Shortcut Icon" href="~/images/favicon.png" type="image/png" />
+  <meta charset="UTF-8" />
+  <meta name="msvalidate.01" content="5E5C3834A15FB140C2EB6BEB195C2A28" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+  <canonical path="@ViewBag.Canonical" />
+  <meta name="description" content="@ViewBag.Description" />
+  <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/site.min.css?v=10" />
+  @RenderSection("Head", false)
 </head>
 <body>
-    <header>
-        @if (hostingEnv.IsDevelopment())
-        {
-        <div class="currentBreakpoint"></div>
-        }
-        <div id="logo"></div>
-    </header>
-    <nav role="navigation" class="nav navbar navbar-inverse">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="menu">
-                <a class="sr-only sr-only-focusable" href="#content">[Skip to Content]</a>
-                <ul id="Menu" class="nav navbar-nav">
-                    <vc:menu site-map-name="web.sitemap" level="1" />
-                    <vc:menu site-map-name="web.sitemap" level="2" />
-                </ul>
-            </div>
-        </div>
+  <header>
+    @if (hostingEnv.IsDevelopment())
+    {
+      <div class="currentBreakpoint"></div>
+    }
+    <div id="logo"></div>
+  </header>
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!--<a class="sr-only sr-only-focusable" href="#content">[Skip to Content]</a>-->
+        <ul id="Menu" class="navbar-nav mr-auto">
+          <vc:menu site-map-name="web.sitemap" level="1" li-class="nav-item" a-class="nav-link" />
+          <vc:menu site-map-name="web.sitemap" level="2" li-class="nav-item" a-class="nav-link" />
+        </ul>
+      </div>
     </nav>
-    <main id="content">
-        @RenderBody()
-    </main>
-    <footer>
-        @this.RenderSection("Footer", Html, "_Footer")
-    </footer>
-    <div id="fb-root"></div>
-    @RenderSection("Scripts", false)
-    <script src="~/js/bootstrap.min.js" type="text/javascript"></script>
+  </div>
+  <main id="content">
+    @RenderBody()
+  </main>
+  <footer>
+    @this.RenderSection("Footer", Html, "_Footer")
+  </footer>
+  <div id="fb-root"></div>
+  @RenderSection("Scripts", false)
+  <script src="~/js/bootstrap.bundle.min.js" type="text/javascript"></script>
 </body>
 </html>
