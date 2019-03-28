@@ -16,7 +16,7 @@
     <siteMapNode url="~/consulting" controller="consulting" action="index" title="Consulting" />
     <siteMapNode url="~/tools" area="tools" controller="regex" action="index" title="Tools">
       <siteMapNode url="~/tools/regex" area="tools" controller="regex" action="index" title="Regex" />
-      <siteMapNode url="~/tools/cidr" area="tools" controller="cidr" action="index" title="CIDR Notation" />
+      <!--<siteMapNode url="~/tools/cidr" area="tools" controller="cidr" action="index" title="CIDR Notation" />-->
       <siteMapNode url="~/tools/base64" area="tools" controller="tools" action="base64" title="Base64" />
       <siteMapNode url="~/tools/ip" area="tools" controller="tools" action="ip" title="What's my IP" />
     </siteMapNode>
