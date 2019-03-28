@@ -515,9 +515,10 @@ module.exports = g;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return IPaddress; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return IPAddress; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _IPv4Address__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../IPv4Address */ "./scripts/react/IPv4Address.ts");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -538,17 +539,18 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var IPaddress =
+
+var IPAddress =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(IPaddress, _React$Component);
+  _inherits(IPAddress, _React$Component);
 
-  function IPaddress(props) {
+  function IPAddress(props) {
     var _this;
 
-    _classCallCheck(this, IPaddress);
+    _classCallCheck(this, IPAddress);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(IPaddress).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(IPAddress).call(this, props));
 
     _this.validateWithDotCheck = function (e) {
       var charCode = e.charCode;
@@ -585,12 +587,29 @@ function (_React$Component) {
       if (intval > 255) {
         e.currentTarget.value = "255";
       }
+
+      var newState = {};
+      newState[e.currentTarget.name] = e.currentTarget.value;
+
+      _this.setState(newState, function () {
+        if (_this.props.onChange) {
+          if (_this.state.octet1 && _this.state.octet2 && _this.state.octet3 && _this.state.octet4) {
+            _this.props.onChange(new _IPv4Address__WEBPACK_IMPORTED_MODULE_1__["IPv4Address"](_this.state.octet1, _this.state.octet2, _this.state.octet3, _this.state.octet4));
+          }
+        }
+      });
     };
 
+    _this.state = {
+      octet1: _this.props.value && _this.props.value.octet1,
+      octet2: _this.props.value && _this.props.value.octet2,
+      octet3: _this.props.value && _this.props.value.octet3,
+      octet4: _this.props.value && _this.props.value.octet4
+    };
     return _this;
   }
 
-  _createClass(IPaddress, [{
+  _createClass(IPAddress, [{
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("fieldset", {
@@ -607,7 +626,8 @@ function (_React$Component) {
         maxLength: 3,
         className: "form-control",
         id: this.props.id + "_1",
-        value: this.props.value && this.props.value.octet1,
+        name: "octet1",
+        value: this.state.octet1,
         onChange: this.validateMaxWithNext,
         onKeyPress: this.validateWithDotCheck
       }), "\xA0.\xA0", react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", {
@@ -617,7 +637,8 @@ function (_React$Component) {
         maxLength: 3,
         className: "form-control",
         id: this.props.id + "_2",
-        value: this.props.value && this.props.value.octet2,
+        name: "octet2",
+        value: this.state.octet2,
         onChange: this.validateMaxWithNext,
         onKeyPress: this.validateWithDotCheck
       }), "\xA0.\xA0", react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", {
@@ -627,7 +648,8 @@ function (_React$Component) {
         maxLength: 3,
         className: "form-control",
         id: this.props.id + "_3",
-        value: this.props.value && this.props.value.octet3,
+        name: "octet3",
+        value: this.state.octet3,
         onChange: this.validateMaxWithNext,
         onKeyPress: this.validateWithDotCheck
       }), "\xA0.\xA0", react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", {
@@ -637,14 +659,15 @@ function (_React$Component) {
         maxLength: 3,
         className: "form-control",
         id: this.props.id + "_4",
-        value: this.props.value && this.props.value.octet4,
+        name: "octet4",
+        value: this.state.octet4,
         onChange: this.validateMax,
         onKeyPress: this.validate
       })));
     }
   }]);
 
-  return IPaddress;
+  return IPAddress;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
@@ -896,20 +919,29 @@ function (_React$Component) {
   _createClass(TextBox, [{
     key: "render",
     value: function render() {
+      var opts = {};
+      var className = "form-control";
+
+      if (this.props.readonly === true) {
+        opts["readonly"] = "readonly;";
+        className = "form-control-plaintext";
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", {
         htmlFor: this.props.id,
         className: "control-label"
-      }, this.props.label), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", {
+      }, this.props.label), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", Object.assign({
         type: "text",
         maxLength: this.props.maxLength,
-        className: "form-control",
+        className: className,
         id: this.props.id,
-        value: this.props.value,
+        value: this.props.value
+      }, opts, {
         onChange: this.props.onChange,
         onKeyUp: this.props.onKeyUp
-      }));
+      })));
     }
   }]);
 
@@ -924,17 +956,85 @@ function mapProps(state, ownProps) {
 
 /***/ }),
 
+/***/ "./scripts/react/IPv4Address.ts":
+/*!**************************************!*\
+  !*** ./scripts/react/IPv4Address.ts ***!
+  \**************************************/
+/*! exports provided: IPv4Address, IPv4AddressWithCIDR */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IPv4Address", function() { return IPv4Address; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IPv4AddressWithCIDR", function() { return IPv4AddressWithCIDR; });
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var IPv4Address = function IPv4Address(octet1, octet2, octet3, octet4) {
+  var _this = this;
+
+  _classCallCheck(this, IPv4Address);
+
+  this.toString = function () {
+    return _this.octet1 + "." + _this.octet2 + "." + _this.octet3 + "." + _this.octet4;
+  };
+
+  this.octet1 = octet1;
+  this.octet2 = octet2;
+  this.octet3 = octet3;
+  this.octet4 = octet4;
+};
+var IPv4AddressWithCIDR =
+/*#__PURE__*/
+function (_IPv4Address) {
+  _inherits(IPv4AddressWithCIDR, _IPv4Address);
+
+  function IPv4AddressWithCIDR() {
+    var _this2;
+
+    _classCallCheck(this, IPv4AddressWithCIDR);
+
+    _this2 = _possibleConstructorReturn(this, _getPrototypeOf(IPv4AddressWithCIDR).apply(this, arguments));
+
+    _this2.toString = function () {
+      return _get(_getPrototypeOf(IPv4AddressWithCIDR.prototype), "toString", _assertThisInitialized(_this2)).call(_assertThisInitialized(_this2)) + "/" + _this2.mask;
+    };
+
+    return _this2;
+  }
+
+  return IPv4AddressWithCIDR;
+}(IPv4Address);
+
+/***/ }),
+
 /***/ "./scripts/react/Redux/Actions.ts":
 /*!****************************************!*\
   !*** ./scripts/react/Redux/Actions.ts ***!
   \****************************************/
-/*! exports provided: ActionTypes, RegexTester */
+/*! exports provided: ActionTypes, RegexTester, CidrNotation */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ActionTypes", function() { return ActionTypes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegexTester", function() { return RegexTester; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CidrNotation", function() { return CidrNotation; });
 var ActionTypes;
 
 (function (ActionTypes) {
@@ -949,6 +1049,16 @@ var ActionTypes;
     RegexTester.InputChanging = "InputChanging";
     RegexTester.InputChanged = "InputChanged";
   })(RegexTester = ActionTypes.RegexTester || (ActionTypes.RegexTester = {}));
+
+  var CidrNotation;
+
+  (function (CidrNotation) {
+    CidrNotation.GetCidrRequest = "GetCidrRequest";
+    CidrNotation.GetCidrSuccess = "GetCidrSuccess";
+    CidrNotation.GetCidrFailure = "GetCidrFailure";
+    CidrNotation.IPChanging = "IPChanging";
+    CidrNotation.MaskChanging = "MaskChanging";
+  })(CidrNotation = ActionTypes.CidrNotation || (ActionTypes.CidrNotation = {}));
 })(ActionTypes || (ActionTypes = {}));
 
 function simpleAction(type) {
@@ -995,6 +1105,30 @@ var RegexTester;
     return simpleAction(ActionTypes.RegexTester.InputChanged);
   };
 })(RegexTester || (RegexTester = {}));
+
+var CidrNotation;
+
+(function (CidrNotation) {
+  CidrNotation.getCidrRequest = function () {
+    return simpleAction(ActionTypes.CidrNotation.GetCidrRequest);
+  };
+
+  CidrNotation.getCidrSuccess = function (data) {
+    return dataAction(ActionTypes.CidrNotation.GetCidrSuccess, data);
+  };
+
+  CidrNotation.getCidrFailure = function (data) {
+    return dataAction(ActionTypes.CidrNotation.GetCidrFailure, data);
+  };
+
+  CidrNotation.ipChanging = function (data) {
+    return dataAction(ActionTypes.CidrNotation.IPChanging, data);
+  };
+
+  CidrNotation.maskChanging = function (data) {
+    return dataAction(ActionTypes.CidrNotation.MaskChanging, data);
+  };
+})(CidrNotation || (CidrNotation = {}));
 
 /***/ }),
 
@@ -1067,13 +1201,45 @@ var cidr;
   cidr.initialState = {
     cidr: null,
     ipAddress: null,
-    netMask: null
+    netMask: null,
+    isGetting: false
   };
 
   function reducer() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : cidr.initialState;
     var action = arguments.length > 1 ? arguments[1] : undefined;
-    return state;
+
+    switch (action.type) {
+      case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].CidrNotation.GetCidrRequest:
+        return Object.assign({}, state, {
+          isGetting: true
+        });
+
+      case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].CidrNotation.GetCidrSuccess:
+        return Object.assign({}, state, {
+          isGetting: false,
+          cidr: action.data.ipAddress
+        });
+
+      case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].CidrNotation.GetCidrFailure:
+        return Object.assign({}, state, {
+          isGetting: false,
+          cidr: null
+        });
+
+      case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].CidrNotation.IPChanging:
+        return Object.assign({}, state, {
+          ipAddress: action.data
+        });
+
+      case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].CidrNotation.MaskChanging:
+        return Object.assign({}, state, {
+          netMask: action.data
+        });
+
+      default:
+        return state;
+    }
   }
 
   cidr.reducer = reducer;
@@ -1094,7 +1260,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Components_IPAddress__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Components/IPAddress */ "./scripts/react/Components/IPAddress.tsx");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash.debounce */ "./node_modules/lodash.debounce/index.js");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Redux_Actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Redux/Actions */ "./scripts/react/Redux/Actions.ts");
+/* harmony import */ var _Service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Service */ "./scripts/react/Tools/Service.ts");
+/* harmony import */ var _Components_IPAddress__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Components/IPAddress */ "./scripts/react/Components/IPAddress.tsx");
+/* harmony import */ var _Components_TextBox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Components/TextBox */ "./scripts/react/Components/TextBox.tsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1117,51 +1288,72 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
+
+
 var Cidr =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(Cidr, _React$Component);
 
   function Cidr(props) {
+    var _this;
+
     _classCallCheck(this, Cidr);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Cidr).call(this, props)); //this.stateChangedDB = debounce(this.props.stateChanged, 250);
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Cidr).call(this, props));
+    _this.stateChangedDB = lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default()(_this.props.stateChanged, 250);
+    return _this;
   }
 
   _createClass(Cidr, [{
-    key: "CidrChanged",
-    value: function CidrChanged(e) {
-      /* this.stateChangedDB(e.target.value, this.props.input);
-       this.props.CidrChanged(e.target.value);*/
+    key: "ipChanged",
+    value: function ipChanged(e) {
+      this.stateChangedDB(e, this.props.netMask);
+      this.props.ipChanged(e);
     }
   }, {
-    key: "inputChanged",
-    value: function inputChanged(e) {
-      /*this.stateChangedDB(this.props.Cidr, e.target.value);
-      this.props.inputChanged(e.target.value);*/
+    key: "maskChanged",
+    value: function maskChanged(e) {
+      this.stateChangedDB(this.props.ipAddress, e);
+      this.props.maskChanged(e);
     }
   }, {
     key: "render",
     value: function render() {
+      var result = null;
+
+      if (this.props.cidr) {
+        result = react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Components_TextBox__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          id: "result",
+          value: this.props.cidr,
+          readonly: true,
+          label: "CIDR Notation"
+        });
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
         className: "col-md-9"
       }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("fieldset", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("legend", {
         className: "sr-only"
-      }, "Regular Expression Tester"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Components_IPAddress__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, "CIDR Notation Converter"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Components_IPAddress__WEBPACK_IMPORTED_MODULE_5__["default"], {
         id: "address",
         label: "IP Address",
-        value: this.props.ipAddress
-      }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Components_IPAddress__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        value: this.props.ipAddress,
+        onChange: this.ipChanged.bind(this)
+      }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Components_IPAddress__WEBPACK_IMPORTED_MODULE_5__["default"], {
         id: "mask",
         label: "Subnet Mask",
-        value: this.props.netMask
+        value: this.props.netMask,
+        onChange: this.maskChanged.bind(this)
       })))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
         className: "col-md-4 cidr-result"
-      }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, this.props.cidr))));
+      }, result)));
     }
   }]);
 
@@ -1178,15 +1370,16 @@ function mapProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    /*stateChanged: (Cidr, input) => {
-        dispatch(service.CidrTest(Cidr, input));
+    stateChanged: function stateChanged(ip, mask) {
+      if (ip === null || mask === null) return;
+      dispatch(_Service__WEBPACK_IMPORTED_MODULE_4__["service"].cidrTest(ip, mask));
     },
-    CidrChanged: (Cidr) => {
-        dispatch(CidrTester.CidrChanging(Cidr))
+    ipChanged: function ipChanged(ip) {
+      dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_3__["CidrNotation"].ipChanging(ip));
     },
-    inputChanged: (input) => {
-        dispatch(CidrTester.inputChanging(input));
-    },*/
+    maskChanged: function maskChanged(mask) {
+      dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_3__["CidrNotation"].maskChanging(mask));
+    }
   };
 }
 
@@ -1440,6 +1633,69 @@ var service;
   }
 
   service.regexTest = regexTest;
+
+  function cidrTest(ipAddress, subnetMask) {
+    var _this2 = this;
+
+    return function (dispatch) {
+      return __awaiter(_this2, void 0, void 0,
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee2() {
+        var response, result;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_0__["CidrNotation"].getCidrRequest());
+                _context2.prev = 1;
+                _context2.next = 4;
+                return fetch("/tools/api/cidr?ipaddress=".concat(ipAddress.toString(), "&subnetmask=").concat(subnetMask.toString()), {
+                  method: "GET",
+                  headers: new Headers({
+                    "Accept": "application/json"
+                  })
+                });
+
+              case 4:
+                response = _context2.sent;
+
+                if (!response.ok) {
+                  _context2.next = 12;
+                  break;
+                }
+
+                _context2.next = 8;
+                return response.json();
+
+              case 8:
+                result = _context2.sent;
+                dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_0__["CidrNotation"].getCidrSuccess(result));
+                _context2.next = 13;
+                break;
+
+              case 12:
+                dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_0__["CidrNotation"].getCidrFailure(response.status));
+
+              case 13:
+                _context2.next = 18;
+                break;
+
+              case 15:
+                _context2.prev = 15;
+                _context2.t0 = _context2["catch"](1);
+                dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_0__["CidrNotation"].getCidrFailure(_context2.t0));
+
+              case 18:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[1, 15]]);
+      }));
+    };
+  }
+
+  service.cidrTest = cidrTest;
 })(service || (service = {}));
 
 /***/ }),
