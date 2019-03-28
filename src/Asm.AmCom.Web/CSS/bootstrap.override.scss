@@ -1,22 +1,26 @@
 ﻿@import 'variables';
 
+h1, .h1, h2, .h2 {
+    padding-top: 1rem;
+}
+
 /* #region Nav */
-.navbar-inverse {
+.navbar-dark {
     background-color: $dark;
     border-radius: 0;
     margin-bottom: 0;
 }
 
-.navbar-inverse .navbar-nav > li > a {
+.navbar-dark .navbar-nav .nav-link {
     color: $blue;
 }
 
-.navbar-inverse .navbar-nav > li > a:hover {
+.navbar-dark .navbar-nav .nav-link:hover {
 	color: $bone;
 }
 
-.navbar-inverse .navbar-nav > .active > a,
-.navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+.navbar-dark .navbar-nav .active  .nav-link,
+.navbar-dark .navbar-nav  .active  .nav-link:hover, .navbar-dark .navbar-nav .active .nav-link:focus {
     background-color: transparent;
     color: $mutedbone;
 }
@@ -28,11 +32,15 @@
     border: none;
 }
 
-.navbar-toggle {
-    float: left;
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-left: 15px;
+    padding-right: 15px;
 }
-/* #endregion */
 
+/*.navbar-toggle {
+    float: left;
+}*/
+/* #endregion */
 .jumbotron .container {
     position: relative;
     padding: 0;

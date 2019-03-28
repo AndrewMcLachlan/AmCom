@@ -26,6 +26,16 @@ namespace Asm.AmCom.Web.Models
             get;
             private set;
         }
+
+        /// <summary>
+        /// The CSS class name to apply to list items.
+        /// </summary>
+        public string ListItemClass { get; set; }
+
+        /// <summary>
+        /// The CSS class name to apply to anchor tags.
+        /// </summary>
+        public string AnchorClass { get; set; }
         #endregion
 
         #region Constructors

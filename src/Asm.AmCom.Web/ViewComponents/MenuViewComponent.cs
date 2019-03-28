@@ -22,7 +22,7 @@ namespace Asm.AmCom.Web.ViewComponents
             _env = env;
         }
 
-        public Task<IViewComponentResult> InvokeAsync(string siteMapName = "Web.sitemap", int level = 1)
+        public Task<IViewComponentResult> InvokeAsync(string siteMapName = "Web.sitemap", int level = 1, string liClass = "", string aClass = null)
         {
             IUrlHelper urlHelper = _urlHelperFactory.GetUrlHelper(ViewContext);
 
@@ -37,6 +37,8 @@ namespace Asm.AmCom.Web.ViewComponents
 
 
             MenuModel model = new MenuModel(siteMapPath, level, currentNode);
+            model.ListItemClass = liClass;
+            model.AnchorClass = aClass;
             return Task.FromResult(View("Menu", model) as IViewComponentResult);
         }
     }
