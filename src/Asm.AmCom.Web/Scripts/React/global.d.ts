@@ -5,6 +5,10 @@ declare global {
     interface Window {
         __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
     }
+
+    interface Array<T> {
+        selectMany(func: (o: T) => Array<any>): Array<any>;
+    }
 }
 
 export interface DispatchProps {

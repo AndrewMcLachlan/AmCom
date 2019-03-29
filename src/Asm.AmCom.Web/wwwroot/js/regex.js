@@ -546,25 +546,41 @@ function (_React$Component) {
   _inherits(RegexResult, _React$Component);
 
   function RegexResult(props) {
+    var _this;
+
     _classCallCheck(this, RegexResult);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(RegexResult).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(RegexResult).call(this, props));
+
+    _this.hover = function (e) {
+      var target = document.getElementById(e.currentTarget.getAttribute("data-highlight"));
+      target.classList.add("hover");
+    };
+
+    _this.unhover = function (e) {
+      var target = document.getElementById(e.currentTarget.getAttribute("data-highlight"));
+      target.classList.remove("hover");
+    };
+
+    return _this;
   }
 
   _createClass(RegexResult, [{
     key: "render",
     value: function render() {
       var res = this.props.regexResult;
-      if (!res || !res.success) return null;
-      var groups = new Array();
+      if (!res || !res.success || res.groups.length == 1) return null;
+      var groups = new Array(); // Skip the first group as we already display it
+
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;
 
       try {
-        for (var _iterator = res.groups[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        for (var _iterator = res.groups.slice(1)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
           var group = _step.value;
           var captures = new Array();
+          var gIndex = res.groups.indexOf(group);
 
           if (group.captures && group.captures.length > 1) {
             var _iteratorNormalCompletion2 = true;
@@ -574,7 +590,11 @@ function (_React$Component) {
             try {
               for (var _iterator2 = group.captures[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
                 var capture = _step2.value;
-                captures.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("li", null, capture.value));
+                captures.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("li", {
+                  "data-highlight": "capture_".concat(gIndex, "_").concat(group.captures.indexOf(capture)),
+                  onMouseOver: this.hover,
+                  onMouseOut: this.unhover
+                }, capture.value));
               }
             } catch (err) {
               _didIteratorError2 = true;
@@ -591,9 +611,17 @@ function (_React$Component) {
               }
             }
 
-            groups.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("li", null, group.value, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("ul", null, captures)));
+            groups.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("tr", {
+              "data-highlight": "group_".concat(gIndex),
+              onMouseOver: this.hover,
+              onMouseOut: this.unhover
+            }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null, res.groups.indexOf(group)), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null, group.value), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("ul", null, captures))));
           } else {
-            groups.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("li", null, group.value));
+            groups.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("tr", {
+              "data-highlight": "group_".concat(gIndex),
+              onMouseOver: this.hover,
+              onMouseOut: this.unhover
+            }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null, res.groups.indexOf(group)), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null, group.value), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null)));
           }
         }
       } catch (err) {
@@ -611,7 +639,9 @@ function (_React$Component) {
         }
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("ul", null, groups));
+      return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "Groups"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("table", {
+        className: "table"
+      }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("thead", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("tr", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("th", null, "Number"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("th", null, "Match"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("th", null, "Captures"))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("tbody", null, groups)));
     }
   }]);
 
@@ -683,10 +713,66 @@ function (_React$Component) {
       }, "No Match");
       var input = res.input || "";
       var unmatchedStart = input.substr(0, res.groups[0].index);
-      var unmatchedEnd = input.substr(res.groups[0].index + res.groups[0].length);
+      var unmatchedEnd = input.substr(res.groups[0].index + res.groups[0].length); //let allCaptures = res.groups.selectMany((g) => g.captures);
+
+      var groups = [];
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = res.groups.slice(1)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var group = _step.value;
+          var captures = [];
+          var gIndex = res.groups.indexOf(group);
+          var _iteratorNormalCompletion2 = true;
+          var _didIteratorError2 = false;
+          var _iteratorError2 = undefined;
+
+          try {
+            for (var _iterator2 = group.captures[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+              var capture = _step2.value;
+              captures.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", {
+                id: "capture_" + gIndex + "_" + group.captures.indexOf(capture)
+              }, capture.value));
+            }
+          } catch (err) {
+            _didIteratorError2 = true;
+            _iteratorError2 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+                _iterator2.return();
+              }
+            } finally {
+              if (_didIteratorError2) {
+                throw _iteratorError2;
+              }
+            }
+          }
+
+          groups.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", {
+            id: "group_" + gIndex
+          }, captures));
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, unmatchedStart), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", {
         className: "match"
-      }, res.groups[0].value), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, unmatchedEnd));
+      }, groups), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, unmatchedEnd));
     }
   }]);
 
@@ -898,7 +984,6 @@ var regex;
         });
 
       case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].RegexTester.RegexChanging:
-        //alert("ActionData: " + action.data);
         return Object.assign({}, state, {
           regex: action.data
         });
