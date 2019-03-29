@@ -19,7 +19,7 @@ namespace Asm.AmCom.Web.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class ContactResources {
@@ -84,6 +84,15 @@ namespace Asm.AmCom.Web.Resources {
         public static string EmailValidation {
             get {
                 return ResourceManager.GetString("EmailValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please remove inappropriate words from your message.
+        /// </summary>
+        public static string MessageBannedWordsValidation {
+            get {
+                return ResourceManager.GetString("MessageBannedWordsValidation", resourceCulture);
             }
         }
         

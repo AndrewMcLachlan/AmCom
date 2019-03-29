@@ -126,6 +126,9 @@
   <data name="EmailValidation" xml:space="preserve">
     <value>Please enter your email address</value>
   </data>
+  <data name="MessageBannedWordsValidation" xml:space="preserve">
+    <value>Please remove inappropriate words from your message</value>
+  </data>
   <data name="MessageLabel" xml:space="preserve">
     <value>Message:</value>
   </data>

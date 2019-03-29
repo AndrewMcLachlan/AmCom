@@ -1,20 +1,25 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using Asm.AmCom.Web.Models;
+using Asm.AmCom.Web.Resources;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace Asm.AmCom.Web.Controllers
 {
     public class ContactController : Controller
     {
         private IConfiguration _configuration;
+        private ILogger _logger;
 
-        public ContactController(IConfiguration configuration)
+        public ContactController(IConfiguration configuration, ILogger<ContactController> logger)
         {
             _configuration = configuration;
+            _logger = logger;
         }
 
         public ActionResult Index()
@@ -37,6 +42,10 @@ namespace Asm.AmCom.Web.Controllers
 
                     return View("Message", new MessageModel { Title = "Sorry", Message = "Sorry, there has been a problem sending the contact request. You can email me direct at " + String.Format(mailToFormat, String.Format(_configuration["Mail:SubjectFormat"], model.Name, model.Email), model.Message), Heading = "Contact" });
                 }
+            }
+            else if (ModelState.Values.SelectMany(v => v.Errors).Any(e => e.ErrorMessage == ContactResources.MessageBannedWordsValidation))
+            {
+                _logger.LogInformation("Probable spam message: {0} {1} {2} ", model.Name, model.Email, model.Message);
             }
 
             return View();
