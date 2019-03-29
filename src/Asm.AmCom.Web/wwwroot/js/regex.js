@@ -716,6 +716,7 @@ function (_React$Component) {
       var unmatchedEnd = input.substr(res.groups[0].index + res.groups[0].length); //let allCaptures = res.groups.selectMany((g) => g.captures);
 
       var groups = [];
+      var pos = 0;
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;
@@ -723,6 +724,15 @@ function (_React$Component) {
       try {
         for (var _iterator = res.groups.slice(1)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
           var group = _step.value;
+
+          var _ungrouped = input.substring(pos, group.captures[0].index);
+
+          pos = group.captures[group.captures.length - 1].index + group.captures[group.captures.length - 1].length;
+
+          if (_ungrouped.length > 0) {
+            groups.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, _ungrouped));
+          }
+
           var captures = [];
           var gIndex = res.groups.indexOf(group);
           var _iteratorNormalCompletion2 = true;
@@ -767,6 +777,14 @@ function (_React$Component) {
           if (_didIteratorError) {
             throw _iteratorError;
           }
+        }
+      }
+
+      if (pos < input.length) {
+        var ungrouped = input.substring(pos);
+
+        if (ungrouped.length > 0) {
+          groups.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, ungrouped));
         }
       }
 
