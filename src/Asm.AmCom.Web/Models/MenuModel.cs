@@ -101,22 +101,6 @@ namespace Asm.AmCom.Web.Models
             {
                 MenuItem item = new MenuItem { Name = child.Title, Url = child.Url };
 
-                /*RouteValueDictionary values = RouteTable.Routes.GetRouteData(GetFullyQualifiedUrl(child.Url)).Values;
-
-                if (values.Keys.Contains("MS_DirectRouteMatches"))
-                {
-                    values = ((List<RouteData>)values["MS_DirectRouteMatches"]).First().Values;
-                }
-
-                item.Selected = child == CurrentSiteMap.CurrentNode || (currentValues["controller"].Equals(values["controller"]) && currentValues["action"].Equals(values["action"])) || HasSelectedChild(child, currentValues);
-
-                item.Highlighted = child["custom"] == "highlight";
-
-                if (!"false".Equals(child["visible"], StringComparison.OrdinalIgnoreCase))
-                {
-                    Items.Add(item);
-                }*/
-
                 item.Selected = (_currentNode != null && _currentNode == child) || HasSelectedChild(child);
 
                 if (child.Visible)
@@ -134,28 +118,8 @@ namespace Asm.AmCom.Web.Models
                 {
                     return true;
                 }
-
-                /*RouteValueDictionary childValues = RouteTable.Routes.GetRouteData(GetFullyQualifiedUrl(node.Url)).Values;
-
-
-                if (childValues.Keys.Contains("MS_DirectRouteMatches"))
-                {
-                    childValues = ((List<RouteData>)childValues["MS_DirectRouteMatches"]).First().Values;
-                }
-
-                if ((childValues["controller"].Equals(values["controller"]) && childValues["action"].Equals(values["action"])) || node == CurrentSiteMap.CurrentNode || HasSelectedChild(node, childValues))
-                {
-                    return true;
-                }*/
             }
             return false;
-        }
-
-        private string GetFullyQualifiedUrl(string url)
-        {
-            return url;
-            if (url.Contains("://")) return url;
-            //return HttpContext.Current.Request.Url.GetComponents(UriComponents.SchemeAndServer, UriFormat.Unescaped) + VirtualPathUtility.Combine(HttpContext.Current.Request.ApplicationPath, url);
         }
         #endregion
     }

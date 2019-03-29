@@ -18,14 +18,18 @@
     "inputFiles": [ "css/regex.css" ]
   },
   {
+    "outputFileName": "wwwroot/css/cidr.min.css",
+    "inputFiles": [ "css/cidr.css" ]
+  },
+  {
     "outputFileName": "wwwroot/css/colours.min.css",
     "inputFiles": [ "css/colours.css" ]
   },
   {
     "outputFileName": "wwwroot/js/tools.min.js",
     "inputFiles": [
-      "scripts/base64.js",
-      "scripts/regex.js"
+      "scripts/standard/base64.js",
+      "wwwroot/js/regex.js"
     ],
     // Optionally specify minification options
     "minify": {

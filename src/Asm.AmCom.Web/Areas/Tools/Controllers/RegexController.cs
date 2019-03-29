@@ -10,6 +10,7 @@ namespace Asm.AmCom.Web.Mvc.Areas.Tools.Controllers
 {
     [Area("Tools")]
     [Route("tools")]
+    [ApiController]
     public class RegexController : Controller
     {
         [Route("")]
@@ -21,9 +22,10 @@ namespace Asm.AmCom.Web.Mvc.Areas.Tools.Controllers
 
         [Route("api/regex")]
         [HttpPost]
-        public ActionResult<RegexTestResponse> Test([FromBody]RegexTestRequest request)
+        public IActionResult Test([FromBody]RegexTestRequest request)
         {
-            if (request == null) throw new ArgumentNullException(nameof(request));
+            if (request == null) return BadRequest(KnownProblemDetails.RegexTester.NullRequest);
+            if (String.IsNullOrWhiteSpace(request.Regex)) return BadRequest(KnownProblemDetails.RegexTester.EmptyRegex);
 
             Regex reg;
 
@@ -33,12 +35,12 @@ namespace Asm.AmCom.Web.Mvc.Areas.Tools.Controllers
             }
             catch (ArgumentException)
             {
-                return StatusCode(400, "Not a valid Regex");
+                return BadRequest(KnownProblemDetails.RegexTester.InvalidRegex);
             }
 
-            Match match = reg.Match(request.Text);
+            Match match = reg.Match(request.Text ?? String.Empty);
 
-            return new RegexTestResponse(match);
+            return Ok(new RegexTestResponse(match));
         }
     }
 }

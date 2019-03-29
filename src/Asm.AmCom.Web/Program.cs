@@ -16,13 +16,12 @@ namespace Asm.AmCom.Web
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            BuildWebHost(args).Build().Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
+        public static IWebHostBuilder BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseKestrel(o => o.AddServerHeader = false)
                 .UseIISIntegration()
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
@@ -49,6 +48,6 @@ namespace Asm.AmCom.Web
                         {
                             options.BlobName = "log.txt";
                         }))
-                .Build();
+                ;
     }
 }

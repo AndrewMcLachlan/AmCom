@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
@@ -26,7 +27,7 @@ namespace Asm.AmCom.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
@@ -48,39 +49,15 @@ namespace Asm.AmCom.Web
 
             app.UseStatusCodePagesWithReExecute("/error/error/{0}");
 
-            var wellKnown = Path.Combine(Directory.GetCurrentDirectory(), @".well-known");
+            app.UseStaticFiles();
 
-            if (!Directory.Exists(wellKnown))
-            {
-                Directory.CreateDirectory(wellKnown);
-            }
-
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @".well-known")),
-                RequestPath = new PathString("/.well-known"),
-                ServeUnknownFileTypes = true // serve extensionless file
-            });
-
-            /*app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot", "Help")),
-                RequestPath = new PathString("/Help")
-            });
-
-            app.UseDirectoryBrowser(new DirectoryBrowserOptions
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot", "Help")),
-                RequestPath = new PathString("/Help")
-            });*/
-
-            using (StreamReader iisUrlRewriteConfig = File.OpenText("rewrite.config"))
+            /*using (StreamReader iisUrlRewriteConfig = File.OpenText("rewrite.config"))
             {
                 var options = new RewriteOptions()
                     .AddIISUrlRewrite(iisUrlRewriteConfig);
 
                 app.UseRewriter(options);
-            }
+            }*/
 
             app.UseMvc(routes =>
             {

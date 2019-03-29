@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup Label="Globals">
     <SccProjectName>SAK</SccProjectName>
@@ -8,8 +8,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-    <TypeScriptToolsVersion>3.3</TypeScriptToolsVersion>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TypeScriptToolsVersion>3.3.4000</TypeScriptToolsVersion>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
     <FileVersion>4.0.0.0</FileVersion>
     <Description />
@@ -20,7 +21,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Scripts\React\node_modules\**" />
+    <Content Remove="Scripts\React\node_modules\**" />
+    <EmbeddedResource Remove="Scripts\React\node_modules\**" />
+    <None Remove="Scripts\React\node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\images\Design.lnk" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Scripts\App.tsx" />
+    <None Remove="Scripts\global.d.ts" />
+    <None Remove="Scripts\React\Components\IPAddress.tsx" />
+    <None Remove="Scripts\React\Components\RegexResult.tsx" />
+    <None Remove="Scripts\React\Components\RegexResultSummary.tsx" />
+    <None Remove="Scripts\React\Components\TextBox.tsx" />
+    <None Remove="Scripts\React\Core.ts" />
+    <None Remove="Scripts\React\IPv4Address.ts" />
+    <None Remove="Scripts\React\Redux\Actions.ts" />
+    <None Remove="Scripts\React\Redux\Reducers.ts" />
+    <None Remove="Scripts\React\Service.ts" />
+    <None Remove="Scripts\React\Tool.ts" />
+    <None Remove="Scripts\React\Tools\Cidr.tsx" />
+    <None Remove="Scripts\RegexApp.tsx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,11 +67,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BuildBundlerMinifier" Version="2.8.391" />
+    <PackageReference Include="Asm" Version="2.0.271" />
+    <PackageReference Include="Asm.Net" Version="2.0.271" />
+    <PackageReference Include="BuildBundlerMinifier" Version="2.9.406" />
     <PackageReference Include="BuildWebCompiler" Version="1.12.394" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.5" />
-    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.8.166" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.5" />
+    <PackageReference Include="Microsoft.AspNetCore.All" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.9.20" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,7 +81,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Tools\Controllers\" />
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
@@ -65,6 +91,23 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Asm.AmCom\Asm.AmCom.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\React\App.tsx" />
+    <TypeScriptCompile Include="Scripts\React\Components\IPAddress.tsx" />
+    <TypeScriptCompile Include="Scripts\React\Components\RegexResultSummary.tsx" />
+    <TypeScriptCompile Include="Scripts\React\Components\RegexResult.tsx" />
+    <TypeScriptCompile Include="Scripts\React\Components\TextBox.tsx" />
+    <TypeScriptCompile Include="Scripts\React\Core.ts" />
+    <TypeScriptCompile Include="Scripts\React\global.d.ts" />
+    <TypeScriptCompile Include="Scripts\React\IPv4Address.ts" />
+    <TypeScriptCompile Include="Scripts\React\Redux\Actions.ts" />
+    <TypeScriptCompile Include="Scripts\React\Redux\Reducers.ts" />
+    <TypeScriptCompile Include="Scripts\React\Tools\Cidr.tsx" />
+    <TypeScriptCompile Include="Scripts\React\Tools\Tool.ts" />
+    <TypeScriptCompile Include="Scripts\React\Tools\Regex.tsx" />
+    <TypeScriptCompile Include="Scripts\React\Tools\Service.ts" />
   </ItemGroup>
 
   <ItemGroup>

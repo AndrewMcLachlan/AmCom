@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "lib": [ "dom", "es6" ],
+    "module": "es6",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "noImplicitAny": false,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "es6",
+    "outDir": "../../obj/TypeScript"
+  },
+  "exclude": [
+    "node_modules",
+    "wwwroot",
+    "Standard"
+  ]
+}
