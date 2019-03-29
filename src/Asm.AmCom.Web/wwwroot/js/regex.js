@@ -716,7 +716,7 @@ function (_React$Component) {
       var unmatchedEnd = input.substr(res.groups[0].index + res.groups[0].length); //let allCaptures = res.groups.selectMany((g) => g.captures);
 
       var groups = [];
-      var pos = 0;
+      var pos = unmatchedStart.length;
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;
@@ -781,16 +781,20 @@ function (_React$Component) {
       }
 
       if (pos < input.length) {
-        var ungrouped = input.substring(pos);
+        var ungrouped = input.substring(pos, input.length - unmatchedEnd.length);
 
         if (ungrouped.length > 0) {
           groups.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, ungrouped));
         }
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, unmatchedStart), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", {
+      return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", {
+        className: "nonmatch start"
+      }, unmatchedStart), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", {
         className: "match"
-      }, groups), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, unmatchedEnd));
+      }, groups), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", {
+        className: "nonmatch end"
+      }, unmatchedEnd));
     }
   }]);
 
@@ -1641,8 +1645,8 @@ function mapDispatchToProps(dispatch) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\mclaughlina\source\repos\AndrewMcLachlan.com\src\Asm.AmCom.Web\scripts\react\app.tsx */"./scripts/react/app.tsx");
-module.exports = __webpack_require__(/*! C:\Users\mclaughlina\source\repos\AndrewMcLachlan.com\src\Asm.AmCom.Web\scripts\react\tools\regex.tsx */"./scripts/react/tools/regex.tsx");
+__webpack_require__(/*! K:\VSTS\Asm\AndrewMcLachlan.com\src\Asm.AmCom.Web\scripts\react\app.tsx */"./scripts/react/app.tsx");
+module.exports = __webpack_require__(/*! K:\VSTS\Asm\AndrewMcLachlan.com\src\Asm.AmCom.Web\scripts\react\tools\regex.tsx */"./scripts/react/tools/regex.tsx");
 
 
 /***/ }),

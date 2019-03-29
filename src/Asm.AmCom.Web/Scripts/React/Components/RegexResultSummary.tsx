@@ -25,7 +25,7 @@ class RegexResultSummary extends React.Component<RegexResultProps, any> {
 
         let groups = [];
 
-        let pos = 0;
+        let pos = unmatchedStart.length;
 
         for (let group of res.groups.slice(1)) {
 
@@ -47,16 +47,16 @@ class RegexResultSummary extends React.Component<RegexResultProps, any> {
         }
 
         if (pos < input.length) {
-            let ungrouped = input.substring(pos);
+            let ungrouped = input.substring(pos, input.length - unmatchedEnd.length);
             if (ungrouped.length > 0) {
                 groups.push(<span>{ungrouped}</span>);
             }
         }
 
         return (<div>
-            <span>{unmatchedStart}</span>
+            <span className="nonmatch start">{unmatchedStart}</span>
             <span className="match">{groups}</span>
-            <span>{unmatchedEnd}</span>
+            <span className="nonmatch end">{unmatchedEnd}</span>
         </div>);
     }
 }
