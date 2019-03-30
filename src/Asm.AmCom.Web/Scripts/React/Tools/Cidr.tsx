@@ -74,9 +74,10 @@ function mapProps(state: cidr.State, ownProps): CidrProps {
 
 function mapDispatchToProps(dispatch) {
     return {
-        stateChanged: (ip, mask) => {
+        stateChanged: (ip:IPv4Address, mask:IPv4Address) => {
             if (ip === null || mask === null) return;
-            dispatch(service.cidrTest(ip, mask));
+            let cidr = (ip).toCidr(mask).toString();
+            dispatch(CidrNotation.getCidrSuccess(cidr));
         },
         ipChanged: (ip) => {
             dispatch(CidrNotation.ipChanging(ip))

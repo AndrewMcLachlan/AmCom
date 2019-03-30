@@ -65,7 +65,7 @@ export namespace cidr {
                 return {
                     ...state,
                     isGetting: false,
-                    cidr: action.data.ipAddress,
+                    cidr: action.data,
                 };
             case ActionTypes.CidrNotation.GetCidrFailure:
                 return {
