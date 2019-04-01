@@ -2,43 +2,46 @@
 
 var rootPath = path.join(__dirname, "scripts", "react");
 
-module.exports = {
-    entry: path.join(rootPath, "app.tsx"),
-    watchOptions: {
-        ignored: ["**/*.js", "node_modules"],
-    },
+module.exports = (env, argv) => {
 
-    devtool: "source-map",
+    return {
+        entry: path.join(rootPath, "app.tsx"),
+        watchOptions: {
+            ignored: ["**/*.js", "node_modules"],
+        },
 
-    resolve: {
-        extensions: [".ts", ".tsx", ".js"]
-    },
+        devtool: "source-map",
 
-    output: {
-        path: path.join(__dirname, "wwwroot", "js"),
-        filename: "reacttools.js"
-    },
-    module: {
-        rules: [
+        resolve: {
+            extensions: [".ts", ".tsx", ".js"]
+        },
 
-            {
-                test: /\.tsx?$/,
-                exclude: /node_modules/,
-                use: [{
-                    loader: "babel-loader"
-                },
+        output: {
+            path: path.join(__dirname, "wwwroot", "js"),
+            filename: argv.mode === "production" ? "reacttools.min.js" : "reacttools.js"
+        },
+        module: {
+            rules: [
+
                 {
-                    loader: "ts-loader"
-                }],
-            }
-        ],
-    },
+                    test: /\.tsx?$/,
+                    exclude: /node_modules/,
+                    use: [{
+                        loader: "babel-loader"
+                    },
+                    {
+                        loader: "ts-loader"
+                    }],
+                }
+            ],
+        },
 
-    externals: {
-        "react": "React",
-        "react-dom": "ReactDOM",
-        "redux": "Redux",
-        "react-redux": "ReactRedux",
-        "redux-thunk": "ReduxThunk",
-    }
+        externals: {
+            "react": "React",
+            "react-dom": "ReactDOM",
+            "redux": "Redux",
+            "react-redux": "ReactRedux",
+            "redux-thunk": "ReduxThunk",
+        }
+    };
 };
