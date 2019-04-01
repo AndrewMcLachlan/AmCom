@@ -44,13 +44,12 @@ class Regex extends React.Component<RegexProps, any> {
                         </fieldset>
                     </div>
                 </section>
-
-                <section className="row">
+                <section className="row mt-3">
                     <div className="col-md-4 regex-result-summary">
                         <RegexResultSummary />
                     </div>
                 </section>
-                <section className="row">
+                <section className="row mt-4">
                     <div className="col-md-4 regex-result">
                         <RegexResult />
                     </div>
