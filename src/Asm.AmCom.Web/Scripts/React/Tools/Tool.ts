@@ -3,6 +3,7 @@
 import * as Reducers from "../Redux/Reducers"
 import Regex from "./Regex"
 import Cidr from "./Cidr"
+import Base64 from "./Base64";
 
 export const tools:Array<Tool> = [
     {
@@ -16,6 +17,12 @@ export const tools:Array<Tool> = [
         initialState: Reducers.cidr.initialState,
         reducer: Reducers.cidr.reducer,
         component: Cidr,
+    },
+    {
+        name: "base64",
+        initialState: {},
+        reducer: () => {},
+        component: Base64
     }
 ];
 
