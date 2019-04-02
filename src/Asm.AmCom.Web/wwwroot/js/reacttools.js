@@ -578,7 +578,7 @@ function (_React$Component) {
     };
 
     _this.validateMax = function (e) {
-      var intval = parseInt(e.currentTarget.value);
+      var intval = parseInt(e.currentTarget.value, 10);
 
       if (intval > 255) {
         e.currentTarget.value = "255";
@@ -1026,7 +1026,7 @@ function (_React$Component) {
       var className = "form-control";
 
       if (this.props.readonly === true) {
-        opts["readonly"] = "readonly";
+        opts.readonly = "readonly";
         className = "form-control-plaintext";
       }
 
@@ -1059,24 +1059,74 @@ function mapProps(state, ownProps) {
 
 /***/ }),
 
+/***/ "./scripts/react/Core.ts":
+/*!*******************************!*\
+  !*** ./scripts/react/Core.ts ***!
+  \*******************************/
+/*! exports provided: ready, simpleAction, dataAction */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ready", function() { return ready; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "simpleAction", function() { return simpleAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dataAction", function() { return dataAction; });
+function ready(fn) {
+  document.addEventListener("DOMContentLoaded", fn);
+}
+
+Array.prototype.selectMany = function (func) {
+  var result = [];
+  this.forEach(function (o) {
+    return result.push(func(o));
+  });
+  return result;
+};
+
+function simpleAction(type) {
+  return {
+    type: type
+  };
+}
+function dataAction(type, data) {
+  return {
+    data: data,
+    type: type
+  };
+}
+
+/***/ }),
+
 /***/ "./scripts/react/IPv4Address.ts":
 /*!**************************************!*\
   !*** ./scripts/react/IPv4Address.ts ***!
   \**************************************/
-/*! exports provided: IPv4Address */
+/*! exports provided: IPv4Address, IPv4AddressWithCIDR */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IPv4Address", function() { return IPv4Address; });
-/* harmony import */ var _IPv4AddressWithCIDR__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./IPv4AddressWithCIDR */ "./scripts/react/IPv4AddressWithCIDR.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IPv4AddressWithCIDR", function() { return IPv4AddressWithCIDR; });
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-
+/* tslint:disable:max-classes-per-file */
 var IPv4Address =
 /*#__PURE__*/
 function () {
@@ -1139,7 +1189,7 @@ function () {
         byteMask >>>= 8;
       }
 
-      return new _IPv4AddressWithCIDR__WEBPACK_IMPORTED_MODULE_0__["IPv4AddressWithCIDR"](newIp[0], newIp[1], newIp[2], newIp[3], cidrNumber);
+      return new IPv4AddressWithCIDR(newIp[0], newIp[1], newIp[2], newIp[3], cidrNumber);
     };
 
     this.octet1 = octet1;
@@ -1193,281 +1243,272 @@ function () {
 
   return IPv4Address;
 }();
-
-/***/ }),
-
-/***/ "./scripts/react/IPv4AddressWithCIDR.ts":
-/*!**********************************************!*\
-  !*** ./scripts/react/IPv4AddressWithCIDR.ts ***!
-  \**********************************************/
-/*! exports provided: IPv4AddressWithCIDR */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IPv4AddressWithCIDR", function() { return IPv4AddressWithCIDR; });
-/* harmony import */ var _IPv4Address__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./IPv4Address */ "./scripts/react/IPv4Address.ts");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
 var IPv4AddressWithCIDR =
 /*#__PURE__*/
 function (_IPv4Address) {
   _inherits(IPv4AddressWithCIDR, _IPv4Address);
 
   function IPv4AddressWithCIDR(octet1, octet2, octet3, octet4, cidrNumber) {
-    var _this;
+    var _this2;
 
     _classCallCheck(this, IPv4AddressWithCIDR);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(IPv4AddressWithCIDR).call(this, octet1, octet2, octet3, octet4));
+    _this2 = _possibleConstructorReturn(this, _getPrototypeOf(IPv4AddressWithCIDR).call(this, octet1, octet2, octet3, octet4));
 
-    _this.toString = function () {
-      return _this.octet1 + "." + _this.octet2 + "." + _this.octet3 + "." + _this.octet4 + "/" + _this.mask;
+    _this2.toString = function () {
+      return _this2.octet1 + "." + _this2.octet2 + "." + _this2.octet3 + "." + _this2.octet4 + "/" + _this2.mask;
     };
 
-    _this.mask = cidrNumber;
-    return _this;
+    _this2.mask = cidrNumber;
+    return _this2;
   }
 
   return IPv4AddressWithCIDR;
-}(_IPv4Address__WEBPACK_IMPORTED_MODULE_0__["IPv4Address"]);
+}(IPv4Address);
 
 /***/ }),
 
-/***/ "./scripts/react/Redux/Actions.ts":
-/*!****************************************!*\
-  !*** ./scripts/react/Redux/Actions.ts ***!
-  \****************************************/
-/*! exports provided: ActionTypes, RegexTester, CidrNotation */
+/***/ "./scripts/react/Redux/Cidr/ActionTypes.ts":
+/*!*************************************************!*\
+  !*** ./scripts/react/Redux/Cidr/ActionTypes.ts ***!
+  \*************************************************/
+/*! exports provided: GetCidrRequest, GetCidrSuccess, GetCidrFailure, IPChanging, MaskChanging */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ActionTypes", function() { return ActionTypes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegexTester", function() { return RegexTester; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CidrNotation", function() { return CidrNotation; });
-var ActionTypes;
-
-(function (ActionTypes) {
-  var RegexTester;
-
-  (function (RegexTester) {
-    RegexTester.GetTestResultRequest = "GetTestResultRequest";
-    RegexTester.GetTestResultSuccess = "GetTestResultSuccess";
-    RegexTester.GetTestResultFailure = "GetTestResultFailure";
-    RegexTester.RegexChanging = "RegexChanging";
-    RegexTester.RegexChanged = "RegexChanged";
-    RegexTester.InputChanging = "InputChanging";
-    RegexTester.InputChanged = "InputChanged";
-  })(RegexTester = ActionTypes.RegexTester || (ActionTypes.RegexTester = {}));
-
-  var CidrNotation;
-
-  (function (CidrNotation) {
-    CidrNotation.GetCidrRequest = "GetCidrRequest";
-    CidrNotation.GetCidrSuccess = "GetCidrSuccess";
-    CidrNotation.GetCidrFailure = "GetCidrFailure";
-    CidrNotation.IPChanging = "IPChanging";
-    CidrNotation.MaskChanging = "MaskChanging";
-  })(CidrNotation = ActionTypes.CidrNotation || (ActionTypes.CidrNotation = {}));
-})(ActionTypes || (ActionTypes = {}));
-
-function simpleAction(type) {
-  return {
-    type: type
-  };
-}
-
-function dataAction(type, data) {
-  return {
-    type: type,
-    data: data
-  };
-}
-
-var RegexTester;
-
-(function (RegexTester) {
-  RegexTester.getTestResultRequest = function () {
-    return simpleAction(ActionTypes.RegexTester.GetTestResultRequest);
-  };
-
-  RegexTester.getTestResultSuccess = function (data) {
-    return dataAction(ActionTypes.RegexTester.GetTestResultSuccess, data);
-  };
-
-  RegexTester.getTestResultFailure = function (data) {
-    return dataAction(ActionTypes.RegexTester.GetTestResultFailure, data);
-  };
-
-  RegexTester.regexChanging = function (data) {
-    return dataAction(ActionTypes.RegexTester.RegexChanging, data);
-  };
-
-  RegexTester.regexChanged = function () {
-    return simpleAction(ActionTypes.RegexTester.RegexChanged);
-  };
-
-  RegexTester.inputChanging = function (data) {
-    return dataAction(ActionTypes.RegexTester.InputChanging, data);
-  };
-
-  RegexTester.inputChanged = function () {
-    return simpleAction(ActionTypes.RegexTester.InputChanged);
-  };
-})(RegexTester || (RegexTester = {}));
-
-var CidrNotation;
-
-(function (CidrNotation) {
-  CidrNotation.getCidrRequest = function () {
-    return simpleAction(ActionTypes.CidrNotation.GetCidrRequest);
-  };
-
-  CidrNotation.getCidrSuccess = function (data) {
-    return dataAction(ActionTypes.CidrNotation.GetCidrSuccess, data);
-  };
-
-  CidrNotation.getCidrFailure = function (data) {
-    return dataAction(ActionTypes.CidrNotation.GetCidrFailure, data);
-  };
-
-  CidrNotation.ipChanging = function (data) {
-    return dataAction(ActionTypes.CidrNotation.IPChanging, data);
-  };
-
-  CidrNotation.maskChanging = function (data) {
-    return dataAction(ActionTypes.CidrNotation.MaskChanging, data);
-  };
-})(CidrNotation || (CidrNotation = {}));
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetCidrRequest", function() { return GetCidrRequest; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetCidrSuccess", function() { return GetCidrSuccess; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetCidrFailure", function() { return GetCidrFailure; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IPChanging", function() { return IPChanging; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MaskChanging", function() { return MaskChanging; });
+var GetCidrRequest = "GetCidrRequest";
+var GetCidrSuccess = "GetCidrSuccess";
+var GetCidrFailure = "GetCidrFailure";
+var IPChanging = "IPChanging";
+var MaskChanging = "MaskChanging";
 
 /***/ }),
 
-/***/ "./scripts/react/Redux/Reducers.ts":
-/*!*****************************************!*\
-  !*** ./scripts/react/Redux/Reducers.ts ***!
-  \*****************************************/
-/*! exports provided: regex, cidr */
+/***/ "./scripts/react/Redux/Cidr/Actions.ts":
+/*!*********************************************!*\
+  !*** ./scripts/react/Redux/Cidr/Actions.ts ***!
+  \*********************************************/
+/*! exports provided: getCidrRequest, getCidrSuccess, getCidrFailure, ipChanging, maskChanging */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "regex", function() { return regex; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cidr", function() { return cidr; });
-/* harmony import */ var _Actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Actions */ "./scripts/react/Redux/Actions.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCidrRequest", function() { return getCidrRequest; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCidrSuccess", function() { return getCidrSuccess; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCidrFailure", function() { return getCidrFailure; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ipChanging", function() { return ipChanging; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "maskChanging", function() { return maskChanging; });
+/* harmony import */ var _Core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Core */ "./scripts/react/Core.ts");
+/* harmony import */ var _ActionTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ActionTypes */ "./scripts/react/Redux/Cidr/ActionTypes.ts");
 
-var regex;
 
-(function (regex) {
-  regex.initialState = {
-    regex: null,
-    input: null,
-    result: null,
-    isTesting: false
-  };
+var getCidrRequest = function getCidrRequest() {
+  return Object(_Core__WEBPACK_IMPORTED_MODULE_0__["simpleAction"])(_ActionTypes__WEBPACK_IMPORTED_MODULE_1__["GetCidrRequest"]);
+};
+var getCidrSuccess = function getCidrSuccess(data) {
+  return Object(_Core__WEBPACK_IMPORTED_MODULE_0__["dataAction"])(_ActionTypes__WEBPACK_IMPORTED_MODULE_1__["GetCidrSuccess"], data);
+};
+var getCidrFailure = function getCidrFailure(data) {
+  return Object(_Core__WEBPACK_IMPORTED_MODULE_0__["dataAction"])(_ActionTypes__WEBPACK_IMPORTED_MODULE_1__["GetCidrFailure"], data);
+};
+var ipChanging = function ipChanging(data) {
+  return Object(_Core__WEBPACK_IMPORTED_MODULE_0__["dataAction"])(_ActionTypes__WEBPACK_IMPORTED_MODULE_1__["IPChanging"], data);
+};
+var maskChanging = function maskChanging(data) {
+  return Object(_Core__WEBPACK_IMPORTED_MODULE_0__["dataAction"])(_ActionTypes__WEBPACK_IMPORTED_MODULE_1__["MaskChanging"], data);
+};
 
-  function reducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : regex.initialState;
-    var action = arguments.length > 1 ? arguments[1] : undefined;
+/***/ }),
 
-    switch (action.type) {
-      case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].RegexTester.GetTestResultRequest:
-        return Object.assign({}, state, {
-          isTesting: true
-        });
+/***/ "./scripts/react/Redux/Cidr/Reducers.ts":
+/*!**********************************************!*\
+  !*** ./scripts/react/Redux/Cidr/Reducers.ts ***!
+  \**********************************************/
+/*! exports provided: initialState, reducer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-      case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].RegexTester.GetTestResultSuccess:
-        return Object.assign({}, state, {
-          isTesting: false,
-          result: action.data
-        });
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialState", function() { return initialState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reducer", function() { return reducer; });
+/* harmony import */ var _ActionTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ActionTypes */ "./scripts/react/Redux/Cidr/ActionTypes.ts");
 
-      case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].RegexTester.GetTestResultFailure:
-        return Object.assign({}, state, {
-          isTesting: false,
-          result: null
-        });
+var initialState = {
+  cidr: null,
+  ipAddress: null,
+  isGetting: false,
+  netMask: null
+};
+function reducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
 
-      case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].RegexTester.RegexChanging:
-        return Object.assign({}, state, {
-          regex: action.data
-        });
+  switch (action.type) {
+    case _ActionTypes__WEBPACK_IMPORTED_MODULE_0__["GetCidrRequest"]:
+      return Object.assign({}, state, {
+        isGetting: true
+      });
 
-      case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].RegexTester.InputChanging:
-        return Object.assign({}, state, {
-          input: action.data
-        });
+    case _ActionTypes__WEBPACK_IMPORTED_MODULE_0__["GetCidrSuccess"]:
+      return Object.assign({}, state, {
+        cidr: action.data,
+        isGetting: false
+      });
 
-      default:
-        return state;
-    }
+    case _ActionTypes__WEBPACK_IMPORTED_MODULE_0__["GetCidrFailure"]:
+      return Object.assign({}, state, {
+        cidr: null,
+        isGetting: false
+      });
+
+    case _ActionTypes__WEBPACK_IMPORTED_MODULE_0__["IPChanging"]:
+      return Object.assign({}, state, {
+        ipAddress: action.data
+      });
+
+    case _ActionTypes__WEBPACK_IMPORTED_MODULE_0__["MaskChanging"]:
+      return Object.assign({}, state, {
+        netMask: action.data
+      });
+
+    default:
+      return state;
   }
+}
 
-  regex.reducer = reducer;
-})(regex || (regex = {}));
+/***/ }),
 
-var cidr;
+/***/ "./scripts/react/Redux/Regex/ActionTypes.ts":
+/*!**************************************************!*\
+  !*** ./scripts/react/Redux/Regex/ActionTypes.ts ***!
+  \**************************************************/
+/*! exports provided: GetTestResultRequest, GetTestResultSuccess, GetTestResultFailure, RegexChanging, RegexChanged, InputChanging, InputChanged */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-(function (cidr) {
-  cidr.initialState = {
-    cidr: null,
-    ipAddress: null,
-    netMask: null,
-    isGetting: false
-  };
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetTestResultRequest", function() { return GetTestResultRequest; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetTestResultSuccess", function() { return GetTestResultSuccess; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetTestResultFailure", function() { return GetTestResultFailure; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegexChanging", function() { return RegexChanging; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegexChanged", function() { return RegexChanged; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InputChanging", function() { return InputChanging; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InputChanged", function() { return InputChanged; });
+var GetTestResultRequest = "GetTestResultRequest";
+var GetTestResultSuccess = "GetTestResultSuccess";
+var GetTestResultFailure = "GetTestResultFailure";
+var RegexChanging = "RegexChanging";
+var RegexChanged = "RegexChanged";
+var InputChanging = "InputChanging";
+var InputChanged = "InputChanged";
 
-  function reducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : cidr.initialState;
-    var action = arguments.length > 1 ? arguments[1] : undefined;
+/***/ }),
 
-    switch (action.type) {
-      case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].CidrNotation.GetCidrRequest:
-        return Object.assign({}, state, {
-          isGetting: true
-        });
+/***/ "./scripts/react/Redux/Regex/Actions.ts":
+/*!**********************************************!*\
+  !*** ./scripts/react/Redux/Regex/Actions.ts ***!
+  \**********************************************/
+/*! exports provided: getTestResultRequest, getTestResultSuccess, getTestResultFailure, regexChanging, regexChanged, inputChanging, inputChanged */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-      case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].CidrNotation.GetCidrSuccess:
-        return Object.assign({}, state, {
-          cidr: action.data,
-          isGetting: false
-        });
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTestResultRequest", function() { return getTestResultRequest; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTestResultSuccess", function() { return getTestResultSuccess; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTestResultFailure", function() { return getTestResultFailure; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "regexChanging", function() { return regexChanging; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "regexChanged", function() { return regexChanged; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "inputChanging", function() { return inputChanging; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "inputChanged", function() { return inputChanged; });
+/* harmony import */ var _Core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Core */ "./scripts/react/Core.ts");
+/* harmony import */ var _ActionTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ActionTypes */ "./scripts/react/Redux/Regex/ActionTypes.ts");
 
-      case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].CidrNotation.GetCidrFailure:
-        return Object.assign({}, state, {
-          cidr: null,
-          isGetting: false
-        });
 
-      case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].CidrNotation.IPChanging:
-        return Object.assign({}, state, {
-          ipAddress: action.data
-        });
+var getTestResultRequest = function getTestResultRequest() {
+  return Object(_Core__WEBPACK_IMPORTED_MODULE_0__["simpleAction"])(_ActionTypes__WEBPACK_IMPORTED_MODULE_1__["GetTestResultRequest"]);
+};
+var getTestResultSuccess = function getTestResultSuccess(data) {
+  return Object(_Core__WEBPACK_IMPORTED_MODULE_0__["dataAction"])(_ActionTypes__WEBPACK_IMPORTED_MODULE_1__["GetTestResultSuccess"], data);
+};
+var getTestResultFailure = function getTestResultFailure(data) {
+  return Object(_Core__WEBPACK_IMPORTED_MODULE_0__["dataAction"])(_ActionTypes__WEBPACK_IMPORTED_MODULE_1__["GetTestResultFailure"], data);
+};
+var regexChanging = function regexChanging(data) {
+  return Object(_Core__WEBPACK_IMPORTED_MODULE_0__["dataAction"])(_ActionTypes__WEBPACK_IMPORTED_MODULE_1__["RegexChanging"], data);
+};
+var regexChanged = function regexChanged() {
+  return Object(_Core__WEBPACK_IMPORTED_MODULE_0__["simpleAction"])(_ActionTypes__WEBPACK_IMPORTED_MODULE_1__["RegexChanged"]);
+};
+var inputChanging = function inputChanging(data) {
+  return Object(_Core__WEBPACK_IMPORTED_MODULE_0__["dataAction"])(_ActionTypes__WEBPACK_IMPORTED_MODULE_1__["InputChanging"], data);
+};
+var inputChanged = function inputChanged() {
+  return Object(_Core__WEBPACK_IMPORTED_MODULE_0__["simpleAction"])(_ActionTypes__WEBPACK_IMPORTED_MODULE_1__["InputChanged"]);
+};
 
-      case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].CidrNotation.MaskChanging:
-        return Object.assign({}, state, {
-          netMask: action.data
-        });
+/***/ }),
 
-      default:
-        return state;
-    }
+/***/ "./scripts/react/Redux/Regex/Reducers.ts":
+/*!***********************************************!*\
+  !*** ./scripts/react/Redux/Regex/Reducers.ts ***!
+  \***********************************************/
+/*! exports provided: initialState, reducer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialState", function() { return initialState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reducer", function() { return reducer; });
+/* harmony import */ var _ActionTypes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ActionTypes */ "./scripts/react/Redux/Regex/ActionTypes.ts");
+
+var initialState = {
+  input: null,
+  isTesting: false,
+  regex: null,
+  result: null
+};
+function reducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _ActionTypes__WEBPACK_IMPORTED_MODULE_0__["GetTestResultRequest"]:
+      return Object.assign({}, state, {
+        isTesting: true
+      });
+
+    case _ActionTypes__WEBPACK_IMPORTED_MODULE_0__["GetTestResultSuccess"]:
+      return Object.assign({}, state, {
+        isTesting: false,
+        result: action.data
+      });
+
+    case _ActionTypes__WEBPACK_IMPORTED_MODULE_0__["GetTestResultFailure"]:
+      return Object.assign({}, state, {
+        isTesting: false,
+        result: null
+      });
+
+    case _ActionTypes__WEBPACK_IMPORTED_MODULE_0__["RegexChanging"]:
+      return Object.assign({}, state, {
+        regex: action.data
+      });
+
+    case _ActionTypes__WEBPACK_IMPORTED_MODULE_0__["InputChanging"]:
+      return Object.assign({}, state, {
+        input: action.data
+      });
+
+    default:
+      return state;
   }
-
-  cidr.reducer = reducer;
-})(cidr || (cidr = {}));
+}
 
 /***/ }),
 
@@ -1515,6 +1556,12 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Base64).call(this, props));
 
+    _this.inputChanged = function (e) {
+      return _this.setState({
+        input: e.currentTarget.value
+      });
+    };
+
     _this.xCode = function (e) {
       var resultValue;
 
@@ -1550,8 +1597,6 @@ function (_React$Component) {
   _createClass(Base64, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
@@ -1567,11 +1612,7 @@ function (_React$Component) {
         className: "form-control",
         id: "source",
         spellCheck: false,
-        onChange: function onChange(e) {
-          return _this2.setState({
-            input: e.currentTarget.value
-          });
-        }
+        onChange: this.inputChanged
       })), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
         className: "btn btn-primary mb-3",
         id: "encodeDecode",
@@ -1610,13 +1651,13 @@ function (_React$Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash.debounce */ "./node_modules/lodash.debounce/index.js");
-/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Redux_Actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Redux/Actions */ "./scripts/react/Redux/Actions.ts");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash.debounce */ "./node_modules/lodash.debounce/index.js");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Redux_Cidr_Actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Redux/Cidr/Actions */ "./scripts/react/Redux/Cidr/Actions.ts");
 /* harmony import */ var _Components_IPAddress__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Components/IPAddress */ "./scripts/react/Components/IPAddress.tsx");
 /* harmony import */ var _Components_TextBox__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Components/TextBox */ "./scripts/react/Components/TextBox.tsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1629,9 +1670,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1655,11 +1696,49 @@ function (_React$Component) {
     _classCallCheck(this, Cidr);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Cidr).call(this, props));
-    _this.stateChangedDB = lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default()(_this.props.stateChanged, 250);
+    _this.stateChangedDB = lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default()(_this.props.stateChanged, 250);
+    _this.ipChanged = _this.ipChanged.bind(_assertThisInitialized(_this));
+    _this.maskChanged = _this.maskChanged.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Cidr, [{
+    key: "render",
+    value: function render() {
+      var result = null;
+
+      if (this.props.cidr) {
+        result = react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_Components_TextBox__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          id: "result",
+          value: this.props.cidr,
+          readonly: true,
+          label: "CIDR Notation"
+        });
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", null, react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("section", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
+        className: "col-md-9"
+      }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("fieldset", null, react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("legend", {
+        className: "sr-only"
+      }, "CIDR Notation Converter"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_Components_IPAddress__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        id: "address",
+        label: "IP Address",
+        value: this.props.ipAddress,
+        onChange: this.ipChanged
+      }), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_Components_IPAddress__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        id: "mask",
+        label: "Subnet Mask",
+        value: this.props.netMask,
+        onChange: this.maskChanged
+      })))), react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("section", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
+        className: "col-md-4 cidr-result"
+      }, result)));
+    }
+  }, {
     key: "ipChanged",
     value: function ipChanged(e) {
       this.stateChangedDB(e, this.props.netMask);
@@ -1671,46 +1750,10 @@ function (_React$Component) {
       this.stateChangedDB(this.props.ipAddress, e);
       this.props.maskChanged(e);
     }
-  }, {
-    key: "render",
-    value: function render() {
-      var result = null;
-
-      if (this.props.cidr) {
-        result = react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Components_TextBox__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          id: "result",
-          value: this.props.cidr,
-          readonly: true,
-          label: "CIDR Notation"
-        });
-      }
-
-      return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
-        className: "col-md-9"
-      }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("fieldset", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("legend", {
-        className: "sr-only"
-      }, "CIDR Notation Converter"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Components_IPAddress__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        id: "address",
-        label: "IP Address",
-        value: this.props.ipAddress,
-        onChange: this.ipChanged.bind(this)
-      }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Components_IPAddress__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        id: "mask",
-        label: "Subnet Mask",
-        value: this.props.netMask,
-        onChange: this.maskChanged.bind(this)
-      })))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", {
-        className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
-        className: "col-md-4 cidr-result"
-      }, result)));
-    }
   }]);
 
   return Cidr;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
 function mapProps(state, ownProps) {
   return Object.assign({}, ownProps, {
@@ -1722,21 +1765,21 @@ function mapProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    ipChanged: function ipChanged(ip) {
+      dispatch(_Redux_Cidr_Actions__WEBPACK_IMPORTED_MODULE_3__["ipChanging"](ip));
+    },
+    maskChanged: function maskChanged(mask) {
+      dispatch(_Redux_Cidr_Actions__WEBPACK_IMPORTED_MODULE_3__["maskChanging"](mask));
+    },
     stateChanged: function stateChanged(ip, mask) {
       if (ip === null || mask === null) return;
       var cidr = ip.toCidr(mask).toString();
-      dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_3__["CidrNotation"].getCidrSuccess(cidr));
-    },
-    ipChanged: function ipChanged(ip) {
-      dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_3__["CidrNotation"].ipChanging(ip));
-    },
-    maskChanged: function maskChanged(mask) {
-      dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_3__["CidrNotation"].maskChanging(mask));
+      dispatch(_Redux_Cidr_Actions__WEBPACK_IMPORTED_MODULE_3__["getCidrSuccess"](cidr));
     }
   };
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapProps, mapDispatchToProps)(Cidr));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapProps, mapDispatchToProps)(Cidr));
 
 /***/ }),
 
@@ -1749,17 +1792,17 @@ function mapDispatchToProps(dispatch) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash.debounce */ "./node_modules/lodash.debounce/index.js");
-/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Redux_Actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Redux/Actions */ "./scripts/react/Redux/Actions.ts");
-/* harmony import */ var _Components_TextBox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Components/TextBox */ "./scripts/react/Components/TextBox.tsx");
-/* harmony import */ var _Service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Service */ "./scripts/react/Tools/Service.ts");
-/* harmony import */ var _Components_RegexResult__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Components/RegexResult */ "./scripts/react/Components/RegexResult.tsx");
-/* harmony import */ var _Components_RegexResultSummary__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Components/RegexResultSummary */ "./scripts/react/Components/RegexResultSummary.tsx");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash.debounce */ "./node_modules/lodash.debounce/index.js");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Redux_Regex_Actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Redux/Regex/Actions */ "./scripts/react/Redux/Regex/Actions.ts");
+/* harmony import */ var _Service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Service */ "./scripts/react/Tools/Service.ts");
+/* harmony import */ var _Components_RegexResult__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Components/RegexResult */ "./scripts/react/Components/RegexResult.tsx");
+/* harmony import */ var _Components_RegexResultSummary__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Components/RegexResultSummary */ "./scripts/react/Components/RegexResultSummary.tsx");
+/* harmony import */ var _Components_TextBox__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Components/TextBox */ "./scripts/react/Components/TextBox.tsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1770,9 +1813,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1798,39 +1841,41 @@ function (_React$Component) {
     _classCallCheck(this, Regex);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Regex).call(this, props));
-    _this.stateChangedDB = lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default()(_this.props.stateChanged, 250);
+    _this.stateChangedDB = lodash_debounce__WEBPACK_IMPORTED_MODULE_0___default()(_this.props.stateChanged, 250);
+    _this.regexChanged = _this.regexChanged.bind(_assertThisInitialized(_this));
+    _this.inputChanged = _this.inputChanged.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Regex, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", {
+      return react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", null, react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("section", {
         className: "row"
-      }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
         className: "col-md-9"
-      }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("fieldset", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("legend", {
+      }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("fieldset", null, react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("legend", {
         className: "sr-only"
-      }, "Regular Expression Tester"), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Components_TextBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, "Regular Expression Tester"), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_Components_TextBox__WEBPACK_IMPORTED_MODULE_7__["default"], {
         id: "regex",
         label: "Regular Expression",
         value: this.props.regex,
-        onChange: this.regexChanged.bind(this)
-      }), react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Components_TextBox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        onChange: this.regexChanged
+      }), react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_Components_TextBox__WEBPACK_IMPORTED_MODULE_7__["default"], {
         id: "text",
         label: "Input",
         value: this.props.input,
-        onChange: this.inputChanged.bind(this),
+        onChange: this.inputChanged,
         maxLength: 50
-      })))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", {
+      })))), react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("section", {
         className: "row mt-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
         className: "col-md-4 regex-result-summary"
-      }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Components_RegexResultSummary__WEBPACK_IMPORTED_MODULE_7__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", {
+      }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_Components_RegexResultSummary__WEBPACK_IMPORTED_MODULE_6__["default"], null))), react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("section", {
         className: "row mt-4"
-      }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
         className: "col-md-4 regex-result"
-      }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Components_RegexResult__WEBPACK_IMPORTED_MODULE_6__["default"], null))));
+      }, react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_Components_RegexResult__WEBPACK_IMPORTED_MODULE_5__["default"], null))));
     }
   }, {
     key: "regexChanged",
@@ -1847,30 +1892,30 @@ function (_React$Component) {
   }]);
 
   return Regex;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
 function mapProps(state, ownProps) {
   return Object.assign({}, ownProps, {
-    regex: state.regex,
-    input: state.input
+    input: state.input,
+    regex: state.regex
   });
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     inputChanged: function inputChanged(input) {
-      dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_3__["RegexTester"].inputChanging(input));
+      dispatch(_Redux_Regex_Actions__WEBPACK_IMPORTED_MODULE_3__["inputChanging"](input));
     },
     regexChanged: function regexChanged(regex) {
-      dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_3__["RegexTester"].regexChanging(regex));
+      dispatch(_Redux_Regex_Actions__WEBPACK_IMPORTED_MODULE_3__["regexChanging"](regex));
     },
     stateChanged: function stateChanged(regex, input) {
-      dispatch(_Service__WEBPACK_IMPORTED_MODULE_5__["service"].regexTest(regex, input));
+      dispatch(Object(_Service__WEBPACK_IMPORTED_MODULE_4__["regexTest"])(regex, input));
     }
   };
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapProps, mapDispatchToProps)(Regex));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapProps, mapDispatchToProps)(Regex));
 
 /***/ }),
 
@@ -1878,13 +1923,15 @@ function mapDispatchToProps(dispatch) {
 /*!****************************************!*\
   !*** ./scripts/react/Tools/Service.ts ***!
   \****************************************/
-/*! exports provided: service */
+/*! exports provided: regexTest, cidrTest */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "service", function() { return service; });
-/* harmony import */ var _Redux_Actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Redux/Actions */ "./scripts/react/Redux/Actions.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "regexTest", function() { return regexTest; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cidrTest", function() { return cidrTest; });
+/* harmony import */ var _Redux_Cidr_Actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Redux/Cidr/Actions */ "./scripts/react/Redux/Cidr/Actions.ts");
+/* harmony import */ var _Redux_Regex_Actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Redux/Regex/Actions */ "./scripts/react/Redux/Regex/Actions.ts");
 var __awaiter = undefined && undefined.__awaiter || function (thisArg, _arguments, P, generator) {
   return new (P || (P = Promise))(function (resolve, reject) {
     function fulfilled(value) {
@@ -1914,142 +1961,134 @@ var __awaiter = undefined && undefined.__awaiter || function (thisArg, _argument
 };
 
 
-var service;
 
-(function (service) {
-  function regexTest(regex, input) {
-    var _this = this;
+function regexTest(regex, input) {
+  var _this = this;
 
-    return function (dispatch) {
-      return __awaiter(_this, void 0, void 0,
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee() {
-        var request, response, regexResult;
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_0__["RegexTester"].getTestResultRequest());
-                request = {
-                  regex: regex,
-                  text: input
-                };
-                _context.prev = 2;
-                _context.next = 5;
-                return fetch("/tools/api/regex", {
-                  method: "POST",
-                  body: JSON.stringify(request),
-                  headers: new Headers({
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                  })
-                });
+  return function (dispatch) {
+    return __awaiter(_this, void 0, void 0,
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee() {
+      var request, response, regexResult;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              dispatch(_Redux_Regex_Actions__WEBPACK_IMPORTED_MODULE_1__["getTestResultRequest"]());
+              request = {
+                regex: regex,
+                text: input
+              };
+              _context.prev = 2;
+              _context.next = 5;
+              return fetch("/tools/api/regex", {
+                body: JSON.stringify(request),
+                headers: new Headers({
+                  "Accept": "application/json",
+                  "Content-Type": "application/json"
+                }),
+                method: "POST"
+              });
 
-              case 5:
-                response = _context.sent;
+            case 5:
+              response = _context.sent;
 
-                if (!response.ok) {
-                  _context.next = 14;
-                  break;
-                }
-
-                _context.next = 9;
-                return response.json();
-
-              case 9:
-                regexResult = _context.sent;
-                regexResult.input = input;
-                dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_0__["RegexTester"].getTestResultSuccess(regexResult));
-                _context.next = 15;
+              if (!response.ok) {
+                _context.next = 14;
                 break;
+              }
 
-              case 14:
-                dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_0__["RegexTester"].getTestResultFailure(response.status));
+              _context.next = 9;
+              return response.json();
 
-              case 15:
-                _context.next = 20;
-                break;
+            case 9:
+              regexResult = _context.sent;
+              regexResult.input = input;
+              dispatch(_Redux_Regex_Actions__WEBPACK_IMPORTED_MODULE_1__["getTestResultSuccess"](regexResult));
+              _context.next = 15;
+              break;
 
-              case 17:
-                _context.prev = 17;
-                _context.t0 = _context["catch"](2);
-                dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_0__["RegexTester"].getTestResultFailure(_context.t0));
+            case 14:
+              dispatch(_Redux_Regex_Actions__WEBPACK_IMPORTED_MODULE_1__["getTestResultFailure"](response.status));
 
-              case 20:
-              case "end":
-                return _context.stop();
-            }
+            case 15:
+              _context.next = 20;
+              break;
+
+            case 17:
+              _context.prev = 17;
+              _context.t0 = _context["catch"](2);
+              dispatch(_Redux_Regex_Actions__WEBPACK_IMPORTED_MODULE_1__["getTestResultFailure"](_context.t0));
+
+            case 20:
+            case "end":
+              return _context.stop();
           }
-        }, _callee, null, [[2, 17]]);
-      }));
-    };
-  }
+        }
+      }, _callee, null, [[2, 17]]);
+    }));
+  };
+}
+function cidrTest(ipAddress, subnetMask) {
+  var _this2 = this;
 
-  service.regexTest = regexTest;
+  return function (dispatch) {
+    return __awaiter(_this2, void 0, void 0,
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee2() {
+      var response, result;
+      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              dispatch(_Redux_Cidr_Actions__WEBPACK_IMPORTED_MODULE_0__["getCidrRequest"]());
+              _context2.prev = 1;
+              _context2.next = 4;
+              return fetch("/tools/api/cidr?ipaddress=".concat(ipAddress.toString(), "&subnetmask=").concat(subnetMask.toString()), {
+                headers: new Headers({
+                  Accept: "application/json"
+                }),
+                method: "GET"
+              });
 
-  function cidrTest(ipAddress, subnetMask) {
-    var _this2 = this;
+            case 4:
+              response = _context2.sent;
 
-    return function (dispatch) {
-      return __awaiter(_this2, void 0, void 0,
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee2() {
-        var response, result;
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_0__["CidrNotation"].getCidrRequest());
-                _context2.prev = 1;
-                _context2.next = 4;
-                return fetch("/tools/api/cidr?ipaddress=".concat(ipAddress.toString(), "&subnetmask=").concat(subnetMask.toString()), {
-                  method: "GET",
-                  headers: new Headers({
-                    "Accept": "application/json"
-                  })
-                });
-
-              case 4:
-                response = _context2.sent;
-
-                if (!response.ok) {
-                  _context2.next = 12;
-                  break;
-                }
-
-                _context2.next = 8;
-                return response.json();
-
-              case 8:
-                result = _context2.sent;
-                dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_0__["CidrNotation"].getCidrSuccess(result));
-                _context2.next = 13;
+              if (!response.ok) {
+                _context2.next = 12;
                 break;
+              }
 
-              case 12:
-                dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_0__["CidrNotation"].getCidrFailure(response.status));
+              _context2.next = 8;
+              return response.json();
 
-              case 13:
-                _context2.next = 18;
-                break;
+            case 8:
+              result = _context2.sent;
+              dispatch(_Redux_Cidr_Actions__WEBPACK_IMPORTED_MODULE_0__["getCidrSuccess"](result));
+              _context2.next = 13;
+              break;
 
-              case 15:
-                _context2.prev = 15;
-                _context2.t0 = _context2["catch"](1);
-                dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_0__["CidrNotation"].getCidrFailure(_context2.t0));
+            case 12:
+              dispatch(_Redux_Cidr_Actions__WEBPACK_IMPORTED_MODULE_0__["getCidrFailure"](response.status));
 
-              case 18:
-              case "end":
-                return _context2.stop();
-            }
+            case 13:
+              _context2.next = 18;
+              break;
+
+            case 15:
+              _context2.prev = 15;
+              _context2.t0 = _context2["catch"](1);
+              dispatch(_Redux_Cidr_Actions__WEBPACK_IMPORTED_MODULE_0__["getCidrFailure"](_context2.t0));
+
+            case 18:
+            case "end":
+              return _context2.stop();
           }
-        }, _callee2, null, [[1, 15]]);
-      }));
-    };
-  }
-
-  service.cidrTest = cidrTest;
-})(service || (service = {}));
+        }
+      }, _callee2, null, [[1, 15]]);
+    }));
+  };
+}
 
 /***/ }),
 
@@ -2063,29 +2102,33 @@ var service;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tools", function() { return tools; });
-/* harmony import */ var _Redux_Reducers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Redux/Reducers */ "./scripts/react/Redux/Reducers.ts");
-/* harmony import */ var _Regex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Regex */ "./scripts/react/Tools/Regex.tsx");
-/* harmony import */ var _Cidr__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Cidr */ "./scripts/react/Tools/Cidr.tsx");
-/* harmony import */ var _Base64__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Base64 */ "./scripts/react/Tools/Base64.tsx");
+/* harmony import */ var _Redux_Cidr_Reducers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Redux/Cidr/Reducers */ "./scripts/react/Redux/Cidr/Reducers.ts");
+/* harmony import */ var _Redux_Regex_Reducers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Redux/Regex/Reducers */ "./scripts/react/Redux/Regex/Reducers.ts");
+/* harmony import */ var _Base64__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Base64 */ "./scripts/react/Tools/Base64.tsx");
+/* harmony import */ var _Cidr__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Cidr */ "./scripts/react/Tools/Cidr.tsx");
+/* harmony import */ var _Regex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Regex */ "./scripts/react/Tools/Regex.tsx");
+
 
 
 
 
 var tools = [{
-  component: _Regex__WEBPACK_IMPORTED_MODULE_1__["default"],
-  initialState: _Redux_Reducers__WEBPACK_IMPORTED_MODULE_0__["regex"].initialState,
+  component: _Regex__WEBPACK_IMPORTED_MODULE_4__["default"],
+  initialState: _Redux_Regex_Reducers__WEBPACK_IMPORTED_MODULE_1__["initialState"],
   name: "regex",
-  reducer: _Redux_Reducers__WEBPACK_IMPORTED_MODULE_0__["regex"].reducer
+  reducer: _Redux_Regex_Reducers__WEBPACK_IMPORTED_MODULE_1__["reducer"]
 }, {
-  component: _Cidr__WEBPACK_IMPORTED_MODULE_2__["default"],
-  initialState: _Redux_Reducers__WEBPACK_IMPORTED_MODULE_0__["cidr"].initialState,
+  component: _Cidr__WEBPACK_IMPORTED_MODULE_3__["default"],
+  initialState: _Redux_Cidr_Reducers__WEBPACK_IMPORTED_MODULE_0__["initialState"],
   name: "cidr",
-  reducer: _Redux_Reducers__WEBPACK_IMPORTED_MODULE_0__["cidr"].reducer
+  reducer: _Redux_Cidr_Reducers__WEBPACK_IMPORTED_MODULE_0__["reducer"]
 }, {
-  component: _Base64__WEBPACK_IMPORTED_MODULE_3__["default"],
+  component: _Base64__WEBPACK_IMPORTED_MODULE_2__["default"],
   initialState: {},
   name: "base64",
-  reducer: function reducer() {}
+  reducer: function reducer(state) {
+    return state;
+  }
 }];
 
 /***/ }),
@@ -2146,15 +2189,15 @@ function (_React$Component) {
     _classCallCheck(this, App);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
-    var tool = _Tools_Tool__WEBPACK_IMPORTED_MODULE_5__["tools"].find(function (tool) {
-      return tool.name === props.tool;
+    var possibleTool = _Tools_Tool__WEBPACK_IMPORTED_MODULE_5__["tools"].find(function (t) {
+      return t.name === props.tool;
     });
 
-    if (!tool) {
-      throw Error("Unknown tool");
+    if (!possibleTool) {
+      throw Error("Unknown tool: ".concat(possibleTool.name));
     }
 
-    _this.tool = tool;
+    _this.tool = possibleTool;
     var enhancedCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__WEBPACK_IMPORTED_MODULE_3__["compose"];
     _this.store = Object(redux__WEBPACK_IMPORTED_MODULE_3__["createStore"])(_this.tool.reducer, _this.tool.initialState, enhancedCompose(Object(redux__WEBPACK_IMPORTED_MODULE_3__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_4___default.a)));
     return _this;

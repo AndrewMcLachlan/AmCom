@@ -1,72 +1,75 @@
 ﻿import * as redux from "redux";
 
-import { Action, cidr, regex } from "../global";
-import * as Actions from "../Redux/Actions";
+import { Action } from "../global";
+
+import { CidrResponse } from "../cidr";
+import { RegexTestRequest, RegexTestResponse } from "../regex";
+
+import * as CidrNotation from "../Redux/Cidr/Actions";
+import * as RegexTester from "../Redux/Regex/Actions";
+
 import { IPv4Address } from "../IPv4Address";
 
-export namespace service {
+export function regexTest(regex: string, input: string) {
+    return async (dispatch: redux.Dispatch<Action>) => {
 
-    export function regexTest(regex: string, input: string) {
-        return async (dispatch: redux.Dispatch<Action>) => {
+        dispatch(RegexTester.getTestResultRequest());
 
-            dispatch(Actions.RegexTester.getTestResultRequest());
+        const request: RegexTestRequest = {
+            regex,
+            text: input,
+        };
 
-            let request: regex.RegexTestRequest = {
-                regex: regex,
-                text: input
-            };
+        try {
+            const response = await fetch("/tools/api/regex", {
+                body: JSON.stringify(request),
+                headers: new Headers({
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                }),
+                method: "POST",
+            });
 
-            try {
-                let response = await fetch("/tools/api/regex", {
-                    body: JSON.stringify(request),
-                    headers: new Headers({
-                        "Content-Type": "application/json",
-                        "Accept": "application/json"
-                    }),
-                    method: "POST",
-                });
+            if (response.ok) {
+                const regexResult: RegexTestResponse = await response.json();
+                regexResult.input = input;
 
-                if (response.ok) {
-                    const regexResult: regex.RegexTestResponse = await response.json();
-                    regexResult.input = input;
-
-                    dispatch(Actions.RegexTester.getTestResultSuccess(regexResult));
-                }
-                else {
-                    dispatch(Actions.RegexTester.getTestResultFailure(response.status));
-                }
+                dispatch(RegexTester.getTestResultSuccess(regexResult));
             }
-            catch (e) {
-                dispatch(Actions.RegexTester.getTestResultFailure(e));
+            else {
+                dispatch(RegexTester.getTestResultFailure(response.status));
             }
         }
-    }
+        catch (e) {
+            dispatch(RegexTester.getTestResultFailure(e));
+        }
+    };
+}
 
-    export function cidrTest(ipAddress: IPv4Address, subnetMask: IPv4Address) {
-        return async (dispatch: redux.Dispatch<Action>) => {
+export function cidrTest(ipAddress: IPv4Address, subnetMask: IPv4Address) {
+    return async (dispatch: redux.Dispatch<Action>) => {
 
-            dispatch(Actions.CidrNotation.getCidrRequest());
+        dispatch(CidrNotation.getCidrRequest());
 
-            try {
-                let response = await fetch(`/tools/api/cidr?ipaddress=${ipAddress.toString()}&subnetmask=${subnetMask.toString()}`, {
-                    headers: new Headers({
-                        Accept: "application/json"
-                    }),
-                    method: "GET",
-                });
+        try {
+            const response = await fetch(`/tools/api/cidr?ipaddress=${ipAddress.toString()}&subnetmask=${subnetMask.toString()}`, {
+                headers: new Headers({
+                    Accept: "application/json",
+                }),
+                method: "GET",
+            });
 
-                if (response.ok) {
-                    const result: cidr.CidrResponse = await response.json();
+            if (response.ok) {
+                const result: CidrResponse = await response.json();
 
-                    dispatch(Actions.CidrNotation.getCidrSuccess(result));
-                }
-                else {
-                    dispatch(Actions.CidrNotation.getCidrFailure(response.status));
-                }
+                dispatch(CidrNotation.getCidrSuccess(result));
             }
-            catch (e) {
-                dispatch(Actions.CidrNotation.getCidrFailure(e));
+            else {
+                dispatch(CidrNotation.getCidrFailure(response.status));
             }
         }
-    }
+        catch (e) {
+            dispatch(CidrNotation.getCidrFailure(e));
+        }
+    };
 }

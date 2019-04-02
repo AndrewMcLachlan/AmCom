@@ -1,6 +1,6 @@
 ﻿import * as React from "react";
 import { connect } from "react-redux";
-import { regex } from "../global";
+import * as regex from "../regex";
 
 class RegexResultSummary extends React.Component<RegexResultProps, any> {
     constructor(props) {
@@ -9,7 +9,7 @@ class RegexResultSummary extends React.Component<RegexResultProps, any> {
 
     public render() {
 
-        let res = this.props.regexResult;
+        const res = this.props.regexResult;
 
         if (!res) return (null);
 
@@ -45,7 +45,7 @@ class RegexResultSummary extends React.Component<RegexResultProps, any> {
         }
 
         if (pos < input.length) {
-            let ungrouped = input.substring(pos, input.length - unmatchedEnd.length);
+            const ungrouped = input.substring(pos, input.length - unmatchedEnd.length);
             if (ungrouped.length > 0) {
                 groups.push(<span>{ungrouped}</span>);
             }

@@ -1,16 +1,17 @@
-﻿import * as React from "react";
+﻿import debounce from "lodash.debounce";
+import * as React from "react";
 import { connect } from "react-redux";
-import debounce from "lodash.debounce";
 
-import { DispatchProps, regex } from "../global";
+import { DispatchProps } from "../global";
 
-import { RegexTester } from "../Redux/Actions";
+import * as RegexTester from "../Redux/Regex/Actions";
+import { State } from "../regex";
 
-import TextBox from "../Components/TextBox";
+import { regexTest } from "./Service";
 
-import { service } from "./Service";
 import RegexResult from "../Components/RegexResult";
 import RegexResultSummary from "../Components/RegexResultSummary";
+import TextBox from "../Components/TextBox";
 
 class Regex extends React.Component<RegexProps, any> {
 
@@ -20,6 +21,8 @@ class Regex extends React.Component<RegexProps, any> {
         super(props);
 
         this.stateChangedDB = debounce(this.props.stateChanged, 250);
+        this.regexChanged = this.regexChanged.bind(this);
+        this.inputChanged = this.inputChanged.bind(this);
     }
 
     public render() {
@@ -29,8 +32,8 @@ class Regex extends React.Component<RegexProps, any> {
                     <div className="col-md-9">
                         <fieldset>
                             <legend className="sr-only">Regular Expression Tester</legend>
-                            <TextBox id="regex" label="Regular Expression" value={this.props.regex} onChange={this.regexChanged.bind(this)} />
-                            <TextBox id="text" label="Input" value={this.props.input} onChange={this.inputChanged.bind(this)} maxLength={50} />
+                            <TextBox id="regex" label="Regular Expression" value={this.props.regex} onChange={this.regexChanged} />
+                            <TextBox id="text" label="Input" value={this.props.input} onChange={this.inputChanged} maxLength={50} />
                         </fieldset>
                     </div>
                 </section>
@@ -59,11 +62,11 @@ class Regex extends React.Component<RegexProps, any> {
     }
 }
 
-function mapProps(state: regex.State, ownProps): RegexProps {
+function mapProps(state: State, ownProps): RegexProps {
     return {
         ...ownProps,
-        regex: state.regex,
         input: state.input,
+        regex: state.regex,
     };
 }
 
@@ -73,10 +76,10 @@ function mapDispatchToProps(dispatch) {
             dispatch(RegexTester.inputChanging(input));
         },
         regexChanged: (regex) => {
-            dispatch(RegexTester.regexChanging(regex))
+            dispatch(RegexTester.regexChanging(regex));
         },
         stateChanged: (regex, input) => {
-            dispatch(service.regexTest(regex, input));
+            dispatch(regexTest(regex, input));
         },
     };
 }
@@ -86,7 +89,7 @@ export default connect(mapProps, mapDispatchToProps)(Regex);
 interface RegexProps extends DispatchProps {
     regex?: string;
     input?: string;
-    stateChanged: (regex:string, input:string) => void;
+    stateChanged: (regex: string, input: string) => void;
     regexChanged?: (e) => void;
     inputChanged?: (e) => void;
 }

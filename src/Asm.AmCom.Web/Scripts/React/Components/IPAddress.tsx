@@ -1,4 +1,5 @@
 ﻿import * as React from "react";
+
 import { ControlProps } from "../global";
 import { IPv4Address } from "../IPv4Address";
 
@@ -57,12 +58,12 @@ export default class IPAddress extends React.Component<IPAddressProps, IPAddress
     }
 
     private validateMax = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const intval = parseInt(e.currentTarget.value);
+        const intval = parseInt(e.currentTarget.value, 10);
         if (intval > 255) {
             e.currentTarget.value = "255";
         }
 
-        let newState: IPAddressState = {};
+        const newState: IPAddressState = {};
         newState[e.currentTarget.name] = e.currentTarget.value;
         this.setState(newState, () => {
 

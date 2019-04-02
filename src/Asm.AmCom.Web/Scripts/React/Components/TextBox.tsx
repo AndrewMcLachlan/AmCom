@@ -9,11 +9,11 @@ class TextBox extends React.Component<TextBoxProps, any> {
 
     public render() {
 
-        const opts = {};
+        const opts: any = {};
         let className = "form-control";
 
         if (this.props.readonly === true) {
-            opts["readonly"] = "readonly";
+            opts.readonly = "readonly";
             className = "form-control-plaintext";
         }
 

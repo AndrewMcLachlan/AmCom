@@ -1,35 +1,27 @@
-﻿import * as React from "react";
+﻿import debounce from "lodash.debounce";
+import * as React from "react";
 import { connect } from "react-redux";
-import debounce from "lodash.debounce";
 
-import { cidr, DispatchProps } from "../global";
+import { DispatchProps } from "../global";
+import { IPv4Address } from "../IPv4Address";
 
-import { CidrNotation } from "../Redux/Actions";
+import { State } from "../cidr";
+import * as CidrNotation from "../Redux/Cidr/Actions";
 
 import IPAddress from "../Components/IPAddress";
 import TextBox from "../Components/TextBox";
 
-import { IPv4Address } from "../IPv4Address";
-
-
 class Cidr extends React.Component<CidrProps, any> {
 
-    private stateChangedDB: Function;
+    private stateChangedDB: (ip: IPv4Address, mask: IPv4Address) => void;
 
     constructor(props) {
         super(props);
 
         this.stateChangedDB = debounce(this.props.stateChanged, 250);
-    }
 
-    private ipChanged(e: IPv4Address) {
-        this.stateChangedDB(e, this.props.netMask);
-        this.props.ipChanged(e);
-    }
-
-    private maskChanged(e: IPv4Address) {
-        this.stateChangedDB(this.props.ipAddress, e);
-        this.props.maskChanged(e);
+        this.ipChanged = this.ipChanged.bind(this);
+        this.maskChanged = this.maskChanged.bind(this);
     }
 
     public render() {
@@ -46,8 +38,8 @@ class Cidr extends React.Component<CidrProps, any> {
                     <div className="col-md-9">
                         <fieldset>
                             <legend className="sr-only">CIDR Notation Converter</legend>
-                            <IPAddress id="address" label="IP Address" value={this.props.ipAddress} onChange={this.ipChanged.bind(this)} />
-                            <IPAddress id="mask" label="Subnet Mask" value={this.props.netMask} onChange={this.maskChanged.bind(this)} />
+                            <IPAddress id="address" label="IP Address" value={this.props.ipAddress} onChange={this.ipChanged} />
+                            <IPAddress id="mask" label="Subnet Mask" value={this.props.netMask} onChange={this.maskChanged} />
                         </fieldset>
                     </div>
                 </section>
@@ -60,9 +52,19 @@ class Cidr extends React.Component<CidrProps, any> {
             </div>
         );
     }
+
+    private ipChanged(e: IPv4Address) {
+        this.stateChangedDB(e, this.props.netMask);
+        this.props.ipChanged(e);
+    }
+
+    private maskChanged(e: IPv4Address) {
+        this.stateChangedDB(this.props.ipAddress, e);
+        this.props.maskChanged(e);
+    }
 }
 
-function mapProps(state: cidr.State, ownProps): CidrProps {
+function mapProps(state: State, ownProps): CidrProps {
     return {
         ...ownProps,
         cidr: state.cidr,
@@ -73,27 +75,27 @@ function mapProps(state: cidr.State, ownProps): CidrProps {
 
 function mapDispatchToProps(dispatch) {
     return {
-        stateChanged: (ip: IPv4Address, mask: IPv4Address) => {
-            if (ip === null || mask === null) return;
-            let cidr = (ip).toCidr(mask).toString();
-            dispatch(CidrNotation.getCidrSuccess(cidr));
-        },
         ipChanged: (ip) => {
-            dispatch(CidrNotation.ipChanging(ip))
+            dispatch(CidrNotation.ipChanging(ip));
         },
         maskChanged: (mask) => {
             dispatch(CidrNotation.maskChanging(mask));
         },
-    }
+        stateChanged: (ip: IPv4Address, mask: IPv4Address) => {
+            if (ip === null || mask === null) return;
+            const cidr = (ip).toCidr(mask).toString();
+            dispatch(CidrNotation.getCidrSuccess(cidr));
+        },
+    };
 }
 
 export default connect(mapProps, mapDispatchToProps)(Cidr);
 
 interface CidrProps extends DispatchProps {
+    cidr?: string;
     ipAddress?: IPv4Address;
     netMask?: IPv4Address;
-    cidr?: string;
-    stateChanged: Function;
-    ipChanged: Function;
-    maskChanged: Function;
+    ipChanged: (e) => void;
+    maskChanged: (e) => void;
+    stateChanged: (ip: IPv4Address, mask: IPv4Address) => void;
 }

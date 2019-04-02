@@ -1,27 +1,27 @@
 ﻿import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore, Store, compose, applyMiddleware } from "redux";
+import { applyMiddleware, compose, createStore, Store } from "redux";
 import thunk from "redux-thunk";
 
-import { regex, Action } from "./global";
-import { tools, Tool } from "./Tools/Tool";
+import { Action } from "./global";
+import { Tool, tools } from "./Tools/Tool";
 
 class App extends React.Component<AppProps, any> {
 
-    private store: Store<regex.State>;
+    private store: Store<any>;
     private tool: Tool;
 
     constructor(props: AppProps) {
         super(props);
 
-        let tool = tools.find((tool) => tool.name === props.tool);
+        const possibleTool = tools.find((t) => t.name === props.tool);
 
-        if (!tool) {
-            throw Error("Unknown tool");
+        if (!possibleTool) {
+            throw Error(`Unknown tool: ${possibleTool.name}`);
         }
 
-        this.tool = tool;
+        this.tool = possibleTool;
 
         const enhancedCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -30,12 +30,13 @@ class App extends React.Component<AppProps, any> {
 
     public render() {
 
-        let EntryPoint = this.tool.component;
+        const EntryPoint = this.tool.component;
 
         return (
             <Provider store={this.store}>
                 <EntryPoint />
-            </Provider>);
+            </Provider>
+        );
     }
 }
 
@@ -43,6 +44,6 @@ interface AppProps {
     tool: string;
 }
 
-let appElement = document.getElementById("app");
-let tool = appElement.getAttribute("data-tool") || "regex";
+const appElement = document.getElementById("app");
+const tool = appElement.getAttribute("data-tool") || "regex";
 ReactDOM.render(<App tool={tool} />, appElement);

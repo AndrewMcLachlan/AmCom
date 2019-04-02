@@ -1,5 +1,4 @@
-﻿import { IPv4AddressWithCIDR } from "./IPv4AddressWithCIDR";
-
+﻿/* tslint:disable:max-classes-per-file */
 export class IPv4Address {
     private _octet1: number;
     private _octet2: number;
@@ -109,5 +108,19 @@ export class IPv4Address {
 
         return new IPv4AddressWithCIDR(newIp[0], newIp[1], newIp[2], newIp[3], cidrNumber);
 
+    }
+}
+
+export class IPv4AddressWithCIDR extends IPv4Address {
+
+    public readonly mask: number;
+
+    constructor(octet1, octet2, octet3, octet4, cidrNumber) {
+        super(octet1, octet2, octet3, octet4);
+        this.mask = cidrNumber;
+    }
+
+    public toString = () => {
+        return this.octet1 + "." + this.octet2 + "." + this.octet3 + "." + this.octet4 + "/" + this.mask;
     }
 }

@@ -20,7 +20,7 @@ export default class Base64 extends React.Component<Base64Props, Base64State> {
                             <legend className="sr-only">Base 64 Encode / Decode</legend>
                             <div className="form-group">
                                 <label htmlFor="theString" className="control-label">String to encode / decode</label>
-                                <textarea className="form-control" id="source" spellCheck={false} onChange={(e) => this.setState({input: e.currentTarget.value})}></textarea>
+                                <textarea className="form-control" id="source" spellCheck={false} onChange={this.inputChanged} />
                             </div>
                             <button className="btn btn-primary mb-3" id="encodeDecode" onClick={this.xCode}>Encode / Decode</button>
                         </fieldset>
@@ -31,7 +31,7 @@ export default class Base64 extends React.Component<Base64Props, Base64State> {
                     <div className="col-md-9">
                         <div className="form-group">
                             <label htmlFor="result" className="control-label">Result</label>
-                            <textarea className="form-control" id="result" spellCheck={false} value={this.state.output}></textarea>
+                            <textarea className="form-control" id="result" spellCheck={false} value={this.state.output} />
                         </div>
                     </div>
                 </section>
@@ -39,7 +39,9 @@ export default class Base64 extends React.Component<Base64Props, Base64State> {
         );
     }
 
-        private xCode = (e) => {
+    private inputChanged = (e) => this.setState({ input: e.currentTarget.value });
+
+    private xCode = (e) => {
         let resultValue;
         try {
             resultValue = this.b64DecodeUnicode(this.state.input);
@@ -52,13 +54,13 @@ export default class Base64 extends React.Component<Base64Props, Base64State> {
     }
 
     private b64EncodeUnicode = (str) => {
-        return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function (_, p1) {
+        return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (_, p1) => {
             return String.fromCharCode(+("0x" + p1));
         }));
     }
 
     private b64DecodeUnicode = (str) => {
-        return decodeURIComponent(Array.prototype.map.call(atob(str), function (c) {
+        return decodeURIComponent(Array.prototype.map.call(atob(str), (c) => {
             return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
         }).join(""));
     }
