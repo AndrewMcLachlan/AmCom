@@ -15,8 +15,10 @@ namespace Asm.AmCom
         #region Constants
         private static string[] BannedWords =
         {
-            " sex",
-            " sexy",
+            " sex ",
+            "sexy",
+            "make more money",
+            "a girl for the night"
         };
         #endregion
 
