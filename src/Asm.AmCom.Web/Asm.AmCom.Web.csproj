@@ -40,6 +40,7 @@
     <None Remove="Scripts\React\Components\TextBox.tsx" />
     <None Remove="Scripts\React\Core.ts" />
     <None Remove="Scripts\React\IPv4Address.ts" />
+    <None Remove="Scripts\React\IPv4AddressWithCIDR.ts" />
     <None Remove="Scripts\React\Redux\Actions.ts" />
     <None Remove="Scripts\React\Redux\Reducers.ts" />
     <None Remove="Scripts\React\Service.ts" />
@@ -102,6 +103,7 @@
     <TypeScriptCompile Include="Scripts\React\Components\TextBox.tsx" />
     <TypeScriptCompile Include="Scripts\React\Core.ts" />
     <TypeScriptCompile Include="Scripts\React\global.d.ts" />
+    <TypeScriptCompile Include="Scripts\React\IPv4AddressWithCIDR.ts" />
     <TypeScriptCompile Include="Scripts\React\IPv4Address.ts" />
     <TypeScriptCompile Include="Scripts\React\Redux\Actions.ts" />
     <TypeScriptCompile Include="Scripts\React\Redux\Reducers.ts" />

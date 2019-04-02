@@ -1,5 +1,5 @@
-﻿import { Action } from "redux"
-import { IPv4Address, IPv4AddressWithCIDR } from "./IPv4Address"
+﻿import { AnyAction } from "redux";
+import { IPv4Address, IPv4AddressWithCIDR } from "./IPv4Address";
 
 declare global {
 
@@ -16,7 +16,7 @@ export interface DispatchProps {
     dispatch?: Function;
 }
 
-export interface Action extends Action<string> {
+export interface Action extends AnyAction {
 }
 
 export interface ActionWithData<T> extends Action {

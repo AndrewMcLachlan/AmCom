@@ -1,5 +1,6 @@
-﻿import { ActionTypes } from './Actions'
-import { regex as globalRegex, cidr as globalCidr, ActionWithData } from '../global'
+﻿import { ActionTypes } from "./Actions";
+import { AnyAction } from "redux";
+import { regex as globalRegex, cidr as globalCidr, ActionWithData } from "../global";
 
 export namespace regex {
     export const initialState: globalRegex.State = {
@@ -9,7 +10,7 @@ export namespace regex {
         isTesting: false
     }
 
-    export function reducer(state = initialState, action: ActionWithData<any>): globalRegex.State {
+    export function reducer(state = initialState, action: AnyAction | ActionWithData<any>): globalRegex.State {
         switch (action.type) {
             case ActionTypes.RegexTester.GetTestResultRequest:
                 return {
@@ -54,7 +55,7 @@ export namespace cidr {
         isGetting: false,
     }
 
-    export function reducer(state = initialState, action: ActionWithData<any>): globalCidr.State {
+    export function reducer(state = initialState, action: AnyAction | ActionWithData<any>): globalCidr.State {
         switch (action.type) {
             case ActionTypes.CidrNotation.GetCidrRequest:
                 return {
@@ -64,14 +65,14 @@ export namespace cidr {
             case ActionTypes.CidrNotation.GetCidrSuccess:
                 return {
                     ...state,
-                    isGetting: false,
                     cidr: action.data,
+                    isGetting: false,
                 };
             case ActionTypes.CidrNotation.GetCidrFailure:
                 return {
                     ...state,
-                    isGetting: false,
                     cidr: null,
+                    isGetting: false,
                 };
             case ActionTypes.CidrNotation.IPChanging:
                 return {

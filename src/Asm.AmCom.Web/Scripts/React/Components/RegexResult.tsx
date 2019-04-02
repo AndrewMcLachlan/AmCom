@@ -1,29 +1,17 @@
-﻿import * as React from "react"
-import { connect } from "react-redux"
-import { regex } from "../global"
+﻿import * as React from "react";
+import { connect } from "react-redux";
+import { regex } from "../global";
 
 class RegexResult extends React.Component<RegexResultProps, any> {
     constructor(props) {
         super(props);
     }
 
-    hover = (e:React.MouseEvent) => {
-        var target = document.getElementById(e.currentTarget.getAttribute("data-highlight"));
-
-        target.classList.add("hover");
-    }
-
-    unhover = (e:React.MouseEvent) => {
-        var target = document.getElementById(e.currentTarget.getAttribute("data-highlight"));
-
-        target.classList.remove("hover");
-    }
-
-    render() {
+    public render() {
 
         let res = this.props.regexResult;
 
-        if (!res || !res.success || res.groups.length == 1) return (null);
+        if (!res || !res.success || res.groups.length === 1) return (null);
 
         let groups = new Array<JSX.Element>();
 
@@ -47,21 +35,35 @@ class RegexResult extends React.Component<RegexResultProps, any> {
             }
         }
 
-        return (<div>
-            <h3>Groups</h3>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>Number</th>
-                        <th>Match</th>
-                        <th>Captures</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {groups}
-                </tbody>
-            </table>
-        </div>);
+        return (
+            <div>
+                <h3>Groups</h3>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>Number</th>
+                            <th>Match</th>
+                            <th>Captures</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {groups}
+                    </tbody>
+                </table>
+            </div>
+        );
+    }
+
+    private hover = (e: React.MouseEvent) => {
+        const target = document.getElementById(e.currentTarget.getAttribute("data-highlight"));
+
+        target.classList.add("hover");
+    }
+
+    private unhover = (e: React.MouseEvent) => {
+        const target = document.getElementById(e.currentTarget.getAttribute("data-highlight"));
+
+        target.classList.remove("hover");
     }
 }
 

@@ -1,29 +1,29 @@
-﻿import { Reducer } from "redux"
+﻿import { Reducer } from "redux";
 
-import * as Reducers from "../Redux/Reducers"
-import Regex from "./Regex"
-import Cidr from "./Cidr"
+import * as Reducers from "../Redux/Reducers";
+import Regex from "./Regex";
+import Cidr from "./Cidr";
 import Base64 from "./Base64";
 
-export const tools:Array<Tool> = [
+export const tools:Tool[] = [
     {
-        name: "regex",
+        component: Regex,
         initialState: Reducers.regex.initialState,
+        name: "regex",
         reducer: Reducers.regex.reducer,
-        component: Regex
     },
     {
-        name: "cidr",
-        initialState: Reducers.cidr.initialState,
-        reducer: Reducers.cidr.reducer,
         component: Cidr,
+        initialState: Reducers.cidr.initialState,
+        name: "cidr",
+        reducer: Reducers.cidr.reducer,
     },
     {
-        name: "base64",
+        component: Base64,
         initialState: {},
+        name: "base64",
         reducer: () => {},
-        component: Base64
-    }
+    },
 ];
 
 export interface Tool {

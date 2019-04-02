@@ -22,7 +22,17 @@ module.exports = (env, argv) => {
         },
         module: {
             rules: [
-
+                {
+                    test: /\.tsx?$/,
+                    exclude: /node_modules/,
+                    enforce: 'pre',
+                    use: [
+                        {
+                            loader: 'tslint-loader',
+                            options: { /* Loader options go here */ }
+                        }
+                    ]
+                },
                 {
                     test: /\.tsx?$/,
                     exclude: /node_modules/,

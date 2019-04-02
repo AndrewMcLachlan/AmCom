@@ -1,8 +1,6 @@
-﻿import * as React from "react"
+﻿import * as React from "react";
 
 export default class Base64 extends React.Component<Base64Props, Base64State> {
-
-    stateChangedDB: Function;
 
     constructor(props) {
         super(props);
@@ -12,31 +10,7 @@ export default class Base64 extends React.Component<Base64Props, Base64State> {
         };
     }
 
-    xCode = (e) => {
-        let resultValue;
-        try {
-            resultValue = this.b64DecodeUnicode(this.state.input);
-        }
-        catch (e) {
-            resultValue = this.b64EncodeUnicode(this.state.input);
-        }
-
-        this.setState({ output: resultValue.toString() });
-    }
-
-    b64EncodeUnicode = (str) => {
-        return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function (_, p1) {
-            return String.fromCharCode(+('0x' + p1));
-        }));
-    }
-
-    b64DecodeUnicode = (str) => {
-        return decodeURIComponent(Array.prototype.map.call(atob(str), function (c) {
-            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-        }).join(''));
-    }
-
-    render() {
+    public render() {
 
         return (
             <div>
@@ -63,6 +37,30 @@ export default class Base64 extends React.Component<Base64Props, Base64State> {
                 </section>
             </div>
         );
+    }
+
+        private xCode = (e) => {
+        let resultValue;
+        try {
+            resultValue = this.b64DecodeUnicode(this.state.input);
+        }
+        catch (e) {
+            resultValue = this.b64EncodeUnicode(this.state.input);
+        }
+
+        this.setState({ output: resultValue.toString() });
+    }
+
+    private b64EncodeUnicode = (str) => {
+        return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function (_, p1) {
+            return String.fromCharCode(+("0x" + p1));
+        }));
+    }
+
+    private b64DecodeUnicode = (str) => {
+        return decodeURIComponent(Array.prototype.map.call(atob(str), function (c) {
+            return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(""));
     }
 }
 

@@ -1,21 +1,20 @@
-﻿import * as React from "react"
-import { connect } from "react-redux"
-import debounce from "lodash.debounce"
+﻿import * as React from "react";
+import { connect } from "react-redux";
+import debounce from "lodash.debounce";
 
-import { cidr, DispatchProps } from "../global"
+import { cidr, DispatchProps } from "../global";
 
-import { CidrNotation } from "../Redux/Actions"
+import { CidrNotation } from "../Redux/Actions";
 
-import { service } from "./Service"
+import IPAddress from "../Components/IPAddress";
+import TextBox from "../Components/TextBox";
 
-import IPAddress from "../Components/IPAddress"
-import TextBox from "../Components/TextBox"
+import { IPv4Address } from "../IPv4Address";
 
-import { IPv4Address, IPv4AddressWithCIDR } from "../IPv4Address";
 
 class Cidr extends React.Component<CidrProps, any> {
 
-    stateChangedDB: Function;
+    private stateChangedDB: Function;
 
     constructor(props) {
         super(props);
@@ -23,17 +22,17 @@ class Cidr extends React.Component<CidrProps, any> {
         this.stateChangedDB = debounce(this.props.stateChanged, 250);
     }
 
-    ipChanged(e:IPv4Address) {
+    private ipChanged(e: IPv4Address) {
         this.stateChangedDB(e, this.props.netMask);
         this.props.ipChanged(e);
-    };
+    }
 
-    maskChanged(e:IPv4Address) {
+    private maskChanged(e: IPv4Address) {
         this.stateChangedDB(this.props.ipAddress, e);
         this.props.maskChanged(e);
-    };
+    }
 
-    render() {
+    public render() {
 
         let result = null;
 
@@ -66,15 +65,15 @@ class Cidr extends React.Component<CidrProps, any> {
 function mapProps(state: cidr.State, ownProps): CidrProps {
     return {
         ...ownProps,
+        cidr: state.cidr,
         ipAddress: state.ipAddress,
         netMask: state.netMask,
-        cidr: state.cidr,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        stateChanged: (ip:IPv4Address, mask:IPv4Address) => {
+        stateChanged: (ip: IPv4Address, mask: IPv4Address) => {
             if (ip === null || mask === null) return;
             let cidr = (ip).toCidr(mask).toString();
             dispatch(CidrNotation.getCidrSuccess(cidr));

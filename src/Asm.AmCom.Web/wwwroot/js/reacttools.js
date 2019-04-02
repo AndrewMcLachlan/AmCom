@@ -553,9 +553,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(IPAddress).call(this, props));
 
     _this.validateWithDotCheck = function (e) {
-      var charCode = e.charCode;
-
-      if (charCode == 46 && e.currentTarget.value.length > 0) {
+      if (e.charCode === 46 && e.currentTarget.value.length > 0) {
         e.currentTarget.nextElementSibling.focus();
         e.stopPropagation();
         e.preventDefault();
@@ -565,9 +563,7 @@ function (_React$Component) {
     };
 
     _this.validate = function (e) {
-      var charCode = e.charCode;
-
-      if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      if (e.charCode > 31 && (e.charCode < 48 || e.charCode > 57)) {
         e.stopPropagation();
         e.preventDefault();
       }
@@ -576,7 +572,7 @@ function (_React$Component) {
     _this.validateMaxWithNext = function (e) {
       _this.validateMax(e);
 
-      if (e.target.value.length == 3) {
+      if (e.target.value.length === 3) {
         e.currentTarget.nextElementSibling.focus();
       }
     };
@@ -737,7 +733,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var res = this.props.regexResult;
-      if (!res || !res.success || res.groups.length == 1) return null;
+      if (!res || !res.success || res.groups.length === 1) return null;
       var groups = new Array(); // Skip the first group as we already display it
 
       var _iteratorNormalCompletion = true;
@@ -881,8 +877,7 @@ function (_React$Component) {
       }, "No Match");
       var input = res.input || "";
       var unmatchedStart = input.substr(0, res.groups[0].index);
-      var unmatchedEnd = input.substr(res.groups[0].index + res.groups[0].length); //let allCaptures = res.groups.selectMany((g) => g.captures);
-
+      var unmatchedEnd = input.substr(res.groups[0].index + res.groups[0].length);
       var groups = [];
       var pos = unmatchedStart.length;
       var _iteratorNormalCompletion = true;
@@ -1031,7 +1026,7 @@ function (_React$Component) {
       var className = "form-control";
 
       if (this.props.readonly === true) {
-        opts["readonly"] = "readonly;";
+        opts["readonly"] = "readonly";
         className = "form-control-plaintext";
       }
 
@@ -1068,30 +1063,19 @@ function mapProps(state, ownProps) {
 /*!**************************************!*\
   !*** ./scripts/react/IPv4Address.ts ***!
   \**************************************/
-/*! exports provided: IPv4Address, IPv4AddressWithCIDR */
+/*! exports provided: IPv4Address */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IPv4Address", function() { return IPv4Address; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IPv4AddressWithCIDR", function() { return IPv4AddressWithCIDR; });
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
+/* harmony import */ var _IPv4AddressWithCIDR__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./IPv4AddressWithCIDR */ "./scripts/react/IPv4AddressWithCIDR.ts");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 
 var IPv4Address =
 /*#__PURE__*/
@@ -1127,17 +1111,17 @@ function () {
       var cidrNumber = 0;
 
       for (var i = 31; i >= 0; i--) {
-        if ((bitCheck & maskNumber) == bitCheck) {
+        if ((bitCheck & maskNumber) === bitCheck) {
           cidrNumber++;
           bitCheck >>= 1;
         } else {
           var reverse = 0;
 
           for (var j = 0; j < 32; j++) {
-            if ((reverseCheck & maskNumber) == 0) {
+            if ((reverseCheck & maskNumber) === 0) {
               reverse++;
               reverseCheck <<= 1;
-            } else if (reverse + cidrNumber != 32) {
+            } else if (reverse + cidrNumber !== 32) {
               throw new Error("Invalid mask");
             }
           }
@@ -1155,7 +1139,7 @@ function () {
         byteMask >>>= 8;
       }
 
-      return new IPv4AddressWithCIDR(newIp[0], newIp[1], newIp[2], newIp[3], cidrNumber);
+      return new _IPv4AddressWithCIDR__WEBPACK_IMPORTED_MODULE_0__["IPv4AddressWithCIDR"](newIp[0], newIp[1], newIp[2], newIp[3], cidrNumber);
     };
 
     this.octet1 = octet1;
@@ -1175,7 +1159,7 @@ function () {
       return this._octet1;
     },
     set: function set(value) {
-      if (value == undefined || value == null || value < 0 || value > 255) throw new Error("Invalid address");
+      if (value === undefined || value === null || value < 0 || value > 255) throw new Error("Invalid address");
       this._octet1 = value;
     }
   }, {
@@ -1184,7 +1168,7 @@ function () {
       return this._octet2;
     },
     set: function set(value) {
-      if (value == undefined || value == null || value < 0 || value > 255) throw new Error("Invalid address");
+      if (value === undefined || value === null || value < 0 || value > 255) throw new Error("Invalid address");
       this._octet2 = value;
     }
   }, {
@@ -1193,7 +1177,7 @@ function () {
       return this._octet3;
     },
     set: function set(value) {
-      if (value == undefined || value == null || value < 0 || value > 255) throw new Error("Invalid address");
+      if (value === undefined || value === null || value < 0 || value > 255) throw new Error("Invalid address");
       this._octet3 = value;
     }
   }, {
@@ -1202,35 +1186,64 @@ function () {
       return this._octet4;
     },
     set: function set(value) {
-      if (value == undefined || value == null || value < 0 || value > 255) throw new Error("Invalid address");
+      if (value === undefined || value === null || value < 0 || value > 255) throw new Error("Invalid address");
       this._octet4 = value;
     }
   }]);
 
   return IPv4Address;
 }();
+
+/***/ }),
+
+/***/ "./scripts/react/IPv4AddressWithCIDR.ts":
+/*!**********************************************!*\
+  !*** ./scripts/react/IPv4AddressWithCIDR.ts ***!
+  \**********************************************/
+/*! exports provided: IPv4AddressWithCIDR */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IPv4AddressWithCIDR", function() { return IPv4AddressWithCIDR; });
+/* harmony import */ var _IPv4Address__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./IPv4Address */ "./scripts/react/IPv4Address.ts");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 var IPv4AddressWithCIDR =
 /*#__PURE__*/
 function (_IPv4Address) {
   _inherits(IPv4AddressWithCIDR, _IPv4Address);
 
   function IPv4AddressWithCIDR(octet1, octet2, octet3, octet4, cidrNumber) {
-    var _this2;
+    var _this;
 
     _classCallCheck(this, IPv4AddressWithCIDR);
 
-    _this2 = _possibleConstructorReturn(this, _getPrototypeOf(IPv4AddressWithCIDR).call(this, octet1, octet2, octet3, octet4));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(IPv4AddressWithCIDR).call(this, octet1, octet2, octet3, octet4));
 
-    _this2.toString = function () {
-      return _this2.octet1 + "." + _this2.octet2 + "." + _this2.octet3 + "." + _this2.octet4 + "/" + _this2.mask;
+    _this.toString = function () {
+      return _this.octet1 + "." + _this.octet2 + "." + _this.octet3 + "." + _this.octet4 + "/" + _this.mask;
     };
 
-    _this2.mask = cidrNumber;
-    return _this2;
+    _this.mask = cidrNumber;
+    return _this;
   }
 
   return IPv4AddressWithCIDR;
-}(IPv4Address);
+}(_IPv4Address__WEBPACK_IMPORTED_MODULE_0__["IPv4Address"]);
 
 /***/ }),
 
@@ -1428,14 +1441,14 @@ var cidr;
 
       case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].CidrNotation.GetCidrSuccess:
         return Object.assign({}, state, {
-          isGetting: false,
-          cidr: action.data
+          cidr: action.data,
+          isGetting: false
         });
 
       case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].CidrNotation.GetCidrFailure:
         return Object.assign({}, state, {
-          isGetting: false,
-          cidr: null
+          cidr: null,
+          isGetting: false
         });
 
       case _Actions__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].CidrNotation.IPChanging:
@@ -1518,14 +1531,14 @@ function (_React$Component) {
 
     _this.b64EncodeUnicode = function (str) {
       return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function (_, p1) {
-        return String.fromCharCode(+('0x' + p1));
+        return String.fromCharCode(+("0x" + p1));
       }));
     };
 
     _this.b64DecodeUnicode = function (str) {
       return decodeURIComponent(Array.prototype.map.call(atob(str), function (c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-      }).join(''));
+        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(""));
     };
 
     _this.state = {
@@ -1701,9 +1714,9 @@ function (_React$Component) {
 
 function mapProps(state, ownProps) {
   return Object.assign({}, ownProps, {
+    cidr: state.cidr,
     ipAddress: state.ipAddress,
-    netMask: state.netMask,
-    cidr: state.cidr
+    netMask: state.netMask
   });
 }
 
@@ -1790,18 +1803,6 @@ function (_React$Component) {
   }
 
   _createClass(Regex, [{
-    key: "regexChanged",
-    value: function regexChanged(e) {
-      this.stateChangedDB(e.target.value, this.props.input);
-      this.props.regexChanged(e.target.value);
-    }
-  }, {
-    key: "inputChanged",
-    value: function inputChanged(e) {
-      this.stateChangedDB(this.props.regex, e.target.value);
-      this.props.inputChanged(e.target.value);
-    }
-  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", {
@@ -1822,14 +1823,26 @@ function (_React$Component) {
         onChange: this.inputChanged.bind(this),
         maxLength: 50
       })))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", {
-        className: "row"
+        className: "row mt-3"
       }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
         className: "col-md-4 regex-result-summary"
       }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Components_RegexResultSummary__WEBPACK_IMPORTED_MODULE_7__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", {
-        className: "row"
+        className: "row mt-4"
       }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
         className: "col-md-4 regex-result"
       }, react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Components_RegexResult__WEBPACK_IMPORTED_MODULE_6__["default"], null))));
+    }
+  }, {
+    key: "regexChanged",
+    value: function regexChanged(e) {
+      this.stateChangedDB(e.target.value, this.props.input);
+      this.props.regexChanged(e.target.value);
+    }
+  }, {
+    key: "inputChanged",
+    value: function inputChanged(e) {
+      this.stateChangedDB(this.props.regex, e.target.value);
+      this.props.inputChanged(e.target.value);
     }
   }]);
 
@@ -1845,14 +1858,14 @@ function mapProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    stateChanged: function stateChanged(regex, input) {
-      dispatch(_Service__WEBPACK_IMPORTED_MODULE_5__["service"].regexTest(regex, input));
+    inputChanged: function inputChanged(input) {
+      dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_3__["RegexTester"].inputChanging(input));
     },
     regexChanged: function regexChanged(regex) {
       dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_3__["RegexTester"].regexChanging(regex));
     },
-    inputChanged: function inputChanged(input) {
-      dispatch(_Redux_Actions__WEBPACK_IMPORTED_MODULE_3__["RegexTester"].inputChanging(input));
+    stateChanged: function stateChanged(regex, input) {
+      dispatch(_Service__WEBPACK_IMPORTED_MODULE_5__["service"].regexTest(regex, input));
     }
   };
 }
@@ -1928,7 +1941,7 @@ var service;
                   body: JSON.stringify(request),
                   headers: new Headers({
                     "Content-Type": "application/json",
-                    "Accept": "application/json"
+                    Accept: "application/json"
                   })
                 });
 
@@ -2059,20 +2072,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var tools = [{
-  name: "regex",
+  component: _Regex__WEBPACK_IMPORTED_MODULE_1__["default"],
   initialState: _Redux_Reducers__WEBPACK_IMPORTED_MODULE_0__["regex"].initialState,
-  reducer: _Redux_Reducers__WEBPACK_IMPORTED_MODULE_0__["regex"].reducer,
-  component: _Regex__WEBPACK_IMPORTED_MODULE_1__["default"]
+  name: "regex",
+  reducer: _Redux_Reducers__WEBPACK_IMPORTED_MODULE_0__["regex"].reducer
 }, {
-  name: "cidr",
+  component: _Cidr__WEBPACK_IMPORTED_MODULE_2__["default"],
   initialState: _Redux_Reducers__WEBPACK_IMPORTED_MODULE_0__["cidr"].initialState,
-  reducer: _Redux_Reducers__WEBPACK_IMPORTED_MODULE_0__["cidr"].reducer,
-  component: _Cidr__WEBPACK_IMPORTED_MODULE_2__["default"]
+  name: "cidr",
+  reducer: _Redux_Reducers__WEBPACK_IMPORTED_MODULE_0__["cidr"].reducer
 }, {
-  name: "base64",
+  component: _Base64__WEBPACK_IMPORTED_MODULE_3__["default"],
   initialState: {},
-  reducer: function reducer() {},
-  component: _Base64__WEBPACK_IMPORTED_MODULE_3__["default"]
+  name: "base64",
+  reducer: function reducer() {}
 }];
 
 /***/ }),
@@ -2133,14 +2146,15 @@ function (_React$Component) {
     _classCallCheck(this, App);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
-    _this.tool = _Tools_Tool__WEBPACK_IMPORTED_MODULE_5__["tools"].find(function (tool) {
-      return tool.name == props.tool;
+    var tool = _Tools_Tool__WEBPACK_IMPORTED_MODULE_5__["tools"].find(function (tool) {
+      return tool.name === props.tool;
     });
 
-    if (!_this.tool) {
+    if (!tool) {
       throw Error("Unknown tool");
     }
 
+    _this.tool = tool;
     var enhancedCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__WEBPACK_IMPORTED_MODULE_3__["compose"];
     _this.store = Object(redux__WEBPACK_IMPORTED_MODULE_3__["createStore"])(_this.tool.reducer, _this.tool.initialState, enhancedCompose(Object(redux__WEBPACK_IMPORTED_MODULE_3__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_4___default.a)));
     return _this;
@@ -2159,7 +2173,7 @@ function (_React$Component) {
   return App;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-var appElement = document.getElementById('app');
+var appElement = document.getElementById("app");
 var tool = appElement.getAttribute("data-tool") || "regex";
 react_dom__WEBPACK_IMPORTED_MODULE_1__["render"](react__WEBPACK_IMPORTED_MODULE_0__["createElement"](App, {
   tool: tool

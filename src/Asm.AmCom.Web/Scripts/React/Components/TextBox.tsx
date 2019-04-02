@@ -1,19 +1,19 @@
-﻿import * as React from "react"
-import { connect } from "react-redux"
-import { ControlProps } from "../global"
+﻿import * as React from "react";
+import { connect } from "react-redux";
+import { ControlProps } from "../global";
 
 class TextBox extends React.Component<TextBoxProps, any> {
     constructor(props) {
         super(props);
     }
 
-    render() {
+    public render() {
 
-        var opts = {};
-        var className = "form-control";
+        const opts = {};
+        let className = "form-control";
 
         if (this.props.readonly === true) {
-            opts["readonly"] = "readonly;"
+            opts["readonly"] = "readonly";
             className = "form-control-plaintext";
         }
 
@@ -21,7 +21,8 @@ class TextBox extends React.Component<TextBoxProps, any> {
             <div className="form-group">
                 <label htmlFor={this.props.id} className="control-label">{this.props.label}</label>
                 <input type="text" maxLength={this.props.maxLength} className={className} id={this.props.id} value={this.props.value} {...opts} onChange={this.props.onChange} onKeyUp={this.props.onKeyUp} />
-            </div>);
+            </div>
+        );
     }
 }
 
