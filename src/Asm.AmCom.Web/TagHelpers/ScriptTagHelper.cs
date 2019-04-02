@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
@@ -15,20 +17,17 @@ namespace Asm.AmCom.Web.TagHelpers
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            this.ViewContext.FormContext.
             output.TagName = "script";
-
-            foreach (var attribute in context.AllAttributes.Where(a => !a.Name.Contains("src")))
-            {
-                    output.Attributes.Add(attribute);
-            }
-
-            #if DEBUG
+#if DEBUG
             object src = context.AllAttributes["src"]?.Value;
-            #else
+#else
             object src = context.AllAttributes["src-min"]?.Value ?? context.AllAttributes["src"]?.Value;
-            #endif
+#endif
+            output.Attributes.RemoveAll("src-min");
 
-            output.Attributes.Add(new TagHelperAttribute("src", src));
+            //output.Attributes["src"].Value = new Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper.EncodeFirstSegmentContent
+         //       .Add(new TagHelperAttribute("src", src));
         }
     }
 }

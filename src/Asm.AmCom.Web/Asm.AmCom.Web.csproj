@@ -28,21 +28,30 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="TagHelpers\ScriptTagHelper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\images\Design.lnk" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Scripts\App.tsx" />
     <None Remove="Scripts\global.d.ts" />
+    <None Remove="Scripts\React\cidr.d.ts" />
     <None Remove="Scripts\React\Components\IPAddress.tsx" />
     <None Remove="Scripts\React\Components\RegexResult.tsx" />
     <None Remove="Scripts\React\Components\RegexResultSummary.tsx" />
     <None Remove="Scripts\React\Components\TextBox.tsx" />
     <None Remove="Scripts\React\Core.ts" />
     <None Remove="Scripts\React\IPv4Address.ts" />
-    <None Remove="Scripts\React\IPv4AddressWithCIDR.ts" />
     <None Remove="Scripts\React\Redux\Actions.ts" />
+    <None Remove="Scripts\React\Redux\Cidr\ActionTypes.ts" />
     <None Remove="Scripts\React\Redux\Reducers.ts" />
+    <None Remove="Scripts\React\Redux\Regex\Actions.ts" />
+    <None Remove="Scripts\React\Redux\Regex\ActionTypes.ts" />
+    <None Remove="Scripts\React\Redux\Regex\Reducers.ts" />
+    <None Remove="Scripts\React\regex.d.ts" />
     <None Remove="Scripts\React\Service.ts" />
     <None Remove="Scripts\React\Tool.ts" />
     <None Remove="Scripts\React\Tools\Base64.tsx" />
@@ -87,6 +96,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="TagHelpers\ScriptTagHelper.cs" />
     <None Include="wwwroot\googlef2bff34593e83c37.html" />
     <None Include="wwwroot\robots.txt" />
   </ItemGroup>
@@ -102,11 +112,16 @@
     <TypeScriptCompile Include="Scripts\React\Components\RegexResult.tsx" />
     <TypeScriptCompile Include="Scripts\React\Components\TextBox.tsx" />
     <TypeScriptCompile Include="Scripts\React\Core.ts" />
+    <TypeScriptCompile Include="Scripts\React\cidr.d.ts" />
+    <TypeScriptCompile Include="Scripts\React\regex.d.ts" />
     <TypeScriptCompile Include="Scripts\React\global.d.ts" />
-    <TypeScriptCompile Include="Scripts\React\IPv4AddressWithCIDR.ts" />
     <TypeScriptCompile Include="Scripts\React\IPv4Address.ts" />
-    <TypeScriptCompile Include="Scripts\React\Redux\Actions.ts" />
-    <TypeScriptCompile Include="Scripts\React\Redux\Reducers.ts" />
+    <TypeScriptCompile Include="Scripts\React\Redux\Cidr\ActionTypes.ts" />
+    <TypeScriptCompile Include="Scripts\React\Redux\Cidr\Actions.ts" />
+    <TypeScriptCompile Include="Scripts\React\Redux\Cidr\Reducers.ts" />
+    <TypeScriptCompile Include="Scripts\React\Redux\Regex\ActionTypes.ts" />
+    <TypeScriptCompile Include="Scripts\React\Redux\Regex\Actions.ts" />
+    <TypeScriptCompile Include="Scripts\React\Redux\Regex\Reducers.ts" />
     <TypeScriptCompile Include="Scripts\React\Tools\Base64.tsx" />
     <TypeScriptCompile Include="Scripts\React\Tools\Cidr.tsx" />
     <TypeScriptCompile Include="Scripts\React\Tools\Tool.ts" />
