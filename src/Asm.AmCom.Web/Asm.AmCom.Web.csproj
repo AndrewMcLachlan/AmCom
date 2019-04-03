@@ -28,10 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="TagHelpers\ScriptTagHelper.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Remove="wwwroot\images\Design.lnk" />
   </ItemGroup>
 
@@ -96,7 +92,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="TagHelpers\ScriptTagHelper.cs" />
     <None Include="wwwroot\googlef2bff34593e83c37.html" />
     <None Include="wwwroot\robots.txt" />
   </ItemGroup>
