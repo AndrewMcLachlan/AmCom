@@ -2,10 +2,10 @@
   "name": "asm.amcom.web",
   "version": "1.0.0",
   "description": "AndrewMcLachlan.com",
-  "main": " ",
+  "private": true,
   "repository": {
     "type": "git",
-    "url": " "
+    "url": "https://andrewmclachlan.visualstudio.com/defaultcollection/andrew%20mclachlan/_git/andrewmclachlan.com"
   },
   "author": "Andrew McLachlan",
   "license": "MIT",
