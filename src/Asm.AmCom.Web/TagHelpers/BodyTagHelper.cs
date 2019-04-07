@@ -22,6 +22,14 @@ namespace Asm.AmCom.Web.TagHelpers
             string className = ($"{area} {controller} {action}").Trim().ToLowerInvariant();
 
             output.TagName = "body";
+
+            if (output.Attributes.Any(a => a.Name == "class"))
+            {
+                 className += " " + output.Attributes["class"].Value;
+            }
+
+            output.Attributes.Remove(output.Attributes["class"]);
+
             output.Attributes.Add(new TagHelperAttribute("class", className));
         }
     }
