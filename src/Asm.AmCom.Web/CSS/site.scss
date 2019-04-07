@@ -2,13 +2,13 @@
 @import 'fonts.scss';
 
 .currentBreakpoint::after {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 300px;
-	height: 30px;
-	z-index: 1;
-	color: #444;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 30px;
+    z-index: 1;
+    color: #444;
 }
 
 body {
@@ -17,14 +17,24 @@ body {
     padding: 0;
     background-color: $dark;
 
-	&.home.index main {
-		min-height: 0;
-	}
+    &.home.index main {
+        min-height: 0;
+    }
+
+    &.dark main {
+        background-color: inherit;
+        color: $mutedbone;
+        border-bottom: 1px solid $mutedbone;
+    }
 }
 
 main {
-	min-height: calc(90vh - 177px);
-	background-color: #FFF;
+    min-height: calc(90vh - 177px);
+    background-color: #FFF;
+}
+
+.dark a {
+    color: $lightblue;
 }
 
 h1, h2, h3, h4, h5, h6, nav {
@@ -57,53 +67,53 @@ article {
 
 
 footer {
-	background-color: $dark;
-	width: 100%;
-	color: $mutedbone;
-	display: block;
-	text-align: center;
-	margin: 35px auto;
-	margin-left: auto;
-	margin-right: auto;
+    background-color: $dark;
+    width: 100%;
+    color: $mutedbone;
+    display: block;
+    text-align: center;
+    margin: 35px auto;
+    margin-left: auto;
+    margin-right: auto;
 
-	nav {
-		margin-bottom: 5px;
+    nav {
+        margin-bottom: 5px;
 
-		a {
-			color: $mutedbone;
-		}
+        a {
+            color: $mutedbone;
+        }
 
-		ul {
-			line-height: 30px;
-			list-style-type: none;
-			color: #FFF;
-			font-size: 1em;
-			position: relative;
-			width: auto;
-			margin: 0;
-			padding: 0;
-		}
+        ul {
+            line-height: 30px;
+            list-style-type: none;
+            color: #FFF;
+            font-size: 1em;
+            position: relative;
+            width: auto;
+            margin: 0;
+            padding: 0;
+        }
 
-		li {
-			display: inline;
-			border-right: 1px solid $mutedbone;
-			padding-left: 10px;
-			padding-right: 8px;
-		}
+        li {
+            display: inline;
+            border-right: 1px solid $mutedbone;
+            padding-left: 10px;
+            padding-right: 8px;
+        }
 
-		li:first-child {
-			padding-left: 0;
-		}
+        li:first-child {
+            padding-left: 0;
+        }
 
-		li:last-child {
-			border-right: none;
-			padding-right: 0;
-		}
+        li:last-child {
+            border-right: none;
+            padding-right: 0;
+        }
 
-		.copyright {
-			margin-top: 5px;
-		}
-	}
+        .copyright {
+            margin-top: 5px;
+        }
+    }
 }
 
 .validation-summary-valid {
@@ -143,19 +153,33 @@ h1:not(.h2) {
     background-size: cover;
 }
 
+/*.dark h1:not(.h2) {
+    text-shadow: 2px 2px 5px #DDD;
+}*/
 
 h1.h2, h2, h3 {
-	text-shadow: 1px 1px 2px #99A;
+    text-shadow: 1px 1px 2px #99A;
 }
+
+/*.dark h1.h2, h2, h3 {
+    text-shadow: 1px 1px 2px #DDD;
+}*/
 
 hr {
     background-image: -webkit-linear-gradient(left, #FFF 0, $lightblue 20%, $dark 50%, $lightblue 80%, #FFF 100%);
-	background-image: -ms-linear-gradient(left, #FFF 0, $lightblue 20%, $dark 50%, $lightblue 80%, #FFF 100%);
+    background-image: -ms-linear-gradient(left, #FFF 0, $lightblue 20%, $dark 50%, $lightblue 80%, #FFF 100%);
     background-image: -moz-linear-gradient(left, #FFF 0, $lightblue 20%, $dark 50%, $lightblue 80%, #FFF 100%);
     background-image: linear-gradient(left, #FFF 0, $lightblue 20%, $dark 50%, $lightblue 80%, #FFF 100%);
     border: none;
     height: 1px;
     width: 95%;
+}
+
+.dark hr {
+    background-image: -webkit-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
+    background-image: -ms-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
+    background-image: -moz-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
+    background-image: linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
 }
 
 aside.notes {
@@ -200,10 +224,8 @@ aside.notes {
     font-weight: bold;
     text-shadow: 1px 1px 2px #999;
 }
-
 /* #region Home styles */
-.home-header-container
-{
+.home-header-container {
     margin: 10px auto;
     position: absolute;
     width: 645px;
@@ -212,7 +234,6 @@ aside.notes {
 }
 
 .home-header {
-
     background-color: #FFF;
     border: 4px solid rgba(27,34,44,0.7);
     border-radius: 5px;
@@ -241,40 +262,40 @@ aside.notes {
 }
 
 #hero {
-	height: 405px;
-	position: relative;
-	padding: 0;
-	overflow: hidden;
-	margin-bottom: 20px;
+    height: 405px;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
 
-	h1,
-	h2 {
-		font-size: 1em;
-		margin: 0;
-		padding: 5px;
-		/*text-align: justify;*/
-		text-shadow: 1px 1px 2px #999;
-		font-weight: normal;
-	}
+    h1,
+    h2 {
+        font-size: 1em;
+        margin: 0;
+        padding: 5px;
+        /*text-align: justify;*/
+        text-shadow: 1px 1px 2px #999;
+        font-weight: normal;
+        color: $dark;
+    }
 
-	h1 {
-		color: inherit;
-		border: none;
-		height: auto;
-	}
+    h1 {
+        border: none;
+        height: auto;
+    }
 
-	p {
-		font-weight: bold;
-		font-size: 72pt;
-	}
+    p {
+        font-weight: bold;
+        font-size: 72pt;
+    }
 
-	.jumbotron {
-		position: relative;
-		text-align: center;
-		width: 300%;
-		left: -100%;
-		padding: 0;
-	}
+    .jumbotron {
+        position: relative;
+        text-align: center;
+        width: 300%;
+        left: -100%;
+        padding: 0;
+    }
 }
 
 
@@ -286,6 +307,10 @@ aside.notes {
 
 .summary .col-md-4 {
     border-right: 1px solid $dark;
+}
+
+.dark .summary .col-md-4 {
+    border-right-color: $mutedbone;
 }
 
 .summary .col-md-4:last-child {
@@ -305,9 +330,7 @@ aside.notes {
     margin: 0 auto;
 }
 /* #endregion */
-
 /* #region Page styles */
-
 .about.index h1 {
     background-image: url(../images/headers/sydney2.jpg);
     background-size: auto;
@@ -424,7 +447,7 @@ aside.page-link {
     position: relative;
     font-size: 14px;
     font-weight: normal;
-	height: 36px;
+    height: 36px;
 }
 
 .large {
@@ -432,9 +455,7 @@ aside.page-link {
     font-weight: bold;
     text-shadow: 1px 1px 4px #444;
 }
-
 /* #endregion */
-
 /* #region Error Styles */
 .error .navbar-inverse {
     background-image: url("/images/cracked2.jpg");
