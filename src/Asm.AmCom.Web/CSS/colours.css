@@ -1,4 +1,23 @@
 ﻿/*rgba(27,34,44,1)*/
+.colour {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  border: 1px solid #000; }
+
+.colour ~ div, h4 {
+  font-family: Calibri;
+  font-weight: bold;
+  font-size: 1em; }
+
+.colourGroup {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; }
+
+.colourGroup section {
+  margin: 10px; }
+
 .dark {
   background-color: #14252C; }
 
