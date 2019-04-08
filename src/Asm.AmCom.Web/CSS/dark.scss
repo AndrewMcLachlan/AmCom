@@ -1,0 +1,59 @@
+﻿@import 'variables';
+
+.dark {
+    main {
+        background-color: inherit;
+        color: $mutedbone;
+        border-top: 1px solid $mutedbone;
+        border-bottom: 1px solid $mutedbone;
+    }
+
+    article > header > h1 {
+        border-bottom: 1px solid $mutedbone;
+    }
+
+    a {
+        color: $lightblue;
+    }
+
+    nav a {
+        color: $mutedbone;
+    }
+
+    hr {
+        background-image: -webkit-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
+        background-image: -ms-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
+        background-image: -moz-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
+        background-image: linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
+    }
+
+    .summary .col-md-4 {
+        border-right-color: $mutedbone;
+    }
+
+    &.sitemap {
+
+        ul {
+
+            &.level1 > li {
+                background-color: $mutedbone;
+
+                > a {
+                    color: $dark;
+                }
+            }
+
+            &.level2 {
+                background-color: $dark;
+
+                > li {
+                    background-color: $dark;
+                }
+            }
+        }
+    }
+
+    .form-control {
+        background-color: $mutedbone;
+    }
+}

@@ -20,12 +20,6 @@ body {
     &.home.index main {
         min-height: 0;
     }
-
-    &.dark main {
-        background-color: inherit;
-        color: $mutedbone;
-        border-bottom: 1px solid $mutedbone;
-    }
 }
 
 main {
@@ -33,14 +27,9 @@ main {
     background-color: #FFF;
 }
 
-.dark a {
-    color: $lightblue;
-}
-
 h1, h2, h3, h4, h5, h6, nav {
     font-family: Calibri, Avenir, Helvetica, Arial, sans-serif;
 }
-
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -153,17 +142,9 @@ h1:not(.h2) {
     background-size: cover;
 }
 
-/*.dark h1:not(.h2) {
-    text-shadow: 2px 2px 5px #DDD;
-}*/
-
 h1.h2, h2, h3 {
     text-shadow: 1px 1px 2px #99A;
 }
-
-/*.dark h1.h2, h2, h3 {
-    text-shadow: 1px 1px 2px #DDD;
-}*/
 
 hr {
     background-image: -webkit-linear-gradient(left, #FFF 0, $lightblue 20%, $dark 50%, $lightblue 80%, #FFF 100%);
@@ -173,13 +154,6 @@ hr {
     border: none;
     height: 1px;
     width: 95%;
-}
-
-.dark hr {
-    background-image: -webkit-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
-    background-image: -ms-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
-    background-image: -moz-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
-    background-image: linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
 }
 
 aside.notes {
@@ -309,9 +283,7 @@ aside.notes {
     border-right: 1px solid $dark;
 }
 
-.dark .summary .col-md-4 {
-    border-right-color: $mutedbone;
-}
+
 
 .summary .col-md-4:last-child {
     border-right: none;
@@ -474,3 +446,5 @@ section.error .large {
     vertical-align: middle;
 }
 /* #endregion */
+
+@import 'dark';
