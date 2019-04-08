@@ -25,10 +25,9 @@ namespace Asm.AmCom.Web.TagHelpers
 
             if (output.Attributes.Any(a => a.Name == "class"))
             {
-                 className += " " + output.Attributes["class"].Value;
+                className += " " + output.Attributes["class"].Value;
+                output.Attributes.Remove(output.Attributes["class"]);
             }
-
-            output.Attributes.Remove(output.Attributes["class"]);
 
             output.Attributes.Add(new TagHelperAttribute("class", className));
         }
