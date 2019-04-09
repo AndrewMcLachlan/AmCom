@@ -18,6 +18,8 @@ class RegexResult extends React.Component<RegexResultProps, any> {
         // Skip the first group as we already display it
         for (const group of res.groups.slice(1)) {
 
+            if (!group.success || group.captures.length === 0) continue;
+
             const captures = new Array<JSX.Element>();
 
             const gIndex = res.groups.indexOf(group);
@@ -56,13 +58,13 @@ class RegexResult extends React.Component<RegexResultProps, any> {
 
     private hover = (e: React.MouseEvent) => {
         const target = document.getElementById(e.currentTarget.getAttribute("data-highlight"));
-
+        if (!target) return;
         target.classList.add("hover");
     }
 
     private unhover = (e: React.MouseEvent) => {
         const target = document.getElementById(e.currentTarget.getAttribute("data-highlight"));
-
+        if (!target) return;
         target.classList.remove("hover");
     }
 }

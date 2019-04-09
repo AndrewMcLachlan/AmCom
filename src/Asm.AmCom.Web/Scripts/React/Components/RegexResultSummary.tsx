@@ -27,10 +27,12 @@ class RegexResultSummary extends React.Component<RegexResultProps, any> {
 
         for (const group of res.groups.slice(1)) {
 
+            if (!group.success || group.captures.length === 0 || group.captures[0].index < pos) continue;
+
             const ungrouped = input.substring(pos, group.captures[0].index);
-            pos = group.captures[group.captures.length - 1].index + group.captures[group.captures.length - 1].length;
             if (ungrouped.length > 0) {
                 groups.push(<span>{ungrouped}</span>);
+                pos += ungrouped.length;
             }
 
             const captures = [];
@@ -38,7 +40,15 @@ class RegexResultSummary extends React.Component<RegexResultProps, any> {
             const gIndex = res.groups.indexOf(group);
 
             for (const capture of group.captures) {
+
+                const uncaptured = input.substring(pos, capture.index);
+
+                if (uncaptured.length > 0) {
+                    captures.push(<span>{uncaptured}</span>);
+                }
+
                 captures.push(<span id={"capture_" + gIndex + "_" + group.captures.indexOf(capture)}>{capture.value}</span>);
+                pos = capture.index + capture.length;
             }
 
             groups.push(<span id={"group_" + gIndex}>{captures}</span>);

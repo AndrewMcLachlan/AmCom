@@ -718,11 +718,13 @@ function (_React$Component) {
 
     _this.hover = function (e) {
       var target = document.getElementById(e.currentTarget.getAttribute("data-highlight"));
+      if (!target) return;
       target.classList.add("hover");
     };
 
     _this.unhover = function (e) {
       var target = document.getElementById(e.currentTarget.getAttribute("data-highlight"));
+      if (!target) return;
       target.classList.remove("hover");
     };
 
@@ -743,6 +745,7 @@ function (_React$Component) {
       try {
         for (var _iterator = res.groups.slice(1)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
           var group = _step.value;
+          if (!group.success || group.captures.length === 0) continue;
           var captures = new Array();
           var gIndex = res.groups.indexOf(group);
 
@@ -887,13 +890,13 @@ function (_React$Component) {
       try {
         for (var _iterator = res.groups.slice(1)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
           var group = _step.value;
+          if (!group.success || group.captures.length === 0 || group.captures[0].index < pos) continue;
 
           var _ungrouped = input.substring(pos, group.captures[0].index);
 
-          pos = group.captures[group.captures.length - 1].index + group.captures[group.captures.length - 1].length;
-
           if (_ungrouped.length > 0) {
             groups.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, _ungrouped));
+            pos += _ungrouped.length;
           }
 
           var captures = [];
@@ -905,9 +908,16 @@ function (_React$Component) {
           try {
             for (var _iterator2 = group.captures[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
               var capture = _step2.value;
+              var uncaptured = input.substring(pos, capture.index);
+
+              if (uncaptured.length > 0) {
+                captures.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, uncaptured));
+              }
+
               captures.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", {
                 id: "capture_" + gIndex + "_" + group.captures.indexOf(capture)
               }, capture.value));
+              pos = capture.index + capture.length;
             }
           } catch (err) {
             _didIteratorError2 = true;
@@ -926,7 +936,7 @@ function (_React$Component) {
 
           groups.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", {
             id: "group_" + gIndex
-          }, captures));
+          }, captures)); //pos = group.captures[group.captures.length - 1].index + group.captures[group.captures.length - 1].length;
         }
       } catch (err) {
         _didIteratorError = true;
