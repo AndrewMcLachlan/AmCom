@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using Asm.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -10,25 +8,25 @@ namespace Asm.AmCom.Web.TagHelpers
 {
     public class BodyTagHelper : TagHelper
     {
-        private readonly static string[] Themes = { "dark" };
-
         [ViewContext]
         public ViewContext ViewContext { get; set; }
 
+        private ThemeHelper ThemeHelper {get;}
 
+        public BodyTagHelper(ThemeHelper themeHelper) : base()
+        {
+            ThemeHelper = themeHelper;
+        }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            string className = ViewContext.HttpContext.Request.Cookies.ContainsKey("theme") && Themes.Contains(ViewContext.HttpContext.Request.Cookies["theme"]) ?
-                ViewContext.HttpContext.Request.Cookies["theme"] + " " :
-                String.Empty;
-
+            string className = ThemeHelper.CurrentTheme;
 
             string area = ViewContext.RouteData.Values["area"] as string;
             string controller = ViewContext.RouteData.Values["controller"] as string;
             string action = ViewContext.RouteData.Values["action"] as string;
 
-            className += ($"{area} {controller} {action}").Trim().ToLowerInvariant();
+            className = className.Append($"{area} {controller} {action}", " ").ToLowerInvariant();
 
             output.TagName = "body";
 

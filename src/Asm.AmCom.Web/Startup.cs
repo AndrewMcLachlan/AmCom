@@ -32,6 +32,7 @@ namespace Asm.AmCom.Web
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddTransient<ViewHelper>();
+            services.AddTransient<ThemeHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

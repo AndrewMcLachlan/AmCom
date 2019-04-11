@@ -1,11 +1,16 @@
 ﻿const path = require("path");
 
-var rootPath = path.join(__dirname, "scripts", "react");
+var rootPath = path.join(__dirname, "scripts");
+var reactPath = path.join(rootPath, "react");
+var standardPath = path.join(rootPath, "standard");
 
 module.exports = (env, argv) => {
 
     return {
-        entry: path.join(rootPath, "app.tsx"),
+        entry: {
+            reacttools: path.join(reactPath, "app.tsx"),
+            core: path.join(standardPath, "Core.ts")
+        },
         watchOptions: {
             ignored: ["**/*.js", "node_modules"],
         },
@@ -18,7 +23,7 @@ module.exports = (env, argv) => {
 
         output: {
             path: path.join(__dirname, "wwwroot", "js"),
-            filename: argv.mode === "production" ? "reacttools.min.js" : "reacttools.js"
+            filename: argv.mode === "production" ? "[name].min.js" : "[name].js"
         },
         module: {
             rules: [

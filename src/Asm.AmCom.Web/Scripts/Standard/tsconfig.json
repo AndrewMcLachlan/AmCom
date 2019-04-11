@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "lib": [ "dom", "es6" ],
+    "module": "none",
+    "noEmitOnError": true,
+    "noImplicitAny": false,
+    "removeComments": false,
+    "sourceMap": true,
+    "strict": false,
+    "strictNullChecks":  false,
+    "target": "es5"
+  },
+  "exclude": [
+    "node_modules",
+    "wwwroot",
+    "React"
+  ]
+}

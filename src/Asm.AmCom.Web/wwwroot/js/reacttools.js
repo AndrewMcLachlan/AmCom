@@ -936,7 +936,7 @@ function (_React$Component) {
 
           groups.push(react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", {
             id: "group_" + gIndex
-          }, captures)); //pos = group.captures[group.captures.length - 1].index + group.captures[group.captures.length - 1].length;
+          }, captures));
         }
       } catch (err) {
         _didIteratorError = true;

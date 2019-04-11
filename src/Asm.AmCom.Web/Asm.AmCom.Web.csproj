@@ -53,6 +53,7 @@
     <None Remove="Scripts\React\Tools\Base64.tsx" />
     <None Remove="Scripts\React\Tools\Cidr.tsx" />
     <None Remove="Scripts\RegexApp.tsx" />
+    <None Remove="Scripts\Standard\Core.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -122,6 +123,7 @@
     <TypeScriptCompile Include="Scripts\React\Tools\Tool.ts" />
     <TypeScriptCompile Include="Scripts\React\Tools\Regex.tsx" />
     <TypeScriptCompile Include="Scripts\React\Tools\Service.ts" />
+    <TypeScriptCompile Include="Scripts\Standard\Core.ts" />
   </ItemGroup>
 
   <ItemGroup>
