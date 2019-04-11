@@ -20,6 +20,10 @@
         color: $mutedbone;
     }
 
+    .btn a {
+        color: #FFF;
+    }
+
     hr {
         background-image: -webkit-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
         background-image: -ms-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);

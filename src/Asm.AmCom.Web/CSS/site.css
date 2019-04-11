@@ -414,6 +414,9 @@ section.error .large {
 .dark nav a {
   color: #DADAD3; }
 
+.dark .btn a {
+  color: #FFF; }
+
 .dark hr {
   background-image: -webkit-linear-gradient(left, #14252C 0, #aadcf7 40%, #FFF 50%, #aadcf7 60%, #14252C 100%);
   background-image: -ms-linear-gradient(left, #14252C 0, #aadcf7 40%, #FFF 50%, #aadcf7 60%, #14252C 100%);
