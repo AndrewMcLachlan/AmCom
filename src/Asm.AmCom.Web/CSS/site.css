@@ -435,3 +435,8 @@ section.error .large {
 
 .dark .form-control {
   background-color: #DADAD3; }
+
+.dark aside.page-link {
+  background-color: #DADAD3; }
+  .dark aside.page-link a {
+    color: #3C74A8; }
