@@ -10,16 +10,25 @@ namespace Asm.AmCom.Web.TagHelpers
 {
     public class BodyTagHelper : TagHelper
     {
+        private readonly static string[] Themes = { "dark" };
+
         [ViewContext]
         public ViewContext ViewContext { get; set; }
 
+
+
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
+            string className = ViewContext.HttpContext.Request.Cookies.ContainsKey("theme") && Themes.Contains(ViewContext.HttpContext.Request.Cookies["theme"]) ?
+                ViewContext.HttpContext.Request.Cookies["theme"] + " " :
+                String.Empty;
+
+
             string area = ViewContext.RouteData.Values["area"] as string;
             string controller = ViewContext.RouteData.Values["controller"] as string;
             string action = ViewContext.RouteData.Values["action"] as string;
 
-            string className = ($"{area} {controller} {action}").Trim().ToLowerInvariant();
+            className += ($"{area} {controller} {action}").Trim().ToLowerInvariant();
 
             output.TagName = "body";
 
