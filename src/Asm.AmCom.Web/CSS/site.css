@@ -373,6 +373,8 @@ aside.page-link {
   font-size: 14px;
   font-weight: normal;
   height: 36px; }
+  aside.page-link span {
+    vertical-align: middle; }
 
 .large {
   font-size: 2em;
