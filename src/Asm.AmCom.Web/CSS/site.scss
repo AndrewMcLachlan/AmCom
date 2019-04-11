@@ -420,6 +420,10 @@ aside.page-link {
     font-size: 14px;
     font-weight: normal;
     height: 36px;
+
+    span {
+        vertical-align: middle;
+    }
 }
 
 .large {
