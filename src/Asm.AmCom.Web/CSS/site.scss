@@ -160,6 +160,76 @@ aside.notes {
     font-size: 0.9em;
 }
 
+ul.level1 {
+    font-size: 1.2em;
+    padding-left: 0;
+}
+
+ul[class*="level"] {
+    list-style: none;
+}
+
+.level1 a {
+    color: $blue;
+    padding-left: 5px;
+}
+
+.level2 a {
+    color: $lighter;
+    padding-left: 0;
+}
+
+.level1 > li {
+    margin-bottom: 10px;
+    padding-left: 5px;
+    background-color: $dark;
+    border-radius: 3px;
+}
+
+ul.level2 {
+    background-color: #FFF;
+    border-radius: 3px 0 0 0;
+    font-size: 0.9em;
+    padding-left: 20px;
+    margin-right: -1px;
+}
+
+.container.min-height {
+    min-height: 100px;
+}
+
+.page-logo {
+    margin-right: 20px;
+}
+
+aside.page-link {
+    float: right;
+    margin-top: -30px;
+    margin-right: 10px;
+    background-color: #FFF;
+    -moz-background-clip: padding-box;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border-radius: 3px;
+    border: 2px solid rgba(0,0,0,.5);
+    border: 2px solid #000\9;
+    padding: 5px;
+    position: relative;
+    font-size: 14px;
+    font-weight: normal;
+    height: 36px;
+
+    span {
+        vertical-align: middle;
+    }
+}
+
+.large {
+    font-size: 2em;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px #444;
+}
+
 .notification {
     background-color: $blue;
     height: 30px;
@@ -368,68 +438,6 @@ figure.combinedWorks {
 .consulting h1 {
     background-image: url(../images/headers/london2.jpg);
     background-size: auto;
-}
-
-ul.level1 {
-    font-size: 1.2em;
-    padding-left: 0;
-}
-
-ul[class*="level"] {
-    list-style: none;
-}
-
-.level1 a {
-    color: $blue;
-    padding-left: 5px;
-}
-
-.level2 a {
-    color: $lighter;
-    padding-left: 0;
-}
-
-.level1 > li {
-    margin-bottom: 10px;
-    padding-left: 5px;
-    background-color: $dark;
-    border-radius: 3px;
-}
-
-ul.level2 {
-    background-color: #FFF;
-    border-radius: 3px 0 0 0;
-    font-size: 0.9em;
-    padding-left: 20px;
-    margin-right: -1px;
-}
-
-aside.page-link {
-    float: right;
-    margin-top: -30px;
-    margin-right: 10px;
-    background-color: #FFF;
-    -moz-background-clip: padding-box;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    border-radius: 3px;
-    border: 2px solid rgba(0,0,0,.5);
-    border: 2px solid #000\9;
-    padding: 5px;
-    position: relative;
-    font-size: 14px;
-    font-weight: normal;
-    height: 36px;
-
-    span {
-        vertical-align: middle;
-    }
-}
-
-.large {
-    font-size: 2em;
-    font-weight: bold;
-    text-shadow: 1px 1px 4px #444;
 }
 /* #endregion */
 /* #region Error Styles */
