@@ -212,12 +212,17 @@ aside.page-link {
     background-clip: padding-box;
     border-radius: 3px;
     border: 2px solid rgba(0,0,0,.5);
-    border: 2px solid #000\9;
     padding: 5px;
     position: relative;
     font-size: 14px;
     font-weight: normal;
     height: 36px;
+    color: $richblue;
+
+    &:hover {
+        background-color: #FFF;
+        border-color: rgba(0,0,0,.5);
+    }
 
     span {
         vertical-align: middle;
