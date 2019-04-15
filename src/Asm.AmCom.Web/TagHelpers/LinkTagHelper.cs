@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Asm.AmCom.Web.TagHelpers
 {
-    public class ScriptTagHelper : TagHelper
+    public class LinkTagHelper : TagHelper
     {
         [ViewContext]
         public ViewContext ViewContext { get; set; }
@@ -23,7 +23,7 @@ namespace Asm.AmCom.Web.TagHelpers
         private IUrlHelper _urlHelper;
         private IHostingEnvironment _hostingEnvironment;
 
-        public ScriptTagHelper(IActionContextAccessor actionContextAccessor, IUrlHelperFactory urlHelperFactory, IHostingEnvironment hostingEnvironment)
+        public LinkTagHelper(IActionContextAccessor actionContextAccessor, IUrlHelperFactory urlHelperFactory,IHostingEnvironment hostingEnvironment)
         {
             _urlHelper = urlHelperFactory.GetUrlHelper(actionContextAccessor.ActionContext);
             _hostingEnvironment = hostingEnvironment;
@@ -31,34 +31,26 @@ namespace Asm.AmCom.Web.TagHelpers
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-#if DEBUG
-            var src = context.AllAttributes["src"]?.Value as HtmlString;
-#else
-            var src = (context.AllAttributes["src-min"]?.Value ?? context.AllAttributes["src"]?.Value) as HtmlString;
-#endif
+            if (context.AllAttributes["integrity"] != null || context.AllAttributes["rel"] == null || ((HtmlString)context.AllAttributes["rel"].Value).Value != "stylesheet") return;
 
-            if (src == null) return;
+            var href = context.AllAttributes["href"]?.Value as HtmlString;
 
-            // Not a script with src-min
-            if (context.AllAttributes["src-min"] != null)
-            {
-                output.TagName = "script";
+            string cleanPath = href.Value.Replace('~', '.');
+            cleanPath = cleanPath.Substring(0, cleanPath.IndexOf("?") > 0 ? cleanPath.IndexOf("?") : cleanPath.Length);
+            cleanPath = cleanPath.Replace('/', Path.DirectorySeparatorChar);
 
-                output.Attributes.RemoveAll("src-min");
-                output.Attributes.RemoveAll("src");
-
-                output.Attributes.Add("src", _urlHelper.Content(src.Value));
-            }
-
-            if (context.AllAttributes["integrity"] != null) return;
-
-            string path = Path.Combine(_hostingEnvironment.WebRootPath, src.Value.Replace("~", "."));
+            string path = Path.Combine(_hostingEnvironment.WebRootPath, cleanPath);
 
             var hashAlgo = System.Security.Cryptography.HashAlgorithm.Create("SHA-256");
 
             byte[] hash = hashAlgo.ComputeHash(File.OpenRead(path));
 
-            output.Attributes.Add("integrity", "sha256-" + Convert.ToBase64String(hash));
+            string hashBase64 = Convert.ToBase64String(hash);
+
+            output.Attributes.RemoveAll("href");
+            output.Attributes.Add("href", _urlHelper.Content(href.Value.Replace("$v", Math.Abs(hashBase64.GetHashCode()).ToString())));
+
+            output.Attributes.Add("integrity", "sha256-" + hashBase64);
         }
     }
 }
