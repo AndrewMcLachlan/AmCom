@@ -44,9 +44,11 @@
 @media screen and (max-width: 767px), (max-device-width: 767px) {
   nav {
     font-size: 13px; }
+  .navbar {
+    padding-left: 10px; }
   #logo {
     top: 3px;
-    right: 4px;
+    right: 10px;
     height: 50px;
     width: 50px;
     background-size: 46px 46px; }

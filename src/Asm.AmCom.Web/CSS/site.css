@@ -433,7 +433,7 @@ section.error .large {
   background-image: linear-gradient(left, #14252C 0, #aadcf7 40%, #FFF 50%, #aadcf7 60%, #14252C 100%); }
 
 .dark .summary .col-md-4 {
-  border-right-color: #DADAD3; }
+  border-color: #DADAD3; }
 
 .dark.sitemap ul.level1 > li {
   background-color: #DADAD3; }

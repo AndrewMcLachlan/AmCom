@@ -22,21 +22,19 @@
     }
     <div id="logo"></div>
   </header>
-  <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!--<a class="sr-only sr-only-focusable" href="#content">[Skip to Content]</a>-->
-        <ul id="Menu" class="navbar-nav mr-auto">
-          <vc:menu site-map-name="web.sitemap" level="1" li-class="nav-item" a-class="nav-link" />
-          <vc:menu site-map-name="web.sitemap" level="2" li-class="nav-item" a-class="nav-link" />
-        </ul>
-      </div>
-    </nav>
-  </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!--<a class="sr-only sr-only-focusable" href="#content">[Skip to Content]</a>-->
+      <ul id="Menu" class="navbar-nav mr-auto">
+        <vc:menu site-map-name="web.sitemap" level="1" li-class="nav-item" a-class="nav-link" />
+        <vc:menu site-map-name="web.sitemap" level="2" li-class="nav-item" a-class="nav-link" />
+      </ul>
+    </div>
+  </nav>
   <main id="content">
     @RenderBody()
   </main>
