@@ -2204,7 +2204,7 @@ function (_React$Component) {
     });
 
     if (!possibleTool) {
-      throw Error("Unknown tool: ".concat(possibleTool.name));
+      throw Error("Unknown tool: ".concat(props.tool));
     }
 
     _this.tool = possibleTool;

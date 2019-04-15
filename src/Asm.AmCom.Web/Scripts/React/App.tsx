@@ -18,7 +18,7 @@ class App extends React.Component<AppProps, any> {
         const possibleTool = tools.find((t) => t.name === props.tool);
 
         if (!possibleTool) {
-            throw Error(`Unknown tool: ${possibleTool.name}`);
+            throw Error(`Unknown tool: ${props.tool}`);
         }
 
         this.tool = possibleTool;
