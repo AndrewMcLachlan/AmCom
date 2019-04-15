@@ -62,11 +62,11 @@
     display: none !important; }
   #hero .home-header-container {
     position: static;
-    margin: 0 auto; }
+    margin: 0 auto;
+    width: 100%; }
   #hero .home-header {
     background: none;
     position: static;
-    width: auto;
     opacity: 1 !important;
     animation-name: none !important;
     box-shadow: none;
