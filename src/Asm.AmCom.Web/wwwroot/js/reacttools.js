@@ -736,8 +736,7 @@ function (_React$Component) {
     value: function render() {
       var res = this.props.regexResult;
       if (!res || !res.success || res.groups.length === 1) return null;
-      var groups = new Array(); // Skip the first group as we already display it
-
+      var groups = new Array();
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;
@@ -1136,7 +1135,6 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-/* tslint:disable:max-classes-per-file */
 var IPv4Address =
 /*#__PURE__*/
 function () {

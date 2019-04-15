@@ -5,9 +5,9 @@
     "module": "none",
     "noEmitOnError": true,
     "noImplicitAny": false,
-    "removeComments": false,
+    "removeComments": true,
     "sourceMap": true,
-    "strict": false,
+    "strict": true,
     "strictNullChecks":  false,
     "target": "es5"
   },
