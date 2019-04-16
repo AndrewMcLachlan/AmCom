@@ -29,6 +29,7 @@ namespace Asm.AmCom.Web
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddHsts(o => o.MaxAge = new TimeSpan(0, 0, 31536000));
             services.AddMemoryCache();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
@@ -53,13 +54,16 @@ namespace Asm.AmCom.Web
 
             app.UseStaticFiles();
 
-            /*using (StreamReader iisUrlRewriteConfig = File.OpenText("rewrite.config"))
+            using (StreamReader iisUrlRewriteConfig = File.OpenText("rewrite.config"))
             {
                 var options = new RewriteOptions()
                     .AddIISUrlRewrite(iisUrlRewriteConfig);
 
                 app.UseRewriter(options);
-            }*/
+            }
+
+            app.UseHttpsRedirection();
+            app.UseHsts();
 
             app.UseMvc(routes =>
             {
