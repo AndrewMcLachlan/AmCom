@@ -24,7 +24,9 @@ namespace Asm.AmCom.Web.TagHelpers
         protected IHostingEnvironment HostingEnvironment { get; }
         protected IMemoryCache MemoryCache { get; }
 
-        protected abstract string UrlAttributeName { get; }
+        protected abstract string UrlSourceAttributeName { get; }
+
+        protected abstract string UrlOutputAttributeName { get; }
 
         public IntegrityTagHelper(IActionContextAccessor actionContextAccessor, IUrlHelperFactory urlHelperFactory, IHostingEnvironment hostingEnvironment, IMemoryCache memoryCache)
         {
@@ -35,14 +37,14 @@ namespace Asm.AmCom.Web.TagHelpers
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            var url = (context.AllAttributes[UrlAttributeName]?.Value as HtmlString)?.Value;
+            var url = (context.AllAttributes[UrlSourceAttributeName]?.Value as HtmlString)?.Value;
 
             if (String.IsNullOrEmpty(url)) return;
 
             if (MemoryCache.TryGetValue(url, out (string Url, string Hash) data))
             {
-                output.Attributes.RemoveAll(UrlAttributeName);
-                output.Attributes.Add(UrlAttributeName, data.Url);
+                output.Attributes.RemoveAll(UrlSourceAttributeName);
+                output.Attributes.Add(UrlOutputAttributeName, data.Url);
                 output.Attributes.Add("integrity", data.Hash);
                 return;
             }
@@ -62,8 +64,10 @@ namespace Asm.AmCom.Web.TagHelpers
 
             MemoryCache.Set(url, (calculatedUrl, hashBase64));
 
+            output.Attributes.RemoveAll(UrlSourceAttributeName);
+
+            output.Attributes.Add(UrlOutputAttributeName, calculatedUrl);
             output.Attributes.Add("integrity", hashBase64);
-            output.Attributes.Add(UrlAttributeName, calculatedUrl);
         }
     }
 }
