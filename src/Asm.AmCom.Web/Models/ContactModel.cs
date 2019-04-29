@@ -5,7 +5,7 @@ namespace Asm.AmCom.Web.Models
 {
     public class ContactModel
     {
-        [Required(ErrorMessageResourceType=typeof(ContactResources), ErrorMessageResourceName="NameValidation")]
+        [Required(ErrorMessageResourceType = typeof(ContactResources), ErrorMessageResourceName = "NameValidation")]
         public string Name { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(ContactResources), ErrorMessageResourceName = "EmailValidation")]
@@ -13,7 +13,7 @@ namespace Asm.AmCom.Web.Models
         public string Email { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(ContactResources), ErrorMessageResourceName = "MessageValidation")]
-        [BannedWordsValidator(ErrorMessageResourceType = typeof(ContactResources), ErrorMessageResourceName = "MessageBannedWordsValidation")]
+        [BannedWordsValidator("http://", " sex ", "sexy", "make more money", "a girl for the night", ErrorMessageResourceType = typeof(ContactResources), ErrorMessageResourceName = "MessageBannedWordsValidation")]
         public string Message { get; set; }
     }
 }

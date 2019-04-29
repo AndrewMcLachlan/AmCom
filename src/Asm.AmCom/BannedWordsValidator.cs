@@ -12,23 +12,20 @@ namespace Asm.AmCom
     /// </summary>
     public class BannedWordsValidatorAttribute : ValidationAttribute
     {
-        #region Constants
-        private static string[] BannedWords =
+        public string[] BannedWords
         {
-            " sex ",
-            "sexy",
-            "make more money",
-            "a girl for the night"
-        };
-        #endregion
+            get;
+            set;
+        }
 
         #region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="DataTypeValidatorAttribute"/> class.
         /// </summary>
         /// <param name="customDataType">A custom data type.</param>
-        public BannedWordsValidatorAttribute() : base()
+        public BannedWordsValidatorAttribute(params string[] bannedWords) : base()
         {
+            BannedWords = bannedWords;
         }
 
         /// <summary>

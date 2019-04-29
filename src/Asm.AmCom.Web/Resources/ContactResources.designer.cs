@@ -88,7 +88,7 @@ namespace Asm.AmCom.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please remove inappropriate words from your message.
+        ///   Looks up a localized string similar to Please remove any links or inappropriate words from your message.
         /// </summary>
         public static string MessageBannedWordsValidation {
             get {
