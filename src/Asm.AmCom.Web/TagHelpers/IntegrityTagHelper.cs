@@ -44,6 +44,7 @@ namespace Asm.AmCom.Web.TagHelpers
             if (MemoryCache.TryGetValue(url, out (string Url, string Hash) data))
             {
                 output.Attributes.RemoveAll(UrlSourceAttributeName);
+                output.Attributes.RemoveAll(UrlOutputAttributeName);
                 output.Attributes.Add(UrlOutputAttributeName, data.Url);
                 output.Attributes.Add("integrity", data.Hash);
                 return;
@@ -65,6 +66,7 @@ namespace Asm.AmCom.Web.TagHelpers
             MemoryCache.Set(url, (calculatedUrl, hashBase64));
 
             output.Attributes.RemoveAll(UrlSourceAttributeName);
+            output.Attributes.RemoveAll(UrlOutputAttributeName);
 
             output.Attributes.Add(UrlOutputAttributeName, calculatedUrl);
             output.Attributes.Add("integrity", hashBase64);
