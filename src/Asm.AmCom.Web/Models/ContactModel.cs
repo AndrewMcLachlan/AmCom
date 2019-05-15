@@ -13,7 +13,7 @@ namespace Asm.AmCom.Web.Models
         public string Email { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(ContactResources), ErrorMessageResourceName = "MessageValidation")]
-        [BannedWordsValidator("http://", " sex ", "sexy", "make more money", "a girl for the night", ErrorMessageResourceType = typeof(ContactResources), ErrorMessageResourceName = "MessageBannedWordsValidation")]
+        [BannedWordsValidator("http://", "https://", " sex ", "sexy", "make more money", "a girl for the night", ErrorMessageResourceType = typeof(ContactResources), ErrorMessageResourceName = "MessageBannedWordsValidation")]
         public string Message { get; set; }
     }
 }
