@@ -27,7 +27,7 @@ namespace Asm.AmCom.Web.Areas.Tools.Models
 
         public RegexTestResponse(Match match)
         {
-            Groups.AddRange(match.Groups.Select(g => new Group(g)));
+            Groups.AddRange(((IEnumerable<RegexGroup>)match.Groups).Select(g => new Group(g)));
 
             Success = match.Success;
         }

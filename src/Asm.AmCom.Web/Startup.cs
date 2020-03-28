@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Hosting;
 
 namespace Asm.AmCom.Web
 {
@@ -27,7 +23,7 @@ namespace Asm.AmCom.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddControllersWithViews();
 
             services.AddHsts(o => o.MaxAge = new TimeSpan(0, 0, 31536000));
             services.AddMemoryCache();
@@ -38,12 +34,11 @@ namespace Asm.AmCom.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment() || (Boolean.TryParse(Configuration["CustomErrorPages"], out bool test) && !test))
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
             }
             else
             {
@@ -65,26 +60,26 @@ namespace Asm.AmCom.Web
             app.UseHttpsRedirection();
             app.UseHsts();
 
-            app.UseMvc(routes =>
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute("productDefault", "products", new { controller = "products", action = "octopus-notify" });
+                endpoints.MapControllerRoute("productDefault", "products", new { controller = "products", action = "octopus-notify" });
 
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "consulting",
-                    template: "Consulting/{anyaction}",
+                    pattern: "Consulting/{anyaction}",
                     defaults: new { Controller = "Consulting", Action = "Generic", AnyAction = "Index" });
 
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "areas",
-                    template: "{area:exists}/{controller=Regex}/{action=Index}");
+                    pattern: "{area:exists}/{controller=Regex}/{action=Index}");
 
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "productsGeneric",
-                    template: "products/{anyaction}",
+                    pattern: "products/{anyaction}",
                     defaults: new { Controller = "Products", Action = "Generic", AnyAction = "Index" });
             });
         }
