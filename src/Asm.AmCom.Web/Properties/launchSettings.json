@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://andrewmclachlan.mclachlan.home",
+      "applicationUrl": "https://andrew.mclachlan.family",
       "sslPort": 0
     },
     "iisExpress": {
