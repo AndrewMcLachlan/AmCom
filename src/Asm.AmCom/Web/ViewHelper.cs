@@ -18,14 +18,14 @@ namespace Asm.AmCom.Web
     /// </summary>
     public class ViewHelper
     {
-        private IHostingEnvironment _environment;
+        private IWebHostEnvironment _environment;
         private ICompositeViewEngine _viewEngine;
         private IHttpContextFactory _httpContextFactory;
 
         public IUrlHelper UrlHelper { get; private set; }
         public ActionContext Context { get; private set; }
 
-        public ViewHelper(IActionContextAccessor contextAccessor, IHostingEnvironment environment, ICompositeViewEngine viewEngine, IUrlHelperFactory urlHelperFactory, IHttpContextFactory httpContextFactory)
+        public ViewHelper(IActionContextAccessor contextAccessor, IWebHostEnvironment environment, ICompositeViewEngine viewEngine, IUrlHelperFactory urlHelperFactory, IHttpContextFactory httpContextFactory)
         {
             Context = contextAccessor.ActionContext;
             _environment = environment;

@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Asm.AmCom.Web.Mvc;
-using Microsoft.AspNetCore.Mvc;
+﻿using Asm.AmCom.Web.Mvc;
 
-namespace Asm.AmCom.Web.Controllers
+namespace Asm.AmCom.Web.Controllers;
+
+public class ConsultingController : Controller
 {
-    public class ConsultingController : Controller
+    [RewriteAction("anyaction")]
+    public ActionResult Generic()
     {
-        [RewriteAction("anyaction")]
-        public ActionResult Generic()
-        {
-            return View();
-        }
+        return View();
     }
 }

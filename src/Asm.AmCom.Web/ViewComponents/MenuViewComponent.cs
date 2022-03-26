@@ -1,45 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Asm.AmCom.Web.Models;
+﻿using Asm.AmCom.Web.Models;
 using Asm.AmCom.Web.Sitemap;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Routing;
 
-namespace Asm.AmCom.Web.ViewComponents
+namespace Asm.AmCom.Web.ViewComponents;
+
+public class MenuViewComponent : ViewComponent
 {
-    public class MenuViewComponent : ViewComponent
+    private readonly IWebHostEnvironment _env;
+
+    public MenuViewComponent(IWebHostEnvironment env) : base()
     {
-        private IUrlHelperFactory _urlHelperFactory;
-        private IHostingEnvironment _env;
+        _env = env;
+    }
 
-        public MenuViewComponent(IUrlHelperFactory urlHelperFactory, IHostingEnvironment env) : base()
+    public Task<IViewComponentResult> InvokeAsync(string siteMapName = "Web.sitemap", int level = 1, string liClass = "", string aClass = null)
+    {
+        var siteMapPath = Path.Combine(_env.ContentRootPath, siteMapName);
+
+        SiteMapNode currentNode = new SiteMapNode
         {
-            _urlHelperFactory = urlHelperFactory;
-            _env = env;
-        }
-
-        public Task<IViewComponentResult> InvokeAsync(string siteMapName = "Web.sitemap", int level = 1, string liClass = "", string aClass = null)
-        {
-            IUrlHelper urlHelper = _urlHelperFactory.GetUrlHelper(ViewContext);
-
-            var siteMapPath = Path.Combine(_env.ContentRootPath, siteMapName);
-
-            SiteMapNode currentNode = new SiteMapNode
-            {
-                Area = ViewContext.RouteData.Values["Area"] as string,
-                Controller = ViewContext.RouteData.Values["Controller"] as string,
-                Action = ViewContext.RouteData.Values["Action"] as string,
-            };
+            Area = ViewContext.RouteData.Values["Area"] as string,
+            Controller = ViewContext.RouteData.Values["Controller"] as string,
+            Action = ViewContext.RouteData.Values["Action"] as string,
+        };
 
 
-            MenuModel model = new MenuModel(siteMapPath, level, currentNode);
-            model.ListItemClass = liClass;
-            model.AnchorClass = aClass;
-            return Task.FromResult(View("Menu", model) as IViewComponentResult);
-        }
+        MenuModel model = new MenuModel(siteMapPath, level, currentNode);
+        model.ListItemClass = liClass;
+        model.AnchorClass = aClass;
+        return Task.FromResult(View("Menu", model) as IViewComponentResult);
     }
 }

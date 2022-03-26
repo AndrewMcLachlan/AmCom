@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Microsoft.AspNetCore.Mvc.Razor
+namespace Asm.AmCom.Extensions
 {
     public static class RazorPageExtensions
     {

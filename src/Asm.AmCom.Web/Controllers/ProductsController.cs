@@ -1,32 +1,30 @@
 ﻿using Asm.AmCom.Web.Mvc;
-using Microsoft.AspNetCore.Mvc;
 
-namespace Asm.AmCom.Web.Controllers
+namespace Asm.AmCom.Web.Controllers;
+
+public class ProductsController : Controller
 {
-    public class ProductsController : Controller
+    [ActionName("octopus-notify")]
+    public IActionResult OctopusNotify()
     {
-        [ActionName("octopus-notify")]
-        public IActionResult OctopusNotify()
-        {
-            return View("OctopusNotify");
-        }
+        return View("OctopusNotify");
+    }
 
-        [ActionName("project-portal")]
-        public IActionResult ProjectPortal()
-        {
-            return View("ProjectPortal");
-        }
+    [ActionName("project-portal")]
+    public IActionResult ProjectPortal()
+    {
+        return View("ProjectPortal");
+    }
 
-        [ActionName("carbs-and-cals")]
-        public IActionResult CarbsAndCals()
-        {
-            return View("CarbsAndCals");
-        }
+    [ActionName("carbs-and-cals")]
+    public IActionResult CarbsAndCals()
+    {
+        return View("CarbsAndCals");
+    }
 
-        [RewriteAction("anyaction")]
-        public IActionResult Generic()
-        {
-            return View();
-        }
+    [RewriteAction("anyaction")]
+    public IActionResult Generic()
+    {
+        return View();
     }
 }
