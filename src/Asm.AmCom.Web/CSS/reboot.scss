@@ -1,0 +1,63 @@
+﻿@import 'variables';
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: $dark;
+}
+
+body, h1, .text {
+    font-family: Quicksand, HelveticaNeue-Thin, Calibri, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-size: 18px;
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: 'Maven Pro', Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 800;
+}
+
+h2 {
+    text-shadow: 1px 1px 2px #99A;
+}
+
+h3 {
+    text-shadow: 1px 1px 2px rgba(153,153,170,0.5);
+}
+
+h4 {
+    text-shadow: 1px 1px 2px rgba(153,153,170,0.3);
+}
+
+a {
+    color: var(--link-colour);
+}
+
+input[readonly] {
+    &:focus-visible {
+        outline: none;
+    }
+}
+
+label {
+    font-weight: normal;
+}
+
+map {
+    border: none;
+}
+
+hr {
+    background-image: -webkit-linear-gradient(left, #FFF 0, $lightblue 20%, $dark 50%, $lightblue 80%, #FFF 100%);
+    background-image: -ms-linear-gradient(left, #FFF 0, $lightblue 20%, $dark 50%, $lightblue 80%, #FFF 100%);
+    background-image: -moz-linear-gradient(left, #FFF 0, $lightblue 20%, $dark 50%, $lightblue 80%, #FFF 100%);
+    background-image: linear-gradient(left, #FFF 0, $lightblue 20%, $dark 50%, $lightblue 80%, #FFF 100%);
+    border: none;
+    height: 1px;
+    width: 95%;
+}
+
+strong {
+    font-weight: normal;
+}

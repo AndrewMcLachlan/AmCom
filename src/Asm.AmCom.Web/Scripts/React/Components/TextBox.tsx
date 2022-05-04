@@ -1,43 +1,20 @@
-﻿import * as React from "react";
-import { connect } from "react-redux";
-import { ControlProps } from "../global";
+﻿import classNames from "classnames";
+import * as React from "react";
 
-class TextBox extends React.Component<TextBoxProps, any> {
-    constructor(props) {
-        super(props);
-    }
+const TextBox: React.FC<TextBoxProps> = ({className, label, ...props}) => {
 
-    public render() {
-
-        const opts: any = {};
-        let className = "form-control";
-
-        if (this.props.readonly === true) {
-            opts.readonly = "readonly";
-            className = "form-control-plaintext";
-        }
+        className = classNames(className, props.readOnly === true ? "form-control-plaintext" : "form-control");
 
         return (
             <div className="form-group">
-                <label htmlFor={this.props.id} className="control-label">{this.props.label}</label>
-                <input type="text" maxLength={this.props.maxLength} className={className} id={this.props.id} value={this.props.value} {...opts} onChange={this.props.onChange} onKeyUp={this.props.onKeyUp} />
+                <label htmlFor={props.id} className="control-label">{label}</label>
+                <input type="text" className={className} {...props} />
             </div>
         );
-    }
 }
 
-function mapProps(state: any, ownProps): any {
-    return {
-        ...ownProps,
-    };
-}
+export default TextBox;
 
-export default connect(mapProps)(TextBox);
-
-interface TextBoxProps extends ControlProps {
-    value?: string;
-    maxLength?: number;
-    readonly?: boolean;
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    onKeyUp?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+export interface TextBoxProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+    label: string;
 }

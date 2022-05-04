@@ -1,39 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Http;
 
-namespace Asm.AmCom.Web
+namespace Asm.AmCom.Web;
+
+public class ThemeHelper
 {
-    public class ThemeHelper
+    private List<string> Themes { get; }
+
+    private HttpContext Context { get; }
+
+    public string CurrentTheme
     {
-        private List<string> Themes { get; }
-
-        private HttpContext Context { get; }
-
-        public string CurrentTheme
+        get
         {
-            get
-            {
-                return Context.Request.Cookies.ContainsKey("theme") ? Themes.SingleOrDefault(t => t == Context.Request.Cookies["theme"]) : Themes.FirstOrDefault();
-            }
+            return Context.Request.Cookies.ContainsKey("theme") ? Themes.SingleOrDefault(t => t == Context.Request.Cookies["theme"]) : String.Empty;
         }
+    }
 
-        public string OtherTheme
+    public string OtherTheme
+    {
+        get
         {
-            get
-            {
-                return Themes.Where(t => t != CurrentTheme).FirstOrDefault();
-            }
+            return Themes.Where(t => t != CurrentTheme).FirstOrDefault();
         }
+    }
 
-        public ThemeHelper(IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
-        {
-            Context = httpContextAccessor.HttpContext;
-            Themes = configuration.GetSection("Themes").GetChildren().Select(t => t.Value).ToList();
-        }
-
+    public ThemeHelper(IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
+    {
+        Context = httpContextAccessor.HttpContext;
+        Themes = configuration.GetSection("Themes").GetChildren().Select(t => t.Value).ToList();
     }
 }

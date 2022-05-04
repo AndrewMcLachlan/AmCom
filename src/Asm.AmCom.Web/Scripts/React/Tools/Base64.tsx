@@ -17,7 +17,6 @@ export default class Base64 extends React.Component<Base64Props, Base64State> {
                 <section className="row">
                     <div className="col-md-9">
                         <fieldset>
-                            <legend className="sr-only">Base 64 Encode / Decode</legend>
                             <div className="form-group">
                                 <label htmlFor="theString" className="control-label">String to encode / decode</label>
                                 <textarea className="form-control" id="source" spellCheck={false} onChange={this.inputChanged} />

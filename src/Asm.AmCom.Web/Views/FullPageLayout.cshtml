@@ -1,0 +1,31 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    Layout = "Layout.cshtml";
+}
+
+@section Head
+{
+    @RenderSection("Head", false)
+}
+
+@section Scripts
+{
+    @RenderSection("Scripts", false)
+}
+
+<article>
+    <header>
+        @RenderSection("PageHeader", false)
+        @RenderSection("PageLink", false)
+    </header>
+    <div class="container">
+        @RenderBody()
+    </div>
+</article>
+
+@section Footer
+{
+    @RenderSection("FooterNotes", false)
+    @this.RenderSection("Footer", Html, "Footer")
+}

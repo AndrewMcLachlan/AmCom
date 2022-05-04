@@ -1,0 +1,28 @@
+﻿@import "variables";
+
+.summary {
+    margin-bottom: 20px;
+
+    section {
+        text-align: center;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        border-right: 1px solid var(--border);
+
+        &:last-child {
+            border-right: none;
+        }
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .btn {
+        bottom: 0;
+        width: 60%;
+        margin: auto auto 0;
+    }
+}

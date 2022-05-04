@@ -1,0 +1,35 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    Layout = "FullPageLayout.cshtml";
+    ViewBag.Title = $"{Model.Value("title")} - Andrew McLachlan";
+    ViewBag.Description = Model.Value("description");
+    ViewBag.Canonical = Model.Url();
+}
+@{
+    string headerImageStyle = "";
+    var typedMediaPickerSingle = Model.Value<IPublishedContent>("headerBackground");
+    if (typedMediaPickerSingle != null)
+    {
+        headerImageStyle = $"background-image: url({typedMediaPickerSingle.Url()})";
+        headerImageStyle += Model.ValueAnd("backgroundSize", "; background-size: {0}");
+    }
+}
+
+@section PageHeader
+{
+    <h2 style="@headerImageStyle">@Model.Value("title")</h2>
+}
+
+@section PageLink
+{
+  @if(Model.Value("PageLinks") != null)
+  {
+    @foreach (var pageLink in Model.Value<IEnumerable<Umbraco.Cms.Web.Common.PublishedModels.PageLink>>("PageLinks"))
+    {
+            Html.RenderPartial("PageLink", pageLink);
+        }
+  }
+}
+
+@Model.Value("pageContent")

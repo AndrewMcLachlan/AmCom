@@ -1,0 +1,18 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = "FullPageLayout.cshtml";
+	ViewBag.Title = "Error";
+}
+
+@section PageHeader
+{
+  <h2>&nbsp;</h2>
+}
+
+<section class="row error">
+        <img src="@(Model.Value<IPublishedContent>("Icon").Url())" alt="" role="presentation" class="col-md-2" />
+    <div class="col-md-10 large">
+        @(Model.Value<string>("Message"))
+    </div>
+</section>

@@ -1,0 +1,80 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Home>
+@{
+    Layout = "Layout.cshtml";
+}
+
+@section Head
+    {
+    <meta property="og:title" content="Andrew McLachlan - Software Engineer" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="@Context.Request.Scheme://@Context.Request.Host" />
+    <meta property="og:image" content="@Context.Request.Scheme://@Context.Request.Host/images/andrewmclachlan.jpg" />
+}
+
+    <div class="hero">
+        @{
+        await Html.RenderPartialAsync("heroes/Static", Model);
+    }
+</div>
+
+<section class="container">
+    @{
+        var summaries = Model.SummaryList; // Model.Value<IList<IPublishedContent>>("SummaryList");
+        if (summaries != null)
+        {
+            var className = $"col-lg-{12 / summaries.Count()}";
+
+            <div class="row summary">
+                @foreach (var summary in summaries)
+                {
+                    await Html.RenderPartialAsync("Summary", summary, new ViewDataDictionary(ViewData) { { "ClassName", className } });
+                }
+            </div>
+        }
+    }
+</section>
+<section class="word-cloud d-none d-lg-block">
+  <div class="container">
+    <ul>
+        <li id="dotnet">.NET</li>
+        <li id="architecture">Architecture</li>
+        <li id="agile">Agile</li>
+        <li id="azure">Azure</li>
+        <li id="csharp">C#</li>
+        <li id="css">CSS</li>
+        <li id="design">Design</li>
+        <li id="devops">DevOps</li>
+        <li id="delivery">Delivery</li>
+        <li id="html">HTML</li>
+        <li id="integration">Integration</li>
+        <li id="leadership">Leadership</li>
+        <li id="management">Management</li>
+        <li id="reactjs">React JS</li>
+        <li id="respect">Respect</li>
+        <li id="rest">REST</li>
+        <li id="scrum">Scrum</li>
+        <li id="security">Security</li>
+        <li id="solutions">Solutions</li>
+        <li id="sql">SQL</li>
+        <li id="team">team</li>
+        <li id="typescript">TypeScript</li>
+    </ul>
+    </div>
+</section>
+
+@section Scripts
+    {
+    <script type="application/ld+json">
+        {
+        "@@context": "http://schema.org/",
+        "@@type": "http://schema.org/Person",
+        "jobTitle": "Application Development Manager",
+        "url": "https://andrewmclachlan.com",
+        "sameAs": "https://au.linkedin.com/in/andrewsmclachlan",
+        "name": "Andrew McLachlan",
+        "nationality": "Australian"
+        }
+    </script>
+}

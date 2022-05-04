@@ -1,0 +1,92 @@
+﻿@import "variables";
+
+.navbar {
+    border-radius: 0;
+    margin-bottom: 0;
+    background-color: var(--nav-background);
+
+    &.navbar-light .navbar-nav {
+        .nav-link {
+            text-transform: lowercase;
+            color: var(--nav-colour);
+            font-weight: 600;
+
+            &:focus {
+                color: var(--nav-colour);
+            }
+
+            &:hover {
+                color: var(--nav-hover);
+            }
+        }
+
+        .active .nav-link,
+        .active .nav-link:hover, .active .nav-link:focus {
+            color: var(--nav-active);
+            font-weight: bold;
+        }
+    }
+
+    .level-last {
+        border-right: 1px solid var(--nav-colour);
+    }
+
+    li:last-child {
+        border: none;
+    }
+
+    &.navbar-expand-lg .navbar-nav .nav-link {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .navbar-collapse {
+        justify-content: space-between;
+    }
+
+    .navbar-brand {
+        h1 {
+            display: inline;
+            vertical-align: middle;
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding-right: 20px;
+            color: var(--colour-rich-blue);
+        }
+    }
+}
+
+
+ul.level1 {
+    font-size: 1.2em;
+    padding-left: 0;
+}
+
+ul[class*="level"] {
+    list-style: none;
+}
+
+.level1 a {
+    color: $blue;
+    padding-left: 5px;
+}
+
+.level2 a {
+    color: $lighter;
+    padding-left: 0;
+}
+
+.level1 > li {
+    margin-bottom: 10px;
+    padding-left: 5px;
+    background-color: $dark;
+    border-radius: 3px;
+}
+
+ul.level2 {
+    background-color: #FFF;
+    border-radius: 3px 0 0 0;
+    font-size: 0.9em;
+    padding-left: 20px;
+    margin-right: -1px;
+}

@@ -1,0 +1,111 @@
+﻿@import '../variables.scss';
+
+.colour ~ div, h4 {
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.colour-group, .colour-grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    h3 {
+        flex-basis: 100%;
+    }
+
+    margin-bottom: 2rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.colour-group section {
+    margin: 10px;
+
+    &.colour {
+        width: 200px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        opacity: 1;
+        transition: opacity 100ms linear;
+        padding: 10px;
+        border: 1px solid #000;
+    }
+
+    &.colour-dark {
+        color: white;
+    }
+
+    &.colour-light {
+        color: $dark;
+    }
+}
+
+section.colour-grid > section {
+    color: white;
+
+    > div {
+        width: 200px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        opacity: 0;
+        transition: opacity 100ms linear;
+        background-color: transparent;
+        padding: 10px;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    h4 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    &.dark {
+        color: black;
+    }
+}
+
+.dark {
+    background-color: $dark;
+}
+
+.lighter {
+    background-color: $lighter;
+}
+
+.rich-blue {
+    background-color: $richblue;
+}
+
+.blue {
+    background-color: $blue;
+}
+
+.light-blue {
+    background-color: $lightblue;
+}
+
+.bone {
+    background-color: $bone;
+}
+
+.muted-bone {
+    background-color: $mutedbone;
+}
+
+
+
+.keyword {
+    background-color: rgb(129,226,129);
+}

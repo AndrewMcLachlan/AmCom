@@ -1,0 +1,16 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Extensions
+@{
+    var link = Model.Link as IPublishedContent;
+    var url = link.Url();
+}
+
+<section class="@ViewData["ClassName"]">
+    <header>
+        <h3>@Model.Title</h3>
+    </header>
+    <p>
+        @Html.Raw(Model.SummaryContent)
+    </p>
+    <a class="btn btn-primary btn-wide" href="@url">read more</a>
+</section>

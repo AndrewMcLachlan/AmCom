@@ -1,0 +1,29 @@
+﻿input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.ip-address {
+  display: flex;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.ip-address .form-control {
+  width: 80px;
+}
+.ip-address input {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.cidr-result input {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///K:/Dev/Asm/AndrewMcLachlan.com%2520-%2520Umbraco/src/Asm.AmCom.Web/css/tools/cidr.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAC;AAAA;EAEG;EACA;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;AAEA;EACI;;AAGJ;EACI;EACA;;;AAKR;EACI;EACA%22%7D */

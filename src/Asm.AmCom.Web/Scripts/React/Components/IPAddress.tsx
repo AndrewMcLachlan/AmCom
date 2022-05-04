@@ -21,17 +21,17 @@ export default class IPAddress extends React.Component<IPAddressProps, IPAddress
             <fieldset className="form-group">
                 <label htmlFor={this.props.id} className="control-label">{this.props.label}</label>
                 <div className="form-inline ip-address">
-                    <input type="number" max="255" min="0" maxLength={3} className="form-control" id={this.props.id + "_1"} name="octet1" value={this.state.octet1} onChange={this.validateMaxWithNext} onKeyPress={this.validateWithDotCheck} />&nbsp;.&nbsp;
-                    <input type="number" max="255" min="0" maxLength={3} className="form-control" id={this.props.id + "_2"} name="octet2" value={this.state.octet2} onChange={this.validateMaxWithNext} onKeyPress={this.validateWithDotCheck} />&nbsp;.&nbsp;
-                    <input type="number" max="255" min="0" maxLength={3} className="form-control" id={this.props.id + "_3"} name="octet3" value={this.state.octet3} onChange={this.validateMaxWithNext} onKeyPress={this.validateWithDotCheck} />&nbsp;.&nbsp;
-                    <input type="number" max="255" min="0" maxLength={3} className="form-control" id={this.props.id + "_4"} name="octet4" value={this.state.octet4} onChange={this.validateMax} onKeyPress={this.validate} />
+                    <input type="number" max="255" min="0" maxLength={3} className="form-control" id={this.props.id + "_1"} name="octet1" value={this.state.octet1} onChange={this.validateMaxWithNext} onKeyDown={this.validateWithDotCheck} />&nbsp;.&nbsp;
+                    <input type="number" max="255" min="0" maxLength={3} className="form-control" id={this.props.id + "_2"} name="octet2" value={this.state.octet2} onChange={this.validateMaxWithNext} onKeyDown={this.validateWithDotCheck} />&nbsp;.&nbsp;
+                    <input type="number" max="255" min="0" maxLength={3} className="form-control" id={this.props.id + "_3"} name="octet3" value={this.state.octet3} onChange={this.validateMaxWithNext} onKeyDown={this.validateWithDotCheck} />&nbsp;.&nbsp;
+                    <input type="number" max="255" min="0" maxLength={3} className="form-control" id={this.props.id + "_4"} name="octet4" value={this.state.octet4} onChange={this.validateMax} onKeyDown={this.validate} />
                 </div>
             </fieldset>
         );
     }
 
     private validateWithDotCheck = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.charCode === 46 && e.currentTarget.value.length > 0) {
+        if (e.key === "." && e.currentTarget.value.length > 0) {
             (e.currentTarget.nextElementSibling as HTMLInputElement).focus();
             e.stopPropagation();
             e.preventDefault();
@@ -41,8 +41,7 @@ export default class IPAddress extends React.Component<IPAddressProps, IPAddress
     }
 
     private validate = (e: React.KeyboardEvent<HTMLInputElement>) => {
-
-        if (e.charCode > 31 && (e.charCode < 48 || e.charCode > 57)) {
+        if (e.key.length === 1 && !"0123456789".includes(e.key)) {
             e.stopPropagation();
             e.preventDefault();
         }

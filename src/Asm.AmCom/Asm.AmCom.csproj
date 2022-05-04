@@ -1,12 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup Label="Globals">
-    <SccProjectName>SAK</SccProjectName>
-    <SccProvider>SAK</SccProvider>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccLocalPath>SAK</SccLocalPath>
-  </PropertyGroup>
-
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyVersion>4.0.0.0</AssemblyVersion>
@@ -16,6 +9,7 @@
     <Product>AndrewMcLachlan.com</Product>
     <Copyright>Copyright Andrew McLachlan 2002</Copyright>
     <Description />
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,7 +24,10 @@
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.4" />
+    <PackageReference Include="Asm" Version="2.1.365" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.16" />
+    <PackageReference Include="Umbraco.Cms.Core" Version="9.4.3" />
+    <PackageReference Include="Umbraco.Cms.Web.Common" Version="9.4.3" />
   </ItemGroup>
 
 </Project>

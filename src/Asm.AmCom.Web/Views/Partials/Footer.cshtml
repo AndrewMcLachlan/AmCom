@@ -1,0 +1,17 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+<nav role="navigation">
+    <ul>
+        @{
+            var site = Model.Root();
+            var selection = site.Children.Where(x => x.Value<bool>("showInFooter"));
+            foreach (var item in selection)
+            {
+                <li><a href="@item.Url()">@item.ValueOr("navigationText", item.Name())</a></li>
+            }
+        }
+        <li><a class="" rel="me external nofollow noopener" href="https://au.linkedin.com/in/andrewsmclachlan">LinkedIn</a></li>
+        <li><theme /></li>
+    </ul>
+</nav>
+<div class="copyright">@Html.Raw(String.Format("Copyright &copy; 2010-{0} Andrew McLachlan. All rights reserved.", DateTime.Now.Year))</div>

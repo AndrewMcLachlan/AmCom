@@ -1,0 +1,30 @@
+﻿input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.ip-address {
+    display: flex;
+    font-size: 2rem;
+    font-weight: bold;
+
+    .form-control {
+        width: 80px;
+    }
+
+    input {
+        font-size: 2rem;
+        font-weight: bold;
+
+    }
+}
+
+.cidr-result input {
+    font-size: 2rem;
+    font-weight: bold;
+}

@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Primitives;
+﻿using Microsoft.AspNetCore.Http;
 
-namespace Asm.AmCom.Extensions
+namespace Microsoft.AspNetCore.Http;
+
+public static class HttpRequestExtensions
 {
-    public static class HttpRequestExtensions
+    public static string UrlReferrer(this HttpRequest request)
     {
-        public static string UrlReferrer(this HttpRequest request)
-        {
-            return request.Headers.ContainsKey("Referer") ? request.Headers["Referer"].ToString() : null;
-        }
+        return request.Headers.ContainsKey("Referer") ? request.Headers["Referer"].ToString() : null;
+    }
 
-        public static bool IsAjaxRequest(this HttpRequest request)
-        {
-            return request.Headers != null && request.Headers["X-Requested-With"] == "XMLHttpRequest";
-        }
+    public static bool IsAjaxRequest(this HttpRequest request)
+    {
+        return request.Headers != null && request.Headers["X-Requested-With"] == "XMLHttpRequest";
     }
 }

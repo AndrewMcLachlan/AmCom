@@ -1,0 +1,18 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ToolPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "FullPageLayout.cshtml";
+    ViewBag.Title = "IP address";
+    ViewBag.Canonical = "tools/ip";
+    ViewBag.Description = "Displays your IP Address";
+}
+
+@section PageHeader
+{
+    <h2>@Model.Value("title")</h2>
+}
+
+
+<h3>Your IP Address</h3>
+<h3 class="clickable copyable">@Context.Connection.RemoteIpAddress.ToString()</h3>

@@ -1,0 +1,172 @@
+﻿.word-cloud {
+    background-color: var(--colour-rich-blue);
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    ul {
+        list-style: none;
+        position: relative;
+        max-width: 859px;
+        height: 270px;
+        flex: 1;
+        display: block;
+        margin: 0 0 0 100px;
+    }
+
+    li {
+        color: white;
+        position: absolute;
+        font-family: 'Times New Roman';
+    }
+    height: 400px;
+}
+
+
+#dotnet {
+    font-size: 3rem;
+    top: 70px;
+    left: 290px;
+}
+
+#architecture {
+    font-size: 5rem;
+    font-weight: bold;
+    top: 100px;
+    left: 110px;
+}
+
+#agile {
+    font-size: 2rem;
+    top: 80px;
+    left: 210px;
+}
+
+#azure {
+    font-size: 4rem;
+    top: 0;
+    left: 250px;
+}
+
+#csharp {
+    font-size: 4rem;
+    top: 70px;
+    left: 460px;
+}
+
+#css {
+    transform: rotate(270deg);
+    top: 170px;
+    left: 625px;
+    font-size: 1rem;
+}
+
+#delivery {
+    font-size: 2rem;
+    bottom: 20px;
+    left: 265px;
+}
+
+#design {
+    font-size: 1.2rem;
+    top: 100px;
+    left: 130px;
+}
+
+#devops {
+    font-size: 4rem;
+    transform: rotate(270deg);
+    top: 55px;
+    left: 567px;
+}
+
+#html {
+    font-size: 1.7rem;
+    top: 130px;
+    left: 577px;
+}
+
+#integration {
+    font-size: 2.2rem;
+    top: 40px;
+    left: 50px;
+}
+
+#leadership {
+    font-size: 4rem;
+    font-weight: bold;
+    top: 180px;
+    left: 379px;
+}
+
+#management {
+    font-size: 1.5rem;
+    font-weight: bold;
+    left: 80px;
+    top: 17px;
+}
+
+#reactjs {
+    transform: rotate(270deg);
+    top: 130px;
+    left: 510px;
+    font-size: 1.8rem;
+}
+
+#respect {
+    transform: rotate(270deg);
+    font-size: 2rem;
+    top: 10px;
+    left: 175px;
+    font-weight: bold;
+}
+
+#rest {
+    font-size: 1.2rem;
+    top: 170px;
+    left: 580px;
+}
+
+#scrum {
+    font-size: 1.2rem;
+    transform: rotate(270deg);
+    bottom: 30px;
+    left: 220px;
+}
+
+#security {
+    font-size: 3rem;
+    transform: rotate(270deg);
+    top: 130px;
+    left: 0px;
+}
+
+#solutions {
+    font-size: 2rem;
+    bottom: 40px;
+    left: 110px;
+}
+
+#sql {
+    font-size: 2.8rem;
+    top: 80px;
+    left: 575px;
+}
+
+#team {
+    font-size: 4rem;
+    transform: rotate(270deg);
+    top: 20px;
+    left: 360px;
+}
+
+#typescript {
+    font-size: 2.6rem;
+    top: 30px;
+    left: 450px;
+    font-weight: bold;
+}

@@ -1,40 +1,29 @@
 {
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iis": {
-      "applicationUrl": "https://andrew.mclachlan.family",
-      "sslPort": 0
+    "$schema": "https://json.schemastore.org/launchsettings.json",
+    "iisSettings": {
+        "windowsAuthentication": false,
+        "anonymousAuthentication": true,
+        "iisExpress": {
+            "applicationUrl": "http://localhost:46262",
+            "sslPort": 44369
+        }
     },
-    "iisExpress": {
-      "applicationUrl": "http://localhost:58122/",
-      "sslPort": 0
+    "profiles": {
+        "IIS Express": {
+            "commandName": "IISExpress",
+            "launchBrowser": false,
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        "Umbraco.Web.UI": {
+            "commandName": "Project",
+            "dotnetRunMessages": true,
+            "launchBrowser": false,
+            "applicationUrl": "https://localhost:44369;http://localhost:46262",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        }
     }
-  },
-  "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "commandLineArgs": ".\\bin\\debug\\netcoreapp2.2\\Asm.AmCom.Web.dll",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "Asm.AmCom.Web": {
-      "commandName": "Project",
-      "commandLineArgs": ".\\bin\\debug\\netcoreapp2.2\\Asm.AmCom.Web.dll",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:58123/"
-    },
-    "IIS": {
-      "commandName": "IIS",
-      "commandLineArgs": ".\\bin\\debug\\netcoreapp2.2\\Asm.AmCom.Web.dll",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "ancmHostingModel": "InProcess"
-    }
-  }
 }

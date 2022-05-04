@@ -1,0 +1,13 @@
+﻿@model MenuModel
+@foreach (MenuItem item in Model.Items)
+{
+    string cssclass = Model.ListItemClass + (item.Selected ? " active" : String.Empty);
+    if (item.Equals(Model.Items.Last()))
+    {
+        cssclass += " level-last";
+    }
+
+<li class="@cssclass">
+    <a class="@Model.AnchorClass" href="@Url.Content(item.Url)">@item.Name</a>
+</li>
+}

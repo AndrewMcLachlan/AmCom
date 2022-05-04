@@ -3,111 +3,44 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyVersion>4.0.0.0</AssemblyVersion>
-    <FileVersion>4.0.0.0</FileVersion>
-    <Description />
+    <Version>5.0.0.0</Version>
     <Copyright>Copyright Andrew McLachlan 2002</Copyright>
     <Product>AndrewMcLachlan.com</Product>
     <Company />
     <Authors>Andrew McLachlan</Authors>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Scripts\React\node_modules\**" />
-    <Content Remove="Scripts\React\node_modules\**" />
-    <EmbeddedResource Remove="Scripts\React\node_modules\**" />
-    <None Remove="Scripts\React\node_modules\**" />
+    <PackageReference Include="BuildWebCompiler2022" Version="1.14.7" />
+    <PackageReference Include="Umbraco.Cms" Version="9.4.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Remove="wwwroot\images\Design.lnk" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="CSS\bootstrap.override.scss" />
-    <Content Include="CSS\fonts.css" />
-    <Content Include="CSS\fonts.scss" />
-    <Content Include="CSS\octopusdeploy.css" />
-    <Content Include="CSS\octopusdeploy.scss" />
-    <Content Include="CSS\regex.css" />
-    <Content Include="CSS\regex.scss" />
-    <Content Include="CSS\site.scss" />
-    <Content Include="CSS\variables.scss" />
-    <Content Include="Footer.sitemap">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Web.sitemap">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
+  <!-- Force windows to use ICU. Otherwise Windows 10 2019H1+ will do it, but older windows 10 and most if not all winodws servers will run NLS -->
   <ItemGroup>
     <PackageReference Include="Asm" Version="2.1.365" />
     <PackageReference Include="Asm.Net" Version="2.1.365" />
-    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
-    <PackageReference Include="BuildWebCompiler" Version="1.12.405" />
-    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.9.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="6.0.3" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\js\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\robots.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" Version="68.2.0.9" />
     <ProjectReference Include="..\Asm.AmCom\Asm.AmCom.csproj" />
-  </ItemGroup>
 
-
-  <ItemGroup>
-    <Compile Update="Resources\ContactResources.designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ContactResources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\Error.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Error.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\FooterResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>FooterResources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\PageTitles.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>PageTitles.resx</DependentUpon>
-    </Compile>
+    <RuntimeHostConfigurationOption Condition="$(RuntimeIdentifier.StartsWith('linux')) Or $(RuntimeIdentifier.StartsWith('win')) Or ('$(RuntimeIdentifier)' == '' And !$([MSBuild]::IsOSPlatform('osx')))" Include="System.Globalization.AppLocalIcu" Value="68.2.0.9" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resources\ContactResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ContactResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Error.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Error.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\FooterResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>FooterResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\PageTitles.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>PageTitles.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Compile Remove="node_modules\**" />
+    <Content Remove="node_modules\**" />
+    <EmbeddedResource Remove="node_modules\**" />
+    <None Remove="node_modules\**" />
   </ItemGroup>
+
+  <PropertyGroup>
+    <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
+  </PropertyGroup>
+
+  <!-- Set this to true if ModelsBuilder mode is not InMemoryAuto-->
+  <PropertyGroup>
+    <RazorCompileOnBuild>false</RazorCompileOnBuild>
+    <RazorCompileOnPublish>false</RazorCompileOnPublish>
+  </PropertyGroup>
 
 </Project>

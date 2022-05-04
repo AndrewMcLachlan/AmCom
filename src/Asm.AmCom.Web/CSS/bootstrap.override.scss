@@ -4,52 +4,16 @@ h1, .h1, h2, .h2 {
     padding-top: 1rem;
 }
 
-/* #region Nav */
-.navbar-dark {
-    background-color: $dark;
-    border-radius: 0;
-    margin-bottom: 0;
-}
-
-.navbar-dark .navbar-nav .nav-link {
-    color: $blue;
-}
-
-.navbar-dark .navbar-nav .nav-link:hover {
-	color: $bone;
-}
-
-.navbar-dark .navbar-nav .active  .nav-link,
-.navbar-dark .navbar-nav  .active  .nav-link:hover, .navbar-dark .navbar-nav .active .nav-link:focus {
-    background-color: transparent;
-    color: $mutedbone;
-}
-
-.navbar .levelLast {
-    border-right: 1px solid $blue;
-}
-.navbar li:last-child {
-    border: none;
-}
-
-.navbar-expand-lg .navbar-nav .nav-link {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/*.navbar-toggle {
-    float: left;
-}*/
-/* #endregion */
-.jumbotron .container {
-    position: relative;
-    padding: 0;
+a {
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 textarea.form-control {
     height: 200px;
 }
-
 
 .btn {
     font-weight: 300;
@@ -57,25 +21,10 @@ textarea.form-control {
     font-size: 18px;
     border-radius: 5px;
 }
-.btn .glyphicon {
-    font-size: 16px;
-    line-height: 5px;
-    vertical-align: middle;
-    display: inline-block;
-    height: 10px;
-}
 
 .btn-primary {
     background-color: $richblue;
     border-color: $lighter;
-}
-
-label {
-    font-weight: normal;
-}
-
-map {
-	border: none;
 }
 
 .table {

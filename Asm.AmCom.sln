@@ -3,18 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32210.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asm.AmCom.Web", "src\Asm.AmCom.Web\Asm.AmCom.Web.csproj", "{68593E37-F08C-4BF0-A535-F1851CA257F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asm.AmCom.Web", "src\Asm.AmCom.Web\Asm.AmCom.Web.csproj", "{2AAE6B73-BD99-4246-B248-CC197CBEC18E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asm.AmCom", "src\Asm.AmCom\Asm.AmCom.csproj", "{34D3ACD2-8273-4A47-8EB1-57F62944D3C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asm.AmCom", "src\Asm.AmCom\Asm.AmCom.csproj", "{B12EC688-2F6F-4046-A8DD-4E824D859DAA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{23323CFA-58FD-4DE6-8D19-AEFC349F3AE6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{11D6F23B-5FAC-4152-B057-D5932C271F45}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		.gitattributes = .gitattributes
-		.gitignore = .gitignore
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asm.AmCom.Tests", "src\Asm.AmCom.Tests\Asm.AmCom.Tests.csproj", "{07E46480-9F04-451E-8A0E-67E7F399688D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,23 +18,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{68593E37-F08C-4BF0-A535-F1851CA257F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{68593E37-F08C-4BF0-A535-F1851CA257F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{68593E37-F08C-4BF0-A535-F1851CA257F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{68593E37-F08C-4BF0-A535-F1851CA257F9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{34D3ACD2-8273-4A47-8EB1-57F62944D3C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34D3ACD2-8273-4A47-8EB1-57F62944D3C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34D3ACD2-8273-4A47-8EB1-57F62944D3C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{34D3ACD2-8273-4A47-8EB1-57F62944D3C9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{07E46480-9F04-451E-8A0E-67E7F399688D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{07E46480-9F04-451E-8A0E-67E7F399688D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{07E46480-9F04-451E-8A0E-67E7F399688D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07E46480-9F04-451E-8A0E-67E7F399688D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AAE6B73-BD99-4246-B248-CC197CBEC18E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AAE6B73-BD99-4246-B248-CC197CBEC18E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AAE6B73-BD99-4246-B248-CC197CBEC18E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AAE6B73-BD99-4246-B248-CC197CBEC18E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B12EC688-2F6F-4046-A8DD-4E824D859DAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B12EC688-2F6F-4046-A8DD-4E824D859DAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B12EC688-2F6F-4046-A8DD-4E824D859DAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B12EC688-2F6F-4046-A8DD-4E824D859DAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {412F35BE-1E99-4999-B278-E61803FDAF02}
+		SolutionGuid = {A0050CF1-3344-456F-9FFB-EB116C89B41F}
 	EndGlobalSection
 EndGlobal

@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<siteMap xmlns="https://andrewmclachlan.com/schemas/SiteMap.xsd" >
-    <siteMapNode url="~/privacy-and-cookies" title="Privacy" description="" />
-    <siteMapNode url="~/about-me" title="About"  description="" />
-    <siteMapNode url="~/contact" title="Contact" />
-    <siteMapNode url="http://au.linkedin.com/in/andrewsmclachlan" title="LinkedIn" />
-    <siteMapNode url="~/site-map" title="Site Map" />
-</siteMap>

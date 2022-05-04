@@ -29,27 +29,25 @@ class Cidr extends React.Component<CidrProps, any> {
         let result = null;
 
         if (this.props.cidr) {
-            result = <TextBox id="result" value={this.props.cidr} readonly={true} label="CIDR Notation" />;
+            result = <TextBox id="result" className="clickable" value={this.props.cidr} readOnly={true} label="CIDR Notation" onClick={(e: React.MouseEvent<HTMLInputElement>) =>  navigator.clipboard.writeText(e.currentTarget.value)} />;
         }
 
         return (
-            <div>
+            <>
                 <section className="row">
-                    <div className="col-md-9">
+                    <div className="col">
                         <fieldset>
-                            <legend className="sr-only">CIDR Notation Converter</legend>
                             <IPAddress id="address" label="IP Address" value={this.props.ipAddress} onChange={this.ipChanged} />
                             <IPAddress id="mask" label="Subnet Mask" value={this.props.netMask} onChange={this.maskChanged} />
                         </fieldset>
                     </div>
                 </section>
-
                 <section className="row">
-                    <div className="col-md-4 cidr-result">
+                    <div className="col cidr-result ">
                         {result}
                     </div>
                 </section>
-            </div>
+            </>
         );
     }
 

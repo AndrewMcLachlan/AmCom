@@ -6,6 +6,7 @@ import * as RegexReducer from "../Redux/Regex/Reducers";
 import Base64 from "./Base64";
 import Cidr from "./Cidr";
 import Regex from "./Regex";
+import Colours from "./Colours";
 
 export const tools: Tool[] = [
     {
@@ -26,6 +27,12 @@ export const tools: Tool[] = [
         name: "base64",
         reducer: (state) => state,
     },
+    {
+        component: Colours,
+        initialState: {},
+        name: "colours",
+        reducer: (state) => state,
+    }
 ];
 
 export interface Tool {

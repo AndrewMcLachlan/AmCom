@@ -1,38 +1,37 @@
 ﻿[
   {
     "outputFile": "css/site.css",
-    "inputFile": "css/site.scss"
+    "inputFile": "css/site.scss",
+    "options": {
+      "sourceMap": true
+    }
   },
   {
-    "outputFile": "css/site.responsive.css",
-    "inputFile": "css/site.responsive.scss"
+    "outputFile": "css/tools/tool.css",
+    "inputFile": "css/tools/tool.scss",
+    "options": {
+      "sourceMap": true
+    }
   },
   {
-    "outputFile": "css/bootstrap.override.css",
-    "inputFile": "css/bootstrap.override.scss"
+    "outputFile": "css/tools/regex.css",
+    "inputFile": "css/tools/regex.scss",
+    "options": {
+      "sourceMap": true
+    }
   },
   {
-    "outputFile": "css/egypt.css",
-    "inputFile": "css/egypt.scss"
+    "outputFile": "css/tools/cidr.css",
+    "inputFile": "css/tools/cidr.scss",
+    "options": {
+      "sourceMap": true
+    }
   },
   {
-    "outputFile": "css/fonts.css",
-    "inputFile": "css/fonts.scss"
-  },
-  {
-    "outputFile": "css/octopusdeploy.css",
-    "inputFile": "css/octopusdeploy.scss"
-  },
-  {
-    "outputFile": "css/regex.css",
-    "inputFile": "css/regex.scss"
-  },
-  {
-    "outputFile": "css/cidr.css",
-    "inputFile": "css/cidr.scss"
-  },
-  {
-    "outputFile": "css/colours.css",
-    "inputFile": "css/colours.scss"
+    "outputFile": "css/tools/colours.css",
+    "inputFile": "css/tools/colours.scss",
+    "options": {
+      "sourceMap": true
+    }
   }
 ]

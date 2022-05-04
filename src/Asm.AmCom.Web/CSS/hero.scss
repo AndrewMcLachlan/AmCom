@@ -1,0 +1,43 @@
+﻿.hero {
+    height: 405px;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+
+    h2, p {
+        font-size: 2rem;
+        margin: 0;
+        padding: 5px;
+        text-align: center;
+        /*text-shadow: 5px 5px 5px #000;*/
+        font-weight: normal;
+        color: white;
+        font-weight: 600;
+    }
+}
+
+.hero .jumbotron {
+    height: 100%;
+    background-image: url(/images/hero/wall.jpg);
+    background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+
+    .container {
+        flex-basis: 100%;
+        background-color: rgba(0,0,0,0.7);
+        border-radius: 20px;
+    }
+
+    .text {
+        width: 100%;
+    }
+}
+
+.jumbotron .container {
+    position: relative;
+    padding: 0;
+}

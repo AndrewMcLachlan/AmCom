@@ -1,0 +1,87 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnv
+@{
+    var site = Model.Root();
+    var selection = site.Children.Where(x => x.IsVisible());
+}
+@{
+	Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+  <title>@ViewBag.Title</title>
+  <link rel="Shortcut Icon" href="~/images/favicon.png" type="image/png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+  <canonical path="@ViewBag.Canonical" />
+  <meta name="description" content="@ViewBag.Description" />
+  <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/site.min.css?v=$v" />
+  @RenderSection("Head", false)
+</head>
+<body class="@Model.Name">
+  <header>
+    @if (Html.IsDebug() || hostingEnv.IsDevelopment())
+    {
+      <div class="currentBreakpoint"></div>
+    }
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-brand d-lg-none">
+        <h1>Andrew McLachlan</h1>
+      <img  src="~/images/am.96.png" alt="Andrew McLachlan" height="48" />
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul id="Menu" class="navbar-nav mr-auto">
+
+        @{string rootcssclass = $"nav-item{site.IsEqual(Model, " active")}";}
+        <li class="@rootcssclass"><a class="nav-link" href="@site.Url()">@site.Name()</a></li>
+
+        @foreach(var item in selection)
+        {
+          string cssclass = "nav-item" + (item.IsAncestorOrSelf(Model) ? " active" : String.Empty);
+          if (item.Equals(selection.Last()))
+          {
+            cssclass += " level-last";
+          }
+
+          <li class="@cssclass"><a class="nav-link" href="@item.Url()">@item.ValueOr("navigationText", item.Name())</a></li>
+        }
+        @{
+          foreach (var item in selection.SingleOrDefault(s => s.IsAncestorOrSelf(Model))?.Children ?? Array.Empty<IPublishedContent>())
+          {
+            string cssclass = "nav-item" + (item.IsAncestorOrSelf(Model) ? " active" : String.Empty);
+            if (item.Equals(selection.Last()))
+            {
+              cssclass += " level-last";
+            }
+
+            <li class="@cssclass"><a class="nav-link" href="@item.Url()">@item.ValueOr("navigationText", item.Name())</a></li>
+          }
+        }
+      </ul>
+    </div>
+    <div class="navbar-brand d-none d-lg-block">
+      <h1>Andrew McLachlan</h1>
+      <img  src="~/images/am.96.png" alt="Andrew McLachlan" height="48" />
+    </div>
+    </div>
+  </nav>
+    </header>
+  <main>
+    @RenderBody()
+  </main>
+  <footer>
+    @this.RenderSection("Footer", Html, "Footer")
+  </footer>
+  @RenderSection("Scripts", false)
+  <script src="~/js/core.js?v=$v" src-min="~/js/core.min.js?v=$v"></script>
+  <script src="~/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

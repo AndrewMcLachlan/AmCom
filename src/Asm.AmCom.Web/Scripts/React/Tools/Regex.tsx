@@ -31,7 +31,6 @@ class Regex extends React.Component<RegexProps, any> {
                 <section className="row">
                     <div className="col-md-9">
                         <fieldset>
-                            <legend className="sr-only">Regular Expression Tester</legend>
                             <TextBox id="regex" label="Regular Expression" value={this.props.regex} onChange={this.regexChanged} />
                             <TextBox id="text" label="Input" value={this.props.input} onChange={this.inputChanged} maxLength={50} />
                         </fieldset>

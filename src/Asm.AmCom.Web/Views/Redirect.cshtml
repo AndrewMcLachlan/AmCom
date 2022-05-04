@@ -1,0 +1,9 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Redirect>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = null;
+}
+@{
+    this.Context.Response.Redirect(Model.Value<string>("redirectUrl"), true);
+}
