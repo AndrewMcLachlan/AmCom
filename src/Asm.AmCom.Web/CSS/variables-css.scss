@@ -5,10 +5,10 @@
     --text-colour: var(--bs-body-color);
     --link-colour: #0d6efd;
     --nav-background: white;
-    --nav-colour: #{$dark};
+    --nav-colour: var(--colour-dark);
     --nav-active: #{$richblue};
     --nav-hover: #{$richblue};
-    --border: #{$dark};
+    --border: var(--colour-dark);
     --colour-dark: #{$dark};
     --colour-lighter: #{$lighter};
     --colour-rich-blue: #{$richblue};
@@ -20,10 +20,10 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background-colour: #{$dark};
+        --background-colour: var(--colour-dark);
         --text-colour: var(--colour-muted-bone);
         --link-colour: var(--colour-blue);
-        --nav-background: #{$dark};
+        --nav-background: var(--colour-dark);
         --nav-colour: #{$blue};
         --nav-active: #{$mutedbone};
         --nav-hover: #{$bone};
@@ -32,10 +32,10 @@
 }
 
 .dark {
-    --background-colour: #{$dark};
+    --background-colour: var(--colour-dark);
     --text-colour: var(--colour-muted-bone);
     --link-colour: var(--colour-blue);
-    --nav-background: #{$dark};
+    --nav-background: var(--colour-dark);
     --nav-colour: #{$blue};
     --nav-active: #{$mutedbone};
     --nav-hover: #{$bone};

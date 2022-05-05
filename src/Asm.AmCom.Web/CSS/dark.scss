@@ -3,9 +3,9 @@
 .dark {
 
     hr {
-        background-image: -webkit-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
-        background-image: -moz-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
-        background-image: linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
+        background-image: -webkit-linear-gradient(left, var(--colour-dark) 0, $lightblue 40%, #FFF 50%, $lightblue 60%, var(--colour-dark) 100%);
+        background-image: -moz-linear-gradient(left, var(--colour-dark) 0, $lightblue 40%, #FFF 50%, $lightblue 60%, var(--colour-dark) 100%);
+        background-image: linear-gradient(left, var(--colour-dark) 0, $lightblue 40%, #FFF 50%, $lightblue 60%, var(--colour-dark) 100%);
     }
 
     h2.has-links {
@@ -20,15 +20,15 @@
                 background-color: $mutedbone;
 
                 > a {
-                    color: $dark;
+                    color: var(--colour-dark);
                 }
             }
 
             &.level2 {
-                background-color: $dark;
+                background-color: var(--colour-dark);
 
                 > li {
-                    background-color: $dark;
+                    background-color: var(--colour-dark);
                 }
             }
         }
@@ -50,9 +50,9 @@
 @media (prefers-color-scheme: dark) {
 body:not(.light) {
     hr {
-        background-image: -webkit-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
-        background-image: -moz-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
-        background-image: linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
+        background-image: -webkit-linear-gradient(left, var(--colour-dark) 0, $lightblue 40%, #FFF 50%, $lightblue 60%, var(--colour-dark) 100%);
+        background-image: -moz-linear-gradient(left, var(--colour-dark) 0, $lightblue 40%, #FFF 50%, $lightblue 60%, var(--colour-dark) 100%);
+        background-image: linear-gradient(left, var(--colour-dark) 0, $lightblue 40%, #FFF 50%, $lightblue 60%, var(--colour-dark) 100%);
     }
 
     h2.has-links {
@@ -67,15 +67,15 @@ body:not(.light) {
                 background-color: $mutedbone;
 
                 > a {
-                    color: $dark;
+                    color: var(--colour-dark);
                 }
             }
 
             &.level2 {
-                background-color: $dark;
+                background-color: var(--colour-dark);
 
                 > li {
-                    background-color: $dark;
+                    background-color: var(--colour-dark);
                 }
             }
         }

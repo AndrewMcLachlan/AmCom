@@ -83,7 +83,7 @@ ul[class*="level"] {
 .level1 > li {
     margin-bottom: 10px;
     padding-left: 5px;
-    background-color: $dark;
+    background-color: var(--colour-dark);
     border-radius: 3px;
 }
 

@@ -4,13 +4,13 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: $dark;
+    background-color: var(--colour-dark);
 }
 
 body, h1, .text {
     font-family: Quicksand, HelveticaNeue-Thin, Calibri, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
-    font-size: 1rem;
+    font-size: 18px;
 }
 
 h2, h3, h4, h5, h6 {
@@ -49,9 +49,9 @@ map {
 }
 
 hr {
-    background-image: -webkit-linear-gradient(left, #FFF 0, $lightblue 20%, $dark 50%, $lightblue 80%, #FFF 100%);
-    background-image: -moz-linear-gradient(left, #FFF 0, $lightblue 20%, $dark 50%, $lightblue 80%, #FFF 100%);
-    background-image: linear-gradient(left, #FFF 0, $lightblue 20%, $dark 50%, $lightblue 80%, #FFF 100%);
+    background-image: -webkit-linear-gradient(left, #FFF 0, $lightblue 20%, var(--colour-dark) 50%, $lightblue 80%, #FFF 100%);
+    background-image: -moz-linear-gradient(left, #FFF 0, $lightblue 20%, var(--colour-dark) 50%, $lightblue 80%, #FFF 100%);
+    background-image: linear-gradient(left, #FFF 0, $lightblue 20%, var(--colour-dark) 50%, $lightblue 80%, #FFF 100%);
     border: none;
     height: 1px;
     width: 95%;
