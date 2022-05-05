@@ -52,7 +52,11 @@ public abstract class IntegrityTagHelper : TagHelper
 
         string path = Path.Combine(HostingEnvironment.WebRootPath, cleanPath);
 
-        if (!File.Exists(path)) return;
+        if (!File.Exists(path))
+        {
+            output.SuppressOutput();
+            return;
+        }
 
         var hashAlgo = System.Security.Cryptography.HashAlgorithm.Create("SHA-512");
 

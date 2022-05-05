@@ -4,9 +4,12 @@
 
     hr {
         background-image: -webkit-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
-        background-image: -ms-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
         background-image: -moz-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
         background-image: linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
+    }
+
+    h2.has-links {
+        border-bottom-color: var(--colour-dark);
     }
 
     &.sitemap {
@@ -48,9 +51,12 @@
 body:not(.light) {
     hr {
         background-image: -webkit-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
-        background-image: -ms-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
         background-image: -moz-linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
         background-image: linear-gradient(left, $dark 0, $lightblue 40%, #FFF 50%, $lightblue 60%, $dark 100%);
+    }
+
+    h2.has-links {
+        border-bottom-color: var(--colour-dark);
     }
 
     .sitemap {

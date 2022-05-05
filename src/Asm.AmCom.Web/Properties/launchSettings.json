@@ -3,10 +3,10 @@
     "iisSettings": {
         "windowsAuthentication": false,
         "anonymousAuthentication": true,
-        "iisExpress": {
-            "applicationUrl": "http://localhost:46262",
-            "sslPort": 44369
-        }
+      "iisExpress": {
+        "applicationUrl": "http://andrew.mclachlan.family:46262",
+        "sslPort": 44369
+      }
     },
     "profiles": {
         "IIS Express": {

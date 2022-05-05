@@ -21,7 +21,7 @@ public class CanonicalTagHelper : TagHelper
     {
         string path = context.AllAttributes["path"].Value as string;
 
-        string href = $"{ViewContext.HttpContext.Request.Scheme}://{ViewContext.HttpContext.Request.Host}/{path}";
+        string href = $"{ViewContext.HttpContext.Request.Scheme}://{ViewContext.HttpContext.Request.Host}/{path}".Replace("//", "/").TrimEnd('/');
 
         output.TagName = "link";
 

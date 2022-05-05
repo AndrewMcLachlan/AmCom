@@ -16,14 +16,29 @@ input[type=number] {
 .ip-address .form-control {
   width: 80px;
 }
+@media screen and (max-width: 991px), (max-device-width: 991px) {
+  .ip-address .form-control {
+    width: 65px;
+  }
+}
 .ip-address input {
   font-size: 2rem;
   font-weight: bold;
+}
+@media screen and (max-width: 991px), (max-device-width: 991px) {
+  .ip-address input {
+    font-size: 1.4rem;
+  }
 }
 
 .cidr-result input {
   font-size: 2rem;
   font-weight: bold;
 }
+@media screen and (max-width: 991px), (max-device-width: 991px) {
+  .cidr-result input {
+    font-size: 1.5rem;
+  }
+}
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///K:/Dev/Asm/AndrewMcLachlan.com%2520-%2520Umbraco/src/Asm.AmCom.Web/css/tools/cidr.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAC;AAAA;EAEG;EACA;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;AAEA;EACI;;AAGJ;EACI;EACA;;;AAKR;EACI;EACA%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/tools/cidr.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/mixins.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAEA;AAAA;EAEI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;AAEA;EACI;;ACdA;EDaJ;IAIQ;;;AAIR;EACI;EACA;;ACvBA;EDqBJ;IAKQ;;;;AAKZ;EACI;EACA;;ACjCI;ED+BR;IAKQ%22%7D */

@@ -1,13 +1,28 @@
 ﻿.control-label {
   font-size: 2rem;
 }
+@media screen and (max-width: 991px), (max-device-width: 991px) {
+  .control-label {
+    font-size: 1.5rem;
+  }
+}
 
 input.form-control {
   font-size: 1.5rem;
+}
+@media screen and (max-width: 991px), (max-device-width: 991px) {
+  input.form-control {
+    font-size: 1.3rem;
+  }
 }
 
 textarea.form-control {
   font-size: 1.5rem;
 }
+@media screen and (max-width: 991px), (max-device-width: 991px) {
+  textarea.form-control {
+    font-size: 1.3rem;
+  }
+}
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///K:/Dev/Asm/AndrewMcLachlan.com%2520-%2520Umbraco/src/Asm.AmCom.Web/css/tools/tool.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAC;EACG;;;AAGJ;EACI;;;AAGJ;EACI%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/tools/tool.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/mixins.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAEA;EACI;;ACCI;EDFR;IAIQ;;;;AAIR;EACI;;ACPI;EDMR;IAIQ;;;;AAIR;EACI;;ACfI;EDcR;IAIQ%22%7D */

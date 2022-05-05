@@ -1,11 +1,25 @@
-﻿.control-label {
+﻿@import "../mixins";
+
+.control-label {
     font-size: 2rem;
+
+    @include media-breakpoint-down(md) {
+        font-size: 1.5rem;
+    }
 }
 
 input.form-control {
     font-size: 1.5rem;
+
+    @include media-breakpoint-down(md) {
+        font-size: 1.3rem;
+    }
 }
 
 textarea.form-control {
     font-size: 1.5rem;
+
+    @include media-breakpoint-down(md) {
+        font-size: 1.3rem;
+    }
 }
