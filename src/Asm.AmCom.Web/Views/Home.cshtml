@@ -3,6 +3,9 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Home>
 @{
     Layout = "Layout.cshtml";
+    ViewBag.Title = Model.Value("title");
+    ViewBag.Description = Model.Value("description");
+    ViewBag.Canonical = Model.Url();
 }
 
 @section Head
