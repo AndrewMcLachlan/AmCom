@@ -3,7 +3,7 @@
 @{
     var image = Model.PageLinkImage as IPublishedContent;
     var altText = image?.Value<string>("umbracoAltText");
-    altText = String.IsNullOrWhiteSpace(altText) ? null : altText;
+    altText = String.IsNullOrWhiteSpace(altText) ? String.Empty : altText;
     var rel = Uri.IsWellFormedUriString(Model.PageLinkUrl, UriKind.Absolute) ? "external nofollow" : null;
 }
   <aside class="page-link">
