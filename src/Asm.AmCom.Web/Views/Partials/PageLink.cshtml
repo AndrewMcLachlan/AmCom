@@ -1,13 +1,16 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @using Umbraco.Extensions
 @{
-    var image = Model.PageLinkImage as IPublishedContent;// Value<IPublishedContent>("pageLinkImage");
+    var image = Model.PageLinkImage as IPublishedContent;
+    var altText = image?.Value<string>("umbracoAltText");
+    altText = String.IsNullOrWhiteSpace(altText) ? null : altText;
+    var rel = Uri.IsWellFormedUriString(Model.PageLinkUrl, UriKind.Absolute) ? "external nofollow" : null;
 }
   <aside class="page-link">
-    <a href="@Model.PageLinkUrl" target="_blank" rel="nofollow">
+    <a href="@Model.PageLinkUrl" target="_blank" rel="@rel">
       @if (image != null)
       {
-        <img src="@image.Url()" alt="@(image.Value<string>("umbracoAltText"))" />
+        <img src="@image.Url()" alt="@altText" role="@(String.IsNullOrEmpty(altText) ? "presentation" : null)" />
       }
       @if (!String.IsNullOrWhiteSpace(Model.PageLinkText))
       {
