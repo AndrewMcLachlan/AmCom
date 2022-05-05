@@ -15,6 +15,7 @@
         headerImageStyle = $"background-image: url({typedMediaPickerSingle.Url()})";
         headerImageStyle += Model.ValueAnd("backgroundSize", "; background-size: {0}");
     }
+  headerImageStyle += Model.ValueAnd("backgroundColour", "; background-color: {0}");
 }
 
 @section PageHeader
