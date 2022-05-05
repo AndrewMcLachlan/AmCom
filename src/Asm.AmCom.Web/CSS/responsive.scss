@@ -95,6 +95,11 @@
         }
     }
 
+    h2.has-links {
+        border-bottom-color: var(--colour-dark);
+    }
+
+
     .page-links {
         display: flex;
         justify-content: space-between;

@@ -8,10 +8,6 @@
         background-image: linear-gradient(left, var(--colour-dark) 0, $lightblue 40%, #FFF 50%, $lightblue 60%, var(--colour-dark) 100%);
     }
 
-    h2.has-links {
-        border-bottom-color: var(--colour-dark);
-    }
-
     &.sitemap {
 
         ul {
@@ -53,10 +49,6 @@ body:not(.light) {
         background-image: -webkit-linear-gradient(left, var(--colour-dark) 0, $lightblue 40%, #FFF 50%, $lightblue 60%, var(--colour-dark) 100%);
         background-image: -moz-linear-gradient(left, var(--colour-dark) 0, $lightblue 40%, #FFF 50%, $lightblue 60%, var(--colour-dark) 100%);
         background-image: linear-gradient(left, var(--colour-dark) 0, $lightblue 40%, #FFF 50%, $lightblue 60%, var(--colour-dark) 100%);
-    }
-
-    h2.has-links {
-        border-bottom-color: var(--colour-dark);
     }
 
     .sitemap {
