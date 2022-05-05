@@ -26,8 +26,8 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Asm" Version="2.1.365" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.16" />
-    <PackageReference Include="Umbraco.Cms.Core" Version="9.4.3" />
-    <PackageReference Include="Umbraco.Cms.Web.Common" Version="9.4.3" />
+    <PackageReference Include="Umbraco.Cms.Core" Version="9.5.0" />
+    <PackageReference Include="Umbraco.Cms.Web.Common" Version="9.5.0" />
   </ItemGroup>
 
 </Project>

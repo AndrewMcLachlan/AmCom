@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="BuildWebCompiler2022" Version="1.14.7" />
-    <PackageReference Include="Umbraco.Cms" Version="9.4.1" />
+    <PackageReference Include="Umbraco.Cms" Version="9.5.0" />
   </ItemGroup>
 
   <!-- Force windows to use ICU. Otherwise Windows 10 2019H1+ will do it, but older windows 10 and most if not all winodws servers will run NLS -->
@@ -31,6 +31,14 @@
     <Content Remove="node_modules\**" />
     <EmbeddedResource Remove="node_modules\**" />
     <None Remove="node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\images\Design.lnk" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\Design.lnk" />
   </ItemGroup>
 
   <PropertyGroup>
