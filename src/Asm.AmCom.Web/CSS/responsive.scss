@@ -44,6 +44,12 @@ $phone: 360px;
     }
 }
 
+@media screen and (max-width: 991px) and (prefers-color-scheme: dark) {
+    body.home main {
+        border-bottom: 1px solid var(--border);
+    }
+}
+
 @media screen and (max-width: 966px), (max-device-width: 966px) {
 
     .currentBreakpoint::after {
@@ -57,6 +63,10 @@ $phone: 360px;
         content: '(max-width: 991px)';
     }
 
+    body.home.dark main {
+        border-bottom: 1px solid var(--border);
+    }
+
     .home.index .summary li {
         font-size: 18px;
     }
@@ -64,10 +74,12 @@ $phone: 360px;
     .summary section {
         border-right: none;
         border-bottom: 1px solid var(--border);
+        margin-bottom: 15px;
     }
 
     .summary section:last-child {
         border-bottom: none;
+        margin-bottom: 0;
     }
 
     .summary .btn {
@@ -91,6 +103,46 @@ $phone: 360px;
 }
 
 @media screen and (max-width: 767px), (max-device-width: 767px) {
+
+    .navbar > .container-fluid {
+        align-items: normal;
+    }
+
+    .navbar-brand {
+        position: absolute;
+        right: 0;
+        margin-top: 0;
+        padding-top:0;
+        top: 3px;
+    }
+
+    h2:not(.text) {
+        font-size: 2rem;
+        margin-bottom: 0;
+        line-height: 50px;
+    }
+
+    .page-links {
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--colour-muted-bone);
+        margin-bottom: 0.5rem;
+        border-bottom: 2px solid var(--colour-dark);
+    }
+
+    aside.page-link {
+        margin: 0;
+        float: none;
+        border: none;
+        border-radius: 0;
+        border-right: 2px solid var(--colour-dark);
+        flex:1;
+
+        &:last-child {
+            border-right: none;
+            text-align: right;
+        }
+    }
 
     .hero {
 
@@ -202,8 +254,15 @@ $phone: 360px;
     }
 }
 
+@media screen and (max-width: 575px), (max-device-width: 575px) {
+    .currentBreakpoint::after {
+        content: '(max-width: 575px), (max-device-width: 575px)';
+    }
 
-@media screen and (max-width: 575px) {
+    h1 {
+        padding-right: 10px;
+    }
+
     .hero {
         height: 202px;
 

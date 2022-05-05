@@ -25,10 +25,12 @@
 {
   @if(Model.Value("PageLinks") != null)
   {
+    <section class="page-links">
     @foreach (var pageLink in Model.Value<IEnumerable<Umbraco.Cms.Web.Common.PublishedModels.PageLink>>("PageLinks"))
     {
             Html.RenderPartial("PageLink", pageLink);
         }
+    </section>
   }
 }
 

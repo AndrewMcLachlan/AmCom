@@ -70,12 +70,16 @@ function setInitialTheme() {
 
   if (theme) {
     changeWebsiteTheme(theme);
+  } else if (mqDark.matches) {
+    changeWebsiteTheme("dark");
+  } else {
+    changeWebsiteTheme("light");
   }
 }
 
 function switchTheme(e) {
   var body = document.getElementsByTagName("body")[0];
-  var theme = "";
+  var theme = "light";
 
   if (hasThemeOverride()) {
     theme = body.classList.contains("dark") ? "light" : "dark";
@@ -93,9 +97,13 @@ function hasThemeOverride() {
 
 function changeWebsiteTheme(theme) {
   var body = document.getElementsByTagName("body")[0];
+  var nav = document.getElementById("top-nav");
   body.classList.remove("dark");
   body.classList.remove("light");
   body.classList.add(theme.toLowerCase());
+  nav.classList.remove("navbar-dark");
+  nav.classList.remove("navbar-light");
+  nav.classList.add("navbar-".concat(theme.toLowerCase()));
 }
 
 function copyToClipboard(e) {
