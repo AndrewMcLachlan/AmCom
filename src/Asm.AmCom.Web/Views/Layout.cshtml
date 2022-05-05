@@ -4,8 +4,6 @@
 @{
     var site = Model.Root();
     var selection = site.Children.Where(x => x.IsVisible());
-}
-@{
 	Layout = null;
 }
 <!DOCTYPE html>
@@ -21,7 +19,7 @@
   <link rel="stylesheet" href="~/css/site.min.css?v=$v" />
   @RenderSection("Head", false)
 </head>
-<body class="@Model.Name">
+<body class="@Model.NameAsCssClass()">
   <header>
     @if (Html.IsDebug() || hostingEnv.IsDevelopment())
     {

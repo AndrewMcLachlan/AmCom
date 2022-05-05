@@ -44,8 +44,6 @@ public class Startup
         services.AddHttpContextAccessor();
         services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
         services.AddTransient<ViewHelper>();
-        services.AddTransient<ThemeHelper>();
-
 
 #pragma warning disable IDE0022 // Use expression body for methods
         services.AddUmbraco(_env, _config)
