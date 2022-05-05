@@ -101,7 +101,7 @@
 
 
     .page-links {
-        display: flex;
+        float: none;
         justify-content: space-between;
         background-color: var(--colour-muted-bone);
         margin-bottom: 0.5rem;
@@ -110,7 +110,6 @@
 
     aside.page-link {
         margin: 0;
-        float: none;
         border: none;
         border-radius: 0;
         border-right: 2px solid var(--colour-dark);
