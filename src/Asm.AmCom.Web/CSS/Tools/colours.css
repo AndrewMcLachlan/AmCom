@@ -1,5 +1,4 @@
-﻿/*rgba(27,34,44,1)*/
-.colour ~ div, h4 {
+﻿.colour ~ div, h4 {
   font-weight: bold;
   font-size: 1em;
 }
@@ -36,7 +35,7 @@
   color: white;
 }
 .colour-group section.colour-light {
-  color: #14252C;
+  color: var(--colour-dark);
 }
 
 section.colour-grid > section {
@@ -66,35 +65,35 @@ section.colour-grid > section.dark {
 }
 
 .dark {
-  background-color: #14252C;
+  background-color: var(--colour-dark);
 }
 
 .lighter {
-  background-color: #29333D;
+  background-color: var(--colour-lighter);
 }
 
 .rich-blue {
-  background-color: #3C74A8;
+  background-color: var(--colour-rich-blue);
 }
 
 .blue {
-  background-color: #73BEE9;
+  background-color: var(--colour-blue);
 }
 
 .light-blue {
-  background-color: #aadcf7;
+  background-color: var(--colour-light-blue);
 }
 
 .bone {
-  background-color: #F8F8D2;
+  background-color: var(--colour-bone);
 }
 
 .muted-bone {
-  background-color: #DADAD3;
+  background-color: var(--colour-muted-bone);
 }
 
 .keyword {
   background-color: #81e281;
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/variables.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/tools/colours.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAC;ACED;EACI;EACA;;;AAGJ;EACI;EACA;EACA;EAMA;;AAJA;EACI;;AAKJ;EACI;;;AAIR;EACI;;AAEA;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAGJ;EACI;;AAGJ;EACI,OD3CD;;;AC+CP;EACI;;AAEA;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;;AAIR;EACI;EACA;;AAGJ;EACI;;;AAIR;EACI,kBD9EG;;;ACiFP;EACI,kBDjFM;;;ACoFV;EACI,kBDnFO;;;ACsFX;EACI,kBDrFG;;;ACwFP;EACI,kBDxFQ;;;AC2FZ;EACI,kBD1FG;;;AC6FP;EACI,kBD7FQ;;;ACkGZ;EACI%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/tools/colours.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAC;EACG;EACA;;;AAGJ;EACI;EACA;EACA;EAMA;;AAJA;EACI;;AAKJ;EACI;;;AAIR;EACI;;AAEA;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAGJ;EACI;;AAGJ;EACI;;;AAIR;EACI;;AAEA;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;;AAIR;EACI;EACA;;AAGJ;EACI;;;AAIR;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAKJ;EACI%22%7D */

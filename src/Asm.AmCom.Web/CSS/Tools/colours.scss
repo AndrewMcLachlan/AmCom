@@ -1,6 +1,4 @@
-﻿@import '../variables.scss';
-
-.colour ~ div, h4 {
+﻿.colour ~ div, h4 {
     font-weight: bold;
     font-size: 1em;
 }
@@ -42,7 +40,7 @@
     }
 
     &.colour-light {
-        color: $dark;
+        color: var(--colour-dark);
     }
 }
 
@@ -77,31 +75,31 @@ section.colour-grid > section {
 }
 
 .dark {
-    background-color: $dark;
+    background-color: var(--colour-dark);
 }
 
 .lighter {
-    background-color: $lighter;
+    background-color: var(--colour-lighter);
 }
 
 .rich-blue {
-    background-color: $richblue;
+    background-color: var(--colour-rich-blue);
 }
 
 .blue {
-    background-color: $blue;
+    background-color: var(--colour-blue);
 }
 
 .light-blue {
-    background-color: $lightblue;
+    background-color: var(--colour-light-blue);
 }
 
 .bone {
-    background-color: $bone;
+    background-color: var(--colour-bone);
 }
 
 .muted-bone {
-    background-color: $mutedbone;
+    background-color: var(--colour-muted-bone);
 }
 
 

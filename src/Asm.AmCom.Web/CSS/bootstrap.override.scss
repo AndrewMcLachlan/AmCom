@@ -1,6 +1,4 @@
-﻿@import 'variables';
-
-h1, .h1, h2, .h2 {
+﻿h1, .h1, h2, .h2 {
     padding-top: 1rem;
 }
 
@@ -18,13 +16,28 @@ textarea.form-control {
 .btn {
     font-weight: 300;
     padding: 8px 20px;
-    font-size: 18px;
     border-radius: 5px;
 }
 
+.btn-link {
+    padding: 0;
+    border: none;
+    font-weight: normal;
+    display: inline;
+    vertical-align: initial;
+
+    &:focus {
+        box-shadow: none;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 .btn-primary {
-    background-color: $richblue;
-    border-color: $lighter;
+    background-color: var(--colour-rich-blue);
+    border-color: var(--colour-lighter);
 }
 
 .table {

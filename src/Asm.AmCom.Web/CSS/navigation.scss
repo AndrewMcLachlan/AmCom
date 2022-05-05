@@ -1,6 +1,4 @@
-﻿@import "variables";
-
-.navbar {
+﻿.navbar {
     border-radius: 0;
     margin-bottom: 0;
     background-color: var(--nav-background);
@@ -71,12 +69,12 @@ ul[class*="level"] {
 }
 
 .level1 a {
-    color: $blue;
+    color: var(--colour-blue);
     padding-left: 5px;
 }
 
 .level2 a {
-    color: $lighter;
+    color: var(--colour-lighter);
     padding-left: 0;
 }
 

@@ -1,11 +1,9 @@
-﻿@import 'variables';
-
-.dark {
+﻿.dark {
 
     hr {
-        background-image: -webkit-linear-gradient(left, var(--colour-dark) 0, $lightblue 40%, #FFF 50%, $lightblue 60%, var(--colour-dark) 100%);
-        background-image: -moz-linear-gradient(left, var(--colour-dark) 0, $lightblue 40%, #FFF 50%, $lightblue 60%, var(--colour-dark) 100%);
-        background-image: linear-gradient(left, var(--colour-dark) 0, $lightblue 40%, #FFF 50%, $lightblue 60%, var(--colour-dark) 100%);
+        background-image: -webkit-linear-gradient(left, var(--colour-dark) 0, var(--colour-light-blue) 40%, #FFF 50%, var(--colour-light-blue) 60%, var(--colour-dark) 100%);
+        background-image: -moz-linear-gradient(left, var(--colour-dark) 0, var(--colour-light-blue) 40%, #FFF 50%, var(--colour-light-blue) 60%, var(--colour-dark) 100%);
+        background-image: linear-gradient(left, var(--colour-dark) 0, var(--colour-light-blue) 40%, #FFF 50%, var(--colour-light-blue) 60%, var(--colour-dark) 100%);
     }
 
     &.sitemap {
@@ -13,7 +11,7 @@
         ul {
 
             &.level1 > li {
-                background-color: $mutedbone;
+                background-color: var(--colour-muted-bone);
 
                 > a {
                     color: var(--colour-dark);
@@ -31,14 +29,14 @@
     }
 
     .form-control {
-        background-color: $mutedbone;
+        background-color: var(--colour-muted-bone);
     }
 
     aside.page-link {
-        background-color: $mutedbone;
+        background-color: var(--colour-muted-bone);
 
         a {
-            color: $richblue;
+            color: var(--colour-rich-blue);
         }
     }
 }
@@ -46,9 +44,9 @@
 @media (prefers-color-scheme: dark) {
 body:not(.light) {
     hr {
-        background-image: -webkit-linear-gradient(left, var(--colour-dark) 0, $lightblue 40%, #FFF 50%, $lightblue 60%, var(--colour-dark) 100%);
-        background-image: -moz-linear-gradient(left, var(--colour-dark) 0, $lightblue 40%, #FFF 50%, $lightblue 60%, var(--colour-dark) 100%);
-        background-image: linear-gradient(left, var(--colour-dark) 0, $lightblue 40%, #FFF 50%, $lightblue 60%, var(--colour-dark) 100%);
+        background-image: -webkit-linear-gradient(left, var(--colour-dark) 0, var(--colour-light-blue) 40%, #FFF 50%, var(--colour-light-blue) 60%, var(--colour-dark) 100%);
+        background-image: -moz-linear-gradient(left, var(--colour-dark) 0, var(--colour-light-blue) 40%, #FFF 50%, var(--colour-light-blue) 60%, var(--colour-dark) 100%);
+        background-image: linear-gradient(left, var(--colour-dark) 0, var(--colour-light-blue) 40%, #FFF 50%, var(--colour-light-blue) 60%, var(--colour-dark) 100%);
     }
 
     .sitemap {
@@ -56,7 +54,7 @@ body:not(.light) {
         ul {
 
             &.level1 > li {
-                background-color: $mutedbone;
+                background-color: var(--colour-muted-bone);
 
                 > a {
                     color: var(--colour-dark);
@@ -74,14 +72,14 @@ body:not(.light) {
     }
 
     .form-control {
-        background-color: $mutedbone;
+        background-color: var(--colour-muted-bone);
     }
 
     aside.page-link {
-        background-color: $mutedbone;
+        background-color: var(--colour-muted-bone);
 
         a {
-            color: $richblue;
+            color: var(--colour-rich-blue);
         }
     }
 }

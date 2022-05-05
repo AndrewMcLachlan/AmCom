@@ -1,6 +1,4 @@
-﻿@import 'variables';
-
-html, body {
+﻿html, body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -32,6 +30,7 @@ h4 {
 
 a {
     color: var(--link-colour);
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 input[readonly] {
@@ -49,9 +48,9 @@ map {
 }
 
 hr {
-    background-image: -webkit-linear-gradient(left, #FFF 0, $lightblue 20%, var(--colour-dark) 50%, $lightblue 80%, #FFF 100%);
-    background-image: -moz-linear-gradient(left, #FFF 0, $lightblue 20%, var(--colour-dark) 50%, $lightblue 80%, #FFF 100%);
-    background-image: linear-gradient(left, #FFF 0, $lightblue 20%, var(--colour-dark) 50%, $lightblue 80%, #FFF 100%);
+    background-image: -webkit-linear-gradient(left, #FFF 0, var(--colour-light-blue) 20%, var(--colour-dark) 50%, var(--colour-light-blue) 80%, #FFF 100%);
+    background-image: -moz-linear-gradient(left, #FFF 0, var(--colour-light-blue) 20%, var(--colour-dark) 50%, var(--colour-light-blue) 80%, #FFF 100%);
+    background-image: linear-gradient(left, #FFF 0, var(--colour-light-blue) 20%, var(--colour-dark) 50%, var(--colour-light-blue) 80%, #FFF 100%);
     border: none;
     height: 1px;
     width: 95%;
