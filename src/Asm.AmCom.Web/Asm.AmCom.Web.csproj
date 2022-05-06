@@ -9,6 +9,7 @@
     <Company />
     <Authors>Andrew McLachlan</Authors>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <GenerateRuntimeConfigDevFile>true</GenerateRuntimeConfigDevFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,9 +29,13 @@
 
   <ItemGroup>
     <Compile Remove="node_modules\**" />
+    <Compile Remove="wwwroot\media\**" />
     <Content Remove="node_modules\**" />
+    <Content Remove="wwwroot\media\**" />
     <EmbeddedResource Remove="node_modules\**" />
+    <EmbeddedResource Remove="wwwroot\media\**" />
     <None Remove="node_modules\**" />
+    <None Remove="wwwroot\media\**" />
   </ItemGroup>
 
   <ItemGroup>
