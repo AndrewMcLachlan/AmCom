@@ -16,7 +16,7 @@
 
 <article>
     <header>
-        @RenderSection("PageHeader", false)
+        @this.RenderSection("PageHeader", Html, "PageHeader")
         @RenderSection("PageLink", false)
     </header>
     <div class="container">

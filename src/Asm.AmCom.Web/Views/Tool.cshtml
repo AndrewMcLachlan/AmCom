@@ -12,11 +12,6 @@
   <link rel="stylesheet" href="@($"~/css/{toolName}.min.css?v=$v")" />
 }
 
-@section PageHeader
-{
-    <h2>@Model.Value("title")</h2>
-}
-
 <article>
     <div class="container">
         <div id="app" data-tool="@(Model.Value<string>("toolName"))"></div>

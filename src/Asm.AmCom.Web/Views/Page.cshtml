@@ -5,27 +5,7 @@
     ViewBag.Title = $"{Model.Value("title")} - Andrew McLachlan";
     ViewBag.Description = Model.Value("description");
     ViewBag.Canonical = Model.Url();
-
     var pageLinks = Model.Value<IEnumerable<Umbraco.Cms.Web.Common.PublishedModels.PageLink>>("PageLinks");
-
-    string headerImageStyle = "";
-    var typedMediaPickerSingle = Model.Value<IPublishedContent>("headerBackground");
-    if (typedMediaPickerSingle != null)
-    {
-        headerImageStyle = $"background-image: url({typedMediaPickerSingle.Url()})";
-        headerImageStyle += Model.ValueAnd("backgroundSize", "; background-size: {0}");
-    }
-  headerImageStyle += Model.ValueAnd("backgroundColour", "; background-color: {0}");
-}
-
-@section PageHeader
-{
-    @{
-        var className = pageLinks?.Any() ?? false ? "has-links" : String.Empty;
-        className += Model.Value<string>("title").Length > 23 ? " long" : String.Empty;
-    }
-
-    <h2 class="@className.Trim()" style="@headerImageStyle">@Model.Value("title")</h2>
 }
 
 @section PageLink
@@ -33,7 +13,7 @@
   @if(Model.Value("PageLinks") != null)
   {
     <section class="page-links">
-    @foreach (var pageLink in Model.Value<IEnumerable<Umbraco.Cms.Web.Common.PublishedModels.PageLink>>("PageLinks"))
+    @foreach (var pageLink in pageLinks)
     {
             Html.RenderPartial("PageLink", pageLink);
         }
