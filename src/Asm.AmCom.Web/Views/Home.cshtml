@@ -17,13 +17,11 @@
 }
 
     <div class="hero">
-        @{
-        await Html.RenderPartialAsync("heroes/Static", Model);
-    }
-</div>
+        @await Html.PartialAsync("heroes/Static", Model)
+    </div>
 
-<section class="container">
-    @{
+    <section class="container">
+        @{
         var summaries = Model.SummaryList; // Model.Value<IList<IPublishedContent>>("SummaryList");
         if (summaries != null)
         {
@@ -39,31 +37,31 @@
     }
 </section>
 <section class="word-cloud d-none d-lg-block">
-  <div class="container">
-    <ul>
-        <li id="dotnet">.NET</li>
-        <li id="architecture">Architecture</li>
-        <li id="agile">Agile</li>
-        <li id="azure">Azure</li>
-        <li id="csharp">C#</li>
-        <li id="css">CSS</li>
-        <li id="design">Design</li>
-        <li id="devops">DevOps</li>
-        <li id="delivery">Delivery</li>
-        <li id="html">HTML</li>
-        <li id="integration">Integration</li>
-        <li id="leadership">Leadership</li>
-        <li id="management">Management</li>
-        <li id="reactjs">React JS</li>
-        <li id="respect">Respect</li>
-        <li id="rest">REST</li>
-        <li id="scrum">Scrum</li>
-        <li id="security">Security</li>
-        <li id="solutions">Solutions</li>
-        <li id="sql">SQL</li>
-        <li id="team">team</li>
-        <li id="typescript">TypeScript</li>
-    </ul>
+    <div class="container">
+        <ul>
+            <li id="dotnet">.NET</li>
+            <li id="architecture">Architecture</li>
+            <li id="agile">Agile</li>
+            <li id="azure">Azure</li>
+            <li id="csharp">C#</li>
+            <li id="css">CSS</li>
+            <li id="design">Design</li>
+            <li id="devops">DevOps</li>
+            <li id="delivery">Delivery</li>
+            <li id="html">HTML</li>
+            <li id="integration">Integration</li>
+            <li id="leadership">Leadership</li>
+            <li id="management">Management</li>
+            <li id="reactjs">React JS</li>
+            <li id="respect">Respect</li>
+            <li id="rest">REST</li>
+            <li id="scrum">Scrum</li>
+            <li id="security">Security</li>
+            <li id="solutions">Solutions</li>
+            <li id="sql">SQL</li>
+            <li id="team">team</li>
+            <li id="typescript">TypeScript</li>
+        </ul>
     </div>
 </section>
 
