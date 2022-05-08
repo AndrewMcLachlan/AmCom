@@ -59,3 +59,18 @@ hr {
 strong {
     font-weight: normal;
 }
+
+blockquote {
+    margin-block-start: 1.125rem;
+    margin-block-end: 1.125rem;
+
+    p {
+        &:before {
+            content: '\201C';
+        }
+
+        &:after {
+            content: '\201D';
+        }
+    }
+}
