@@ -1,5 +1,15 @@
 ﻿@import "variables";
 
+:root {
+    --colour-dark: #{$dark};
+    --colour-lighter: #{$lighter};
+    --colour-rich-blue: #{$rich-blue};
+    --colour-blue: #{$blue};
+    --colour-light-blue: #{$light-blue};
+    --colour-bone: #{$bone};
+    --colour-muted-bone: #{$muted-bone};
+}
+
 :root, .light {
     --background-colour: white;
     --text-colour: var(--bs-body-color);
@@ -9,13 +19,7 @@
     --nav-active: var(--colour-rich-blue);
     --nav-hover: var(--colour-rich-blue);
     --border: var(--colour-dark);
-    --colour-dark: #{$dark};
-    --colour-lighter: #{$lighter};
-    --colour-rich-blue: #{$rich-blue};
-    --colour-blue: #{$blue};
-    --colour-light-blue: #{$light-blue};
-    --colour-bone: #{$bone};
-    --colour-muted-bone: #{$muted-bone};
+    --quote-background: var(--colour-bone);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,6 +32,7 @@
         --nav-active: var(--colour-muted-bone);
         --nav-hover: var(--colour-bone);
         --border: var(--colour-muted-bone);
+        --quote-background: var(--colour-lighter);
     }
 }
 
@@ -40,4 +45,5 @@
     --nav-active: var(--colour-muted-bone);
     --nav-hover: var(--colour-bone);
     --border: var(--colour-muted-bone);
+    --quote-background: var(--colour-lighter);
 }

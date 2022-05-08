@@ -61,10 +61,13 @@ strong {
 }
 
 blockquote {
-    margin-block-start: 1.125rem;
-    margin-block-end: 1.125rem;
+    margin: 0 40px;
 
     p {
+        background-color: var(--quote-background);
+        padding: 10px;
+        border-radius: 10px;
+
         &:before {
             content: '\201C';
         }
