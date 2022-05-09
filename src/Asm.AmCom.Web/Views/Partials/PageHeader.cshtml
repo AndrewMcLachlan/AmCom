@@ -7,9 +7,15 @@
     var typedMediaPickerSingle = Model.Value<IPublishedContent>("headerBackground");
     if (typedMediaPickerSingle != null)
     {
-        headerImageStyle = $"background-image: url({typedMediaPickerSingle.Url()})";
+        headerImageStyle = $"background-image: ";
+        headerImageStyle += Model.ValueAnd("backgroundGradient", "{0}, ");
+        headerImageStyle += $" url({typedMediaPickerSingle.Url()})";
         headerImageStyle += Model.ValueAnd("backgroundSize", "; background-size: {0}");
         headerImageStyle += Model.ValueAnd("backgroundRepeat", "; background-repeat: {0}");
+    }
+    else
+    {
+        headerImageStyle += Model.ValueAnd("backgroundGradient", "background-image: {0}");
     }
     headerImageStyle += Model.ValueAnd("backgroundColour", "; background-color: {0}");
             var className = pageLinks?.Any() ?? false ? "has-links" : String.Empty;

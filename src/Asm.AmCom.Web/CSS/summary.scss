@@ -1,8 +1,12 @@
 ﻿.summary {
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
 
     section {
-        text-align: center;
+
+        h3 {
+            text-align: center;
+        }
+
         position: relative;
         display: flex;
         flex-direction: column;
@@ -14,8 +18,11 @@
     }
 
     ul {
-        list-style: none;
-        padding: 0;
+        margin: 0 1.5rem;
+    }
+
+    li {
+        margin: 0.5rem;
     }
 
     .btn {

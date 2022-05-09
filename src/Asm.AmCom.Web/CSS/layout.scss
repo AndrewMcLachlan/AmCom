@@ -36,11 +36,12 @@ main {
 
 
 article {
-    padding-bottom: 20px;
+    padding-bottom: 2rem;
     font-size: 18px;
 
     > header {
         background-color: var(--colour-lighter);
+        margin-bottom: 2rem;
     }
 }
 
