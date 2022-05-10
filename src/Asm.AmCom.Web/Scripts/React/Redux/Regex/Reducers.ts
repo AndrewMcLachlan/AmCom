@@ -1,50 +1,16 @@
-﻿import { AnyAction } from "redux";
+﻿import { RegexTestResponse, State } from "../../model/regex";
+import { PayloadAction } from "@reduxjs/toolkit";
 
-import * as ActionTypes from "./ActionTypes";
+export const getTestResultRequest = (state: State) => {
+    state.isTesting = true;
+}
 
-import { ActionWithData } from "../../global";
+export const getTestResultSuccess = (state: State, action: PayloadAction<RegexTestResponse>) => {
+    state.isTesting = false;
+    state.result = action.payload;
+}
 
-import { State } from "../../regex";
-
-export const initialState: State = {
-    input: null,
-    isTesting: false,
-    regex: null,
-    result: null,
-};
-
-export function reducer(state = initialState, action: AnyAction | ActionWithData<any>): State {
-    switch (action.type) {
-        case ActionTypes.GetTestResultRequest:
-            return {
-                ...state,
-                isTesting: true,
-            };
-        case ActionTypes.GetTestResultSuccess:
-            return {
-                ...state,
-                isTesting: false,
-                result: action.data,
-            };
-        case ActionTypes.GetTestResultFailure:
-            return {
-                ...state,
-                isTesting: false,
-                result: null,
-            };
-
-        case ActionTypes.RegexChanging:
-            return {
-                ...state,
-                regex: action.data,
-            };
-
-        case ActionTypes.InputChanging:
-            return {
-                ...state,
-                input: action.data,
-            };
-        default:
-            return state;
-    }
+export const getTestResultFailure  = (state: State, action: PayloadAction<number | unknown>) => {
+    state.isTesting = false;
+    state.result = null;
 }

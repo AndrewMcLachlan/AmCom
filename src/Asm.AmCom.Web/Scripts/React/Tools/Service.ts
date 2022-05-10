@@ -1,24 +1,14 @@
-﻿import * as redux from "redux";
+﻿
+import { RegexTestRequest, RegexTestResponse, State } from "../model/regex";
+import * as regexActions from "../Redux/Regex/slice";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { RootState } from "../Redux/store";
 
-import { Action } from "../global";
+export const regexTest = createAsyncThunk<RegexTestResponse, RegexTestRequest, { state: RootState }>(
+    "/tools/api/regex",
+    async (request, { dispatch }) => {
 
-import { CidrResponse } from "../cidr";
-import { RegexTestRequest, RegexTestResponse } from "../regex";
-
-import * as CidrNotation from "../Redux/Cidr/Actions";
-import * as RegexTester from "../Redux/Regex/Actions";
-
-import { IPv4Address } from "../IPv4Address";
-
-export function regexTest(regex: string, input: string) {
-    return async (dispatch: redux.Dispatch<Action>) => {
-
-        dispatch(RegexTester.getTestResultRequest());
-
-        const request: RegexTestRequest = {
-            regex,
-            text: input,
-        };
+        dispatch(regexActions.getTestResultRequest());
 
         try {
             const response = await fetch("/tools/api/regex", {
@@ -32,44 +22,18 @@ export function regexTest(regex: string, input: string) {
 
             if (response.ok) {
                 const regexResult: RegexTestResponse = await response.json();
-                regexResult.input = input;
+                regexResult.input = request.text;
 
-                dispatch(RegexTester.getTestResultSuccess(regexResult));
+                dispatch(regexActions.getTestResultSuccess(regexResult));
+                return regexResult;
             }
             else {
-                dispatch(RegexTester.getTestResultFailure(response.status));
+                dispatch(regexActions.getTestResultFailure(response.status));
+                return null;
             }
         }
         catch (e) {
-            dispatch(RegexTester.getTestResultFailure(e));
+            dispatch(regexActions.getTestResultFailure(e));
+            return null;
         }
-    };
-}
-
-export function cidrTest(ipAddress: IPv4Address, subnetMask: IPv4Address) {
-    return async (dispatch: redux.Dispatch<Action>) => {
-
-        dispatch(CidrNotation.getCidrRequest());
-
-        try {
-            const response = await fetch(`/tools/api/cidr?ipaddress=${ipAddress.toString()}&subnetmask=${subnetMask.toString()}`, {
-                headers: new Headers({
-                    Accept: "application/json",
-                }),
-                method: "GET",
-            });
-
-            if (response.ok) {
-                const result: CidrResponse = await response.json();
-
-                dispatch(CidrNotation.getCidrSuccess(result));
-            }
-            else {
-                dispatch(CidrNotation.getCidrFailure(response.status));
-            }
-        }
-        catch (e) {
-            dispatch(CidrNotation.getCidrFailure(e));
-        }
-    };
-}
+    });

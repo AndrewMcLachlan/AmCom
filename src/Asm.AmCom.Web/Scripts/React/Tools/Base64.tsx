@@ -1,75 +1,65 @@
-﻿import * as React from "react";
+﻿import React, { ChangeEvent, useState } from "react";
 
-export default class Base64 extends React.Component<Base64Props, Base64State> {
+const Base64: React.FC<Base64Props> = (props) => {
 
-    constructor(props) {
-        super(props);
+    const [input, setInput] = useState<string>(props.input);
+    const [output, setOutput] = useState<string>();
 
-        this.state = {
-            input: props.input,
-        };
-    }
+    const inputChanged = (e: ChangeEvent<HTMLTextAreaElement>) => setInput(e.currentTarget.value);
 
-    public render() {
-
-        return (
-            <div>
-                <section className="row">
-                    <div className="col-md-9">
-                        <fieldset>
-                            <div className="form-group">
-                                <label htmlFor="theString" className="control-label">String to encode / decode</label>
-                                <textarea className="form-control" id="source" spellCheck={false} onChange={this.inputChanged} />
-                            </div>
-                            <button className="btn btn-primary mb-3" id="encodeDecode" onClick={this.xCode}>Encode / Decode</button>
-                        </fieldset>
-                    </div>
-                </section>
-
-                <section className="row">
-                    <div className="col-md-9">
-                        <div className="form-group">
-                            <label htmlFor="result" className="control-label">Result</label>
-                            <textarea className="form-control" id="result" spellCheck={false} value={this.state.output} />
-                        </div>
-                    </div>
-                </section>
-            </div>
-        );
-    }
-
-    private inputChanged = (e) => this.setState({ input: e.currentTarget.value });
-
-    private xCode = (e) => {
-        let resultValue;
+    const xCode = () => {
+        let resultValue: any;
         try {
-            resultValue = this.b64DecodeUnicode(this.state.input);
+            resultValue = b64DecodeUnicode(input);
         }
         catch (e) {
-            resultValue = this.b64EncodeUnicode(this.state.input);
+            resultValue = b64EncodeUnicode(input);
         }
 
-        this.setState({ output: resultValue.toString() });
+        setOutput(resultValue.toString());
     }
 
-    private b64EncodeUnicode = (str) => {
+    const b64EncodeUnicode = (str: string) => {
         return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (_, p1) => {
             return String.fromCharCode(+("0x" + p1));
         }));
     }
 
-    private b64DecodeUnicode = (str) => {
+    const b64DecodeUnicode = (str: string) => {
         return decodeURIComponent(Array.prototype.map.call(atob(str), (c) => {
             return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
         }).join(""));
     }
+
+
+    return (
+        <div>
+            <section className="row">
+                <div className="col-md-9">
+                    <fieldset>
+                        <div className="form-group">
+                            <label htmlFor="theString" className="control-label">String to encode / decode</label>
+                            <textarea className="form-control" id="source" spellCheck={false} onChange={inputChanged} />
+                        </div>
+                        <button className="btn btn-primary mb-3" id="encodeDecode" onClick={xCode}>Encode / Decode</button>
+                    </fieldset>
+                </div>
+            </section>
+
+            <section className="row">
+                <div className="col-md-9">
+                    <div className="form-group">
+                        <label htmlFor="result" className="control-label">Result</label>
+                        <textarea className="form-control" id="result" spellCheck={false} value={output} />
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
 }
+
+export default Base64;
 
 interface Base64Props {
     input?: string;
-}
-
-interface Base64State {
-    input?: string;
-    output?: string;
 }

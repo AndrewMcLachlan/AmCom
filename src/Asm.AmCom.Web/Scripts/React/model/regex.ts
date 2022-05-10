@@ -1,8 +1,4 @@
-﻿import { AnyAction } from "redux";
-
-export interface State {
-    regex?: string;
-    input?: string;
+﻿export interface State {
     result?: RegexTestResponse;
     isTesting: boolean;
 }

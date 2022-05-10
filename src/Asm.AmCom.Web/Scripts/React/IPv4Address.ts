@@ -1,4 +1,13 @@
 ﻿/* tslint:disable:max-classes-per-file */
+
+
+export interface IPv4AddressSimple {
+    octet1: number;
+    octet2: number;
+    octet3: number;
+    octet4: number;
+}
+
 export class IPv4Address {
     private _octet1: number;
     private _octet2: number;
@@ -37,20 +46,18 @@ export class IPv4Address {
         this._octet4 = value;
     }
 
-    constructor(octet1: number, octet2: number, octet3: number, octet4: number) {
-        this.octet1 = octet1;
-        this.octet2 = octet2;
-        this.octet3 = octet3;
-        this.octet4 = octet4;
+    constructor(octet1?: number, octet2?: number, octet3?: number, octet4?: number) {
+        this.octet1 = octet1 ?? 0;
+        this.octet2 = octet2 ?? 0;
+        this.octet3 = octet3 ?? 0;
+        this.octet4 = octet4 ?? 0;
     }
 
     public getAddressBytes() {
         return [this.octet1, this.octet2, this.octet3, this.octet4];
     }
 
-    public toString = () => {
-        return this.octet1 + "." + this.octet2 + "." + this.octet3 + "." + this.octet4;
-    }
+    public toString = () => this.octet1 + "." + this.octet2 + "." + this.octet3 + "." + this.octet4;
 
     public toUInt32 = () => {
 
@@ -86,7 +93,8 @@ export class IPv4Address {
                         reverseCheck <<= 1;
                     }
                     else if (reverse + cidrNumber !== 32) {
-                        throw new Error("Invalid mask");
+                        //throw new Error("Invalid mask");
+                        return null;
                     }
                 }
                 break;
@@ -109,6 +117,10 @@ export class IPv4Address {
         return new IPv4AddressWithCIDR(newIp[0], newIp[1], newIp[2], newIp[3], cidrNumber);
 
     }
+
+    public toSimple = (): IPv4AddressSimple => { return { octet1: this.octet1, octet2: this.octet2, octet3: this.octet3, octet4: this.octet4 } };
+
+    public static fromSimple = (address: IPv4AddressSimple): IPv4Address => new IPv4Address(address.octet1, address.octet2, address.octet3, address.octet4);
 }
 
 export class IPv4AddressWithCIDR extends IPv4Address {

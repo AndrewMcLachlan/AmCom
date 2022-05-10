@@ -12,6 +12,7 @@ Array.prototype.selectMany = function(func) {
     return result;
 };
 
+/*
 export function simpleAction(type): Action {
     return {
         type,
@@ -24,3 +25,4 @@ export function dataAction<T>(type, data): ActionWithData<T> {
         type,
     };
 }
+*/

@@ -1,93 +1,63 @@
-﻿import debounce from "lodash.debounce";
-import * as React from "react";
-import { connect } from "react-redux";
+﻿import React from "react";
 
 import { DispatchProps } from "../global";
-import { IPv4Address } from "../IPv4Address";
-
-import { State } from "../cidr";
-import * as CidrNotation from "../Redux/Cidr/Actions";
+import { IPv4Address, IPv4AddressWithCIDR } from "../IPv4Address";
 
 import IPAddress from "../Components/IPAddress";
 import TextBox from "../Components/TextBox";
+import { useEffect, useState } from "react";
 
-class Cidr extends React.Component<CidrProps, any> {
+const Cidr: React.FC<CidrProps> = (props) => {
 
-    private stateChangedDB: (ip: IPv4Address, mask: IPv4Address) => void;
+    const [ipAddress, setIPAddress] = useState(props.ipAddress);
+    const [netMask, setNetMask] = useState(props.netMask);
+    const [cidr, setCidr] = useState<IPv4AddressWithCIDR>();
 
-    constructor(props) {
-        super(props);
-
-        this.stateChangedDB = debounce(this.props.stateChanged, 250);
-
-        this.ipChanged = this.ipChanged.bind(this);
-        this.maskChanged = this.maskChanged.bind(this);
+    const ipChanged = (e: IPv4Address) => {
+        setIPAddress(e);
     }
 
-    public render() {
-
-        let result = null;
-
-        if (this.props.cidr) {
-            result = <TextBox id="result" className="clickable" value={this.props.cidr} readOnly={true} label="CIDR Notation" onClick={(e: React.MouseEvent<HTMLInputElement>) =>  navigator.clipboard.writeText(e.currentTarget.value)} />;
-        }
-
-        return (
-            <>
-                <section className="row">
-                    <div className="col">
-                        <fieldset>
-                            <IPAddress id="address" label="IP Address" value={this.props.ipAddress} onChange={this.ipChanged} />
-                            <IPAddress id="mask" label="Subnet Mask" value={this.props.netMask} onChange={this.maskChanged} />
-                        </fieldset>
-                    </div>
-                </section>
-                <section className="row">
-                    <div className="col cidr-result ">
-                        {result}
-                    </div>
-                </section>
-            </>
-        );
+    const maskChanged = (e: IPv4Address) => {
+        setNetMask(e);
     }
 
-    private ipChanged(e: IPv4Address) {
-        this.stateChangedDB(e, this.props.netMask);
-        this.props.ipChanged(e);
+    useEffect(() => {
+            setIPAddress(props.ipAddress);
+            setNetMask(props.netMask);
+    }, [props.ipAddress, props.netMask]);
+
+    useEffect(() => {
+        if (!ipAddress || !netMask) return;
+        setCidr(ipAddress.toCidr(netMask));
+    }, [ipAddress, netMask]);
+    
+    let result = null;
+
+    if (cidr) {
+        result = <TextBox id="result" className="clickable" value={cidr.toString()} readOnly={true} label="CIDR Notation" onClick={(e: React.MouseEvent<HTMLInputElement>) => navigator.clipboard.writeText(e.currentTarget.value)} />;
     }
 
-    private maskChanged(e: IPv4Address) {
-        this.stateChangedDB(this.props.ipAddress, e);
-        this.props.maskChanged(e);
-    }
+    return (
+        <>
+            <section className="row">
+                <div className="col">
+                    <fieldset>
+                        <IPAddress id="address" label="IP Address" value={ipAddress} onChange={ipChanged} />
+                        <IPAddress id="mask" label="Subnet Mask" value={netMask} onChange={maskChanged} />
+                    </fieldset>
+                </div>
+            </section>
+            <section className="row">
+                <div className="col cidr-result">
+                    {result}
+                </div>
+            </section>
+        </>
+    );
+
 }
 
-function mapProps(state: State, ownProps): CidrProps {
-    return {
-        ...ownProps,
-        cidr: state.cidr,
-        ipAddress: state.ipAddress,
-        netMask: state.netMask,
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        ipChanged: (ip) => {
-            dispatch(CidrNotation.ipChanging(ip));
-        },
-        maskChanged: (mask) => {
-            dispatch(CidrNotation.maskChanging(mask));
-        },
-        stateChanged: (ip: IPv4Address, mask: IPv4Address) => {
-            if (ip === null || mask === null) return;
-            const cidr = (ip).toCidr(mask).toString();
-            dispatch(CidrNotation.getCidrSuccess(cidr));
-        },
-    };
-}
-
-export default connect(mapProps, mapDispatchToProps)(Cidr);
+export default Cidr;
 
 interface CidrProps extends DispatchProps {
     cidr?: string;

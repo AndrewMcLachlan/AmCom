@@ -45,9 +45,6 @@ module.exports = (env, argv) => {
         externals: {
             "react": "React",
             "react-dom": "ReactDOM",
-            "redux": "Redux",
-            "react-redux": "ReactRedux",
-            "redux-thunk": "ReduxThunk",
         }
     };
 };
