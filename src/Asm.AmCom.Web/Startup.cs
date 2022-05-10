@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Umbraco.Cms.Core.DependencyInjection;
 using Umbraco.Extensions;
 
@@ -72,6 +74,24 @@ public class Startup
             app.UseExceptionHandler("/error/error/500");
             app.UseHsts();
         }
+
+        FileExtensionContentTypeProvider contentTypeProvider = new();
+        contentTypeProvider.Mappings.Add(".avif", "image/avif");
+
+        app.UseStaticFiles(new StaticFileOptions
+        {
+            HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
+            ContentTypeProvider = contentTypeProvider,
+            OnPrepareResponse = (context) =>
+            {
+                var headers = context.Context.Response.GetTypedHeaders();
+                headers.CacheControl = new Microsoft.Net.Http.Headers.CacheControlHeaderValue
+                {
+                    Public = true,
+                    MaxAge = TimeSpan.FromDays(30)
+                };
+            }
+        });
 
         app.UseStatusCodePagesWithReExecute("/error/error/{0}");
 

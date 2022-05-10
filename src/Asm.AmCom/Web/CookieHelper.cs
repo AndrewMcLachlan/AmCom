@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 
-namespace Asm.AmCom.Web
+namespace Asm.AmCom.Web;
+
+public static class CookieHelper
 {
-    public static class CookieHelper
+    public const string CookieAcceptanceCookieName = "AcceptedCookies";
+
+    public static bool HasAcceptedCookies(HttpContext context)
     {
-        public const string CookieAcceptanceCookieName = "AcceptedCookies";
+        string acceptance = context.Request.Cookies[CookieAcceptanceCookieName];
 
-        public static bool HasAcceptedCookies(HttpContext context)
-        {
-            string acceptance = context.Request.Cookies[CookieAcceptanceCookieName];
+        return acceptance != null && acceptance == "1";
+    }
 
-            return acceptance != null && acceptance == "1";
-        }
-
-        public static void AcceptCookies(HttpContext context)
-        {
-            context.Response.Cookies.Append(CookieAcceptanceCookieName, "1", new CookieOptions { Expires = DateTime.Now.AddYears(10), Secure = true });
-        }
+    public static void AcceptCookies(HttpContext context)
+    {
+        context.Response.Cookies.Append(CookieAcceptanceCookieName, "1", new CookieOptions { Expires = DateTime.Now.AddYears(10), Secure = true });
     }
 }

@@ -1,16 +1,34 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using System.Text.RegularExpressions
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @using Umbraco.Extensions
 @{
-    var image = Model.PageLinkImage as IPublishedContent;
+    var images = Model.PageLinkImage as IEnumerable<IPublishedContent>;
+    var image = images?.FirstOrDefault();
+
     var altText = image?.Value<string>("umbracoAltText");
     altText = String.IsNullOrWhiteSpace(altText) ? String.Empty : altText;
     var rel = Uri.IsWellFormedUriString(Model.PageLinkUrl, UriKind.Absolute) ? "external nofollow" : null;
+
+    /*string srcset = "";
+    if (images != null)
+    {
+        foreach (var img in images?.Skip(1))
+        {
+            var scaling = img.Value<float?>("scaling");
+
+            if (scaling == null) continue;
+
+            srcset += $", {img.Url()} {scaling}x";
+        }
+        srcset = srcset.TrimStart(", ");
+    }*/
 }
   <aside class="page-link">
     <a href="@Model.PageLinkUrl" target="_blank" rel="@rel">
       @if (image != null)
       {
-        <img src="@image.Url()" alt="@altText" role="@(String.IsNullOrEmpty(altText) ? "presentation" : null)" />
+        <imgset images="@images" />
+        @*<img src="@image.Url()" srcset="@srcset" alt="@altText" role="@(String.IsNullOrEmpty(altText) ? "presentation" : null)" height="@(image.Value<string>("umbracoHeight"))" />*@
       }
       @if (!String.IsNullOrWhiteSpace(Model.PageLinkText))
       {

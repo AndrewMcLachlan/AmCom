@@ -38,14 +38,6 @@
     <None Remove="wwwroot\media\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Remove="wwwroot\images\Design.lnk" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\images\Design.lnk" />
-  </ItemGroup>
-
   <PropertyGroup>
     <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
   </PropertyGroup>
