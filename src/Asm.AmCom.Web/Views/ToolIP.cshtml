@@ -3,9 +3,9 @@
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
     Layout = "FullPageLayout.cshtml";
-    ViewBag.Title = "IP address";
-    ViewBag.Canonical = "tools/ip";
-    ViewBag.Description = "Displays your IP Address";
+    ViewBag.Title = $"{Model.Value("title")} - Andrew McLachlan";
+    ViewBag.Description = Model.Value("description");
+    ViewBag.Canonical = Model.Url();
 }
 
 <h3>Your IP Address</h3>
