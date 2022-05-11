@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
-import regex from "./regex/slice";
+import regex from "./Regex/slice";
 
 const rootReducer = combineReducers({
     regexReducer: regex,

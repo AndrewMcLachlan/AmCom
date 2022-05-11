@@ -1,8 +1,5 @@
 ﻿import debounce from "lodash.debounce";
-import React, {useEffect, useState} from "react";
-import {  useDispatch } from "react-redux";
-
-import * as actions from "../Redux/Regex/slice";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { regexTest } from "./Service";
 
@@ -11,8 +8,6 @@ import RegexResultSummary from "../Components/RegexResultSummary";
 import TextBox from "../Components/TextBox";
 import { RegexTestResponse } from "../model/regex";
 import { useAppDispatch } from "../Redux/store";
-
-//class Regex extends React.Component<RegexProps, any> {
 
 const Regex: React.FC = () => {
 
@@ -23,13 +18,14 @@ const Regex: React.FC = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-
-        dispatch(regexTest({ regex, text: input })).then((r) =>
-            setResult(r.payload)
-        );
-        
+        sendRequestDebounced(regex, input);
     }, [regex, input]);
 
+    const sendRequest = async (regex: string, text: string) => {
+        const result = await dispatch(regexTest({ regex, text }))
+        setResult(result.payload);
+    };
+    const sendRequestDebounced = useMemo(() => debounce(sendRequest, 250), []);
 
     return (
         <div>

@@ -10,6 +10,8 @@ export const regexTest = createAsyncThunk<RegexTestResponse, RegexTestRequest, {
 
         dispatch(regexActions.getTestResultRequest());
 
+        if (!request.regex || !request.text || request.regex === "" || request.text === "") return null;
+
         try {
             const response = await fetch("/tools/api/regex", {
                 body: JSON.stringify(request),

@@ -1,4 +1,7 @@
-﻿import * as React from "react";
+﻿import "core-js/stable";
+import "regenerator-runtime/runtime";
+
+import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { store } from "./Redux/store";
