@@ -1,12 +1,5 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.StaticFiles;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System;
-using System.Diagnostics.CodeAnalysis;
 using Umbraco.Cms.Core.DependencyInjection;
 using Umbraco.Extensions;
 
@@ -47,14 +40,17 @@ public class Startup
         services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
         services.AddTransient<ViewHelper>();
 
-#pragma warning disable IDE0022 // Use expression body for methods
-        services.AddUmbraco(_env, _config)
+        IUmbracoBuilder builder = services.AddUmbraco(_env, _config)
             .AddBackOffice()
             .AddWebsite()
-            .AddComposers()
-            .Build();
-#pragma warning restore IDE0022 // Use expression body for methods
+            .AddComposers();
 
+        if (!_env.IsDevelopment())
+        {
+            builder.AddAzureBlobMediaFileSystem();
+        }
+
+        builder.Build();
     }
 
     /// <summary>
@@ -100,6 +96,11 @@ public class Startup
             {
                 u.UseBackOffice();
                 u.UseWebsite();
+
+                if (!_env.IsDevelopment())
+                {
+                    u.UseAzureBlobMediaFileSystem();
+                }
             })
             .WithEndpoints(u =>
             {
