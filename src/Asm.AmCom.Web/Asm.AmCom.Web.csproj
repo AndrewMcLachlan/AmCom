@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="BuildWebCompiler2022" Version="1.14.7" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="5.1.1" />
     <PackageReference Include="Umbraco.Cms" Version="9.5.0" />
   </ItemGroup>
 
@@ -37,6 +38,10 @@
     <EmbeddedResource Remove="wwwroot\media\**" />
     <None Remove="node_modules\**" />
     <None Remove="wwwroot\media\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.*.json" CopyToPublishDirectory="Never" />
   </ItemGroup>
 
   <PropertyGroup>

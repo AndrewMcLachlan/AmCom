@@ -58,7 +58,7 @@ public class Startup
     /// </summary>
     /// <param name="app">The application builder.</param>
     /// <param name="env">The web hosting environment.</param>
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
     {
         if (env.IsDevelopment())
         {
@@ -99,7 +99,12 @@ public class Startup
 
                 if (!_env.IsDevelopment())
                 {
+                    logger.LogInformation("Using Azure Blob Media File System");
                     u.UseAzureBlobMediaFileSystem();
+                }
+                else
+                {
+                    logger.LogInformation("Using Standard File System");
                 }
             })
             .WithEndpoints(u =>
