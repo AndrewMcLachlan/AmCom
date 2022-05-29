@@ -12,6 +12,7 @@
 
 :root, .light {
     --background-colour: white;
+    --brand-colour: var(--colour-rich-blue);
     --text-colour: var(--bs-body-color);
     --link-colour: #0d6efd;
     --nav-background: white;
@@ -26,6 +27,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --background-colour: var(--colour-dark);
+        --brand-colour: var(--colour-blue);
         --text-colour: var(--colour-muted-bone);
         --link-colour: var(--colour-blue);
         --nav-background: var(--colour-dark);
@@ -39,6 +41,7 @@
 
 .dark {
     --background-colour: var(--colour-dark);
+    --brand-colour: var(--colour-blue);
     --text-colour: var(--colour-muted-bone);
     --link-colour: var(--colour-blue);
     --nav-background: var(--colour-dark);
