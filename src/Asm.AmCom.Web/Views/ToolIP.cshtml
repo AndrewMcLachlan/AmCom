@@ -6,7 +6,18 @@
     ViewBag.Title = $"{Model.Value("title")} - Andrew McLachlan";
     ViewBag.Description = Model.Value("description");
     ViewBag.Canonical = Model.Url();
+
+    string ip = "";
+    if (Context.Request.Headers.ContainsKey("X-Forwarded-For"))
+    {
+        var header = Context.Request.Headers["X-Forwarded-For"];
+        ip = header.First();
+    }
+    else
+    {
+        ip = Context.Connection.RemoteIpAddress.ToString();
+    }
 }
 
 <h3>Your IP Address</h3>
-<h3 class="clickable copyable" title="Click to copy">@Context.Connection.RemoteIpAddress.ToString()</h3>
+<h3 class="clickable copyable" title="Click to copy">@ip</h3>
