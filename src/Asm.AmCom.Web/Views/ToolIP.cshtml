@@ -12,6 +12,10 @@
     {
         var header = Context.Request.Headers["X-Forwarded-For"];
         ip = header.First();
+        if (System.Net.IPEndPoint.TryParse(ip, out var ipEndPoint))
+        {
+            ip = ipEndPoint.Address.ToString();
+        }
     }
     else
     {

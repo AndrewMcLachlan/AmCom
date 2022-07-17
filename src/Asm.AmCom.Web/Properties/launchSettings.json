@@ -27,7 +27,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Umbraco.Web.UI": {
+    "Asm.AmCom.Web": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,
