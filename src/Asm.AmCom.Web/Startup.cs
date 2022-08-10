@@ -96,16 +96,6 @@ public class Startup
             {
                 u.UseBackOffice();
                 u.UseWebsite();
-
-                if (!_env.IsDevelopment())
-                {
-                    logger.LogInformation("Using Azure Blob Media File System");
-                    u.UseAzureBlobMediaFileSystem();
-                }
-                else
-                {
-                    logger.LogInformation("Using Standard File System");
-                }
             })
             .WithEndpoints(u =>
             {

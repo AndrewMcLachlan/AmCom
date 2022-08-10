@@ -13,9 +13,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BuildWebCompiler2022" Version="1.14.7" />
+    <PackageReference Include="BuildWebCompiler2022" Version="1.14.8" />
     <PackageReference Include="Serilog.Sinks.Seq" Version="5.1.1" />
-    <PackageReference Include="Umbraco.Cms" Version="9.5.0" />
+    <PackageReference Include="Umbraco.Cms" Version="10.1.0" />
   </ItemGroup>
 
   <!-- Force windows to use ICU. Otherwise Windows 10 2019H1+ will do it, but older windows 10 and most if not all winodws servers will run NLS -->
@@ -23,7 +23,7 @@
     <PackageReference Include="Asm" Version="2.1.365" />
     <PackageReference Include="Asm.Net" Version="2.1.365" />
     <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" Version="68.2.0.9" />
-    <PackageReference Include="Umbraco.StorageProviders.AzureBlob" Version="1.1.0" />
+    <PackageReference Include="Umbraco.StorageProviders.AzureBlob" Version="10.0.0" />
     <ProjectReference Include="..\Asm.AmCom\Asm.AmCom.csproj" />
 
     <RuntimeHostConfigurationOption Condition="$(RuntimeIdentifier.StartsWith('linux')) Or $(RuntimeIdentifier.StartsWith('win')) Or ('$(RuntimeIdentifier)' == '' And !$([MSBuild]::IsOSPlatform('osx')))" Include="System.Globalization.AppLocalIcu" Value="68.2.0.9" />
