@@ -58,7 +58,7 @@ public abstract class IntegrityTagHelper : TagHelper
             return;
         }
 
-        var hashAlgo = System.Security.Cryptography.HashAlgorithm.Create("SHA-512");
+        var hashAlgo = System.Security.Cryptography.SHA512.Create();
 
         using FileStream file = File.OpenRead(path);
         byte[] hash = hashAlgo.ComputeHash(file);
