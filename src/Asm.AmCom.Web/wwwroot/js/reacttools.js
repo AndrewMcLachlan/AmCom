@@ -2847,6 +2847,15 @@ var Colours = function Colours() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Components_ColourGrid__WEBPACK_IMPORTED_MODULE_1__.ColourGrid, {
     title: "Reds",
     colours: reds
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Components_ColourGrid__WEBPACK_IMPORTED_MODULE_1__.ColourGrid, {
+    title: "Greens",
+    colours: greens
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Components_ColourGrid__WEBPACK_IMPORTED_MODULE_1__.ColourGrid, {
+    title: "Yellows",
+    colours: yellows
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Components_ColourGrid__WEBPACK_IMPORTED_MODULE_1__.ColourGrid, {
+    title: "Oranges",
+    colours: oranges
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Colours);
@@ -3404,6 +3413,839 @@ var reds = [{
   r: 0x72,
   g: 0x2F,
   b: 0x37
+}];
+var greens = [{
+  name: "Apple green",
+  r: 0x8D,
+  g: 0xB6,
+  b: 0x00
+}, {
+  name: "Aquamarine",
+  r: 0x00,
+  g: 0xFF,
+  b: 0xBF
+}, {
+  name: "Asparagus",
+  r: 0x7B,
+  g: 0xA0,
+  b: 0x5B
+}, {
+  name: "Avocado",
+  r: 0x56,
+  g: 0x82,
+  b: 0x03
+}, {
+  name: "Bright green",
+  r: 0x66,
+  g: 0xFF,
+  b: 0x00
+}, {
+  name: "British racing green",
+  r: 0x00,
+  g: 0x42,
+  b: 0x25
+}, {
+  name: "Brunswick green",
+  r: 0x1B,
+  g: 0x4D,
+  b: 0x3E
+}, {
+  name: "Cal Poly green",
+  r: 0x1E,
+  g: 0x4D,
+  b: 0x2B
+}, {
+  name: "Castleton green",
+  r: 0x00,
+  g: 0x56,
+  b: 0x3B
+}, {
+  name: "Celadon",
+  r: 0xAC,
+  g: 0xE1,
+  b: 0xAF
+}, {
+  name: "Chartreuse",
+  r: 0x80,
+  g: 0xFF,
+  b: 0x00
+}, {
+  name: "Cyan",
+  r: 0x00,
+  g: 0xFF,
+  b: 0xFF
+}, {
+  name: "Dark green",
+  r: 0x01,
+  g: 0x32,
+  b: 0x20
+}, {
+  name: "Dark moss green",
+  r: 0x4A,
+  g: 0x5D,
+  b: 0x23
+}, {
+  name: "Dark pastel green",
+  r: 0x03,
+  g: 0xC0,
+  b: 0x3C
+}, {
+  name: "Dark spring green",
+  r: 0x17,
+  g: 0x72,
+  b: 0x45
+}, {
+  name: "Dartmouth green",
+  r: 0x00,
+  g: 0x69,
+  b: 0x3E
+}, {
+  name: "Emerald",
+  r: 0x50,
+  g: 0xC8,
+  b: 0x78
+}, {
+  name: "Erin",
+  r: 0x00,
+  g: 0xFF,
+  b: 0x40
+}, {
+  name: "Fern green",
+  r: 0x4F,
+  g: 0x79,
+  b: 0x42
+}, {
+  name: "Forest green",
+  r: 0x22,
+  g: 0x8B,
+  b: 0x22
+}, {
+  name: "Green",
+  r: 0x00,
+  g: 0xFF,
+  b: 0x00
+}, {
+  name: "Green-yellow",
+  r: 0xAD,
+  g: 0xFF,
+  b: 0x2F
+}, {
+  name: "Harlequin",
+  r: 0x3F,
+  g: 0xFF,
+  b: 0x00
+}, {
+  name: "Honeydew",
+  r: 0xF0,
+  g: 0xFF,
+  b: 0xF0
+}, {
+  name: "Hooker's green",
+  r: 0x49,
+  g: 0x79,
+  b: 0x6B
+}, {
+  name: "Hunter green",
+  r: 0x35,
+  g: 0x5E,
+  b: 0x3B
+}, {
+  name: "India green",
+  r: 0x13,
+  g: 0x88,
+  b: 0x08
+}, {
+  name: "Islamic green",
+  r: 0x13,
+  g: 0x88,
+  b: 0x08
+}, {
+  name: "Jade",
+  r: 0x00,
+  g: 0xA8,
+  b: 0x6B
+}, {
+  name: "Jungle green",
+  r: 0x29,
+  g: 0xAB,
+  b: 0x87
+}, {
+  name: "Kelly green",
+  r: 0x4C,
+  g: 0xBB,
+  b: 0x17
+}, {
+  name: "Lawn green",
+  r: 0x7C,
+  g: 0xFC,
+  b: 0x00
+}, {
+  name: "Light green",
+  r: 0x90,
+  g: 0xEE,
+  b: 0x90
+}, {
+  name: "Lime",
+  r: 0xC0,
+  g: 0xFF,
+  b: 0x00
+}, {
+  name: "Lime green",
+  r: 0x32,
+  g: 0xCD,
+  b: 0x32
+}, {
+  name: "Malachite",
+  r: 0x0B,
+  g: 0xDA,
+  b: 0x51
+}, {
+  name: "Mantis",
+  r: 0x74,
+  g: 0xC3,
+  b: 0x65
+}, {
+  name: "Midnight green",
+  r: 0x00,
+  g: 0x49,
+  b: 0x53
+}, {
+  name: "Mindaro",
+  r: 0xE3,
+  g: 0xF9,
+  b: 0x88
+}, {
+  name: "Mint",
+  r: 0x3E,
+  g: 0xB4,
+  b: 0x89
+}, {
+  name: "Moss green",
+  r: 0x8A,
+  g: 0x9A,
+  b: 0x5B
+}, {
+  name: "Myrtle green",
+  r: 0x31,
+  g: 0x78,
+  b: 0x73
+}, {
+  name: "Neon green",
+  r: 0x39,
+  g: 0xFF,
+  b: 0x14
+}, {
+  name: "Office green",
+  r: 0x00,
+  g: 0x80,
+  b: 0x00
+}, {
+  name: "Olive",
+  r: 0x80,
+  g: 0x80,
+  b: 0x00
+}, {
+  name: "Olivine",
+  r: 0x9A,
+  g: 0xB9,
+  b: 0x73
+}, {
+  name: "Pakistan green",
+  r: 0x00,
+  g: 0x40,
+  b: 0x1A
+}, {
+  name: "Paris green",
+  r: 0x50,
+  g: 0xC8,
+  b: 0x78
+}, {
+  name: "Pear",
+  r: 0xD1,
+  g: 0xE2,
+  b: 0x31
+}, {
+  name: "Persian green",
+  r: 0x00,
+  g: 0xA6,
+  b: 0x93
+}, {
+  name: "Pigment green",
+  r: 0x00,
+  g: 0xA5,
+  b: 0x50
+}, {
+  name: "Pine green",
+  r: 0x01,
+  g: 0x79,
+  b: 0x6F
+}, {
+  name: "Pistachio",
+  r: 0x93,
+  g: 0xC5,
+  b: 0x72
+}, {
+  name: "Reseda green",
+  r: 0x6c,
+  g: 0x7c,
+  b: 0x59
+}, {
+  name: "Rifle green",
+  r: 0x44,
+  g: 0x4C,
+  b: 0x38
+}, {
+  name: "Robin egg blue",
+  r: 0x00,
+  g: 0xCC,
+  b: 0xCC
+}, {
+  name: "Sage",
+  r: 0xBC,
+  g: 0xB8,
+  b: 0x8A
+}, {
+  name: "Screamin' green",
+  r: 0x76,
+  g: 0xFF,
+  b: 0x7A
+}, {
+  name: "Sea green",
+  r: 0x2E,
+  g: 0x8B,
+  b: 0x57
+}, {
+  name: "SGBUS green",
+  r: 0x55,
+  g: 0xDD,
+  b: 0x33
+}, {
+  name: "Shamrock green",
+  r: 0x00,
+  g: 0x9E,
+  b: 0x60
+}, {
+  name: "Spring bud",
+  r: 0xA7,
+  g: 0xFC,
+  b: 0x00
+}, {
+  name: "Spring green",
+  r: 0x00,
+  g: 0xFF,
+  b: 0x7F
+}, {
+  name: "Tea green",
+  r: 0xD0,
+  g: 0xF0,
+  b: 0xC0
+}, {
+  name: "Teal",
+  r: 0x00,
+  g: 0x80,
+  b: 0x80
+}, {
+  name: "Turquoise",
+  r: 0x40,
+  g: 0xE0,
+  b: 0xD0
+}, {
+  name: "Viridian",
+  r: 0x40,
+  g: 0x82,
+  b: 0x6D
+}, {
+  name: "Yellow-green",
+  r: 0x9A,
+  g: 0xCD,
+  b: 0x32
+}];
+var yellows = [{
+  name: "Amber",
+  r: 0xFF,
+  g: 0xBF,
+  b: 0x00
+}, {
+  name: "Apricot",
+  r: 0xFB,
+  g: 0xCE,
+  b: 0xB1
+}, {
+  name: "Arylide yellow",
+  r: 0xE9,
+  g: 0xD6,
+  b: 0x6B
+}, {
+  name: "Aureolin",
+  r: 0xFD,
+  g: 0xEE,
+  b: 0x00
+}, {
+  name: "Beige",
+  r: 0xF5,
+  g: 0xF5,
+  b: 0xDC
+}, {
+  name: "Buff",
+  r: 0xE0,
+  g: 0xAB,
+  b: 0x76
+}, {
+  name: "Canary",
+  r: 0xFF,
+  g: 0xEF,
+  b: 0x00
+}, {
+  name: "Champagne",
+  r: 0xF7,
+  g: 0xE7,
+  b: 0xCE
+}, {
+  name: "Chartreuse",
+  r: 0xDF,
+  g: 0xFF,
+  b: 0x00
+}, {
+  name: "Chrome yellow",
+  r: 0xFF,
+  g: 0xA7,
+  b: 0x00
+}, {
+  name: "Citron",
+  r: 0xDD,
+  g: 0xD0,
+  b: 0x6A
+}, {
+  name: "Citrine",
+  r: 0xE4,
+  g: 0xD0,
+  b: 0x0A
+}, {
+  name: "Cosmic latte",
+  r: 0xFF,
+  g: 0xF8,
+  b: 0xE7
+}, {
+  name: "Cream",
+  r: 0xFF,
+  g: 0xFD,
+  b: 0xD0
+}, {
+  name: "Dark goldenrod",
+  r: 0xB8,
+  g: 0x86,
+  b: 0x0B
+}, {
+  name: "Ecru",
+  r: 0xCD,
+  g: 0xB2,
+  b: 0x80
+}, {
+  name: "Flax",
+  r: 0xEE,
+  g: 0xDC,
+  b: 0x82
+}, {
+  name: "Gamboge",
+  r: 0xEF,
+  g: 0x9B,
+  b: 0x0F
+}, {
+  name: "Gold",
+  r: 0xFF,
+  g: 0xD7,
+  b: 0x00
+}, {
+  name: "Gold (metallic)",
+  r: 0xD4,
+  g: 0xAF,
+  b: 0x37
+}, {
+  name: "Goldenrod",
+  r: 0xDA,
+  g: 0xA5,
+  b: 0x20
+}, {
+  name: "Harvest gold",
+  r: 0xE6,
+  g: 0xA8,
+  b: 0x17
+}, {
+  name: "Icterine",
+  r: 0xFC,
+  g: 0xF7,
+  b: 0x5E
+}, {
+  name: "Ivory",
+  r: 0xFF,
+  g: 0xFF,
+  b: 0xF0
+}, {
+  name: "Jasmine",
+  r: 0xF8,
+  g: 0xDE,
+  b: 0x7E
+}, {
+  name: "Jonquil",
+  r: 0xFA,
+  g: 0xCA,
+  b: 0x16
+}, {
+  name: "Khaki",
+  r: 0xC3,
+  g: 0xB0,
+  b: 0x91
+}, {
+  name: "Lemon chiffon",
+  r: 0xFF,
+  g: 0xFA,
+  b: 0xCD
+}, {
+  name: "Lemon-lime",
+  r: 0xE3,
+  g: 0xFF,
+  b: 0x00
+}, {
+  name: "Light yellow",
+  r: 0xFF,
+  g: 0xFF,
+  b: 0xE0
+}, {
+  name: "Lion",
+  r: 0xC1,
+  g: 0x9A,
+  b: 0x6B
+}, {
+  name: "Maize",
+  r: 0xFB,
+  g: 0xEC,
+  b: 0x5D
+}, {
+  name: "Mikado yellow",
+  r: 0xFF,
+  g: 0xC4,
+  b: 0x0C
+}, {
+  name: "Mindaro",
+  r: 0xE3,
+  g: 0xF9,
+  b: 0x88
+}, {
+  name: "Mustard",
+  r: 0xFF,
+  g: 0xDB,
+  b: 0x58
+}, {
+  name: "Naples yellow",
+  r: 0xFA,
+  g: 0xDA,
+  b: 0x5E
+}, {
+  name: "Navajo white",
+  r: 0xFF,
+  g: 0xDE,
+  b: 0xAD
+}, {
+  name: "Old gold",
+  r: 0xCF,
+  g: 0xB5,
+  b: 0x3B
+}, {
+  name: "Papaya whip",
+  r: 0xFF,
+  g: 0xEF,
+  b: 0xD5
+}, {
+  name: "Peach-yellow",
+  r: 0xFA,
+  g: 0xDF,
+  b: 0xAD
+}, {
+  name: "Pear",
+  r: 0xD1,
+  g: 0xE2,
+  b: 0x31
+}, {
+  name: "Saffron",
+  r: 0xF4,
+  g: 0xC4,
+  b: 0x31
+}, {
+  name: "School bus yellow",
+  r: 0xff,
+  g: 0xd8,
+  b: 0x00
+}, {
+  name: "Selective yellow",
+  r: 0xFF,
+  g: 0xBA,
+  b: 0x00
+}, {
+  name: "Stil de grain yellow",
+  r: 0xFA,
+  g: 0xDA,
+  b: 0x5E
+}, {
+  name: "Straw",
+  r: 0xE4,
+  g: 0xD9,
+  b: 0x6F
+}, {
+  name: "Sunglow",
+  r: 0xFF,
+  g: 0xCC,
+  b: 0x33
+}, {
+  name: "Sunset",
+  r: 0xFA,
+  g: 0xD6,
+  b: 0xA5
+}, {
+  name: "Vanilla",
+  r: 0xF3,
+  g: 0xE5,
+  b: 0xAB
+}, {
+  name: "Wheat",
+  r: 0xF5,
+  g: 0xDE,
+  b: 0xB3
+}, {
+  name: "Yellow",
+  r: 0xFF,
+  g: 0xFF,
+  b: 0x00
+}];
+var oranges = [{
+  name: "Aerospace orange",
+  r: 0xFF,
+  g: 0x4F,
+  b: 0x00
+}, {
+  name: "Alloy orange",
+  r: 0xC4,
+  g: 0x62,
+  b: 0x10
+}, {
+  name: "Amber",
+  r: 0xFF,
+  g: 0xBF,
+  b: 0x00
+}, {
+  name: "Apricot",
+  r: 0xFB,
+  g: 0xCE,
+  b: 0xB1
+}, {
+  name: "Atomic tangerine",
+  r: 0xFF,
+  g: 0x99,
+  b: 0x66
+}, {
+  name: "Brown",
+  r: 0x96,
+  g: 0x4B,
+  b: 0x00
+}, {
+  name: "Burnt orange",
+  r: 0xBF,
+  g: 0x57,
+  b: 0x00
+}, {
+  name: "Butterscotch",
+  r: 0xE0,
+  g: 0x95,
+  b: 0x40
+}, {
+  name: "Carrot orange",
+  r: 0xED,
+  g: 0x91,
+  b: 0x21
+}, {
+  name: "Champagne (color)",
+  r: 0xF7,
+  g: 0xE7,
+  b: 0xCE
+}, {
+  name: "Chrome Orange",
+  r: 0xE7,
+  g: 0x35,
+  b: 0x01
+}, {
+  name: "Coral",
+  r: 0xFF,
+  g: 0x7F,
+  b: 0x50
+}, {
+  name: "Dark orange (web)",
+  r: 0xFF,
+  g: 0x8C,
+  b: 0x00
+}, {
+  name: "Desert sand (color)",
+  r: 0xED,
+  g: 0xC9,
+  b: 0xAF
+}, {
+  name: "Engineering orange",
+  r: 0xBA,
+  g: 0x16,
+  b: 0x0C
+}, {
+  name: "Flame",
+  r: 0xE2,
+  g: 0x58,
+  b: 0x22
+}, {
+  name: "Giants orange",
+  r: 0xFE,
+  g: 0x5A,
+  b: 0x1D
+}, {
+  name: "Gold",
+  r: 0xFF,
+  g: 0xD7,
+  b: 0x00
+}, {
+  name: "Golden Gate Bridge",
+  r: 0xF0,
+  g: 0x4A,
+  b: 0x00
+}, {
+  name: "Goldenrod",
+  r: 0xDA,
+  g: 0xA5,
+  b: 0x20
+}, {
+  name: "Hunyadi yellow",
+  r: 0xE8,
+  g: 0xAC,
+  b: 0x41
+}, {
+  name: "Light orange",
+  r: 0xFE,
+  g: 0xD8,
+  b: 0xB1
+}, {
+  name: "Mahogany",
+  r: 0xC0,
+  g: 0x40,
+  b: 0x00
+}, {
+  name: "Melon",
+  r: 0xFD,
+  g: 0xBC,
+  b: 0xB4
+}, {
+  name: "Orange (Crayola)",
+  r: 0xFF,
+  g: 0x75,
+  b: 0x38
+}, {
+  name: "Orange (Pantone)",
+  r: 0xFF,
+  g: 0x58,
+  b: 0x00
+}, {
+  name: "Orange peel",
+  r: 0xFF,
+  g: 0xA0,
+  b: 0x00
+}, {
+  name: "Orange (web)",
+  r: 0xFF,
+  g: 0xA5,
+  b: 0x00
+}, {
+  name: "Orange (wheel)",
+  r: 0xFF,
+  g: 0x80,
+  b: 0x00
+}, {
+  name: "Papaya whip",
+  r: 0xFF,
+  g: 0xEF,
+  b: 0xD5
+}, {
+  name: "Peach",
+  r: 0xFF,
+  g: 0xE5,
+  b: 0xB4
+}, {
+  name: "Persian orange",
+  r: 0xD9,
+  g: 0x90,
+  b: 0x58
+}, {
+  name: "Persimmon",
+  r: 0xEC,
+  g: 0x58,
+  b: 0x00
+}, {
+  name: "Princeton orange",
+  r: 0xFF,
+  g: 0x8F,
+  b: 0x00
+}, {
+  name: "Pumpkin",
+  r: 0xFF,
+  g: 0x75,
+  b: 0x18
+}, {
+  name: "Rust",
+  r: 0xB7,
+  g: 0x41,
+  b: 0x0E
+}, {
+  name: "Safety orange",
+  r: 0xFF,
+  g: 0x79,
+  b: 0x00
+}, {
+  name: "Saffron",
+  r: 0xF4,
+  g: 0xC4,
+  b: 0x30
+}, {
+  name: "Spanish orange",
+  r: 0xE8,
+  g: 0x61,
+  b: 0x00
+}, {
+  name: "Tangelo",
+  r: 0xF9,
+  g: 0x4D,
+  b: 0x00
+}, {
+  name: "Tangerine",
+  r: 0xF2,
+  g: 0x85,
+  b: 0x00
+}, {
+  name: "Tawny",
+  r: 0xCD,
+  g: 0x57,
+  b: 0x00
+}, {
+  name: "Tiger's Eye",
+  r: 0xB5,
+  g: 0x69,
+  b: 0x17
+}, {
+  name: "Titian Red",
+  r: 0xBD,
+  g: 0x56,
+  b: 0x20
+}, {
+  name: "UT orange",
+  r: 0xFF,
+  g: 0x82,
+  b: 0x00
+}, {
+  name: "Xanthous",
+  r: 0xF1,
+  g: 0xB4,
+  b: 0x2F
 }];
 
 /***/ }),

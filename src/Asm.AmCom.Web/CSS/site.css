@@ -5,7 +5,7 @@
   --colour-lighter: #29333D;
   --colour-rich-blue: #3C74A8;
   --colour-blue: #73BEE9;
-  --colour-light-blue: #aadcf7;
+  --colour-light-blue: rgb(170, 220, 247);
   --colour-bone: #F8F8D2;
   --colour-muted-bone: #DADAD3;
 }
@@ -57,10 +57,8 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url("/fonts/quicksand-v29-latin-300.eot");
-  /* IE9 Compat Modes */
-  src: local(""), url("/fonts/quicksand-v29-latin-300.eot?#iefix") format("embedded-opentype"), url("/fonts/quicksand-v29-latin-300.woff2") format("woff2"), url("/fonts/quicksand-v29-latin-300.woff") format("woff"), url("/fonts/quicksand-v29-latin-300.ttf") format("truetype"), url("/fonts/quicksand-v29-latin-300.svg#Quicksand") format("svg");
-  /* Legacy iOS */
+  src: url("/fonts/quicksand-v29-latin-300.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/fonts/quicksand-v29-latin-300.eot?#iefix") format("embedded-opentype"), url("/fonts/quicksand-v29-latin-300.woff2") format("woff2"), url("/fonts/quicksand-v29-latin-300.woff") format("woff"), url("/fonts/quicksand-v29-latin-300.ttf") format("truetype"), url("/fonts/quicksand-v29-latin-300.svg#Quicksand") format("svg"); /* Legacy iOS */
 }
 /* quicksand-regular - latin */
 @font-face {
@@ -68,10 +66,8 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("/fonts/quicksand-v29-latin-regular.eot");
-  /* IE9 Compat Modes */
-  src: local(""), url("/fonts/quicksand-v29-latin-regular.eot?#iefix") format("embedded-opentype"), url("/fonts/quicksand-v29-latin-regular.woff2") format("woff2"), url("/fonts/quicksand-v29-latin-regular.woff") format("woff"), url("/fonts/quicksand-v29-latin-regular.ttf") format("truetype"), url("/fonts/quicksand-v29-latin-regular.svg#Quicksand") format("svg");
-  /* Legacy iOS */
+  src: url("/fonts/quicksand-v29-latin-regular.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/fonts/quicksand-v29-latin-regular.eot?#iefix") format("embedded-opentype"), url("/fonts/quicksand-v29-latin-regular.woff2") format("woff2"), url("/fonts/quicksand-v29-latin-regular.woff") format("woff"), url("/fonts/quicksand-v29-latin-regular.ttf") format("truetype"), url("/fonts/quicksand-v29-latin-regular.svg#Quicksand") format("svg"); /* Legacy iOS */
 }
 /* quicksand-500 - latin */
 @font-face {
@@ -79,10 +75,8 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("/fonts/quicksand-v29-latin-500.eot");
-  /* IE9 Compat Modes */
-  src: local(""), url("/fonts/quicksand-v29-latin-500.eot?#iefix") format("embedded-opentype"), url("/fonts/quicksand-v29-latin-500.woff2") format("woff2"), url("/fonts/quicksand-v29-latin-500.woff") format("woff"), url("/fonts/quicksand-v29-latin-500.ttf") format("truetype"), url("/fonts/quicksand-v29-latin-500.svg#Quicksand") format("svg");
-  /* Legacy iOS */
+  src: url("/fonts/quicksand-v29-latin-500.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/fonts/quicksand-v29-latin-500.eot?#iefix") format("embedded-opentype"), url("/fonts/quicksand-v29-latin-500.woff2") format("woff2"), url("/fonts/quicksand-v29-latin-500.woff") format("woff"), url("/fonts/quicksand-v29-latin-500.ttf") format("truetype"), url("/fonts/quicksand-v29-latin-500.svg#Quicksand") format("svg"); /* Legacy iOS */
 }
 /* quicksand-600 - latin */
 @font-face {
@@ -90,10 +84,8 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("/fonts/quicksand-v29-latin-600.eot");
-  /* IE9 Compat Modes */
-  src: local(""), url("/fonts/quicksand-v29-latin-600.eot?#iefix") format("embedded-opentype"), url("/fonts/quicksand-v29-latin-600.woff2") format("woff2"), url("/fonts/quicksand-v29-latin-600.woff") format("woff"), url("/fonts/quicksand-v29-latin-600.ttf") format("truetype"), url("/fonts/quicksand-v29-latin-600.svg#Quicksand") format("svg");
-  /* Legacy iOS */
+  src: url("/fonts/quicksand-v29-latin-600.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/fonts/quicksand-v29-latin-600.eot?#iefix") format("embedded-opentype"), url("/fonts/quicksand-v29-latin-600.woff2") format("woff2"), url("/fonts/quicksand-v29-latin-600.woff") format("woff"), url("/fonts/quicksand-v29-latin-600.ttf") format("truetype"), url("/fonts/quicksand-v29-latin-600.svg#Quicksand") format("svg"); /* Legacy iOS */
 }
 /* quicksand-700 - latin */
 @font-face {
@@ -101,10 +93,8 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("/fonts/quicksand-v29-latin-700.eot");
-  /* IE9 Compat Modes */
-  src: local(""), url("/fonts/quicksand-v29-latin-700.eot?#iefix") format("embedded-opentype"), url("/fonts/quicksand-v29-latin-700.woff2") format("woff2"), url("/fonts/quicksand-v29-latin-700.woff") format("woff"), url("/fonts/quicksand-v29-latin-700.ttf") format("truetype"), url("/fonts/quicksand-v29-latin-700.svg#Quicksand") format("svg");
-  /* Legacy iOS */
+  src: url("/fonts/quicksand-v29-latin-700.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/fonts/quicksand-v29-latin-700.eot?#iefix") format("embedded-opentype"), url("/fonts/quicksand-v29-latin-700.woff2") format("woff2"), url("/fonts/quicksand-v29-latin-700.woff") format("woff"), url("/fonts/quicksand-v29-latin-700.ttf") format("truetype"), url("/fonts/quicksand-v29-latin-700.svg#Quicksand") format("svg"); /* Legacy iOS */
 }
 /* maven-pro-regular - latin */
 @font-face {
@@ -112,10 +102,8 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("/fonts/maven-pro-v29-latin-regular.eot");
-  /* IE9 Compat Modes */
-  src: local(""), url("/fonts/maven-pro-v29-latin-regular.eot?#iefix") format("embedded-opentype"), url("/fonts/maven-pro-v29-latin-regular.woff2") format("woff2"), url("/fonts/maven-pro-v29-latin-regular.woff") format("woff"), url("/fonts/maven-pro-v29-latin-regular.ttf") format("truetype"), url("/fonts/maven-pro-v29-latin-regular.svg#MavenPro") format("svg");
-  /* Legacy iOS */
+  src: url("/fonts/maven-pro-v29-latin-regular.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/fonts/maven-pro-v29-latin-regular.eot?#iefix") format("embedded-opentype"), url("/fonts/maven-pro-v29-latin-regular.woff2") format("woff2"), url("/fonts/maven-pro-v29-latin-regular.woff") format("woff"), url("/fonts/maven-pro-v29-latin-regular.ttf") format("truetype"), url("/fonts/maven-pro-v29-latin-regular.svg#MavenPro") format("svg"); /* Legacy iOS */
 }
 /* maven-pro-500 - latin */
 @font-face {
@@ -123,10 +111,8 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("/fonts/maven-pro-v29-latin-500.eot");
-  /* IE9 Compat Modes */
-  src: local(""), url("/fonts/maven-pro-v29-latin-500.eot?#iefix") format("embedded-opentype"), url("/fonts/maven-pro-v29-latin-500.woff2") format("woff2"), url("/fonts/maven-pro-v29-latin-500.woff") format("woff"), url("/fonts/maven-pro-v29-latin-500.ttf") format("truetype"), url("/fonts/maven-pro-v29-latin-500.svg#MavenPro") format("svg");
-  /* Legacy iOS */
+  src: url("/fonts/maven-pro-v29-latin-500.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/fonts/maven-pro-v29-latin-500.eot?#iefix") format("embedded-opentype"), url("/fonts/maven-pro-v29-latin-500.woff2") format("woff2"), url("/fonts/maven-pro-v29-latin-500.woff") format("woff"), url("/fonts/maven-pro-v29-latin-500.ttf") format("truetype"), url("/fonts/maven-pro-v29-latin-500.svg#MavenPro") format("svg"); /* Legacy iOS */
 }
 /* maven-pro-600 - latin */
 @font-face {
@@ -134,10 +120,8 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("/fonts/maven-pro-v29-latin-600.eot");
-  /* IE9 Compat Modes */
-  src: local(""), url("/fonts/maven-pro-v29-latin-600.eot?#iefix") format("embedded-opentype"), url("/fonts/maven-pro-v29-latin-600.woff2") format("woff2"), url("/fonts/maven-pro-v29-latin-600.woff") format("woff"), url("/fonts/maven-pro-v29-latin-600.ttf") format("truetype"), url("/fonts/maven-pro-v29-latin-600.svg#MavenPro") format("svg");
-  /* Legacy iOS */
+  src: url("/fonts/maven-pro-v29-latin-600.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/fonts/maven-pro-v29-latin-600.eot?#iefix") format("embedded-opentype"), url("/fonts/maven-pro-v29-latin-600.woff2") format("woff2"), url("/fonts/maven-pro-v29-latin-600.woff") format("woff"), url("/fonts/maven-pro-v29-latin-600.ttf") format("truetype"), url("/fonts/maven-pro-v29-latin-600.svg#MavenPro") format("svg"); /* Legacy iOS */
 }
 /* maven-pro-700 - latin */
 @font-face {
@@ -145,10 +129,8 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("/fonts/maven-pro-v29-latin-700.eot");
-  /* IE9 Compat Modes */
-  src: local(""), url("/fonts/maven-pro-v29-latin-700.eot?#iefix") format("embedded-opentype"), url("/fonts/maven-pro-v29-latin-700.woff2") format("woff2"), url("/fonts/maven-pro-v29-latin-700.woff") format("woff"), url("/fonts/maven-pro-v29-latin-700.ttf") format("truetype"), url("/fonts/maven-pro-v29-latin-700.svg#MavenPro") format("svg");
-  /* Legacy iOS */
+  src: url("/fonts/maven-pro-v29-latin-700.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/fonts/maven-pro-v29-latin-700.eot?#iefix") format("embedded-opentype"), url("/fonts/maven-pro-v29-latin-700.woff2") format("woff2"), url("/fonts/maven-pro-v29-latin-700.woff") format("woff"), url("/fonts/maven-pro-v29-latin-700.ttf") format("truetype"), url("/fonts/maven-pro-v29-latin-700.svg#MavenPro") format("svg"); /* Legacy iOS */
 }
 /* maven-pro-800 - latin */
 @font-face {
@@ -156,10 +138,8 @@
   font-style: normal;
   font-weight: 800;
   font-display: swap;
-  src: url("/fonts/maven-pro-v29-latin-800.eot");
-  /* IE9 Compat Modes */
-  src: local(""), url("/fonts/maven-pro-v29-latin-800.eot?#iefix") format("embedded-opentype"), url("/fonts/maven-pro-v29-latin-800.woff2") format("woff2"), url("/fonts/maven-pro-v29-latin-800.woff") format("woff"), url("/fonts/maven-pro-v29-latin-800.ttf") format("truetype"), url("/fonts/maven-pro-v29-latin-800.svg#MavenPro") format("svg");
-  /* Legacy iOS */
+  src: url("/fonts/maven-pro-v29-latin-800.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/fonts/maven-pro-v29-latin-800.eot?#iefix") format("embedded-opentype"), url("/fonts/maven-pro-v29-latin-800.woff2") format("woff2"), url("/fonts/maven-pro-v29-latin-800.woff") format("woff"), url("/fonts/maven-pro-v29-latin-800.ttf") format("truetype"), url("/fonts/maven-pro-v29-latin-800.svg#MavenPro") format("svg"); /* Legacy iOS */
 }
 /* maven-pro-900 - latin */
 @font-face {
@@ -167,10 +147,8 @@
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url("/fonts/maven-pro-v29-latin-900.eot");
-  /* IE9 Compat Modes */
-  src: local(""), url("/fonts/maven-pro-v29-latin-900.eot?#iefix") format("embedded-opentype"), url("/fonts/maven-pro-v29-latin-900.woff2") format("woff2"), url("/fonts/maven-pro-v29-latin-900.woff") format("woff"), url("/fonts/maven-pro-v29-latin-900.ttf") format("truetype"), url("/fonts/maven-pro-v29-latin-900.svg#MavenPro") format("svg");
-  /* Legacy iOS */
+  src: url("/fonts/maven-pro-v29-latin-900.eot"); /* IE9 Compat Modes */
+  src: local(""), url("/fonts/maven-pro-v29-latin-900.eot?#iefix") format("embedded-opentype"), url("/fonts/maven-pro-v29-latin-900.woff2") format("woff2"), url("/fonts/maven-pro-v29-latin-900.woff") format("woff"), url("/fonts/maven-pro-v29-latin-900.ttf") format("truetype"), url("/fonts/maven-pro-v29-latin-900.svg#MavenPro") format("svg"); /* Legacy iOS */
 }
 h1, .h1, h2, .h2 {
   padding-top: 1rem;
@@ -963,34 +941,27 @@ figure.combinedWorks {
   .currentBreakpoint::after {
     content: "(max-width: 991px)";
   }
-
   body.home.dark main {
     border-bottom: 1px solid var(--border);
   }
-
   .home.index .summary li {
     font-size: 18px;
   }
-
   .summary section {
     border-right: none;
     border-bottom: 1px solid var(--border);
     margin-bottom: 15px;
   }
-
   .summary section:last-child {
     border-bottom: none;
     margin-bottom: 0;
   }
-
   .summary .btn {
     margin-bottom: 20px;
   }
-
   .combinedWorks {
     display: none;
   }
-
   .navbar .navbar-brand span {
     font-size: 1.3rem;
   }
@@ -1008,7 +979,6 @@ figure.combinedWorks {
   .navbar > .container-fluid {
     align-items: normal;
   }
-
   .navbar-brand {
     position: absolute;
     right: 0;
@@ -1016,7 +986,6 @@ figure.combinedWorks {
     padding-top: 0;
     top: 3px;
   }
-
   h2:not(.text) {
     font-size: 1.8rem;
     margin-bottom: 0;
@@ -1025,11 +994,9 @@ figure.combinedWorks {
   h2:not(.text).long {
     font-size: 1.5rem;
   }
-
   h2.has-links {
     border-bottom-color: var(--colour-dark);
   }
-
   .page-links {
     float: none;
     justify-content: space-between;
@@ -1037,7 +1004,6 @@ figure.combinedWorks {
     margin-bottom: 0.5rem;
     border-bottom: 2px solid var(--colour-dark);
   }
-
   aside.page-link {
     margin: 0;
     border: none;
@@ -1049,68 +1015,54 @@ figure.combinedWorks {
   aside.page-link:last-child {
     border-right: none;
   }
-
   .hero {
     height: 305px;
   }
   .hero h2, .hero p {
     font-size: 1.5rem;
   }
-
   .navbar .levellast {
     border-bottom: 1px solid var(--nav-colour);
   }
-
   .summary section {
     border-right: none;
     border-bottom: 1px solid var(--border);
   }
-
   #hero .container div, #hero img {
     display: none !important;
   }
-
   #hero .home-header-container {
     position: static;
     margin: 0 auto;
     width: 100%;
   }
-
   .combinedWorks {
     display: none;
   }
-
   .currentBreakpoint::after {
     content: "(max-width: 767px), (max-device-width: 767px)";
   }
-
   article {
     font-size: 0.875rem;
   }
-
   h1 {
     font-size: 2.5em;
     line-height: 50px;
   }
-
   footer {
     font-size: 0.875rem;
     margin: 15px auto;
   }
-
   .navbar .level-last {
     border-right: none;
     border-bottom: 1px solid var(--colour-blue);
   }
-
   .navbar a {
     font-size: 1rem;
   }
-
   .combinedWorks {
     display: none;
   }
-
   #hero .jumbotron {
     width: auto;
     left: initial;
@@ -1120,11 +1072,9 @@ figure.combinedWorks {
   .currentBreakpoint::after {
     content: "(max-width: 575px), (max-device-width: 575px)";
   }
-
   h1 {
     padding-right: 10px;
   }
-
   .hero {
     height: 202px;
   }
@@ -1157,4 +1107,4 @@ figure.combinedWorks {
   }
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/variables.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/variables-css.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/fonts.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/bootstrap.override.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/reboot.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/general.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/layout.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/navigation.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/hero.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/error.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/page.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/summary.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/word-cloud.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/dark.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/responsive.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22;AAAC;ACED;EACI;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;IACI;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;;;AAIR;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;ACnDH;AACD;EACI;EACA;EACA;EACA;EACA;AAAgD;EAChD;AAImE;;AAEvE;AACA;EACI;EACA;EACA;EACA;EACA;AAAoD;EACpD;AAIuE;;AAE3E;AACA;EACI;EACA;EACA;EACA;EACA;AAAgD;EAChD;AAImE;;AAEvE;AACA;EACI;EACA;EACA;EACA;EACA;AAAgD;EAChD;AAImE;;AAEvE;AACA;EACI;EACA;EACA;EACA;EACA;AAAgD;EAChD;AAImE;;AAGvE;AACA;EACI;EACA;EACA;EACA;EACA;AAAoD;EACpD;AAIsE;;AAE1E;AACA;EACI;EACA;EACA;EACA;EACA;AAAgD;EAChD;AAIkE;;AAEtE;AACA;EACI;EACA;EACA;EACA;EACA;AAAgD;EAChD;AAIkE;;AAEtE;AACA;EACI;EACA;EACA;EACA;EACA;AAAgD;EAChD;AAIkE;;AAEtE;AACA;EACI;EACA;EACA;EACA;EACA;AAAgD;EAChD;AAIkE;;AAEtE;AACA;EACI;EACA;EACA;EACA;EACA;AAAgD;EAChD;AAIkE;;AC9IrE;EACG;;;AAGJ;EACI;;AACA;EACI;;;AAIR;EACI;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;;AAEA;EACI;;AAGJ;EACI;;;AAIR;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AC/CH;EACG;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAIA;EACI;;;AAIR;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;AAEA;EACI;EACA;EACA;;AAEA;EACI;;AAGJ;EACI;;;AC5EX;EACG;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;;;AChBH;EACG;EACA;;AAEA;EACI;;AAGJ;EACI;;;AAIR;EACI;EACA;EACA;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAIJ;EACI;IACI;;;AAKR;EACI;EACA;;AAEA;EACI;EACA;;;AAIR;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;AAEA;EACI;EACA;EACA;EACA;EACA;EACA;EACA;;;AAIR;EACI;EACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;;AAGJ;EACI;;;AAIR;EACI;;;AAIJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;;AAEA;EACI;EACA;EACA;;AAIJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;;AAGJ;EACI;EACA;EACA;EACA;;AAGJ;EACI;;AAGJ;EACI;EACA;;AAGJ;EACI;;;AAKZ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;IACI;;;AAIR;EACI;;;AAGJ;EACI;IACI;;;AAIR;EACI;;;AClMH;EACG;EACA;EACA;;AAGI;EACI;EACA;EACA;;AAEA;EACI;;AAGJ;EACI;;AAIR;AAAA;EAEI;EACA;;AAIR;EACI;;AAGJ;EACI;;AAGJ;EACI;EACA;;AAGJ;EACI;;AAIA;EACI;EACA;EACA;EACA;EACA;EACA;;;AAKZ;EACI;;;AAIJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;;;AC5FH;EACG;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA;AACA;EACA;EACA;EACA;;;AAIR;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;;AAGJ;EACI;;;AAIR;EACI;EACA;;;AC1CH;EACG;EACA;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;EACA;;;ACdH;EACG;EACA;;;AAGJ;EACI;EACA;;;AAIJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;AACA;AAAA;AAAA;;;AAKJ;EACI;EACA;EACA;AACA;AAAA;AAAA;;;AAKJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;EACA;;;AC1DH;EACG;;AAEA;EAMI;EACA;EACA;EACA;;AAPA;EACI;;AAQJ;EACI;;AAIR;EACI;;AAGJ;EACI;;AAGJ;EACI;EACA;EACA;;;AC9BP;EACG;EAwBA;;AAtBA;EACI;EACA;EACA;EACA;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;;AAGJ;EACI;EACA;EACA;;;AAMR;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;ACxKA;EACI;EACA;EACA;;AAOI;EACI;;AAEA;EACI;;AAIR;EACI;;AAEA;EACI;;AAMhB;EACI;;AAGJ;EACI;;AAEA;EACI;;;AAKZ;EAEI;IACI;IACA;IACA;;EAOI;IACI;;EAEA;IACI;;EAIR;IACI;;EAEA;IACI;;EAMhB;IACI;;EAGJ;IACI;;EAEA;IACI;;;AbjFX;AcED;EACI;IACI;;;AAIR;EAEI;IACI;;;AAIR;EACI;IACI;;;AAIR;EAEI;IACI;;;EAGJ;IACI;;;EAGJ;IACI;;;EAGJ;IACI;IACA;IACA;;;EAGJ;IACI;IACA;;;EAGJ;IACI;;;EAGJ;IACI;;;EAIA;IACI;;EAGJ;IACI;IACA;;;AAKZ;EAEI;IACI;;;AAIR;EAEI;IACI;;;EAGJ;IACI;IACA;IACA;IACA;IACA;;;EAGJ;IACI;IACA;IACA;;EAEA;IACI;;;EAIR;IACI;;;EAIJ;IACI;IACA;IACA;IACA;IACA;;;EAGJ;IACI;IACA;IACA;IACA;IACA;IACA;;EAEA;IACI;;;EAIR;IAEI;;EAEA;IACI;;;EAMJ;IACI;;;EAIR;IACI;IACA;;;EAGJ;IACI;;;EAGJ;IACI;IACA;IACA;;;EAGJ;IACI;;;EAGJ;IACI;;;EAGJ;IACI;;;EAGJ;IACI;IACA;;;EAGJ;IACI;IACA;;;EAGJ;IACI;IACA;;;EAGJ;IACI;;;EAGJ;IACI;;;EAGJ;IACI;IACA;;;AAIR;EACI;IACI;;;EAGJ;IACI;;;EAGJ;IACI;;EAEA;IACI;;EAGJ;IACI;;;AAKZ;EACI;IACI;;;AAIR;EACI;IACI;IACA;;;AAIR;EACI;IACI;;;AAIR;EACI;IACI%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/variables.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/variables-css.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/fonts.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/bootstrap.override.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/reboot.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/general.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/layout.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/navigation.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/hero.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/error.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/page.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/summary.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/word-cloud.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/dark.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/responsive.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22;AAAC;ACED;EACI;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;IACI;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;;;AAIR;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;ACnDH;AACD;EACI;EACA;EACA;EACA;EACA;EACA,uVAImE;;AAEvE;AACA;EACI;EACA;EACA;EACA;EACA;EACA,2WAIuE;;AAE3E;AACA;EACI;EACA;EACA;EACA;EACA;EACA,uVAImE;;AAEvE;AACA;EACI;EACA;EACA;EACA;EACA;EACA,uVAImE;;AAEvE;AACA;EACI;EACA;EACA;EACA;EACA;EACA,uVAImE;;AAGvE;AACA;EACI;EACA;EACA;EACA;EACA;EACA,0WAIsE;;AAE1E;AACA;EACI;EACA;EACA;EACA;EACA;EACA,sVAIkE;;AAEtE;AACA;EACI;EACA;EACA;EACA;EACA;EACA,sVAIkE;;AAEtE;AACA;EACI;EACA;EACA;EACA;EACA;EACA,sVAIkE;;AAEtE;AACA;EACI;EACA;EACA;EACA;EACA;EACA,sVAIkE;;AAEtE;AACA;EACI;EACA;EACA;EACA;EACA;EACA,sVAIkE;;AC9IrE;EACG;;;AAGJ;EACI;;AACA;EACI;;;AAIR;EACI;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;;AAEA;EACI;;AAGJ;EACI;;;AAIR;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AC/CH;EACG;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAIA;EACI;;;AAIR;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;AAEA;EACI;EACA;EACA;;AAEA;EACI;;AAGJ;EACI;;;AC5EX;EACG;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;;;AChBH;EACG;EACA;;AAEA;EACI;;AAGJ;EACI;;;AAIR;EACI;EACA;EACA;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAIJ;EACI;IACI;;;AAKR;EACI;EACA;;AAEA;EACI;EACA;;;AAIR;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;AAEA;EACI;EACA;EACA;EACA;EACA;EACA;EACA;;;AAIR;EACI;EACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;;AAGJ;EACI;;;AAIR;EACI;;;AAIJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;;AAEA;EACI;EACA;EACA;;AAIJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;;AAGJ;EACI;EACA;EACA;EACA;;AAGJ;EACI;;AAGJ;EACI;EACA;;AAGJ;EACI;;;AAKZ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;IACI;;;AAIR;EACI;;;AAGJ;EACI;IACI;;;AAIR;EACI;;;AClMH;EACG;EACA;EACA;;AAGI;EACI;EACA;EACA;;AAEA;EACI;;AAGJ;EACI;;AAIR;AAAA;EAEI;EACA;;AAIR;EACI;;AAGJ;EACI;;AAGJ;EACI;EACA;;AAGJ;EACI;;AAIA;EACI;EACA;EACA;EACA;EACA;EACA;;;AAKZ;EACI;;;AAIJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;;;AC5FH;EACG;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA;AACA;EACA;EACA;EACA;;;AAIR;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;;AAGJ;EACI;;;AAIR;EACI;EACA;;;AC1CH;EACG;EACA;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;EACA;;;ACdH;EACG;EACA;;;AAGJ;EACI;EACA;;;AAIJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;AACA;AAAA;AAAA;;;AAKJ;EACI;EACA;EACA;AACA;AAAA;AAAA;;;AAKJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;EACA;;;AC1DH;EACG;;AAEA;EAMI;EACA;EACA;EACA;;AAPA;EACI;;AAQJ;EACI;;AAIR;EACI;;AAGJ;EACI;;AAGJ;EACI;EACA;EACA;;;AC9BP;EACG;EAwBA;;AAtBA;EACI;EACA;EACA;EACA;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;;AAGJ;EACI;EACA;EACA;;;AAMR;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;ACxKA;EACI;EACA;EACA;;AAOI;EACI;;AAEA;EACI;;AAIR;EACI;;AAEA;EACI;;AAMhB;EACI;;AAGJ;EACI;;AAEA;EACI;;;AAKZ;EAEI;IACI;IACA;IACA;;EAOI;IACI;;EAEA;IACI;;EAIR;IACI;;EAEA;IACI;;EAMhB;IACI;;EAGJ;IACI;;EAEA;IACI;;;AbjFX;AcED;EACI;IACI;;;AAIR;EAEI;IACI;;;AAIR;EACI;IACI;;;AAIR;EAEI;IACI;;EAGJ;IACI;;EAGJ;IACI;;EAGJ;IACI;IACA;IACA;;EAGJ;IACI;IACA;;EAGJ;IACI;;EAGJ;IACI;;EAIA;IACI;;EAGJ;IACI;IACA;;;AAKZ;EAEI;IACI;;;AAIR;EAEI;IACI;;EAGJ;IACI;IACA;IACA;IACA;IACA;;EAGJ;IACI;IACA;IACA;;EAEA;IACI;;EAIR;IACI;;EAIJ;IACI;IACA;IACA;IACA;IACA;;EAGJ;IACI;IACA;IACA;IACA;IACA;IACA;;EAEA;IACI;;EAIR;IAEI;;EAEA;IACI;;EAMJ;IACI;;EAIR;IACI;IACA;;EAGJ;IACI;;EAGJ;IACI;IACA;IACA;;EAGJ;IACI;;EAGJ;IACI;;EAGJ;IACI;;EAGJ;IACI;IACA;;EAGJ;IACI;IACA;;EAGJ;IACI;IACA;;EAGJ;IACI;;EAGJ;IACI;;EAGJ;IACI;IACA;;;AAIR;EACI;IACI;;EAGJ;IACI;;EAGJ;IACI;;EAEA;IACI;;EAGJ;IACI;;;AAKZ;EACI;IACI;;;AAIR;EACI;IACI;IACA;;;AAIR;EACI;IACI;;;AAIR;EACI;IACI%22%7D */
