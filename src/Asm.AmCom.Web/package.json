@@ -29,6 +29,7 @@
     "@types/react-dom": "^18.0.3",
     "babel-loader": "^8.2.5",
     "eslint-webpack-plugin": "^3.1.1",
+    "sass": "^1.65.1",
     "ts-loader": "^5.3.3",
     "typescript": "^4.6.4",
     "webpack": "^5.72.0",
@@ -37,6 +38,7 @@
   "scripts": {
     "start": "webpack --mode development --watch --progress",
     "build": "webpack --mode production",
+    "build-sass": "sass CSS/site.scss:wwwroot/css/site.min.css --style compressed && sass CSS/tools/tool.scss:wwwroot/css/tool.min.css --style compressed && sass CSS/tools/regex.scss:wwwroot/css/regex.min.css --style compressed && sass CSS/tools/cidr.scss:wwwroot/css/cidr.min.css --style compressed && sass CSS/tools/colours.scss:wwwroot/css/colours.min.css --style compressed",
     "build:dev": "webpack --mode development"
   }
 }

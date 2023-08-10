@@ -18,10 +18,6 @@ const App: React.FC<AppProps> = (props) => {
 
     const tool = possibleTool;
 
-    //const enhancedCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-    //const store = createStore<any, Action, any, any>(this.tool.reducer, this.tool.initialState, enhancedCompose(applyMiddleware(thunk)));
-
     const EntryPoint = tool.component;
 
     return (
