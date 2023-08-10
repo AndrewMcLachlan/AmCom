@@ -44,13 +44,13 @@ jobs:
         OCTOPUS_URL: ${{ vars.OCTOPUSURL }}
         OCTOPUS_API_KEY: ${{ secrets.OCTOPUSAPIKEY }}
         OCTOPUS_SPACE: Default
-      run: octopus package zip create --id Asm.AsmCom.Web --version ${{ steps.set-version-number.outputs.version }} --base-path ${{ github.workspace }}/publish --out-folder ${{ github.workspace }}/artifacts
+      run: octopus package zip create --id Asm.AmCom.Web --version ${{ steps.set-version-number.outputs.version }} --base-path ${{ github.workspace }}/publish --out-folder ${{ github.workspace }}/artifacts
     - name: Push packages
       uses: OctopusDeploy/push-package-action@v3
       with:
         api_key: ${{ secrets.OCTOPUSAPIKEY }}
         server: ${{ vars.OCTOPUSURL }}
-        packages: " ${{ github.workspace }}/artifacts/Asm.AsmCom.Web.${{ steps.set-version-number.outputs.version }}.zip"
+        packages: " ${{ github.workspace }}/artifacts/Asm.AmCom.Web.${{ steps.set-version-number.outputs.version }}.zip"
         space: 'Default'
     - name: Create release
       uses: OctopusDeploy/create-release-action@v3
