@@ -1,0 +1,22 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /src/Asm.AmCom.Web
+    schedule:
+      interval: weekly
+    reviewers:
+      - andrewmcLachlan
+
+  - package-ecosystem: nuget
+    directory: /
+    schedule:
+      interval: weekly
+    reviewers:
+      - andrewmcLachlan
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    reviewers:
+      - andrewmcLachlan
