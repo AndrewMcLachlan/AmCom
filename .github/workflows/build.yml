@@ -46,6 +46,7 @@ jobs:
         OCTOPUS_SPACE: Default
       run: octopus package zip create --id Asm.AmCom.Web --version ${{ steps.set-version-number.outputs.version }} --base-path ${{ github.workspace }}/publish --out-folder ${{ github.workspace }}/artifacts
     - name: Push packages
+      if: (github.event_name != 'pull_request')
       uses: OctopusDeploy/push-package-action@v3
       with:
         api_key: ${{ secrets.OCTOPUSAPIKEY }}
@@ -53,6 +54,7 @@ jobs:
         packages: " ${{ github.workspace }}/artifacts/Asm.AmCom.Web.${{ steps.set-version-number.outputs.version }}.zip"
         space: 'Default'
     - name: Create release
+      if: (github.event_name != 'pull_request')
       uses: OctopusDeploy/create-release-action@v3
       with:
         api_key: ${{ secrets.OCTOPUSAPIKEY }}
