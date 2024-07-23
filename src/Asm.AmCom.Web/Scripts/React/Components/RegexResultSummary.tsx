@@ -12,9 +12,9 @@ const RegexResultSummary: React.FC<RegexResultProps> = (props) => {
 
     const input = res.input || "";
 
-    const unmatchedStart = input.substr(0, res.groups[0].index);
+    const unmatchedStart = input.substring(0, res.groups[0].index);
 
-    const unmatchedEnd = input.substr(res.groups[0].index + res.groups[0].length);
+    const unmatchedEnd = input.substring(res.groups[0].index + res.groups[0].length);
 
     const groups = [];
 

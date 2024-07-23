@@ -21,10 +21,10 @@ try
     services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
     services.AddTransient<ViewHelper>();
 
-    //if (!builder.Environment.IsDevelopment())
-    //{
+    if (!builder.Environment.IsDevelopment())
+    {
         umbracoBuilder.AddAzureBlobMediaFileSystem();
-    //}
+    }
 
     umbracoBuilder.Build();
 
