@@ -8,7 +8,7 @@ public static class CookieHelper
 
     public static bool HasAcceptedCookies(HttpContext context)
     {
-        string acceptance = context.Request.Cookies[CookieAcceptanceCookieName];
+        string? acceptance = context.Request.Cookies[CookieAcceptanceCookieName];
 
         return acceptance != null && acceptance == "1";
     }

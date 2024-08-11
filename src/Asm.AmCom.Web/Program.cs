@@ -1,6 +1,9 @@
 using Asm.AmCom.Web;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.StaticFiles;
+using System.Reflection;
+using System.Runtime.Loader;
 
 try
 {

@@ -1,7 +1,6 @@
 ﻿using System.Net;
 using Asm.AmCom.Web.Models;
 using Asm.AmCom.Web.Mvc;
-using Asm.Net;
 using Umbraco.Cms.Web.Common.Controllers;
 
 namespace Asm.AmCom.Web.Controllers;
@@ -17,8 +16,8 @@ public class CidrController : UmbracoApiController
     {
         if (String.IsNullOrWhiteSpace(ipAddress)) return BadRequest(KnownProblemDetails.CidrNotation.NullIPAddress);
         if (String.IsNullOrWhiteSpace(subnetMask)) return BadRequest(KnownProblemDetails.CidrNotation.NullSubnetMask);
-        if (!IPAddress.TryParse(ipAddress, out IPAddress ip)) return BadRequest(KnownProblemDetails.CidrNotation.IPAddressWrongFormat);
-        if (!IPAddress.TryParse(subnetMask, out IPAddress mask)) return BadRequest(KnownProblemDetails.CidrNotation.IPAddressWrongFormat);
+        if (!IPAddress.TryParse(ipAddress, out IPAddress? ip)) return BadRequest(KnownProblemDetails.CidrNotation.IPAddressWrongFormat);
+        if (!IPAddress.TryParse(subnetMask, out IPAddress? mask)) return BadRequest(KnownProblemDetails.CidrNotation.IPAddressWrongFormat);
         if (ip.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork) return BadRequest(KnownProblemDetails.CidrNotation.IPAddressWrongFormat);
         if (mask.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork) return BadRequest(KnownProblemDetails.CidrNotation.SubnetMaskWrongFormat);
 

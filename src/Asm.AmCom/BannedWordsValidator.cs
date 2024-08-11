@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text.RegularExpressions;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Asm.AmCom
 {
@@ -12,11 +7,7 @@ namespace Asm.AmCom
     /// </summary>
     public class BannedWordsValidatorAttribute : ValidationAttribute
     {
-        public string[] BannedWords
-        {
-            get;
-            set;
-        }
+        public string[] BannedWords { get; set; } = [];
 
         #region Constructors
         /// <summary>
@@ -44,11 +35,11 @@ namespace Asm.AmCom
         /// <param name="value">The vale to test.</param>
         /// <param name="validationContext">The validation context.</param>
         /// <returns>A validation result.</returns>
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
             if (value is string text && BannedWords.Any(b => text.ToLowerInvariant().Contains(b)))
             {
-                return new ValidationResult(this.FormatErrorMessage(validationContext.DisplayName));
+                return new ValidationResult(FormatErrorMessage(validationContext.DisplayName));
             }
 
             return ValidationResult.Success;

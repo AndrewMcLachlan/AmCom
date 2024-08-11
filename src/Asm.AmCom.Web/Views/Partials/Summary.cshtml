@@ -2,7 +2,7 @@
 @using Umbraco.Extensions
 @{
     var link = Model.Link as IPublishedContent;
-    var url = link.Url();
+    var url = link?.Url();
 }
 
 <section class="@ViewData["ClassName"]">

@@ -6,20 +6,20 @@ using RegexGroup = System.Text.RegularExpressions.Group;
 namespace Asm.AmCom.Web.Models;
 
 [DataContract]
-public class RegexTestRequest
+public record RegexTestRequest
 {
     [DataMember]
-    public string Regex { get; set; }
+    public required string Regex { get; init; }
 
     [DataMember]
-    public string Text { get; set; }
+    public required string Text { get; init; }
 }
 
-public class RegexTestResponse
+public record RegexTestResponse
 {
-    public bool Success { get; set; }
+    public bool Success { get; init; }
 
-    public List<Group> Groups { get; set; } = new List<Group>();
+    public List<Group> Groups { get; set; } = [];
 
     public RegexTestResponse(Match match)
     {
@@ -29,17 +29,17 @@ public class RegexTestResponse
     }
 }
 
-public class Group
+public record Group
 {
-    public int Index { get; set; }
+    public int Index { get; init; }
 
-    public int Length { get; set; }
+    public int Length { get; init; }
 
-    public bool Success { get; set; }
+    public bool Success { get; init; }
 
-    public string Value { get; set; }
+    public string Value { get; init; }
 
-    public List<Capture> Captures { get; set; } = new List<Capture>();
+    public List<Capture> Captures { get; init; } = [];
 
     public Group(RegexGroup group)
     {
@@ -51,18 +51,11 @@ public class Group
     }
 }
 
-public class Capture
+public record Capture(RegexCapture capture)
 {
-    public int Index { get; set; }
+    public int Index { get; } = capture.Index;
 
-    public int Length { get; set; }
+    public int Length { get; } = capture.Length;
 
-    public string Value { get; set; }
-
-    public Capture(RegexCapture capture)
-    {
-        Index = capture.Index;
-        Length = capture.Length;
-        Value = capture.Value;
-    }
+    public string Value { get; } = capture.Value;
 }

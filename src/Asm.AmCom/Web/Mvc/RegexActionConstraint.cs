@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.AspNetCore.Mvc.ActionConstraints;
+﻿using Microsoft.AspNetCore.Mvc.ActionConstraints;
 
-namespace Asm.AmCom.Web.Mvc
+namespace Asm.AmCom.Web.Mvc;
+
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
+public class RegexActionConstraint : Attribute, IActionConstraint
 {
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
-    public class RegexActionConstraint : Attribute, IActionConstraint
+    public int Order => 0;
+
+    public required string Regex { get; set; }
+
+    public bool Accept(ActionConstraintContext context)
     {
-        public int Order => 0;
+        System.Text.RegularExpressions.Regex regex = new(Regex);
 
-        public string Regex { get; set; }
-
-        public bool Accept(ActionConstraintContext context)
-        {
-            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(Regex);
-
-            return regex.IsMatch(context.RouteContext.RouteData.Values["action"] as string);
-        }
+        return regex.IsMatch(context.RouteContext.RouteData.Values["action"] as string ?? String.Empty);
     }
 }

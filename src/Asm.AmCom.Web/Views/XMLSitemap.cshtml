@@ -2,14 +2,14 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.XmlSitemap>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
-	Layout = null;
-	Context.Response.ContentType = "text/xml";
+    Layout = null;
+    Context.Response.ContentType = "text/xml";
 
-	string excludedDocumentTypeList = Model.Value<string>("excludedDocumentTypes");
+    string excludedDocumentTypeList = Model.Value<string>("excludedDocumentTypes")!;
     string[] excludedDocumentTypes = (!String.IsNullOrEmpty(excludedDocumentTypeList)) ? excludedDocumentTypeList.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(p => p.Trim()).ToArray() : new string[] { };
 
 
-	IPublishedContent siteHomePage = Model.Root();
+    IPublishedContent siteHomePage = Model.Root();
 }
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemalocation="http://www.google.com/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     @{

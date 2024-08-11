@@ -11,7 +11,7 @@
     if (Context.Request.Headers.ContainsKey("X-Forwarded-For"))
     {
         var header = Context.Request.Headers["X-Forwarded-For"];
-        ip = header.First().Split(',').First();
+        ip = header.First()?.Split(',').First() ?? string.Empty;
         if (System.Net.IPEndPoint.TryParse(ip, out var ipEndPoint))
         {
             ip = ipEndPoint.Address.ToString();
@@ -19,7 +19,7 @@
     }
     else
     {
-        ip = Context.Connection.RemoteIpAddress.ToString();
+        ip = Context.Connection.RemoteIpAddress?.ToString() ?? string.Empty;
     }
 }
 

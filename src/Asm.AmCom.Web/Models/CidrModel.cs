@@ -2,14 +2,14 @@
 
 namespace Asm.AmCom.Web.Models;
 
-public class CidrRequest
+public record CidrRequest
 {
-    public IPAddress IPAddress {get; set;}
+    public required IPAddress IPAddress { get; init; }
 
-    public IPAddress SubnetMask {get; set;}
+    public required IPAddress SubnetMask { get; init; }
 }
 
-public class CidrResponse
+public record CidrResponse
 {
-    public string IPAddress {get; set;}
+    public required string IPAddress { get; init; }
 }

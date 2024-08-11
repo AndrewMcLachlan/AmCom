@@ -5,20 +5,20 @@
     ViewBag.Title = $"{Model.Value("title")} - Andrew McLachlan";
     ViewBag.Description = Model.Value("description");
     ViewBag.Canonical = Model.Url();
-    var pageLinks = Model.Value<IEnumerable<Umbraco.Cms.Web.Common.PublishedModels.PageLink>>("PageLinks");
+    var pageLinks = Model.Value<IEnumerable<Umbraco.Cms.Web.Common.PublishedModels.PageLink>>("PageLinks") ?? [];
 }
 
 @section PageLink
 {
-  @if(Model.Value("PageLinks") != null)
-  {
-    <section class="page-links">
-    @foreach (var pageLink in pageLinks)
+    @if (Model.Value("PageLinks") != null)
     {
-            Html.RenderPartial("PageLink", pageLink);
-        }
-    </section>
-  }
+        <section class="page-links">
+            @foreach (var pageLink in pageLinks)
+            {
+                await Html.RenderPartialAsync("PageLink", pageLink);
+            }
+        </section>
+    }
 }
 
 @Model.Value("pageContent")

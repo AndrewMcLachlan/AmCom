@@ -2,6 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
     <Version>5.0.0.0</Version>
     <FileVersion>5.0.0.0</FileVersion>
     <Copyright>Copyright Andrew McLachlan 2002</Copyright>

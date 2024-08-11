@@ -6,7 +6,7 @@
     ViewBag.Title = $"{Model.Value("title")} - Andrew McLachlan";
     ViewBag.Description = Model.Value("description");
     ViewBag.Canonical = Model.Url();
-    string toolName = Model.Value<string>("toolName");
+    string toolName = Model.Value<string>("toolName")!;
 }
 
 @section Head

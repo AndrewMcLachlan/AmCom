@@ -11,23 +11,17 @@ using Umbraco.Extensions;
 namespace Asm.AmCom.Web.TagHelpers;
 
 [HtmlTargetElement("imgset", Attributes = "images")]
-public class ImgSetTagHelper : TagHelper
+public class ImgSetTagHelper(IWebHostEnvironment webHostEnvironment, IMemoryCache memoryCache) : TagHelper
 {
     [ViewContext]
-    public ViewContext ViewContext { get; set; }
+    public required ViewContext ViewContext { get; set; }
 
     [HtmlAttributeName("images")]
-    public IEnumerable<IPublishedContent> Images { get; set; }
+    public IEnumerable<IPublishedContent> Images { get; set; } = [];
 
-    protected IWebHostEnvironment WebHostEnvironment { get; }
+    protected IWebHostEnvironment WebHostEnvironment { get; } = webHostEnvironment;
 
-    protected IMemoryCache MemoryCache { get; }
-
-    public ImgSetTagHelper(IWebHostEnvironment webHostEnvironment, IMemoryCache memoryCache)
-    {
-        WebHostEnvironment = webHostEnvironment;
-        MemoryCache = memoryCache;
-    }
+    protected IMemoryCache MemoryCache { get; } = memoryCache;
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
@@ -48,7 +42,7 @@ public class ImgSetTagHelper : TagHelper
         var altText = image.Value<string>("umbracoAltText");
         altText = String.IsNullOrWhiteSpace(altText) ? String.Empty : altText;
 
-        string srcset = "";
+        string srcset = String.Empty;
         foreach (var img in Images.Skip(1))
         {
             var scaling = img.Value<float?>("scaling");
@@ -78,7 +72,7 @@ public class ImgSetTagHelper : TagHelper
             else
             {
                 string cleanPath = image.Url().Replace('~', '.');
-                cleanPath = cleanPath[..(cleanPath.IndexOf("?") > 0 ? cleanPath.IndexOf("?") : cleanPath.Length)];
+                cleanPath = cleanPath[..(cleanPath.IndexOf('?') > 0 ? cleanPath.IndexOf('?') : cleanPath.Length)];
                 cleanPath = cleanPath.Replace('/', Path.DirectorySeparatorChar);
 
                 string path = Path.Combine(WebHostEnvironment.WebRootPath, cleanPath.TrimStart('\\'));

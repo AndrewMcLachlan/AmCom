@@ -35,10 +35,10 @@ namespace Asm.AmCom
 
         public void AddValidation(ClientModelValidationContext context)
         {
-            if (this.DataType == DataType.EmailAddress)
+            if (DataType == DataType.EmailAddress)
             {
                 context.Attributes.Add("data-val", "true");
-                context.Attributes.Add("data-val-regex", FormatErrorMessage(context.ModelMetadata.DisplayName));
+                context.Attributes.Add("data-val-regex", FormatErrorMessage(context.ModelMetadata.DisplayName ?? String.Empty));
                 context.Attributes.Add("data-val-regex-pattern", EmailValidationRegExString);
             }
         }
@@ -51,11 +51,11 @@ namespace Asm.AmCom
         /// <param name="value">The vale to test.</param>
         /// <param name="validationContext">The validation context.</param>
         /// <returns>A validation result.</returns>
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
-            if (this.DataType == DataType.EmailAddress && value is string && !EmailRegEx.Match(value as string).Success)
+            if (DataType == DataType.EmailAddress && value is string str && !String.IsNullOrEmpty(str) && !EmailRegEx.Match(str).Success)
             {
-                return new ValidationResult(this.FormatErrorMessage(validationContext.DisplayName));
+                return new ValidationResult(FormatErrorMessage(validationContext.DisplayName));
             }
             return base.IsValid(value, validationContext);
         }

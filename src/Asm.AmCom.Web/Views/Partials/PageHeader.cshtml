@@ -19,7 +19,7 @@
     }
     headerImageStyle += Model.ValueAnd("backgroundColour", "; background-color: {0}");
             var className = pageLinks?.Any() ?? false ? "has-links" : String.Empty;
-    className += Model.Value<string>("title").Length > 23 ? " long" : String.Empty;
+    className += Model.Value<string>("title")?.Length > 23 ? " long" : String.Empty;
 }
 
 <h2 class="@className.Trim()" style="@headerImageStyle">@Model.Value("title")</h2>

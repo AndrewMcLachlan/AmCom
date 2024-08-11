@@ -12,35 +12,18 @@ namespace Asm.AmCom.Web
     /// <summary>
     /// Helper class for views.
     /// </summary>
-    public class ViewHelper
+    public class ViewHelper(IActionContextAccessor contextAccessor, IWebHostEnvironment environment, ICompositeViewEngine viewEngine, IUrlHelperFactory urlHelperFactory, IHttpContextFactory httpContextFactory)
     {
-        private IWebHostEnvironment _environment;
-        private ICompositeViewEngine _viewEngine;
-        private IHttpContextFactory _httpContextFactory;
-
-        public IUrlHelper UrlHelper { get; private set; }
-        public ActionContext Context { get; private set; }
-
-        public ViewHelper(IActionContextAccessor contextAccessor, IWebHostEnvironment environment, ICompositeViewEngine viewEngine, IUrlHelperFactory urlHelperFactory, IHttpContextFactory httpContextFactory)
-        {
-            Context = contextAccessor.ActionContext;
-            _environment = environment;
-            _viewEngine = viewEngine;
-            _httpContextFactory = httpContextFactory;
-            UrlHelper = urlHelperFactory.GetUrlHelper(Context);
-        }
+        public IUrlHelper UrlHelper { get; private set; } = urlHelperFactory.GetUrlHelper(contextAccessor.ActionContext!);
+        public ActionContext Context { get; private set; } = contextAccessor.ActionContext!;
 
         /// <summary>
         /// Gets the physical location of a view layout from the URL.
         /// </summary>
         /// <param name="url">The URL.</param>
         /// <returns>The physical path to the view for the URL, otherwise <c>null</c>.</returns>
-        public string GetPhysicalPath(string controller, string action, string area = null)
+        public string? GetPhysicalPath(string controller, string action, string? area = null)
         {
-            var request = Context.HttpContext.Request;
-
-            var viewName = Context.ActionDescriptor.DisplayName;
-
             var routeData = new RouteData();
             routeData.Values["controller"] = controller;
             routeData.Values["action"] = action;
@@ -55,19 +38,19 @@ namespace Asm.AmCom.Web
             featureCollection.Set<IHttpResponseFeature>(new HttpResponseFeature());
             featureCollection.Set<IRoutingFeature>(new RoutingFeature() { RouteData = routeData });
 
-            var context = _httpContextFactory.Create(featureCollection);
+            var context = httpContextFactory.Create(featureCollection);
 
             ActionContext ac = new ActionContext(context, context.GetRouteData(), new ControllerActionDescriptor());
             ControllerContext cc = new ControllerContext(ac);
 
-            IView view = _viewEngine.FindView(cc, cc.RouteData.Values["action"].ToString(), true).View;
+            IView? view = viewEngine.FindView(cc, cc.RouteData.Values["action"]!.ToString()!, true).View;
 
             if (view == null) return null;
 
-            return Path.Combine(_environment.ContentRootPath, view.Path.TrimStart('/').Replace('/', Path.DirectorySeparatorChar));
+            return Path.Combine(environment.ContentRootPath, view.Path.TrimStart('/').Replace('/', Path.DirectorySeparatorChar));
         }
 
-        public async Task<string> GetPhysicalPath(string url)
+        public async Task<string?> GetPhysicalPath(string url)
         {
             var request = Context.HttpContext.Request;
 
@@ -78,22 +61,22 @@ namespace Asm.AmCom.Web
             featureCollection.Set<IHttpResponseFeature>(new HttpResponseFeature());
             featureCollection.Set<IRoutingFeature>(new RoutingFeature());
 
-            var context = _httpContextFactory.Create(featureCollection);
+            var context = httpContextFactory.Create(featureCollection);
 
-            RouteContext routeContext = new RouteContext(context);
+            RouteContext routeContext = new(context);
 
-            featureCollection.Get<IRoutingFeature>().RouteData = routeContext.RouteData;
+            featureCollection.Get<IRoutingFeature>()!.RouteData = routeContext.RouteData;
 
             await Context.HttpContext.GetRouteData().Routers[0].RouteAsync(routeContext);
 
             ActionContext ac = new ActionContext(context, routeContext.RouteData, new ControllerActionDescriptor());
             ControllerContext cc = new ControllerContext(ac);
 
-            IView view = _viewEngine.FindView(cc, cc.RouteData.Values["action"].ToString(), true).View;
+            IView? view = viewEngine.FindView(cc, cc.RouteData.Values["action"]!.ToString()!, true).View;
 
             if (view == null) return null;
 
-            return  Path.Combine(_environment.ContentRootPath, view.Path.TrimStart('/').Replace('/', Path.DirectorySeparatorChar));
+            return  Path.Combine(environment.ContentRootPath, view.Path.TrimStart('/').Replace('/', Path.DirectorySeparatorChar));
         }
     }
 }
