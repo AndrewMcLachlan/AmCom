@@ -21,7 +21,7 @@ public class RegexController : UmbracoApiController
 
         try
         {
-            reg = new Regex(request.Regex);
+            reg = new Regex(request.Regex, RegexOptions.None, TimeSpan.FromSeconds(2));
         }
         catch (ArgumentException)
         {
