@@ -39,7 +39,7 @@ jobs:
     with:
       environment: 'Staging'
   deploy-production:
-    needs: build
+    needs: deploy-staging
     uses: AndrewMcLachlan/AmCom/.github/workflows/deploy-template.yml@feature/deploy
     with:
       environment: 'Production'
