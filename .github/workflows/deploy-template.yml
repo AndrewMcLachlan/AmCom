@@ -42,7 +42,7 @@ jobs:
       - name: 'Download artifact'
         uses: actions/download-artifact@v2
         with:
-          name: ${{ inputs.artifactName }}'
+          name: ${{ inputs.artifactName }}
           path: ${{ github.workspace }}
 
       - name: 'Run Azure webapp deploy action using publish profile credentials'
