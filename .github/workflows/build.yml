@@ -39,12 +39,24 @@ jobs:
     uses: AndrewMcLachlan/AmCom/.github/workflows/deploy-template.yml@main
     with:
       environment: 'Staging'
+      publishPath: ${{ github.workspace }}/publish
+    secrets:
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      AZURE_WEBAPP_NAME: ${{ secrets.AZURE_WEBAPP_NAME }}
   deploy-production:
     needs: deploy-staging
     if: github.ref == 'refs/heads/main'
     uses: AndrewMcLachlan/AmCom/.github/workflows/deploy-template.yml@main
     with:
       environment: 'Production'
+      publishPath: ${{ github.workspace }}/publish
+    secrets:
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      AZURE_WEBAPP_NAME: ${{ secrets.AZURE_WEBAPP_NAME }}
 
     # - name: Install Octopus CLI
     #   uses: OctopusDeploy/install-octopus-cli-action@v3
