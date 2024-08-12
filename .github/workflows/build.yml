@@ -33,13 +33,19 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.CROSS_REPO_PACKAGE_TOKEN }}
       run: dotnet publish src/Asm.AmCom.Web/Asm.AmCom.Web.csproj --output ${{ github.workspace }}/publish --configuration Release --p:Version=${{ steps.set-version-number.outputs.version }} --p:FileVersion=${{ steps.set-version-number.outputs.version }} --no-restore
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: publish
+        path: ${{ github.workspace }}/publish
+
   deploy-staging:
     needs: build
     if: github.ref == 'refs/heads/main'
     uses: AndrewMcLachlan/AmCom/.github/workflows/deploy-template.yml@main
     with:
       environment: 'Staging'
-      publishPath: ${{ github.workspace }}/publish
+      artifactName: publish
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
@@ -51,7 +57,7 @@ jobs:
     uses: AndrewMcLachlan/AmCom/.github/workflows/deploy-template.yml@main
     with:
       environment: 'Production'
-      publishPath: ${{ github.workspace }}/publish
+      artifactName: publish
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
