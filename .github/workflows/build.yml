@@ -33,34 +33,45 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.CROSS_REPO_PACKAGE_TOKEN }}
       run: dotnet publish src/Asm.AmCom.Web/Asm.AmCom.Web.csproj --output ${{ github.workspace }}/publish --configuration Release --p:Version=${{ steps.set-version-number.outputs.version }} --p:FileVersion=${{ steps.set-version-number.outputs.version }} --no-restore
-    - name: Install Octopus CLI
-      uses: OctopusDeploy/install-octopus-cli-action@v3
-      with:
-        version: latest
-    - name: Create artifacts folder
-      run: mkdir ${{ github.workspace }}/artifacts
-    - name: Package
-      env:
-        OCTOPUS_URL: ${{ vars.OCTOPUSURL }}
-        OCTOPUS_API_KEY: ${{ secrets.OCTOPUSAPIKEY }}
-        OCTOPUS_SPACE: Default
-      run: octopus package zip create --id Asm.AmCom.Web --version ${{ steps.set-version-number.outputs.version }} --base-path ${{ github.workspace }}/publish --out-folder ${{ github.workspace }}/artifacts
-    - name: Push packages
-      if: (github.event_name != 'pull_request')
-      uses: OctopusDeploy/push-package-action@v3
-      with:
-        api_key: ${{ secrets.OCTOPUSAPIKEY }}
-        server: ${{ vars.OCTOPUSURL }}
-        packages: " ${{ github.workspace }}/artifacts/Asm.AmCom.Web.${{ steps.set-version-number.outputs.version }}.zip"
-        space: 'Default'
-    - name: Create release
-      if: (github.event_name != 'pull_request')
-      uses: OctopusDeploy/create-release-action@v3
-      with:
-        api_key: ${{ secrets.OCTOPUSAPIKEY }}
-        server: ${{ vars.OCTOPUSURL }}
-        release_number: ${{ steps.set-version-number.outputs.version }}
-        package_version: ${{ steps.set-version-number.outputs.version }}
-        space: 'Default'
-        project: "AndrewMcLachlan.com"
-        progress: false
+  deploy-staging:
+    needs: build
+    uses: AndrewMcLachlan/AmCom/workflows/deploy-template.yml@main
+    with:
+      environment: 'Staging'
+  deploy-production:
+    needs: build
+    uses: AndrewMcLachlan/AmCom/workflows/deploy-template.yml@main
+    with:
+      environment: 'Production'
+
+    # - name: Install Octopus CLI
+    #   uses: OctopusDeploy/install-octopus-cli-action@v3
+    #   with:
+    #     version: latest
+    # - name: Create artifacts folder
+    #   run: mkdir ${{ github.workspace }}/artifacts
+    # - name: Package
+    #   env:
+    #     OCTOPUS_URL: ${{ vars.OCTOPUSURL }}
+    #     OCTOPUS_API_KEY: ${{ secrets.OCTOPUSAPIKEY }}
+    #     OCTOPUS_SPACE: Default
+    #   run: octopus package zip create --id Asm.AmCom.Web --version ${{ steps.set-version-number.outputs.version }} --base-path ${{ github.workspace }}/publish --out-folder ${{ github.workspace }}/artifacts
+    # - name: Push packages
+    #   if: (github.event_name != 'pull_request')
+    #   uses: OctopusDeploy/push-package-action@v3
+    #   with:
+    #     api_key: ${{ secrets.OCTOPUSAPIKEY }}
+    #     server: ${{ vars.OCTOPUSURL }}
+    #     packages: " ${{ github.workspace }}/artifacts/Asm.AmCom.Web.${{ steps.set-version-number.outputs.version }}.zip"
+    #     space: 'Default'
+    # - name: Create release
+    #   if: (github.event_name != 'pull_request')
+    #   uses: OctopusDeploy/create-release-action@v3
+    #   with:
+    #     api_key: ${{ secrets.OCTOPUSAPIKEY }}
+    #     server: ${{ vars.OCTOPUSURL }}
+    #     release_number: ${{ steps.set-version-number.outputs.version }}
+    #     package_version: ${{ steps.set-version-number.outputs.version }}
+    #     space: 'Default'
+    #     project: "AndrewMcLachlan.com"
+    #     progress: false
