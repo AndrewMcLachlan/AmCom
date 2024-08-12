@@ -36,13 +36,13 @@ jobs:
   deploy-staging:
     needs: build
     if: github.ref == 'refs/heads/main'
-    uses: AndrewMcLachlan/AmCom/.github/workflows/deploy-template.yml@feature/deploy
+    uses: AndrewMcLachlan/AmCom/.github/workflows/deploy-template.yml@main
     with:
       environment: 'Staging'
   deploy-production:
     needs: deploy-staging
     if: github.ref == 'refs/heads/main'
-    uses: AndrewMcLachlan/AmCom/.github/workflows/deploy-template.yml@feature/deploy
+    uses: AndrewMcLachlan/AmCom/.github/workflows/deploy-template.yml@main
     with:
       environment: 'Production'
 
