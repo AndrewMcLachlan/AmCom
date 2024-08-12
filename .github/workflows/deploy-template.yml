@@ -24,6 +24,9 @@ on:
         description: 'Azure webapp name'
         required: true
 
+permissions:
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
