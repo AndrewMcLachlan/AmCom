@@ -35,11 +35,13 @@ jobs:
       run: dotnet publish src/Asm.AmCom.Web/Asm.AmCom.Web.csproj --output ${{ github.workspace }}/publish --configuration Release --p:Version=${{ steps.set-version-number.outputs.version }} --p:FileVersion=${{ steps.set-version-number.outputs.version }} --no-restore
   deploy-staging:
     needs: build
+    if: github.ref == 'refs/heads/main'
     uses: AndrewMcLachlan/AmCom/.github/workflows/deploy-template.yml@feature/deploy
     with:
       environment: 'Staging'
   deploy-production:
     needs: deploy-staging
+    if: github.ref == 'refs/heads/main'
     uses: AndrewMcLachlan/AmCom/.github/workflows/deploy-template.yml@feature/deploy
     with:
       environment: 'Production'
