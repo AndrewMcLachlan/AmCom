@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
+# 17
 VisualStudioVersion = 17.2.32210.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asm.AmCom.Web", "src\Asm.AmCom.Web\Asm.AmCom.Web.csproj", "{2AAE6B73-BD99-4246-B248-CC197CBEC18E}"
@@ -18,6 +18,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{0833FC88-CCBB-4846-B8A1-9A8E7994D772}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\build.yml = .github\workflows\build.yml
+		.github\workflows\deploy-template.yml = .github\workflows\deploy-template.yml
 	EndProjectSection
 EndProject
 Global
