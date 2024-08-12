@@ -1,11 +1,11 @@
 name: Build
 on:
   workflow_call:
-  inputs:
-      environment:
-        description: 'Environment to deploy to'
-        type: string
-        required: true
+    inputs:
+        environment:
+          description: 'Environment to deploy to'
+          type: string
+          required: true
 
 jobs:
   deploy:
