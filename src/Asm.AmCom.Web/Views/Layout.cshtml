@@ -15,6 +15,7 @@
   <meta name="viewport" content="width=device-width">
   <canonical path="@ViewBag.Canonical" />
   <meta name="description" content="@ViewBag.Description" />
+  <meta name="version" content="@System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetEntryAssembly()!.Location).FileVersion?.ToString()" />
   <link rel="stylesheet" href="~/css/bootstrap.min.css" />
   <link rel="stylesheet" href="~/css/site.min.css?v=$v" />
   @RenderSection("Head", false)
