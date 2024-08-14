@@ -45,7 +45,7 @@ jobs:
     uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@main
     with:
       environment: 'Staging'
-      artifactName: publish
+      artifact-name: publish
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
@@ -57,7 +57,7 @@ jobs:
     uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@main
     with:
       environment: 'Production'
-      artifactName: publish
+      artifact-name: publish
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
