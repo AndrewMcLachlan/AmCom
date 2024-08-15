@@ -1,21 +1,17 @@
-﻿using System.Runtime.Serialization;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using RegexCapture = System.Text.RegularExpressions.Capture;
 using RegexGroup = System.Text.RegularExpressions.Group;
 
 namespace Asm.AmCom.Web.Models;
 
-[DataContract]
 public record RegexTestRequest
 {
-    [DataMember]
     public required string Regex { get; init; }
 
-    [DataMember]
     public required string Text { get; init; }
 }
 
-public record RegexTestResponse
+public class RegexTestResponse
 {
     public bool Success { get; init; }
 
@@ -29,7 +25,7 @@ public record RegexTestResponse
     }
 }
 
-public record Group
+public class Group
 {
     public int Index { get; init; }
 
@@ -51,11 +47,18 @@ public record Group
     }
 }
 
-public record Capture(RegexCapture capture)
+public record Capture
 {
-    public int Index { get; } = capture.Index;
+    public Capture(RegexCapture capture)
+    {
+        Index = capture.Index;
+        Length = capture.Length;
+        Value = capture.Value;
+    }
 
-    public int Length { get; } = capture.Length;
+    public int Index { get; }
 
-    public string Value { get; } = capture.Value;
+    public int Length { get; }
+
+    public string Value { get; }
 }
