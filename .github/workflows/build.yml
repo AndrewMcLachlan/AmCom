@@ -42,7 +42,7 @@ jobs:
   deploy-staging:
     needs: build
     if: github.ref == 'refs/heads/main'
-    uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@debug
+    uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@v2
     with:
       environment: 'Staging'
       artifact-name: publish
@@ -54,7 +54,7 @@ jobs:
   deploy-production:
     needs: deploy-staging
     if: github.ref == 'refs/heads/main'
-    uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@main
+    uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@v2
     with:
       environment: 'Production'
       artifact-name: publish
