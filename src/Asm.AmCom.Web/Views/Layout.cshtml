@@ -22,9 +22,9 @@
 </head>
 <body class="@Model.NameAsCssClass()">
   <header>
-    @if (Html.IsDebug() || hostingEnv.IsDevelopment())
+    @if (!hostingEnv.IsProduction() && (Html.IsDebug() || hostingEnv.IsDevelopment()))
     {
-      <div class="currentBreakpoint"></div>
+          <div class="currentBreakpoint" data-env="@hostingEnv.EnvironmentName" data-isdebug="@Html.IsDebug()"></div>
     }
 
   <nav class="navbar navbar-expand-lg navbar-light" id="top-nav">
@@ -81,6 +81,6 @@
   </footer>
   @RenderSection("Scripts", false)
   <script src="~/js/core.js?v=$v" src-min="~/js/core.min.js?v=$v"></script>
-  @*<script src="~/js/bootstrap.bundle.min.js"></script>*@
+  <script src="~/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
