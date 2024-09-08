@@ -66,10 +66,10 @@
   </PropertyGroup>
 
   <Target Name="NPM-Build" AfterTargets="Build">
-    <Exec Command="npm install" WorkingDirectory="$(MSBuildWorkingDirectory)" Condition="$(Configuration) == 'Release'" />
-    <Exec Command="npm run build:dev" WorkingDirectory="$(MSBuildWorkingDirectory)" />
-    <Exec Command="npm run build" WorkingDirectory="$(MSBuildWorkingDirectory)" Condition="$(Configuration) == 'Release'" />
-    <Exec Command="npm run build-sass" WorkingDirectory="$(MSBuildWorkingDirectory)" />
+    <Exec Command="npm install" WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(Configuration) == 'Release'" />
+    <Exec Command="npm run build:dev" WorkingDirectory="$(MSBuildProjectDirectory)" />
+    <Exec Command="npm run build" WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(Configuration) == 'Release'" />
+    <Exec Command="npm run build-sass" WorkingDirectory="$(MSBuildProjectDirectory)" />
   </Target>
 
 </Project>
