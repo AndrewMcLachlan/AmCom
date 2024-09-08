@@ -4,13 +4,20 @@ updates:
     directory: /src/Asm.AmCom.Web
     schedule:
       interval: weekly
+      timezone: "Australia/Brisbane"
+      day: tuesday
+      time: "06:00"
     reviewers:
       - andrewmcLachlan
+    open-pull-requests-limit: 10
 
   - package-ecosystem: nuget
     directory: /
     schedule:
       interval: weekly
+      timezone: "Australia/Brisbane"
+      day: tuesday
+      time: "06:00"
     reviewers:
       - andrewmcLachlan
 
@@ -18,5 +25,8 @@ updates:
     directory: /
     schedule:
       interval: weekly
+      timezone: "Australia/Brisbane"
+      day: tuesday
+      time: "06:00"
     reviewers:
       - andrewmcLachlan

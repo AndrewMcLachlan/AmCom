@@ -1,0 +1,7 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./Scripts/React" },
+    { "path": "./Scripts/Standard" }
+  ]
+}
