@@ -36,7 +36,10 @@ module.exports = (env, argv) => {
                         loader: "babel-loader"
                     },
                     {
-                        loader: "ts-loader"
+                        loader: "ts-loader",
+                        options: {
+                            configFile: path.join(reactPath, "tsconfig.json")
+                        }
                     }],
                 }
             ],
