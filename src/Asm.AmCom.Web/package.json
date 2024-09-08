@@ -38,7 +38,7 @@
   "scripts": {
     "start": "webpack --mode development --watch --progress",
     "build": "webpack --mode production",
-    "build-sass": "sass CSS/site.scss:wwwroot/css/site.min.css --style compressed && sass CSS/Tools/tool.scss:wwwroot/CSS/Tool.min.css --style compressed && sass CSS/Tools/regex.scss:wwwroot/css/regex.min.css --style compressed && sass CSS/Tools/cidr.scss:wwwroot/css/cidr.min.css --style compressed && sass CSS/Tools/colours.scss:wwwroot/css/colours.min.css --style compressed",
+    "build-sass": "sass CSS/site.scss:wwwroot/css/site.min.css --style compressed && sass CSS/Tools/tool.scss:wwwroot/css/tool.min.css --style compressed && sass CSS/Tools/regex.scss:wwwroot/css/regex.min.css --style compressed && sass CSS/Tools/cidr.scss:wwwroot/css/cidr.min.css --style compressed && sass CSS/Tools/colours.scss:wwwroot/css/colours.min.css --style compressed",
     "build:dev": "webpack --mode development"
   }
 }
