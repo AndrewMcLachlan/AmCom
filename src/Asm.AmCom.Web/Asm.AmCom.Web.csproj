@@ -50,9 +50,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="appsettings.Development.json" CopyToPublishDirectory="Never" />
+    <Content Update="appsettings.*.json" CopyToPublishDirectory="Never" />
     <!-- temporary, until web config transforms are performed as part of deploy -->
-    <Content Update="web*.config" CopyToOutputDirectory="Never" />
+    <Content Update="web*.config" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
   </ItemGroup>
 
   <PropertyGroup>
