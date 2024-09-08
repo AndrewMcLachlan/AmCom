@@ -1,16 +1,16 @@
 ﻿const path = require("path");
 const ESLintPlugin = require('eslint-webpack-plugin');
 
-var rootPath = path.join(__dirname, "scripts");
-var reactPath = path.join(rootPath, "react");
-var standardPath = path.join(rootPath, "standard");
+var rootPath = path.join(__dirname, "Scripts");
+var reactPath = path.join(rootPath, "React");
+var standardPath = path.join(rootPath, "Standard");
 
 module.exports = (env, argv) => {
 
     return {
         plugins: [new ESLintPlugin()],
         entry: {
-            reacttools: path.join(reactPath, "app.tsx"),
+            reacttools: path.join(reactPath, "App.tsx"),
             core: path.join(standardPath, "Core.ts")
         },
         watchOptions: {
@@ -41,10 +41,5 @@ module.exports = (env, argv) => {
                 }
             ],
         },
-
-        externals: {
-            "react": "React",
-            "react-dom": "ReactDOM",
-        }
     };
 };
