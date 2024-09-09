@@ -1,5 +1,6 @@
 ﻿.word-cloud {
     background-color: var(--colour-rich-blue);
+    height: 400px;
 
     .container {
         display: flex;
@@ -23,7 +24,6 @@
         position: absolute;
         font-family: 'Times New Roman';
     }
-    height: 400px;
 }
 
 
