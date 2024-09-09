@@ -14,7 +14,9 @@ try
         .AddBackOffice()
         .AddWebsite()
         .AddDeliveryApi()
-        .AddComposers();
+        .AddComposers()
+        .AddAzureADAuthentication()
+        ;
 
     var services = builder.Services;
 
@@ -22,7 +24,7 @@ try
     services.AddMemoryCache();
     services.AddHttpContextAccessor();
     services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
-    services.AddTransient<ViewHelper>();
+    //services.AddTransient<ViewHelper>();
 
     if (!builder.Environment.IsDevelopment())
     {

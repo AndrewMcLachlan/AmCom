@@ -3,14 +3,14 @@
 
     section {
 
-        h3 {
-            text-align: center;
-        }
-
         position: relative;
         display: flex;
         flex-direction: column;
         border-right: 1px solid var(--border);
+
+        h3 {
+            text-align: center;
+        }
 
         &:last-child {
             border-right: none;

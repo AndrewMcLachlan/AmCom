@@ -5,9 +5,12 @@
   <PropertyGroup>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <GenerateRuntimeConfigDevFile>true</GenerateRuntimeConfigDevFile>
+    <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
+    <UserSecretsId>1ede62ff-8171-4cd8-8435-ad8a87f4b270</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="8.0.8" />
     <PackageReference Include="Serilog.Sinks.Seq" Version="8.0.0" />
     <PackageReference Include="Umbraco.Cms" Version="13.4.1" />
   </ItemGroup>
@@ -19,7 +22,6 @@
     <PackageReference Include="Asm.Net" Version="3.2.260" />
     <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" Version="72.1.0.3" />
     <PackageReference Include="Umbraco.StorageProviders.AzureBlob" Version="13.0.1" />
-    <ProjectReference Include="..\Asm.AmCom\Asm.AmCom.csproj" />
 
     <RuntimeHostConfigurationOption Condition="$(RuntimeIdentifier.StartsWith('linux')) Or $(RuntimeIdentifier.StartsWith('win')) Or ('$(RuntimeIdentifier)' == '' And !$([MSBuild]::IsOSPlatform('osx')))" Include="System.Globalization.AppLocalIcu" Value="72.1.0.3" />
   </ItemGroup>
@@ -54,10 +56,6 @@
     <!-- temporary, until web config transforms are performed as part of deploy -->
     <Content Update="web*.config" CopyToOutputDirectory="Never" />
   </ItemGroup>
-
-  <PropertyGroup>
-    <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
-  </PropertyGroup>
 
   <!-- Set this to true if ModelsBuilder mode is not InMemoryAuto-->
   <PropertyGroup Condition="$(Configuration) == 'Release'">
