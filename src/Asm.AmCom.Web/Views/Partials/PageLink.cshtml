@@ -2,12 +2,12 @@
 @using Umbraco.Cms.Web.Common.PublishedModels;
 @using Umbraco.Extensions
 @{
-    var images = Model.Content.PageLinkImage as IEnumerable<IPublishedContent> ?? [];
+    var images = Model.PageLinkImage as IEnumerable<IPublishedContent> ?? [];
     var image = images.FirstOrDefault();
 
     var altText = image?.Value<string>("umbracoAltText");
     altText = String.IsNullOrWhiteSpace(altText) ? String.Empty : altText;
-    var rel = Uri.IsWellFormedUriString(Model.Content.PageLinkUrl, UriKind.Absolute) ? "external nofollow" : null;
+    var rel = Uri.IsWellFormedUriString(Model.PageLinkUrl, UriKind.Absolute) ? "external nofollow" : null;
 
     /*string srcset = "";
     if (images != null)
@@ -24,15 +24,15 @@
     }*/
 }
   <aside class="page-link">
-    <a href="@Model.Content.PageLinkUrl" target="_blank" rel="@rel">
+    <a href="@Model.PageLinkUrl" target="_blank" rel="@rel">
       @if (image != null)
       {
         <imgset images="@images" />
         @*<img src="@image.Url()" srcset="@srcset" alt="@altText" role="@(String.IsNullOrEmpty(altText) ? "presentation" : null)" height="@(image.Value<string>("umbracoHeight"))" />*@
       }
-        @if (!String.IsNullOrWhiteSpace(Model.Content.PageLinkText))
+        @if (!String.IsNullOrWhiteSpace(Model.PageLinkText))
       {
-            <span>@Model.Content.PageLinkText</span>
+            <span>@Model.PageLinkText</span>
       }
     </a>
   </aside>

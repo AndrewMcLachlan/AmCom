@@ -30,7 +30,7 @@
             <div class="row summary">
                 @foreach (var summary in summaries)
                 {
-                    await Html.RenderPartialAsync("Summary", summary, new ViewDataDictionary(ViewData) { { "ClassName", className } });
+                    await Html.RenderPartialAsync("Summary", summary.Content, new ViewDataDictionary(ViewData) { { "ClassName", className } });
                 }
             </div>
         }

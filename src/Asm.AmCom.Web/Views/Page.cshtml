@@ -1,21 +1,22 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ContentPage>
 @{
     Layout = "FullPageLayout.cshtml";
     ViewBag.Title = $"{Model.Value("title")} - Andrew McLachlan";
     ViewBag.Description = Model.Value("description");
     ViewBag.Canonical = Model.Url();
-    var pageLinks = Model.Value<IEnumerable<Umbraco.Cms.Web.Common.PublishedModels.PageLink>>("PageLinks") ?? [];
+    var pageLinks = Model.PageLinks;// Model.Value<IEnumerable<Umbraco.Cms.Web.Common.PublishedModels.PageLink>>("PageLinks") ?? [];
 }
 
 @section PageLink
 {
-    @if (Model.Value("PageLinks") != null)
+    @if (pageLinks != null)
     {
         <section class="page-links">
             @foreach (var pageLink in pageLinks)
             {
-                await Html.RenderPartialAsync("PageLink", pageLink);
+                await Html.RenderPartialAsync("PageLink", pageLink.Content);
             }
         </section>
     }

@@ -66,20 +66,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string IntroText => this.Value<string>(_publishedValueFallback, "introText");
 
 		///<summary>
-		/// SummaryBlockList
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("summaryBlockList")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel SummaryBlockList => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "summaryBlockList");
-
-		///<summary>
 		/// Summaries
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("summaryList")]
-		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Web.Common.PublishedModels.Summary> SummaryList => this.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Web.Common.PublishedModels.Summary>>(_publishedValueFallback, "summaryList");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel SummaryList => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "summaryList");
 
 		///<summary>
 		/// Description: The page description metadata
