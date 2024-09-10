@@ -40,6 +40,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Using Include="Microsoft.AspNetCore.Mvc" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="logs\**" />
     <Compile Remove="node_modules\**" />
     <Compile Remove="wwwroot\media\**" />

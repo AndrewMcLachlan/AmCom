@@ -1,9 +1,5 @@
-using Asm.AmCom.Web;
-using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.StaticFiles;
-using System.Reflection;
-using System.Runtime.Loader;
 
 try
 {
@@ -24,12 +20,8 @@ try
     services.AddMemoryCache();
     services.AddHttpContextAccessor();
     services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
-    //services.AddTransient<ViewHelper>();
 
-    if (!builder.Environment.IsDevelopment())
-    {
-        umbracoBuilder.AddAzureBlobMediaFileSystem();
-    }
+    umbracoBuilder.AddAzureBlobMediaFileSystem();
 
     umbracoBuilder.Build();
 
