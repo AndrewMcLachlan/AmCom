@@ -1,0 +1,16 @@
+{
+  "$schema": "../../umbraco-package-schema.json",
+  "name": "My Auth Package",
+  "allowPublicAccess": true,
+  "extensions": [
+    {
+      "type": "authProvider",
+      "alias": "My.AuthProvider.Microsoft",
+      "name": "My Microsoft Auth Provider",
+      "forProviderName": "Umbraco.OpenIdConnect",
+      "meta": {
+        "label": "Microsoft"
+      }
+    }
+  ]
+}

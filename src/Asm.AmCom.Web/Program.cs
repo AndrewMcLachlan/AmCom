@@ -15,7 +15,7 @@ try
         .AddWebsite()
         .AddDeliveryApi()
         .AddComposers()
-        .AddAzureADAuthentication()
+        //.AddAzureADAuthentication()
         ;
 
     var services = builder.Services;
@@ -75,7 +75,7 @@ try
         })
         .WithEndpoints(u =>
         {
-            u.UseInstallerEndpoints();
+            //u.UseInstallerEndpoints();
             u.UseBackOfficeEndpoints();
             u.UseWebsiteEndpoints();
         });
