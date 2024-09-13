@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
+using Umbraco.Cms.Api.Management.Security;
 using Umbraco.Cms.Core;
-using Umbraco.Cms.Web.BackOffice.Security;
 
 namespace Asm.AmCom.Web.Extensions;
 
@@ -10,12 +10,10 @@ public record AzureLoginOptions : IConfigureNamedOptions<BackOfficeExternalLogin
 
     public void Configure(string? name, BackOfficeExternalLoginProviderOptions options)
     {
-        if (name != Constants.Security.BackOfficeExternalAuthenticationTypePrefix + SchemeName)
+        if (name == Constants.Security.BackOfficeExternalAuthenticationTypePrefix + SchemeName)
         {
-            return;
+            Configure(options);
         }
-
-        Configure(options);
     }
 
     public void Configure(BackOfficeExternalLoginProviderOptions options)
@@ -27,7 +25,7 @@ public record AzureLoginOptions : IConfigureNamedOptions<BackOfficeExternalLogin
             // Set to true to enable auto-linking
             autoLinkExternalAccount: true,
 
-            defaultUserGroups: [Constants.Security.EditorGroupAlias],
+            defaultUserGroups: [Constants.Security.EditorGroupKey.ToString()],
 
             // [OPTIONAL]
             // Default: The culture specified in appsettings.json.
@@ -57,6 +55,6 @@ public record AzureLoginOptions : IConfigureNamedOptions<BackOfficeExternalLogin
         };
 
         options.DenyLocalLogin = true;
-        options.AutoRedirectLoginToExternalProvider = true;
+        //options.AutoRedirectLoginToExternalProvider = true;
     }
 }
