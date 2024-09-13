@@ -54,7 +54,7 @@ public record AzureLoginOptions : IConfigureNamedOptions<BackOfficeExternalLogin
             }
         };
 
-        options.DenyLocalLogin = true;
+        options.DenyLocalLogin = false;
         //options.AutoRedirectLoginToExternalProvider = true;
     }
 }
