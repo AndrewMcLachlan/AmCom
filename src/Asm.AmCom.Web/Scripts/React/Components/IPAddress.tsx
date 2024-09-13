@@ -20,7 +20,7 @@ export default class IPAddress extends React.Component<IPAddressProps, IPAddress
         return (
             <fieldset className="form-group">
                 <label htmlFor={this.props.id} className="control-label">{this.props.label}</label>
-                <div className="form-inline ip-address">
+                <div className="ip-address">
                     <input type="number" max="255" min="0" maxLength={3} className="form-control" id={this.props.id + "_1"} name="octet1" value={this.state.octet1} onChange={this.validateMaxWithNext} onKeyDown={this.validateWithDotCheck} />&nbsp;.&nbsp;
                     <input type="number" max="255" min="0" maxLength={3} className="form-control" id={this.props.id + "_2"} name="octet2" value={this.state.octet2} onChange={this.validateMaxWithNext} onKeyDown={this.validateWithDotCheck} />&nbsp;.&nbsp;
                     <input type="number" max="255" min="0" maxLength={3} className="form-control" id={this.props.id + "_3"} name="octet3" value={this.state.octet3} onChange={this.validateMaxWithNext} onKeyDown={this.validateWithDotCheck} />&nbsp;.&nbsp;
