@@ -33,7 +33,8 @@
       "launchBrowser": false,
       "applicationUrl": "https://localhost:44369;http://localhost:46262",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DOTNET_ForceENC": "1"
       }
     }
   }
