@@ -73,8 +73,6 @@
 
   <ItemGroup>
     <Content Update="appsettings.*.json" CopyToPublishDirectory="Never" />
-    <!-- temporary, until web config transforms are performed as part of deploy -->
-    <Content Update="web*.config" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
   </ItemGroup>
 
   <!-- Set this to true if ModelsBuilder mode is not InMemoryAuto-->

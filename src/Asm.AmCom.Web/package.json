@@ -32,6 +32,7 @@
     "sass": "^1.78.0",
     "ts-loader": "^9.5.1",
     "typescript": "^5.6.2",
+    "watch": "^1.0.2",
     "webpack": "^5.94.0",
     "webpack-cli": "^5.1.4"
   },
@@ -39,6 +40,7 @@
     "start": "webpack --mode development --watch --progress",
     "build": "webpack --mode production",
     "build-sass": "sass CSS/site.scss:wwwroot/css/site.min.css --style compressed && sass CSS/Tools/tool.scss:wwwroot/css/tool.min.css --style compressed && sass CSS/Tools/regex.scss:wwwroot/css/regex.min.css --style compressed && sass CSS/Tools/cidr.scss:wwwroot/css/cidr.min.css --style compressed && sass CSS/Tools/colours.scss:wwwroot/css/colours.min.css --style compressed",
+    "watch-sass": "watch \"npm run build-sass\" ./CSS",
     "build:dev": "webpack --mode development"
   }
 }

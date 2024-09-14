@@ -1,14 +1,13 @@
-﻿using System.Net;
-using Asm.AmCom.Web.Models;
+﻿using Asm.AmCom.Web.Models;
 using Asm.AmCom.Web.Mvc;
-using Umbraco.Cms.Web.Common.Controllers;
+using System.Net;
 
 namespace Asm.AmCom.Web.Controllers;
 
 [Area("Tools")]
 [Route("tools")]
 [ApiController]
-public class CidrController : UmbracoApiController
+public class CidrController : Controller
 {
     [Route("api/cidr")]
     [HttpGet]

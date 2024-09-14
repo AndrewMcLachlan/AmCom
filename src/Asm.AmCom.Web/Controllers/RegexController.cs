@@ -1,14 +1,13 @@
-﻿using System.Text.RegularExpressions;
-using Asm.AmCom.Web.Models;
+﻿using Asm.AmCom.Web.Models;
 using Asm.AmCom.Web.Mvc;
-using Umbraco.Cms.Web.Common.Controllers;
+using System.Text.RegularExpressions;
 
 namespace Asm.AmCom.Web.Controllers;
 
 [Area("Tools")]
 [Route("tools")]
 [ApiController]
-public class RegexController : UmbracoApiController
+public class RegexController : Controller
 {
     [Route("api/regex")]
     [HttpPost]
