@@ -8,6 +8,9 @@
     --colour-light-blue: #{$light-blue};
     --colour-bone: #{$bone};
     --colour-muted-bone: #{$muted-bone};
+    --colour-orange: #{$orange};
+    --colour-deep-orange: #{$deep-orange};
+    --colour-light-orange: #{$light-orange};
 }
 
 :root, .light {
@@ -17,9 +20,9 @@
     --link-colour: #0d6efd;
     --nav-background: white;
     --nav-colour: var(--colour-dark);
-    --nav-active: var(--colour-rich-blue);
-    --nav-hover: var(--colour-rich-blue);
-    --border: var(--colour-dark);
+    --nav-active: var(--colour-orange);
+    --nav-hover: var(--colour-deep-orange);
+    --border: var(--colour-deep-orange);
     --quote-background: var(--colour-bone);
     --error: #F00;
 }
@@ -32,9 +35,9 @@
         --link-colour: var(--colour-blue);
         --nav-background: var(--colour-dark);
         --nav-colour: var(--colour-blue);
-        --nav-active: var(--colour-muted-bone);
-        --nav-hover: var(--colour-bone);
-        --border: var(--colour-muted-bone);
+        --nav-active: var(--colour-orange);
+        --nav-hover: var(--colour-light-orange);
+        --border: var(--colour-orange);
         --quote-background: var(--colour-lighter);
     }
 }
@@ -46,8 +49,8 @@
     --link-colour: var(--colour-blue);
     --nav-background: var(--colour-dark);
     --nav-colour: var(--colour-blue);
-    --nav-active: var(--colour-muted-bone);
-    --nav-hover: var(--colour-bone);
-    --border: var(--colour-muted-bone);
+    --nav-active: var(--colour-orange);
+    --nav-hover: var(--colour-light-orange);
+    --border: var(--colour-orange);
     --quote-background: var(--colour-lighter);
 }

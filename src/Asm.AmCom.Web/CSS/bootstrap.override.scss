@@ -14,7 +14,7 @@ textarea.form-control {
 }
 
 .btn {
-    font-weight: 300;
+    font-weight: 500;
     padding: 8px 20px;
     border-radius: 5px;
 }
@@ -36,8 +36,10 @@ textarea.form-control {
 }
 
 .btn-primary {
-    background-color: var(--colour-rich-blue);
-    border-color: var(--colour-lighter);
+    --bs-btn-bg: var(--colour-orange);
+    --bs-btn-border-color: none;
+    --bs-btn-hover-bg: var(--colour-deep-orange);
+    --bs-btn-active-bg: var(--colour-deep-orange);
 }
 
 .table {
