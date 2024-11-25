@@ -31,7 +31,7 @@
     "eslint-webpack-plugin": "^4.2.0",
     "sass": "^1.81.0",
     "ts-loader": "^9.5.1",
-    "typescript": "^5.6.3",
+    "typescript": "^5.7.2",
     "watch": "^1.0.2",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4"
