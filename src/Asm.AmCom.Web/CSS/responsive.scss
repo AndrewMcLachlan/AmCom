@@ -1,6 +1,4 @@
-﻿@import 'variables';
-
-@media screen and (max-width: 1399px) {
+﻿@media screen and (max-width: 1399px) {
     .currentBreakpoint::after {
         content: '(max-width: 1399px)';
     }

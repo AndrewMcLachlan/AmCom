@@ -1,8 +1,10 @@
-﻿$grid-breakpoints: ( xs: 575, sm: 767px, md: 991px, lg: 1199px, xl: 1399px);
+﻿@use "sass:map";
+
+$grid-breakpoints: ( xs: 575, sm: 767px, md: 991px, lg: 1199px, xl: 1399px);
 
 @mixin media-breakpoint-down($breakpoint) {
-    @if map-has-key($grid-breakpoints, $breakpoint) {
-        @media screen and (max-width: map-get($grid-breakpoints, $breakpoint)), (max-device-width: map-get($grid-breakpoints, $breakpoint)) {
+    @if map.has-key($grid-breakpoints, $breakpoint) {
+        @media screen and (max-width: map.get($grid-breakpoints, $breakpoint)), (max-device-width: map.get($grid-breakpoints, $breakpoint)) {
             @content;
         }
     }

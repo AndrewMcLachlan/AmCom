@@ -1,16 +1,16 @@
-﻿@import "variables-css";
-@import "fonts";
-@import "bootstrap.override";
-@import "reboot";
-@import "general";
-@import "layout";
-@import "navigation";
+﻿@forward "variables-css";
+@forward "fonts";
+@forward "bootstrap.override";
+@forward "reboot";
+@forward "general";
+@forward "layout";
+@forward "navigation";
 
-@import "hero";
-@import "error";
-@import "page";
-@import "summary";
-@import "word-cloud";
+@forward "hero";
+@forward "error";
+@forward "page";
+@forward "summary";
+@forward "word-cloud";
 
-@import "dark";
-@import "responsive";
+@forward "dark";
+@forward "responsive";

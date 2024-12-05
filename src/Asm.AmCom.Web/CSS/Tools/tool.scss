@@ -1,4 +1,4 @@
-﻿@import "../mixins";
+﻿@use "../mixins" as *;
 
 .control-label {
     font-size: 2rem;
