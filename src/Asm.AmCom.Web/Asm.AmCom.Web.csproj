@@ -87,8 +87,8 @@
   </PropertyGroup>
 
   <Target Name="NPM-Build" AfterTargets="Build">
-    <Exec Command="npm install" WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(Configuration) == 'Release'" />
-    <Exec Command="npm run build:dev" WorkingDirectory="$(MSBuildProjectDirectory)" />
+    <Exec Command="npm ci" WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(Configuration) == 'Release'" />
+    <Exec Command="npm run build:dev" WorkingDirectory="$(MSBuildProjectDirectory)"  Condition="$(Configuration) != 'Release'"  />
     <Exec Command="npm run build" WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(Configuration) == 'Release'" />
     <Exec Command="npm run build-sass" WorkingDirectory="$(MSBuildProjectDirectory)" />
   </Target>

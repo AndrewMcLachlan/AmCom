@@ -1,4 +1,5 @@
 ﻿import * as React from "react";
+import { JSX } from "react";
 import { connect } from "react-redux";
 import * as regex from "../model/regex";
 
