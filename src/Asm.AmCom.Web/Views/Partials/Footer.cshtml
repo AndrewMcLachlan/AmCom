@@ -4,7 +4,7 @@
     <ul>
         @{
             var site = Model.Root();
-            var selection = site.Children.Where(x => x.Value<bool>("showInFooter"));
+            var selection = site.Children().Where(x => x.Value<bool>("showInFooter"));
             foreach (var item in selection)
             {
                 <li><a href="@item.Url()">@item.ValueOr("navigationText", item.Name())</a></li>

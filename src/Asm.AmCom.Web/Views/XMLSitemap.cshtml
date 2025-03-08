@@ -33,7 +33,7 @@
                 <priority>@priority</priority>
             </url>
         }
-        foreach (var child in node.Children)
+        foreach (var child in node.Children())
         {
             RenderSiteMapUrlEntry(child);
         }

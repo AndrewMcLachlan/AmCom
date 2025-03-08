@@ -11,7 +11,6 @@ try
         .AddWebsite()
         .AddDeliveryApi()
         .AddComposers()
-        //.AddAzureADAuthentication()
         ;
 
     var services = builder.Services;
@@ -67,7 +66,6 @@ try
         })
         .WithEndpoints(u =>
         {
-            //u.UseInstallerEndpoints();
             u.UseBackOfficeEndpoints();
             u.UseWebsiteEndpoints();
         });
@@ -80,17 +78,3 @@ catch (Exception ex)
     Console.WriteLine(ex);
 }
 
-/*public static void Main(string[] args)
-    => CreateHostBuilder(args)
-        .Build()
-        .Run();
-
-public static IHostBuilder CreateHostBuilder(string[] args) =>
-    Host.CreateDefaultBuilder(args)
-        .ConfigureUmbracoDefaults()
-        .ConfigureLogging(x => x.ClearProviders())
-        .ConfigureWebHostDefaults(webBuilder =>
-        {
-            webBuilder.UseStaticWebAssets();
-            webBuilder.UseStartup<Startup>();
-        });*/

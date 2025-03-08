@@ -3,7 +3,7 @@
 @inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnv
 @{
     var site = Model.Root();
-    var selection = site.Children.Where(x => x.IsVisible());
+    var selection = site.Children().Where(x => x.IsVisible());
     Layout = null;
 }
 <!DOCTYPE html>
@@ -53,7 +53,7 @@
           <li class="@cssclass"><a class="nav-link" href="@item.Url()">@item.ValueOr("navigationText", item.Name())</a></li>
         }
         @{
-          foreach (var item in selection.SingleOrDefault(s => s.IsAncestorOrSelf(Model))?.Children ?? Array.Empty<IPublishedContent>())
+          foreach (var item in selection.SingleOrDefault(s => s.IsAncestorOrSelf(Model))?.Children() ?? Array.Empty<IPublishedContent>())
           {
             string cssclass = "nav-item" + (item.IsAncestorOrSelf(Model) ? " active" : String.Empty);
             if (item.Equals(selection.Last()))
