@@ -64,7 +64,7 @@ jobs:
     concurrency:
       group: amcom-deploy-group
       cancel-in-progress: true
-    needs: deploy-staging
+    needs: test
     if: github.ref == 'refs/heads/main'
     uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@feature/app-slots
     with:
