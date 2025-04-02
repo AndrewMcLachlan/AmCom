@@ -69,7 +69,7 @@ jobs:
     with:
       environment: 'Production'
       artifact-name: publish
-      slot-name: ${{ env.APP_SLOT_NAME }}
+      slot-name: ${{ secrets.APP_SLOT_NAME }}
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
