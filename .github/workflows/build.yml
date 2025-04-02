@@ -69,12 +69,13 @@ jobs:
     with:
       environment: 'Production'
       artifact-name: publish
-      slot-name: ${{ secrets.APP_SLOT_NAME }}
+      slot-name: staging
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       AZURE_WEBAPP_NAME: ${{ secrets.WEB_APP_NAME }}
+      #AZURE_WEBAPP_SLOT_NAME:  ${{ secrets.APP_SLOT_NAME }}
 
     # - name: Install Octopus CLI
     #   uses: OctopusDeploy/install-octopus-cli-action@v3
