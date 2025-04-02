@@ -44,7 +44,7 @@ jobs:
         name: publish
         path: ${{ github.workspace }}/publish
 
-  deploy-staging:
+  test:
     concurrency:
       group: amcom-deploy-group
       cancel-in-progress: true
@@ -54,12 +54,13 @@ jobs:
     with:
       environment: 'Test'
       artifact-name: publish
+      slot-name: staging
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       AZURE_WEBAPP_NAME: ${{ secrets.WEB_APP_NAME }}
-  deploy-production:
+  production:
     concurrency:
       group: amcom-deploy-group
       cancel-in-progress: true
