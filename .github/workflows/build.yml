@@ -52,7 +52,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@feature/app-slots
     with:
-      environment: 'Staging'
+      environment: 'Test'
       artifact-name: publish
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
