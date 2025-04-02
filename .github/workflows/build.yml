@@ -50,7 +50,7 @@ jobs:
       cancel-in-progress: true
     needs: build
     if: github.ref == 'refs/heads/main'
-    uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@v2
+    uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@feature/app-slots
     with:
       environment: 'Staging'
       artifact-name: publish
@@ -65,7 +65,7 @@ jobs:
       cancel-in-progress: true
     needs: deploy-staging
     if: github.ref == 'refs/heads/main'
-    uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@v2
+    uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@feature/app-slots
     with:
       environment: 'Production'
       artifact-name: publish
