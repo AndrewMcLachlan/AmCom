@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: #{Robots:Disallow}
-
-Sitemap: https://#{Site:HostName}/sitemap-xml

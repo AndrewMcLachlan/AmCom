@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.StaticFiles;
+using Umbraco.Cms.Core.Models.Membership;
 
 try
 {
@@ -38,6 +39,13 @@ try
         app.UseExceptionHandler("/error/error/500");
         app.UseHsts();
     }
+
+    app.MapGet("robots.txt", () =>
+    @$"User-agent: *
+Disallow: {(app.Environment.IsProduction() ? String.Empty : "/")}
+
+Sitemap: https://www.andrewmclachlan.com/sitemap-xml
+");
 
     FileExtensionContentTypeProvider contentTypeProvider = new();
     contentTypeProvider.Mappings.Add(".avif", "image/avif");
