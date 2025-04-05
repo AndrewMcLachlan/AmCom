@@ -18,7 +18,7 @@ updates:
       day: tuesday
       time: "06:00"
     reviewers:
-      - andrewmcLachlan
+      - AndrewMcLachlan
     groups:
       dev-dependencies:
         applies-to: version-updates
@@ -41,7 +41,7 @@ updates:
       day: tuesday
       time: "06:00"
     reviewers:
-      - andrewmcLachlan
+      - AndrewMcLachlan
     groups:
       version-updates:
         applies-to: version-updates
@@ -58,4 +58,4 @@ updates:
       day: tuesday
       time: "06:00"
     reviewers:
-      - andrewmcLachlan
+      - AndrewMcLachlan
