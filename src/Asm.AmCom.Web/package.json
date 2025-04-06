@@ -13,7 +13,7 @@
     "@reduxjs/toolkit": "^2.6.1",
     "classnames": "^2.5.1",
     "core-js": "^3.41.0",
-    "eslint": "^9.23.0",
+    "eslint": "^9.24.0",
     "lodash.debounce": "^4.0.8",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
