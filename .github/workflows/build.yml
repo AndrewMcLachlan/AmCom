@@ -28,7 +28,7 @@ jobs:
         NUGET_AUTH_TOKEN: ${{secrets.CROSS_REPO_PACKAGE_TOKEN}}
     - name: Set version number
       id: set-version-number
-      uses: andrewmclachlan/actions/set-version-number@v2
+      uses: andrewmclachlan/actions/set-version-number@v3
       with:
         project: 'src/Asm.AmCom.Web'
         versionPropertyName: 'Version'
@@ -44,39 +44,56 @@ jobs:
         name: publish
         path: ${{ github.workspace }}/publish
 
-  test:
+  staging:
     concurrency:
       group: amcom-deploy-group
       cancel-in-progress: true
     needs: build
     if: github.ref == 'refs/heads/main'
-    uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@v2
+    uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@v3
     with:
-      environment: 'Test'
+      environment: Staging
       artifact-name: publish
+      app-name: andrewmclachlan
       slot-name: staging
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      AZURE_WEBAPP_NAME: ${{ secrets.WEB_APP_NAME }}
+
   production:
     concurrency:
       group: amcom-deploy-group
       cancel-in-progress: true
-    needs: test
-    if: github.ref == 'refs/heads/main'
-    uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@v2
+    needs: staging
+    if: (github.event_name != 'pull_request' && github.event_name != 'pull_request_target' && github.ref == 'refs/heads/main')
+    uses: AndrewMcLachlan/actions/.github/workflows/azure-appservice-swap-slot.yml@v3
     with:
-      environment: 'Production'
+      environment: Production
+      app-name: andrewmclachlan
+      slot-name: staging
+      resource-group: MooBank
+    secrets:
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+  post-production:
+    concurrency:
+      group: amcom-deploy-group
+      cancel-in-progress: true
+    needs: production
+    if: github.ref == 'refs/heads/main'
+    uses: AndrewMcLachlan/actions/.github/workflows/deploy-azure.yml@v3
+    with:
+      environment: Post-Production
       artifact-name: publish
+      app-name: andrewmclachlan
       slot-name: staging
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      AZURE_WEBAPP_NAME: ${{ secrets.WEB_APP_NAME }}
-      #AZURE_WEBAPP_SLOT_NAME:  ${{ secrets.APP_SLOT_NAME }}
 
     # - name: Install Octopus CLI
     #   uses: OctopusDeploy/install-octopus-cli-action@v3
