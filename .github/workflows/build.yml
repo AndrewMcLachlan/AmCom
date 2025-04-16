@@ -73,7 +73,7 @@ jobs:
       environment: Production
       app-name: andrewmclachlan
       slot-name: staging
-      resource-group: AmCom
+      resource-group: AndrewMcLachlan
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
