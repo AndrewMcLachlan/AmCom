@@ -29,12 +29,12 @@
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "babel-loader": "^10.0.0",
-    "eslint-webpack-plugin": "^5.0.0",
+    "eslint-webpack-plugin": "^5.0.1",
     "sass": "^1.86.3",
     "ts-loader": "^9.5.2",
     "typescript": "^5.8.3",
     "watch": "^1.0.2",
-    "webpack": "^5.99.5",
+    "webpack": "^5.99.6",
     "webpack-cli": "^6.0.1"
   },
   "scripts": {
