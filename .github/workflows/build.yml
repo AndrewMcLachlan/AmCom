@@ -31,7 +31,7 @@ jobs:
       uses: andrewmclachlan/actions/set-version-number@v4
       with:
         project: 'src/Asm.AmCom.Web'
-        versionPropertyName: 'Version'
+        version-property-name: 'Version'
     - name: Restore dependencies
       run: dotnet restore Asm.AmCom.sln
     - name: Publish
