@@ -15,14 +15,14 @@
     <PackageReference Include="OpenTelemetry.Instrumentation.SqlClient" Version="1.11.0-beta.2" />
     <PackageReference Include="Serilog.Sinks.Seq" Version="9.0.0" />
     <PackageReference Include="SixLabors.ImageSharp" Version="3.1.11" />
-    <PackageReference Include="Umbraco.Cms" Version="16.1.1" />
+    <PackageReference Include="Umbraco.Cms" Version="16.2.0" />
   </ItemGroup>
 
   <!-- Force windows to use ICU. Otherwise Windows 10 2019H1+ will do it, but older windows 10 and most if not all windows servers will run NLS -->
   <ItemGroup>
-    <PackageReference Include="Asm" Version="3.6.513" />
-    <PackageReference Include="Asm.AspNetCore.Mvc" Version="3.6.513" />
-    <PackageReference Include="Asm.Net" Version="3.6.513" />
+    <PackageReference Include="Asm" Version="3.6.519" />
+    <PackageReference Include="Asm.AspNetCore.Mvc" Version="3.6.519" />
+    <PackageReference Include="Asm.Net" Version="3.6.519" />
     <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" Version="72.1.0.3" />
     <PackageReference Include="Umbraco.StorageProviders.AzureBlob" Version="16.0.0" />
 
