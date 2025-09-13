@@ -1,4 +1,4 @@
-﻿import debounce from "lodash.debounce";
+﻿import { useDebounce } from "use-debounce";
 import React, { useEffect, useMemo, useState } from "react";
 
 import { regexTest } from "./Service";
@@ -17,15 +17,17 @@ const Regex: React.FC = () => {
 
     const dispatch = useAppDispatch();
 
+    const [debouncedRegex] = useDebounce(regex, 250);
+    const [debouncedInput] = useDebounce(input, 250);
+
     useEffect(() => {
-        sendRequestDebounced(regex, input);
-    }, [regex, input]);
+        sendRequest(regex, input);
+    }, [debouncedRegex, debouncedInput]);
 
     const sendRequest = async (regex: string, text: string) => {
         const result = await dispatch(regexTest({ regex, text }))
         setResult(result.payload);
     };
-    const sendRequestDebounced = useMemo(() => debounce(sendRequest, 250), []);
 
     return (
         <div>
