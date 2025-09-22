@@ -13,7 +13,7 @@
     "@reduxjs/toolkit": "^2.9.0",
     "classnames": "^2.5.1",
     "core-js": "^3.45.1",
-    "eslint": "^9.35.0",
+    "eslint": "^9.36.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-redux": "^9.2.0",
