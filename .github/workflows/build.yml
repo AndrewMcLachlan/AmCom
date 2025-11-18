@@ -55,6 +55,7 @@ jobs:
       environment: Staging
       artifact-name: publish
       app-name: andrewmclachlan
+      resource-group: AndrewMcLachlan
       slot-name: staging
       clean: true
     secrets:
@@ -90,41 +91,10 @@ jobs:
       environment: Post-Production
       artifact-name: publish
       app-name: andrewmclachlan
+      resource-group: AndrewMcLachlan
       slot-name: staging
       clean: true
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-
-    # - name: Install Octopus CLI
-    #   uses: OctopusDeploy/install-octopus-cli-action@v3
-    #   with:
-    #     version: latest
-    # - name: Create artifacts folder
-    #   run: mkdir ${{ github.workspace }}/artifacts
-    # - name: Package
-    #   env:
-    #     OCTOPUS_URL: ${{ vars.OCTOPUSURL }}
-    #     OCTOPUS_API_KEY: ${{ secrets.OCTOPUSAPIKEY }}
-    #     OCTOPUS_SPACE: Default
-    #   run: octopus package zip create --id Asm.AmCom.Web --version ${{ steps.set-version-number.outputs.version }} --base-path ${{ github.workspace }}/publish --out-folder ${{ github.workspace }}/artifacts
-    # - name: Push packages
-    #   if: (github.event_name != 'pull_request')
-    #   uses: OctopusDeploy/push-package-action@v3
-    #   with:
-    #     api_key: ${{ secrets.OCTOPUSAPIKEY }}
-    #     server: ${{ vars.OCTOPUSURL }}
-    #     packages: " ${{ github.workspace }}/artifacts/Asm.AmCom.Web.${{ steps.set-version-number.outputs.version }}.zip"
-    #     space: 'Default'
-    # - name: Create release
-    #   if: (github.event_name != 'pull_request')
-    #   uses: OctopusDeploy/create-release-action@v3
-    #   with:
-    #     api_key: ${{ secrets.OCTOPUSAPIKEY }}
-    #     server: ${{ vars.OCTOPUSURL }}
-    #     release_number: ${{ steps.set-version-number.outputs.version }}
-    #     package_version: ${{ steps.set-version-number.outputs.version }}
-    #     space: 'Default'
-    #     project: "AndrewMcLachlan.com"
-    #     progress: false
