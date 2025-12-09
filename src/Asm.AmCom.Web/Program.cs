@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.StaticFiles;
 using Umbraco.Cms.Core.Models.Membership;
+using Asm.AmCom.Web.Middleware;
 
 try
 {
@@ -39,6 +40,9 @@ try
         app.UseExceptionHandler("/error/error/500");
         app.UseHsts();
     }
+
+    app.UseCustomSecurityHeaders();
+    app.UseUrlRewrite();
 
     app.MapGet("robots.txt", () =>
     @$"User-agent: *
