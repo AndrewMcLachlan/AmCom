@@ -33,7 +33,7 @@ jobs:
         project: 'src/Asm.AmCom.Web'
         version-property-name: 'Version'
     - name: Restore dependencies
-      run: dotnet restore Asm.AmCom.sln
+      run: dotnet restore Asm.AmCom.slnx
     - name: Publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.CROSS_REPO_PACKAGE_TOKEN }}
