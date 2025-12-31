@@ -52,7 +52,7 @@ Sitemap: https://www.andrewmclachlan.com/sitemap-xml
 ");
 
     FileExtensionContentTypeProvider contentTypeProvider = new();
-    contentTypeProvider.Mappings.Add(".avif", "image/avif");
+
     app.UseStaticFiles(new StaticFileOptions
     {
         HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,

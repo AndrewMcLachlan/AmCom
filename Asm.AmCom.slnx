@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/.github/">
+    <File Path=".github/dependabot.yml" />
+  </Folder>
+  <Folder Name="/.github/workflows/">
+    <File Path=".github/workflows/build.yml" />
+  </Folder>
+  <Folder Name="/Config/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+  </Folder>
+  <Project Path="src/Asm.AmCom.Web/Asm.AmCom.Web.csproj" />
+  <Project Path="tests/Asm.AmCom.Tests/Asm.AmCom.Tests.csproj" />
+</Solution>
