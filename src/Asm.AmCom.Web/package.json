@@ -10,12 +10,12 @@
   "author": "Andrew McLachlan",
   "license": "MIT",
   "dependencies": {
-    "@reduxjs/toolkit": "^2.11.1",
+    "@reduxjs/toolkit": "^2.11.2",
     "classnames": "^2.5.1",
     "core-js": "^3.47.0",
-    "eslint": "^9.39.1",
-    "react": "^19.2.1",
-    "react-dom": "^19.2.1",
+    "eslint": "^9.39.2",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "react-redux": "^9.2.0",
     "regenerator-runtime": "^0.14.1",
     "use-debounce": "^10.0.6"
@@ -32,11 +32,11 @@
     "eslint-webpack-plugin": "^5.0.2",
     "exec-sh": "^0.4.0",
     "merge": "^2.1.1",
-    "sass": "^1.95.0",
+    "sass": "^1.97.1",
     "ts-loader": "^9.5.4",
     "typescript": "^5.9.3",
     "watch": "^1.0.2",
-    "webpack": "^5.103.0",
+    "webpack": "^5.104.1",
     "webpack-cli": "^6.0.1"
   },
   "overrides": {
