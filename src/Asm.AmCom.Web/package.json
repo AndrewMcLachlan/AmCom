@@ -12,10 +12,10 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
     "classnames": "^2.5.1",
-    "core-js": "^3.47.0",
+    "core-js": "^3.48.0",
     "eslint": "^9.39.2",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "react-redux": "^9.2.0",
     "regenerator-runtime": "^0.14.1",
     "use-debounce": "^10.1.0"
@@ -26,7 +26,7 @@
     "@babel/preset-react": "^7.28.5",
     "@types/lodash": "^4.17.23",
     "@types/lodash.debounce": "^4.0.9",
-    "@types/react": "^19.2.8",
+    "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
     "babel-loader": "^10.0.0",
     "eslint-webpack-plugin": "^5.0.2",
