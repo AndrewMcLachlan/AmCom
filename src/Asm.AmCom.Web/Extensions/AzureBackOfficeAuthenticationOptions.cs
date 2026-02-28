@@ -7,7 +7,7 @@ namespace Asm.AmCom.Web.Extensions;
 
 public class AzureBackOfficeAuthenticationOptions(IOptions<AzureConfig> azureOptions) : IConfigureNamedOptions<MicrosoftAccountOptions>
 {
-    public void Configure(String? name, MicrosoftAccountOptions options)
+    public void Configure(string? name, MicrosoftAccountOptions options)
     {
         if (name == Constants.Security.BackOfficeExternalAuthenticationTypePrefix + AzureLoginOptions.SchemeName)
         {

@@ -29,7 +29,7 @@
 
   <!-- Installed specifically to overcome security vulnerabilities in dependent packages -->
   <ItemGroup>
-    <PackageReference Include="Azure.Identity" Version="1.17.1" />
+    <PackageReference Include="Azure.Identity" Version="1.18.0" />
     <PackageReference Include="BouncyCastle.Cryptography" Version="2.6.2" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.4" />
     <PackageReference Include="Microsoft.Identity.Client" Version="4.82.1" />
