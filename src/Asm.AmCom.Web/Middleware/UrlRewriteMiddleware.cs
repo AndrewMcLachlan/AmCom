@@ -22,10 +22,10 @@ public class UrlRewriteMiddleware
         var isUmbracoPath = path?.StartsWith("/umbraco", StringComparison.OrdinalIgnoreCase) == true ||
                            path?.StartsWith("/install", StringComparison.OrdinalIgnoreCase) == true;
 
-        if (!isUmbracoPath && !string.IsNullOrEmpty(path))
+        if (!isUmbracoPath && !String.IsNullOrEmpty(path))
         {
             // Rule 1: Lower Case URL (except PDF files)
-            if (!path.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase) && path.Any(char.IsUpper))
+            if (!path.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase) && path.Any(Char.IsUpper))
             {
                 var lowerPath = path.ToLowerInvariant();
                 var redirectUrl = $"{lowerPath}{queryString}";

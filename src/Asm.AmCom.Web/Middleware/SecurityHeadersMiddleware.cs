@@ -16,7 +16,7 @@ public class SecurityHeadersMiddleware
     public async Task InvokeAsync(HttpContext context)
     {
         // Get the path to check for exceptions
-        var path = context.Request.Path.Value?.ToLowerInvariant() ?? string.Empty;
+        var path = context.Request.Path.Value?.ToLowerInvariant() ?? String.Empty;
         
         // Don't apply security headers to Umbraco back office and install
         var isUmbracoPath = path.StartsWith("/umbraco") || path.StartsWith("/install");
