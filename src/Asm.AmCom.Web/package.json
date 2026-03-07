@@ -29,14 +29,14 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "babel-loader": "^10.0.0",
-    "eslint-webpack-plugin": "^5.0.2",
+    "eslint-webpack-plugin": "^5.0.3",
     "exec-sh": "^0.4.0",
     "merge": "^2.1.1",
     "sass": "^1.97.3",
     "ts-loader": "^9.5.4",
     "typescript": "^5.9.3",
     "watch": "^1.0.2",
-    "webpack": "^5.105.2",
+    "webpack": "^5.105.3",
     "webpack-cli": "^6.0.1"
   },
   "overrides": {
