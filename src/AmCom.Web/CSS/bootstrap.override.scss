@@ -1,0 +1,51 @@
+﻿h1, .h1, h2, .h2 {
+    padding-top: 1rem;
+}
+
+a {
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+textarea.form-control {
+    height: 200px;
+}
+
+.btn {
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 5px;
+}
+
+.btn-link {
+    padding: 0;
+    border: none;
+    font-weight: normal;
+    display: inline;
+    vertical-align: initial;
+
+    &:focus {
+        box-shadow: none;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--colour-orange);
+    --bs-btn-border-color: none;
+    --bs-btn-hover-bg: var(--colour-deep-orange);
+    --bs-btn-active-bg: var(--colour-deep-orange);
+}
+
+.table {
+    color: inherit;
+}
+
+.form-control-plaintext {
+    color: inherit;
+}
