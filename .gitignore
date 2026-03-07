@@ -489,11 +489,12 @@ $RECYCLE.BIN/
 # Nuget package Umbraco.Cms.StaticAssets will copy them in during dotnet build
 **/wwwroot/umbraco/
 **/wwwroot/media/
-/src/Asm.AmCom.Web/appsettings.Production.json
+/src/AmCom.Web/appsettings.Production.json
 
-/src/Asm.AmCom.Web/wwwroot/css/*
-!/src/Asm.AmCom.Web/wwwroot/css/editor.css
-!/src/Asm.AmCom.Web/wwwroot/css/bootstrap.*
+/src/AmCom.Web/wwwroot/css/*
+!/src/AmCom.Web/wwwroot/css/editor.css
+!/src/AmCom.Web/wwwroot/css/bootstrap.*
 
-/src/Asm.AmCom.Web/wwwroot/js/*
-!/src/Asm.AmCom.Web/wwwroot/js/bootstrap.*
+/src/AmCom.Web/wwwroot/js/*
+!/src/AmCom.Web/wwwroot/js/bootstrap.*
+/.claude/settings.local.json

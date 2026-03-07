@@ -20,7 +20,7 @@ try
     services.AddHsts(o => o.MaxAge = new TimeSpan(0, 0, 31536000));
     services.AddMemoryCache();
     services.AddHttpContextAccessor();
-    services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+    //services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 
     umbracoBuilder.AddAzureBlobMediaFileSystem();
 

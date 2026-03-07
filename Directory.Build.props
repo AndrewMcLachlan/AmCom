@@ -9,5 +9,7 @@
     <Product>AndrewMcLachlan.com</Product>
     <Company />
     <Authors>Andrew McLachlan</Authors>
+    <RootNamespace>Asm.$(MSBuildProjectName)</RootNamespace>
+    <AssemblyName>Asm.$(MSBuildProjectName)</AssemblyName>
   </PropertyGroup>
 </Project>
