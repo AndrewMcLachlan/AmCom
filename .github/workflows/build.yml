@@ -30,14 +30,14 @@ jobs:
       id: set-version-number
       uses: andrewmclachlan/actions/set-version-number@v4
       with:
-        project: 'src/Asm.AmCom.Web'
+        project: 'src/AmCom.Web'
         version-property-name: 'Version'
     - name: Restore dependencies
-      run: dotnet restore Asm.AmCom.slnx
+      run: dotnet restore AmCom.slnx
     - name: Publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.CROSS_REPO_PACKAGE_TOKEN }}
-      run: dotnet publish src/Asm.AmCom.Web/Asm.AmCom.Web.csproj --output ${{ github.workspace }}/publish --configuration Release --p:Version=${{ steps.set-version-number.outputs.version }} --p:FileVersion=${{ steps.set-version-number.outputs.version }} --no-restore
+      run: dotnet publish src/AmCom.Web/AmCom.Web.csproj --output ${{ github.workspace }}/publish --configuration Release --p:Version=${{ steps.set-version-number.outputs.version }} --p:FileVersion=${{ steps.set-version-number.outputs.version }} --no-restore
     - name: Upload Artifact
       uses: actions/upload-artifact@v7
       with:
