@@ -1,6 +1,7 @@
 ﻿@use "variables" as *;
 
 :root {
+    --header-height: 75px;
     --colour-dark: #{$dark};
     --colour-lighter: #{$lighter};
     --colour-rich-blue: #{$rich-blue};

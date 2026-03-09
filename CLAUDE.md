@@ -9,7 +9,7 @@ This is a **personal brand site** — it represents Andrew McLachlan professiona
 ### Aesthetic Direction
 - **Dark-first design** — the site defaults to a dark theme (`#091114` background) with a `prefers-color-scheme` light mode. Dark mode is the primary experience.
 - **Colour palette** — deep navy/teal darks, blue accents (`#73BEE9` / `#3C74A8`), orange highlights (`#F7922D` / `#F55E00`), bone/cream for text on dark. Orange is used for active states and borders as an accent colour. Respect the existing palette; don't introduce new brand colours without reason.
-- **Typography** — `Quicksand` (body, h1) for a clean, rounded, friendly feel; `Maven Pro` (h2-h6) for headings with a more geometric/modern character. Both are self-hosted. Maintain this typographic hierarchy.
+- **Typography** — `Plus Jakarta Sans` (body, h1) for clean, contemporary readability; `Sora` (h2-h6, hero) for headings with a distinctive geometric/modern character. Both are self-hosted as variable woff2 fonts. Maintain this typographic hierarchy.
 - **Hero sections** — full-width hero images with overlaid text, semi-transparent dark containers with rounded corners. Photography-based backgrounds (travel/architecture).
 - **Page headers** — full-width h2 elements with background photography, bold bone-coloured text with text shadow, bordered top and bottom with the accent colour.
 - **Layout** — flexbox-based, full-height body. Minimal padding, clean content areas. Bootstrap is used for grid and nav but heavily customised.
@@ -25,6 +25,8 @@ This is a **personal brand site** — it represents Andrew McLachlan professiona
 - Maintain **dark/light mode parity** — all new UI must work in both themes using CSS custom properties (`--background-colour`, `--text-colour`, `--brand-colour`, `--border`, etc.)
 - **Mobile responsive** — the site uses Bootstrap breakpoints with custom responsive overrides
 - Avoid generic Bootstrap aesthetics — override defaults to maintain the site's own visual identity
+- **Accessible** - The site must follow accessibility guidelines
+- **NoScript-Friendly** (Excluding tools) - JavaScript can be used to enhance the user experience. However, the site should work well if JavaScript is disabled.
 
 ## Tech Stack
 
@@ -37,7 +39,7 @@ This is a **personal brand site** — it represents Andrew McLachlan professiona
 
 ```
 AmCom.slnx                          # Solution file
-src/Asm.AmCom.Web/                  # Main web project
+src/AmCom.Web/                      # Main web project
   Controllers/                      # MVC controllers
   Models/                           # View models
   Views/                            # Razor views
@@ -52,7 +54,7 @@ src/Asm.AmCom.Web/                  # Main web project
   App_Plugins/                      # Umbraco plugins
   Config/                           # App configuration classes
   Middleware/                       # ASP.NET middleware
-  Extensions/                      # Extension methods
+  Extensions/                       # Extension methods
   TagHelpers/                       # Razor tag helpers
 tests/Asm.AmCom.Tests/              # Test project
 ```

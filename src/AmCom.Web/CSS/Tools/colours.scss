@@ -1,6 +1,7 @@
-﻿.colour ~ div, h4 {
+﻿.colour ~ div, .colour h4 {
     font-weight: bold;
     font-size: 1em;
+    color: var(--bs-header-color);
 }
 
 .colour-group, .colour-grid {
@@ -66,6 +67,7 @@ section.colour-grid > section {
     h4 {
         font-size: 2rem;
         text-align: center;
+        color: var(--bs-header-color);
     }
 
     &.dark {

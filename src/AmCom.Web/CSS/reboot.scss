@@ -1,32 +1,23 @@
 ﻿html, body {
-    height: 100%;
+    min-height: 100%;
     margin: 0;
     padding: 0;
     background-color: var(--colour-dark);
 }
 
 body, h1, .text {
-    font-family: Quicksand, HelveticaNeue-Thin, Calibri, Avenir, Helvetica, Arial, sans-serif;
+    font-family: 'Plus Jakarta Sans', Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-size: 18px;
 }
 
 h2, h3, h4, h5, h6 {
-    font-family: 'Maven Pro', Avenir, Helvetica, Arial, sans-serif;
+    font-family: 'Sora', Helvetica, Arial, sans-serif;
     font-weight: 500;
 }
 
-h2 {
-    //text-shadow: 1px 1px 2px #99A;
-}
-
 h3 {
-    //text-shadow: 1px 1px 2px rgba(153,153,170,0.5);
-}
-
-h4 {
     font-size: 1.4rem;
-    //text-shadow: 1px 1px 2px rgba(153,153,170,0.3);
 }
 
 a {

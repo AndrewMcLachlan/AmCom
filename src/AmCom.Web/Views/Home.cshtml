@@ -1,4 +1,4 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Home>
 @{
@@ -9,69 +9,48 @@
 }
 
 @section Head
-    {
-    <meta property="og:title" content="Andrew McLachlan - Software Engineer" />
+{
+    <meta property="og:title" content="Andrew McLachlan - Engineering Manager" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="@Context.Request.Scheme://@Context.Request.Host" />
     <meta property="og:image" content="@Context.Request.Scheme://@Context.Request.Host/images/andrewmclachlan.jpg" />
 }
 
-    <div class="hero">
-        @await Html.PartialAsync("heroes/Static", Model)
-    </div>
+<div class="hero">
+    @await Html.PartialAsync("heroes/Static", Model)
+</div>
 
-    <section class="container">
-        @{
-        var summaries = Model.SummaryList; // Model.Value<IList<IPublishedContent>>("SummaryList");
+<section class="container summary-section">
+    @{
+        var summaries = Model.SummaryList;
         if (summaries != null)
         {
-            var className = $"col-lg-{12 / summaries.Count()}";
-
-            <div class="row summary">
+            <div class="summary reveal-group">
                 @foreach (var summary in summaries)
                 {
-                    await Html.RenderPartialAsync("Summary", summary.Content, new ViewDataDictionary(ViewData) { { "ClassName", className } });
+                    await Html.RenderPartialAsync("Summary", summary.Content, new ViewDataDictionary(ViewData));
                 }
             </div>
         }
     }
 </section>
-<section class="word-cloud d-none d-lg-block">
+
+<section class="statement-band reveal">
+    <div class="skill-cloud" aria-hidden="true">
+        <span>.NET</span><span>Architecture</span><span>Agile</span><span>Azure</span><span>C#</span><span>CSS</span><span>Design</span><span>DevOps</span><span>Delivery</span><span>HTML</span><span>Integration</span><span>Leadership</span><span>Management</span><span>React</span><span>Respect</span><span>REST</span><span>Scrum</span><span>Security</span><span>Solutions</span><span>SQL</span><span>Team</span><span>TypeScript</span><span>AI</span><span>Cloud</span>
+    </div>
     <div class="container">
-        <ul>
-            <li id="dotnet">.NET</li>
-            <li id="architecture">Architecture</li>
-            <li id="agile">Agile</li>
-            <li id="azure">Azure</li>
-            <li id="csharp">C#</li>
-            <li id="css">CSS</li>
-            <li id="design">Design</li>
-            <li id="devops">DevOps</li>
-            <li id="delivery">Delivery</li>
-            <li id="html">HTML</li>
-            <li id="integration">Integration</li>
-            <li id="leadership">Leadership</li>
-            <li id="management">Management</li>
-            <li id="reactjs">React JS</li>
-            <li id="respect">Respect</li>
-            <li id="rest">REST</li>
-            <li id="scrum">Scrum</li>
-            <li id="security">Security</li>
-            <li id="solutions">Solutions</li>
-            <li id="sql">SQL</li>
-            <li id="team">team</li>
-            <li id="typescript">TypeScript</li>
-        </ul>
+        <p>@(Model.Value<string>("statement") ?? "Building intelligent software with great teams")</p>
     </div>
 </section>
 
 @section Scripts
 {
-    <script type="application/ld+json" integrity="sha256-fKF2oc1IqXVBtlFeiQ4cEoEKPR0EbXfTcfahUYPzrGk=">
+    <script type="application/ld+json" integrity="sha256-e62OE6xT8v0LHEqQPTxhrJY0MJ1RPjJibMyuXhdhCaE=">
         {
         "@@context": "http://schema.org/",
         "@@type": "http://schema.org/Person",
-        "jobTitle": "Application Development Manager",
+        "jobTitle": "Engineering Manager",
         "url": "https://andrewmclachlan.com",
         "sameAs": "https://au.linkedin.com/in/andrewsmclachlan",
         "name": "Andrew McLachlan",

@@ -1,13 +1,13 @@
 ﻿@charset "UTF-8";
 /*rgba(27,34,44,1)*/
 :root {
-  --colour-dark: #14252C;
-  --colour-lighter: #29333D;
-  --colour-rich-blue: #3C74A8;
-  --colour-blue: #73BEE9;
-  --colour-light-blue: rgb(170, 220, 247);
-  --colour-bone: #F8F8D2;
-  --colour-muted-bone: #DADAD3;
+    --colour-dark: #14252C;
+    --colour-lighter: #284352;
+    --colour-rich-blue: #3C74A8;
+    --colour-blue: #73BEE9;
+    --colour-light-blue: rgb(170, 220, 247);
+    --colour-bone: #F8F8D2;
+    --colour-muted-bone: #DADAD3;
 }
 
 :root, .light {

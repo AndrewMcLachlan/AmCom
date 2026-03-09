@@ -1,7 +1,13 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 
-<h2 class="text">
-    @Model.Value("introText")
-</h2>
-<p class="text">@Model.Value("introSubText")</p>
+<h1>@Model.Value("introText")</h1>
+<p>@Model.Value("introSubText")</p>
+@{
+    var ctaText = Model.Value<string>("introCallToAction");
+    var ctaLink = Model.Value<string>("introCallToActionLink");
+    if (!string.IsNullOrEmpty(ctaText) && !string.IsNullOrEmpty(ctaLink))
+    {
+        <a class="hero-cta" href="@ctaLink">@ctaText<span class="arrow">&#10140;</span></a>
+    }
+}

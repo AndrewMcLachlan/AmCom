@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Lucene.Net.Replicator" Version="4.8.0-beta00017" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="10.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="10.0.3" />
     <PackageReference Include="OpenTelemetry.Instrumentation.EntityFrameworkCore" Version="1.14.0-beta.2" />
     <PackageReference Include="OpenTelemetry.Instrumentation.SqlClient" Version="1.15.1" />
     <PackageReference Include="Serilog.Sinks.Seq" Version="9.0.0" />

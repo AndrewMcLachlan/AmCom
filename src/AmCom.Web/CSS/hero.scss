@@ -1,44 +1,109 @@
-﻿.hero {
-    height: 405px;
-    position: relative;
-    padding: 0;
-    overflow: hidden;
-    margin-bottom: 20px;
+@use "variables" as *;
 
-    h2, p {
-        font-size: 2rem;
-        margin: 0;
-        padding: 5px;
-        text-align: center;
-        /*text-shadow: 5px 5px 5px #000;*/
-        font-weight: normal;
-        color: white;
-        font-weight: 600;
-    }
+.hero {
+    min-height: calc(100dvh - var(--header-height, 75px));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 0;
 }
 
-.hero .jumbotron {
-    height: 100%;
+.hero-backdrop {
+    position: absolute;
+    inset: 0;
     background-image: url(/images/hero/wall.avif);
     background-size: cover;
     background-position: center;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: center;
+    opacity: 0.45;
+    z-index: 0;
+}
 
-    .container {
-        flex-basis: 100%;
-        background-color: rgba(0,0,0,0.7);
-        border-radius: 2rem;
+.hero-content {
+    z-index: 1;
+    text-align: center;
+    padding: 3rem 2rem;
+    max-width: 900px;
+
+    h1 {
+        font-family: 'Sora', Helvetica, Arial, sans-serif;
+        font-size: clamp(2.8rem, 6vw, 5rem);
+        font-weight: 700;
+        line-height: 1.1;
+        margin: 0 0 1.5rem;
+        color: white;
+        text-shadow: none;
+        border: none;
+        background: none;
+        padding: 0;
     }
 
-    .text {
-        width: 100%;
+    p {
+        font-size: clamp(1.2rem, 3vw, 1.75rem);
+        font-weight: 400;
+        color: $muted-bone;
+        margin: 0 0 2rem;
+        letter-spacing: 0.02em;
+        line-height: 1.5;
+    }
+
+    .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem 2.5rem;
+        background-color: $orange;
+        color: white;
+        font-weight: 700;
+        font-size: 1.1rem;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+
+        .arrow {
+            transition: transform 0.2s ease;
+        }
+
+        &:hover {
+            background-color: $deep-orange;
+            color: white;
+            text-decoration: none;
+            transform: translateY(-2px);
+
+            .arrow {
+                transform: translateX(5px);
+            }
+        }
     }
 }
 
-.jumbotron .container {
-    position: relative;
-    padding: 0;
+// Scroll hint at bottom of hero
+.hero-scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba($muted-bone, 0.5);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: hero-bounce 2s ease-in-out infinite;
+
+    &::after {
+        content: '';
+        display: block;
+        width: 1px;
+        height: 24px;
+        background: rgba($muted-bone, 0.3);
+    }
+}
+
+@keyframes hero-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
 }
