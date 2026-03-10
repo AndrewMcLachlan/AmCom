@@ -21,19 +21,20 @@ export default Colours;
 
 const coreColours: Colour[] = [
     { name: "Dark", r: 0x09, g: 0x11, b: 0x14, },
+    { name: "Lighter", r: 0x14, g: 0x22, b: 0x29, },
     { name: "Blue", r: 0x73, g: 0xbe, b: 0xe9, },
     { name: "Orange", r: 0xf7, g: 0x92, b: 0x2d },
+    { name: "Bone", r: 0xf8, g: 0xf8, b: 0xd2, },
 ];
 
 const secondaryColours: Colour[] = [
     //{ name: "Lighter", r: 0x29, g: 0x33, b: 0x3D, },
-    { name: "Lighter", r: 0x14, g: 0x25, b: 0x2c, },
+    
     { name: "Rich Blue", r: 0x3C, g: 0x74, b: 0xA8, },
     { name: "Light Blue", r: 0xAA, g: 0xDC, b: 0xF7, },
-    { name: "Bone", r: 0xf8, g: 0xf8, b: 0xd2, },
-    { name: "Muted Bone", r: 0xDA, g: 0xDA, b: 0xD3, },
     { name: "Deep Orange", r: 0xf5, g: 0x5e, b: 0x00, },
     { name: "Light Orange", r: 0xf4, g: 0xb5, b: 0x7a, },
+    { name: "Muted Bone", r: 0xDA, g: 0xDA, b: 0xD3, },
 ];
 
 const vsColours: Colour[] = [

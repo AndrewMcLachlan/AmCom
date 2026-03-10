@@ -8,6 +8,51 @@
     for (const e of copyable) {
         e.onclick = copyToClipboard;
     }
+
+    // Toggle scrolled class on nav for glassmorphism effect
+    const nav = document.getElementById("top-nav");
+    if (nav) {
+        window.addEventListener("scroll", () => {
+            nav.classList.toggle("scrolled", window.scrollY > 10);
+        }, { passive: true });
+    }
+
+    // Scroll-reveal animation using IntersectionObserver
+    const revealContainers = document.querySelectorAll(".reveal-group");
+    const standaloneReveals = document.querySelectorAll(".reveal:not(.reveal-group .reveal)");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion) {
+        document.querySelectorAll(".reveal").forEach(el => el.classList.add("revealed"));
+    } else {
+        // For grouped reveals: observe the container, reveal all children when container scrolls into view
+        revealContainers.forEach(container => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        container.querySelectorAll(".reveal").forEach(el => el.classList.add("revealed"));
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0, rootMargin: "0px 0px 0px 0px" });
+
+            observer.observe(container);
+        });
+
+        // For standalone reveals
+        if (standaloneReveals.length > 0) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("revealed");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0, rootMargin: "0px 0px 0px 0px" });
+
+            standaloneReveals.forEach(el => observer.observe(el));
+        }
+    }
 });
 
 type Theme = "light" | "dark";

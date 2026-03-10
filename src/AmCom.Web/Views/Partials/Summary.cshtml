@@ -1,16 +1,25 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @using Umbraco.Extensions
 @{
     var link = Model.Link as IPublishedContent;
     var url = link?.Url();
+    var image = Model.SummaryImage;
+    var imagePosition = Model.ImagePosition;
+    var positionClass = imagePosition == "left" ? "summary-card--image-left" : "";
 }
 
-<section class="@ViewData["ClassName"]">
-    <header>
+<a class="summary-card reveal @positionClass" href="@url" aria-label="@(Model.LinkLabel)">
+    <div class="summary-text">
         <h3>@Model.Title</h3>
-    </header>
-    <p>
-        @Html.Raw(Model.SummaryContent)
-    </p>
-    <a class="btn btn-primary btn-wide" href="@url" aria-label="@(Model.LinkLabel)">read more</a>
-</section>
+        <div class="summary-body">
+            @Html.Raw(Model.SummaryContent)
+        </div>
+        <span class="summary-cta">@(Model.LinkLabel)<span class="arrow">&#10140;</span></span>
+    </div>
+    @if (image != null)
+    {
+        <div class="summary-image">
+            <img src="@image.Url()" alt="@Model.Title" loading="lazy" />
+        </div>
+    }
+</a>

@@ -7,7 +7,9 @@
     }
 
     > header {
-        position: relative;
+        position: sticky;
+        top: 0;
+        z-index: 1030;
     }
 }
 
@@ -43,26 +45,54 @@ article {
         background-color: var(--colour-lighter);
         margin-bottom: 2rem;
     }
+
+    h2, h3, h4, h5 {
+        color: var(--brand-colour);
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    li {
+        padding: 0.35rem 0;
+        padding-left: 1.5rem;
+        text-indent: -1.5rem;
+
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--colour-orange);
+            margin-right: 0.75rem;
+            vertical-align: middle;
+        }
+    }
 }
 
-h2:not(.text) {
+.page-header {
     font-weight: bold;
     color: var(--colour-bone);
     font-size: 3rem;
     text-shadow: 2px 2px 5px #000;
     padding-top: 0px;
     margin-top: 0;
-    padding-left: 10px;
+    padding-left: 15px;
     line-height: 75px;
     border-top: 2px solid var(--border);
     border-bottom: 2px solid var(--border);
 }
 
-h3 + h4, * + h3 {
+h2 + h3, * + h2 {
     margin-top: 2rem;
 }
 
-* + h4 {
+* + h3 {
     margin-top: 1.5rem;
 }
 
@@ -170,6 +200,11 @@ footer {
             margin-top: 5px;
         }
     }
+}
+
+.summary-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }
 
 body.home > footer {

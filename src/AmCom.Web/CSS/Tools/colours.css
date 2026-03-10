@@ -1,6 +1,7 @@
 ﻿.colour ~ div, h4 {
   font-weight: bold;
   font-size: 1em;
+  color: var(--bs-header-color);
 }
 
 .colour-group, .colour-grid {

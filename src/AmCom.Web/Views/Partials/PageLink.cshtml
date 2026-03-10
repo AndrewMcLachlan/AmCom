@@ -2,7 +2,7 @@
 @using Umbraco.Cms.Web.Common.PublishedModels;
 @using Umbraco.Extensions
 @{
-    var images = Model.PageLinkImage as IEnumerable<IPublishedContent> ?? [];
+    var images = Model.PageLinkImage as IEnumerable<IPublishedContent> ?? Enumerable.Empty<IPublishedContent>();
     var image = images.FirstOrDefault();
 
     var altText = image?.Value<string>("umbracoAltText");
