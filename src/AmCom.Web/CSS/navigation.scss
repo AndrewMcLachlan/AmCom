@@ -108,19 +108,45 @@ ul.level2 {
 }
 
 // Home page: transparent nav over hero
-body.index .navbar:not(.scrolled) {
+body.home .navbar:not(.scrolled) {
     background-color: transparent;
+
+    .navbar-nav .nav-link {
+        color: var(--colour-blue);
+
+        &:hover {
+            color: var(--colour-light-orange);
+        }
+    }
+
+    .navbar-nav .active .nav-link,
+    .navbar-nav .active .nav-link:hover,
+    .navbar-nav .active .nav-link:focus {
+        color: var(--colour-orange);
+    }
+
+    .navbar-brand span {
+        color: var(--colour-blue);
+    }
+
+    .level-last {
+        border-right-color: var(--colour-blue);
+    }
 }
 
 // Light mode scrolled state
 .light .navbar.scrolled {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border-bottom-color: rgba(0, 0, 0, 0.08);
 }
 
 @media (prefers-color-scheme: light) {
     body:not(.dark) .navbar.scrolled {
-        background-color: rgba(255, 255, 255, 0.6);
+        background-color: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
         border-bottom-color: rgba(0, 0, 0, 0.08);
     }
 }

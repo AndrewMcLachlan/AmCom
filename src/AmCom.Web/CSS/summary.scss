@@ -147,8 +147,8 @@
 
 // Light mode
 .light .summary-card {
-    background-color: white;
-    border-color: rgba(0, 0, 0, 0.08);
+    background-color: var(--colour-muted-bone);
+    border-color: rgba(0, 0, 0, 0.06);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 
     &:hover {
@@ -158,8 +158,8 @@
 
 @media (prefers-color-scheme: light) {
     body:not(.dark) .summary-card {
-        background-color: white;
-        border-color: rgba(0, 0, 0, 0.08);
+        background-color: var(--colour-muted-bone);
+        border-color: rgba(0, 0, 0, 0.06);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 
         &:hover {

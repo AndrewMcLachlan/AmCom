@@ -5,7 +5,7 @@
 <p>@Model.Value("introSubText")</p>
 @{
     var ctaText = Model.Value<string>("introCallToAction");
-    var ctaLink = Model.Value<string>("introCallToActionLink");
+    var ctaLink = Model.Value<IPublishedContent>("introCallToActionLink")?.Url();
     if (!string.IsNullOrEmpty(ctaText) && !string.IsNullOrEmpty(ctaLink))
     {
         <a class="hero-cta" href="@ctaLink">@ctaText<span class="arrow">&#10140;</span></a>
