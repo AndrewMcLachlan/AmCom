@@ -1,23 +1,21 @@
-﻿@use "variables" as *;
-
 :root {
     --header-height: 75px;
-    --colour-dark: #{$dark};
-    --colour-lighter: #{$lighter};
-    --colour-rich-blue: #{$rich-blue};
-    --colour-blue: #{$blue};
-    --colour-light-blue: #{$light-blue};
-    --colour-bone: #{$bone};
-    --colour-muted-bone: #{$muted-bone};
-    --colour-orange: #{$orange};
-    --colour-deep-orange: #{$deep-orange};
-    --colour-light-orange: #{$light-orange};
+    --colour-dark: #091114;
+    --colour-lighter: #142229;
+    --colour-rich-blue: #3C74A8;
+    --colour-blue: #73BEE9;
+    --colour-light-blue: rgb(170,220,247);
+    --colour-bone: #F8F8D2;
+    --colour-muted-bone: #EAEAE3;
+    --colour-orange: #F7922D;
+    --colour-deep-orange: #F55E00;
+    --colour-light-orange: #F4B57A;
 }
 
 :root, .light {
     --background-colour: white;
     --brand-colour: var(--colour-rich-blue);
-    --text-colour: var(--bs-body-color);
+    --text-colour: #212529;
     --link-colour: #0d6efd;
     --nav-background: white;
     --nav-colour: var(--colour-dark);

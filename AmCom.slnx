@@ -7,8 +7,14 @@
   </Folder>
   <Folder Name="/Config/">
     <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path=".npmrc" />
     <File Path="CLAUDE.md" />
     <File Path="Directory.Build.props" />
+    <File Path="LICENSE" />
+    <File Path="NuGet.config" />
+    <File Path="README.md" />
+    <File Path="THIRD-PARTY-NOTICES.md" />
   </Folder>
   <Project Path="src/AmCom.Web/AmCom.Web.csproj" />
   <Project Path="tests/AmCom.Tests/AmCom.Tests.csproj" />

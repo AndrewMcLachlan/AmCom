@@ -32,7 +32,7 @@
     "eslint-webpack-plugin": "^5.0.3",
     "exec-sh": "^0.4.0",
     "merge": "^2.1.1",
-    "sass": "^1.97.3",
+    "lightningcss-cli": "^1.29.2",
     "ts-loader": "^9.5.4",
     "typescript": "^5.9.3",
     "watch": "^1.0.2",
@@ -47,8 +47,8 @@
   "scripts": {
     "start": "webpack --mode development --watch --progress",
     "build": "webpack --mode production",
-    "build-sass": "sass CSS/site.scss:wwwroot/css/site.min.css --style compressed && sass CSS/Tools/tool.scss:wwwroot/css/tool.min.css --style compressed && sass CSS/Tools/regex.scss:wwwroot/css/regex.min.css --style compressed && sass CSS/Tools/cidr.scss:wwwroot/css/cidr.min.css --style compressed && sass CSS/Tools/colours.scss:wwwroot/css/colours.min.css --style compressed",
-    "watch-sass": "watch \"npm run build-sass\" ./CSS",
+    "build-css": "lightningcss --minify --bundle --sourcemap CSS/site.css -o wwwroot/css/site.min.css && lightningcss --minify --bundle --sourcemap CSS/Tools/tool.css -o wwwroot/css/tool.min.css && lightningcss --minify --bundle --sourcemap CSS/Tools/regex.css -o wwwroot/css/regex.min.css && lightningcss --minify --bundle --sourcemap CSS/Tools/cidr.css -o wwwroot/css/cidr.min.css && lightningcss --minify --bundle --sourcemap CSS/Tools/colours.css -o wwwroot/css/colours.min.css",
+    "watch-css": "watch \"npm run build-css\" ./CSS",
     "build:dev": "webpack --mode development"
   }
 }

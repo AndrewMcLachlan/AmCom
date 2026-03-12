@@ -1,5 +1,3 @@
-@use "variables" as *;
-
 .navbar {
     border-radius: 0;
     margin-bottom: 0;
@@ -68,11 +66,6 @@
     }
 }
 
-.navbar-toggler {
-    border: none;
-}
-
-
 ul.level1 {
     font-size: 1.2em;
     padding-left: 0;
@@ -107,7 +100,7 @@ ul.level2 {
     margin-right: -1px;
 }
 
-// Home page: transparent nav over hero
+/* Home page: transparent nav over hero */
 body.home .navbar:not(.scrolled) {
     background-color: transparent;
 
@@ -129,12 +122,16 @@ body.home .navbar:not(.scrolled) {
         color: var(--colour-blue);
     }
 
+    .navbar-toggler-icon {
+        background-color: var(--colour-blue);
+    }
+
     .level-last {
         border-right-color: var(--colour-blue);
     }
 }
 
-// Light mode scrolled state
+/* Light mode scrolled state */
 .light .navbar.scrolled {
     background-color: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(8px);

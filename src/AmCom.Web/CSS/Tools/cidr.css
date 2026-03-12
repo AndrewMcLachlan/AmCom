@@ -1,44 +1,41 @@
-﻿input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 input[type=number] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
 .ip-address {
-  display: flex;
-  font-size: 2rem;
-  font-weight: bold;
-}
-.ip-address .form-control {
-  width: 80px;
-}
-@media screen and (max-width: 991px), (max-device-width: 991px) {
-  .ip-address .form-control {
-    width: 65px;
-  }
-}
-.ip-address input {
-  font-size: 2rem;
-  font-weight: bold;
-}
-@media screen and (max-width: 991px), (max-device-width: 991px) {
-  .ip-address input {
-    font-size: 1.4rem;
-  }
+    display: flex;
+    font-size: 2rem;
+    font-weight: bold;
+
+    .form-control {
+        width: 80px;
+
+        @media screen and (max-width: 991px), (max-device-width: 991px) {
+            width: 65px;
+        }
+    }
+
+    input {
+        font-size: 2rem;
+        font-weight: bold;
+
+        @media screen and (max-width: 991px), (max-device-width: 991px) {
+            font-size: 1.4rem;
+        }
+    }
 }
 
 .cidr-result input {
-  font-size: 2rem;
-  font-weight: bold;
-}
-@media screen and (max-width: 991px), (max-device-width: 991px) {
-  .cidr-result input {
-    font-size: 1.5rem;
-  }
-}
+    font-size: 2rem;
+    font-weight: bold;
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/tools/cidr.scss%22,%22file:///K:/Dev/Asm/AndrewMcLachlan.com/src/Asm.AmCom.Web/css/mixins.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAEA;AAAA;EAEI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;AAEA;EACI;;ACdA;EDaJ;IAIQ;;;AAIR;EACI;EACA;;ACvBA;EDqBJ;IAKQ;;;;AAKZ;EACI;EACA;;ACjCI;ED+BR;IAKQ%22%7D */
+    @media screen and (max-width: 991px), (max-device-width: 991px) {
+        font-size: 1.5rem;
+    }
+}
