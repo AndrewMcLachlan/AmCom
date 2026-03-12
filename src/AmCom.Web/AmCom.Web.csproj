@@ -100,7 +100,7 @@
     <Exec Command="npm ci" WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(Configuration) == 'Release'" />
     <Exec Command="npm run build:dev" WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(Configuration) != 'Release'" />
     <Exec Command="npm run build" WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(Configuration) == 'Release'" />
-    <Exec Command="npm run build-sass" WorkingDirectory="$(MSBuildProjectDirectory)" />
+    <Exec Command="npm run build-css" WorkingDirectory="$(MSBuildProjectDirectory)" />
   </Target>
 
 </Project>

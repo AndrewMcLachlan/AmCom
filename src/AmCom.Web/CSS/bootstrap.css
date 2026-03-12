@@ -1,0 +1,357 @@
+/*!
+ * Portions adapted from Bootstrap v5.x
+ * Copyright 2011-2024 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+
+/* --- Box sizing reset --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* --- Reboot (from Bootstrap) --- */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+ol, ul, dl {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+ol ol, ul ul, ol ul, ul ol {
+    margin-bottom: 0;
+}
+
+/* --- Container --- */
+.container {
+    width: 100%;
+    padding-right: 12px;
+    padding-left: 12px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 576px) { .container { max-width: 540px; } }
+@media (min-width: 768px) { .container { max-width: 720px; } }
+@media (min-width: 992px) { .container { max-width: 960px; } }
+@media (min-width: 1200px) { .container { max-width: 1140px; } }
+@media (min-width: 1400px) { .container { max-width: 1320px; } }
+
+.container-fluid {
+    width: 100%;
+    padding-right: 12px;
+    padding-left: 12px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* --- Grid --- */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -12px;
+    margin-left: -12px;
+}
+
+.row > * {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+.col {
+    flex: 1 0 0%;
+}
+
+@media (min-width: 768px) {
+    .col-md-1 { flex: 0 0 auto; width: 8.333333%; }
+    .col-md-2 { flex: 0 0 auto; width: 16.666667%; }
+    .col-md-3 { flex: 0 0 auto; width: 25%; }
+    .col-md-4 { flex: 0 0 auto; width: 33.333333%; }
+    .col-md-5 { flex: 0 0 auto; width: 41.666667%; }
+    .col-md-6 { flex: 0 0 auto; width: 50%; }
+    .col-md-7 { flex: 0 0 auto; width: 58.333333%; }
+    .col-md-8 { flex: 0 0 auto; width: 66.666667%; }
+    .col-md-9 { flex: 0 0 auto; width: 75%; }
+    .col-md-10 { flex: 0 0 auto; width: 83.333333%; }
+    .col-md-11 { flex: 0 0 auto; width: 91.666667%; }
+    .col-md-12 { flex: 0 0 auto; width: 100%; }
+}
+
+/* --- Navbar --- */
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+}
+
+.navbar > .container,
+.navbar > .container-fluid {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.navbar-brand img {
+    vertical-align: middle;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+.navbar-toggler {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    background-color: var(--nav-colour);
+    -webkit-mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23fff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23fff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: 100%;
+    mask-size: 100%;
+}
+
+/* Collapse */
+.collapse:not(.show) {
+    display: none;
+}
+
+.collapse.show {
+    display: block;
+}
+
+/* Navbar collapse */
+.navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+}
+
+/* Navbar expand at lg breakpoint */
+@media (min-width: 992px) {
+    .navbar-expand-lg {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+
+    .navbar-expand-lg .navbar-nav {
+        flex-direction: row;
+    }
+
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+    }
+
+    .navbar-expand-lg .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+    }
+
+    .navbar-expand-lg .navbar-toggler {
+        display: none;
+    }
+}
+
+/* --- Bootstrap overrides --- */
+h1, .h1, h2, .h2 {
+    padding-top: 1rem;
+}
+
+a {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.table {
+    color: inherit;
+}
+
+.form-control-plaintext {
+    color: inherit;
+}
+
+/* --- Forms --- */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &:focus {
+        color: #212529;
+        background-color: #fff;
+        border-color: #86b7fe;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+}
+
+.form-control-plaintext {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0;
+    margin-bottom: 0;
+    line-height: 1.5;
+    background-color: transparent;
+    border: solid transparent;
+    border-width: 1px 0;
+}
+
+.control-label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+textarea.form-control {
+    height: 200px;
+    min-height: calc(1.5em + 0.75rem + calc(1px * 2));
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 8px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: var(--colour-orange);
+    border-color: var(--colour-orange);
+
+    &:hover {
+        background-color: var(--colour-deep-orange);
+        border-color: var(--colour-deep-orange);
+    }
+
+    &:active {
+        background-color: var(--colour-deep-orange);
+        border-color: var(--colour-deep-orange);
+    }
+}
+
+.btn-link {
+    padding: 0;
+    border: none;
+    font-weight: normal;
+    display: inline;
+    vertical-align: initial;
+    color: var(--link-colour);
+    text-decoration: underline;
+    background-color: transparent;
+
+    &:focus {
+        box-shadow: none;
+    }
+
+    &:hover {
+        color: var(--link-colour);
+        text-decoration: underline;
+    }
+}
+
+/* --- Tables --- */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    vertical-align: top;
+    border-color: #dee2e6;
+}
+
+.table > :not(caption) > * > * {
+    padding: 0.5rem 0.5rem;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: inherit;
+}
+
+.table > thead {
+    vertical-align: bottom;
+}
+
+/* --- Utilities --- */
+.d-none { display: none !important; }
+.d-block { display: block !important; }
+
+@media (min-width: 992px) {
+    .d-lg-none { display: none !important; }
+    .d-lg-block { display: block !important; }
+}
+

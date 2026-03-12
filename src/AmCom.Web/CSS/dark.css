@@ -1,4 +1,4 @@
-﻿.dark {
+.dark {
 
     hr {
         background-image: -webkit-linear-gradient(left, var(--colour-dark) 0, var(--colour-light-blue) 40%, #FFF 50%, var(--colour-light-blue) 60%, var(--colour-dark) 100%);

@@ -17,6 +17,17 @@
         }, { passive: true });
     }
 
+    // Navbar collapse toggle (replaces Bootstrap JS)
+    const toggler = document.querySelector(".navbar-toggler");
+    const collapseEl = document.getElementById("navbarSupportedContent");
+    if (toggler && collapseEl) {
+        toggler.addEventListener("click", () => {
+            collapseEl.classList.toggle("show");
+            toggler.setAttribute("aria-expanded",
+                collapseEl.classList.contains("show").toString());
+        });
+    }
+
     // Scroll-reveal animation using IntersectionObserver
     const revealContainers = document.querySelectorAll(".reveal-group");
     const standaloneReveals = document.querySelectorAll(".reveal:not(.reveal-group .reveal)");
