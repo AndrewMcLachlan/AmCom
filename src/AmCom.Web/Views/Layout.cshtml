@@ -17,6 +17,13 @@
   <meta name="description" content="@ViewBag.Description" />
   <meta name="version" content="@System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetEntryAssembly()!.Location).FileVersion?.ToString()" />
   <link rel="stylesheet" href="~/css/site.min.css?v=$v" />
+  <meta property="og:site_name" content="Andrew McLachlan" />
+  <meta property="og:type" content="@ViewBag.PageType" />
+  <meta property="og:title" content="@ViewBag.Title" />
+  <meta property="og:description" content="@ViewBag.Description" />
+  <meta property="og:url" content="@ViewBag.Canonical" />
+  <meta property="og:image" content="@Context.Request.Scheme://@Context.Request.Host/images/andrewmclachlan.jpg" />
+  <meta property="og:locale" content="en_AU" />
   @RenderSection("Head", false)
 </head>
 <body class="@Model.NameAsCssClass()">
@@ -78,9 +85,32 @@
   <footer>
     @this.RenderSection("Footer", Html, "Footer")
   </footer>
+  @if (!Model.Root().IsEqual(Model))
+  {
+    var ancestors = Model.AncestorsOrSelf().Reverse().ToList();
+    <script type="application/ld+json">
+      {
+        "@@context": "https://schema.org",
+        "@@type": "BreadcrumbList",
+        "itemListElement": [
+          @for (var i = 0; i < ancestors.Count; i++)
+          {
+            var ancestor = ancestors[i];
+            <text>
+            {
+              "@@type": "ListItem",
+              "position": @(i + 1),
+              "name": "@Html.Raw(ancestor.Name().Replace("\"", "\\\""))",
+              "item": "@Context.Request.Scheme://@(Context.Request.Host)@(ancestor.Url())"
+            }@(i < ancestors.Count - 1 ? "," : "")
+            </text>
+          }
+        ]
+      }
+    </script>
+  }
   @RenderSection("Scripts", false)
-  <script src="~/js/core.js?v=$v" src-min="~/js/core.min.js?v=$v"></script>
-
-
+  <script src="~/js/core.js?v=$v" src-min="~/js/core.min.js?v=$v" integrity="sha256-1234"></script>
+  <script src="~/js/observe.js?v=$v"></script>
 </body>
 </html>

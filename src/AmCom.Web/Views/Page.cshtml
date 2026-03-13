@@ -6,6 +6,7 @@
     ViewBag.Title = $"{Model.Value("title")} - Andrew McLachlan";
     ViewBag.Description = Model.Value("description");
     ViewBag.Canonical = Model.Url();
+    ViewBag.PageType = Model.Value("pageType") ?? "website";
     var pageLinks = Model.PageLinks;// Model.Value<IEnumerable<Umbraco.Cms.Web.Common.PublishedModels.PageLink>>("PageLinks") ?? [];
 }
 
@@ -23,3 +24,59 @@
 }
 
 @Model.Value("pageContent")
+
+@section Scripts
+{
+    @if (ViewBag.PageType == "article")
+    {
+        <script type="application/ld+json">
+            {
+                "@@context": "https://schema.org",
+                "@@type": "Article",
+                "headline": "@Html.Raw(Model.Value<string>("title")?.Replace("\"", "\\\""))",
+                "description": "@Html.Raw(Model.Value<string>("description")?.Replace("\"", "\\\""))",
+                "url": "@ViewBag.Canonical",
+                "datePublished": "@Model.CreateDate.ToString("yyyy-MM-dd")",
+                "dateModified": "@Model.UpdateDate.ToString("yyyy-MM-dd")",
+                "author": {
+                    "@@type": "Person",
+                    "name": "Andrew McLachlan",
+                    "url": "https://andrewmclachlan.com"
+                }
+            }
+        </script>
+    }
+    else if (ViewBag.PageType == "profile")
+    {
+        <script type="application/ld+json">
+            {
+                "@@context": "https://schema.org",
+                "@@type": "Person",
+                "name": "Andrew McLachlan",
+                "jobTitle": "Engineering Manager",
+                "url": "https://andrewmclachlan.com",
+                "sameAs": "https://au.linkedin.com/in/andrewsmclachlan",
+                "nationality": "Australian",
+                "description": "@Html.Raw(Model.Value<string>("description")?.Replace("\"", "\\\""))"
+            }
+        </script>
+    }
+    else if (ViewBag.PageType == "product")
+    {
+        <script type="application/ld+json">
+            {
+                "@@context": "https://schema.org",
+                "@@type": "SoftwareApplication",
+                "name": "@Html.Raw(Model.Value<string>("title")?.Replace("\"", "\\\""))",
+                "description": "@Html.Raw(Model.Value<string>("description")?.Replace("\"", "\\\""))",
+                "url": "@ViewBag.Canonical",
+                "author": {
+                    "@@type": "Person",
+                    "name": "Andrew McLachlan",
+                    "url": "https://andrewmclachlan.com"
+                },
+                "applicationCategory": "DeveloperApplication"
+            }
+        </script>
+    }
+}

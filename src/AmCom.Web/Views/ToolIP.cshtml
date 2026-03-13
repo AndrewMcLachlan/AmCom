@@ -6,6 +6,7 @@
     ViewBag.Title = $"{Model.Value("title")} - Andrew McLachlan";
     ViewBag.Description = Model.Value("description");
     ViewBag.Canonical = Model.Url();
+    ViewBag.PageType = "website";
 
     string ip = "";
     if (Context.Request.Headers.ContainsKey("X-Forwarded-For"))

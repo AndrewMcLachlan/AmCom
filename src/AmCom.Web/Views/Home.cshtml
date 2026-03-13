@@ -6,14 +6,7 @@
     ViewBag.Title = Model.Value("title");
     ViewBag.Description = Model.Value("description");
     ViewBag.Canonical = Model.Url();
-}
-
-@section Head
-{
-    <meta property="og:title" content="Andrew McLachlan - Engineering Manager" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="@Context.Request.Scheme://@Context.Request.Host" />
-    <meta property="og:image" content="@Context.Request.Scheme://@Context.Request.Host/images/andrewmclachlan.jpg" />
+    ViewBag.PageType = "website";
 }
 
 <div class="hero">
@@ -46,15 +39,23 @@
 
 @section Scripts
 {
-    <script type="application/ld+json" integrity="sha256-e62OE6xT8v0LHEqQPTxhrJY0MJ1RPjJibMyuXhdhCaE=">
+    <script type="application/ld+json">
         {
-        "@@context": "http://schema.org/",
-        "@@type": "http://schema.org/Person",
-        "jobTitle": "Engineering Manager",
-        "url": "https://andrewmclachlan.com",
-        "sameAs": "https://au.linkedin.com/in/andrewsmclachlan",
-        "name": "Andrew McLachlan",
-        "nationality": "Australian"
+            "@@context": "https://schema.org",
+            "@@type": "Person",
+            "name": "Andrew McLachlan",
+            "jobTitle": "Engineering Manager",
+            "url": "https://andrewmclachlan.com",
+            "sameAs": "https://au.linkedin.com/in/andrewsmclachlan",
+            "nationality": "Australian"
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@@context": "https://schema.org",
+            "@@type": "WebSite",
+            "name": "Andrew McLachlan",
+            "url": "https://andrewmclachlan.com"
         }
     </script>
 }
