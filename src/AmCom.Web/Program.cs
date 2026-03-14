@@ -77,7 +77,7 @@ try
         app.UseHsts();
     }
 
-    //app.UseUrlRewrite();
+    app.UseUrlRewrite();
 
     app.MapGet("robots.txt", () =>
     @$"User-agent: *
