@@ -6,6 +6,7 @@
     ViewBag.Title = $"{Model.Value("title")} - Andrew McLachlan";
     ViewBag.Description = Model.Value("description");
     ViewBag.Canonical = Model.Url();
+    ViewBag.PageType = "website";
     string toolName = Model.Value<string>("toolName")!;
 }
 
@@ -22,5 +23,20 @@
 </article>
 
 @section Scripts  {
+    <script type="application/ld+json">
+        {
+            "@@context": "https://schema.org",
+            "@@type": "WebApplication",
+            "name": "@Html.Raw(Model.Value<string>("title")?.Replace("\"", "\\\""))",
+            "description": "@Html.Raw(Model.Value<string>("description")?.Replace("\"", "\\\""))",
+            "url": "@ViewBag.Canonical",
+            "applicationCategory": "DeveloperApplication",
+            "author": {
+                "@@type": "Person",
+                "name": "Andrew McLachlan",
+                "url": "https://andrewmclachlan.com"
+            }
+        }
+    </script>
     <script type="text/javascript" src="~/js/reacttools.js?v=$v" src-min="~/js/reacttools.min.js?v=$v"></script>
 }

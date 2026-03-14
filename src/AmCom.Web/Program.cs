@@ -1,7 +1,5 @@
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.AspNetCore.StaticFiles;
-using Umbraco.Cms.Core.Models.Membership;
 using Asm.AmCom.Web.Middleware;
+using Microsoft.AspNetCore.StaticFiles;
 
 try
 {
@@ -45,8 +43,7 @@ try
         app.UseHsts();
     }
 
-    app.UseCustomSecurityHeaders();
-    app.UseUrlRewrite();
+    //app.UseUrlRewrite();
 
     app.MapGet("robots.txt", () =>
     @$"User-agent: *
@@ -72,6 +69,9 @@ Sitemap: https://www.andrewmclachlan.com/sitemap-xml
         }
     });
 
+
+    app.UseCustomSecurityHeaders();
+
     app.UseStatusCodePagesWithReExecute("/error/error/{0}");
 
     app.UseUmbraco()
@@ -88,9 +88,11 @@ Sitemap: https://www.andrewmclachlan.com/sitemap-xml
 
 
     await app.RunAsync();
+    return 0;
 }
 catch (Exception ex)
 {
     Console.WriteLine(ex);
+    return -1;
 }
 

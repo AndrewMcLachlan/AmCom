@@ -355,3 +355,6 @@ textarea.form-control {
     .d-lg-block { display: block !important; }
 }
 
+fieldset {
+    border: none;
+}
