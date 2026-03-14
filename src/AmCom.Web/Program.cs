@@ -35,6 +35,17 @@ try
 
     await app.BootUmbracoAsync();
 
+    app.Use(async (context, next) =>
+    {
+        Console.WriteLine($"RemoteIP: {context.Connection.RemoteIpAddress}");
+        Console.WriteLine($"X-Forwarded-For: {context.Request.Headers["X-Forwarded-For"]}");
+        Console.WriteLine($"X-Forwarded-Proto: {context.Request.Headers["X-Forwarded-Proto"]}");
+        Console.WriteLine($"X-Original-Proto: {context.Request.Headers["X-Original-Proto"]}");
+        Console.WriteLine($"Scheme before: {context.Request.Scheme}");
+        await next();
+        Console.WriteLine($"Scheme after: {context.Request.Scheme}");
+    });
+
     var forwardedHeadersOptions = new ForwardedHeadersOptions
     {
         ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
