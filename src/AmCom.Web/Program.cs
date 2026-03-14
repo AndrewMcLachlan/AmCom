@@ -1,5 +1,8 @@
+using System.Net;
 using Asm.AmCom.Web.Middleware;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.StaticFiles;
+using IPNetwork = System.Net.IPNetwork;
 
 try
 {
@@ -31,6 +34,15 @@ try
     WebApplication app = builder.Build();
 
     await app.BootUmbracoAsync();
+
+    var forwardedHeadersOptions = new ForwardedHeadersOptions
+    {
+        ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
+    };
+    forwardedHeadersOptions.KnownIPNetworks.Add(new IPNetwork(IPAddress.Parse("::ffff:10.0.0.0"), 104));
+    forwardedHeadersOptions.KnownIPNetworks.Add(new IPNetwork(IPAddress.Parse("::ffff:172.16.0.0"), 108));
+    forwardedHeadersOptions.KnownIPNetworks.Add(new IPNetwork(IPAddress.Parse("::ffff:192.168.0.0"), 112));
+    app.UseForwardedHeaders(forwardedHeadersOptions);
 
     if (app.Environment.IsDevelopment())
     {
