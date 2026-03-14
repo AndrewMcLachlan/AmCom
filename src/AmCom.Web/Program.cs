@@ -2,7 +2,6 @@ using System.Net;
 using Asm.AmCom.Web.Middleware;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.StaticFiles;
-using IPNetwork = System.Net.IPNetwork;
 
 try
 {
@@ -18,7 +17,7 @@ try
 
     var services = builder.Services;
 
-    services.AddHsts(o => o.MaxAge = new TimeSpan(0, 0, 31536000));
+    services.AddHsts(o => o.MaxAge = new TimeSpan(365, 0, 0, 0));
     services.AddMemoryCache();
     services.AddHttpContextAccessor();
 
@@ -42,17 +41,30 @@ try
         Console.WriteLine($"X-Forwarded-Proto: {context.Request.Headers["X-Forwarded-Proto"]}");
         Console.WriteLine($"X-Original-Proto: {context.Request.Headers["X-Original-Proto"]}");
         Console.WriteLine($"Scheme before: {context.Request.Scheme}");
+
+        app.Logger.LogDebug("RemoteIP: {RemoteIpAddress}", context.Connection.RemoteIpAddress);
+        app.Logger.LogDebug("X-Forwarded-For: {XForwardedFor}", context.Request.Headers["X-Forwarded-For"].ToString());
+        app.Logger.LogDebug("X-Forwarded-Proto: {XForwardedProto}", context.Request.Headers["X-Forwarded-Proto"].ToString());
+        app.Logger.LogDebug("X-Original-Proto: {XOriginalProto}", context.Request.Headers["X-Original-Proto"].ToString());
+        app.Logger.LogDebug("Scheme before: {Scheme}", context.Request.Scheme);
+
         await next();
         Console.WriteLine($"Scheme after: {context.Request.Scheme}");
+        app.Logger.LogDebug("Scheme after: {Scheme}", context.Request.Scheme);
     });
 
     var forwardedHeadersOptions = new ForwardedHeadersOptions
     {
         ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
+        KnownIPNetworks =
+        {
+            new(IPAddress.Parse("::ffff:10.0.0.0"), 104),
+            new(IPAddress.Parse("::ffff:172.16.0.0"), 108),
+            new(IPAddress.Parse("::ffff:192.168.0.0"), 112),
+            new(IPAddress.Parse("::ffff:169.254.0.0"), 112),
+        },
     };
-    forwardedHeadersOptions.KnownIPNetworks.Add(new IPNetwork(IPAddress.Parse("::ffff:10.0.0.0"), 104));
-    forwardedHeadersOptions.KnownIPNetworks.Add(new IPNetwork(IPAddress.Parse("::ffff:172.16.0.0"), 108));
-    forwardedHeadersOptions.KnownIPNetworks.Add(new IPNetwork(IPAddress.Parse("::ffff:192.168.0.0"), 112));
+   
     app.UseForwardedHeaders(forwardedHeadersOptions);
 
     if (app.Environment.IsDevelopment())
@@ -61,7 +73,6 @@ try
     }
     else
     {
-        app.UseHttpsRedirection();
         app.UseExceptionHandler("/error/error/500");
         app.UseHsts();
     }
