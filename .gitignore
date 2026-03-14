@@ -494,6 +494,7 @@ $RECYCLE.BIN/
 /src/AmCom.Web/wwwroot/css/*
 !/src/AmCom.Web/wwwroot/css/editor.css
 !/src/AmCom.Web/wwwroot/css/bootstrap.*
+!/src/AmCom.Web/wwwroot/css/base64.*
 
 /src/AmCom.Web/wwwroot/js/*
 !/src/AmCom.Web/wwwroot/js/bootstrap.*

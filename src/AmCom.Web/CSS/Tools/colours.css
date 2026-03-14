@@ -33,14 +33,7 @@
         transition: opacity 100ms linear;
         padding: 10px;
         border: 1px solid #000;
-    }
-
-    &.colour-dark {
-        color: white;
-    }
-
-    &.colour-light {
-        color: var(--colour-dark);
+        color: var(--text-colour);
     }
 }
 

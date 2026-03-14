@@ -1,5 +1,7 @@
 using System.Net;
 using Asm.AmCom.Web.Middleware;
+using Azure.Identity;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.StaticFiles;
 
@@ -20,6 +22,17 @@ try
     services.AddHsts(o => o.MaxAge = new TimeSpan(365, 0, 0, 0));
     services.AddMemoryCache();
     services.AddHttpContextAccessor();
+
+    var dataProtectionConnectionString = builder.Configuration["DataProtection:StorageConnectionString"];
+    if (!String.IsNullOrEmpty(dataProtectionConnectionString))
+    {
+        services.AddDataProtection()
+            .SetApplicationName("AmCom")
+            .PersistKeysToAzureBlobStorage(dataProtectionConnectionString, "dataprotection", "amcom-keys.xml")
+            .ProtectKeysWithAzureKeyVault(
+                new Uri(builder.Configuration["DataProtection:KeyVaultKeyUri"]!),
+                new DefaultAzureCredential());
+    }
 
     umbracoBuilder.AddAzureBlobMediaFileSystem();
 

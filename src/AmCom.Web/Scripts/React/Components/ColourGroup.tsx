@@ -18,7 +18,7 @@ export const ColourGroup = (props: ColourGroupProps) => (
     </>
 );
 
-const textColour = (colour: Colour) => (colour.r + colour.g + colour.b) < 400 ? "colour-dark" : "colour-light";
+const textColour = (colour: Colour) => (colour.r + colour.g + colour.b) < 400 ? "dark" : "light";
 
 export interface ColourGroupProps {
     title: string;
