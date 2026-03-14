@@ -3,4 +3,4 @@ WORKDIR /app
 EXPOSE 8080
 
 COPY ./publish .
-ENTRYPOINT ["dotnet", "AmCom.Web.dll"]
+ENTRYPOINT ["dotnet", "Asm.AmCom.Web.dll"]
