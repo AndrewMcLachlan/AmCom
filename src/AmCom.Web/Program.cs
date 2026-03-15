@@ -47,24 +47,8 @@ try
 
     await app.BootUmbracoAsync();
 
-    app.Use(async (context, next) =>
-    {
-        Console.WriteLine($"RemoteIP: {context.Connection.RemoteIpAddress}");
-        Console.WriteLine($"X-Forwarded-For: {context.Request.Headers["X-Forwarded-For"]}");
-        Console.WriteLine($"X-Forwarded-Proto: {context.Request.Headers["X-Forwarded-Proto"]}");
-        Console.WriteLine($"X-Original-Proto: {context.Request.Headers["X-Original-Proto"]}");
-        Console.WriteLine($"Scheme before: {context.Request.Scheme}");
-
-        app.Logger.LogDebug("RemoteIP: {RemoteIpAddress}", context.Connection.RemoteIpAddress);
-        app.Logger.LogDebug("X-Forwarded-For: {XForwardedFor}", context.Request.Headers["X-Forwarded-For"].ToString());
-        app.Logger.LogDebug("X-Forwarded-Proto: {XForwardedProto}", context.Request.Headers["X-Forwarded-Proto"].ToString());
-        app.Logger.LogDebug("X-Original-Proto: {XOriginalProto}", context.Request.Headers["X-Original-Proto"].ToString());
-        app.Logger.LogDebug("Scheme before: {Scheme}", context.Request.Scheme);
-
-        await next();
-        Console.WriteLine($"Scheme after: {context.Request.Scheme}");
-        app.Logger.LogDebug("Scheme after: {Scheme}", context.Request.Scheme);
-    });
+    Console.WriteLine($"TempPath: {Path.GetTempPath()}");
+    Console.WriteLine($"TMPDIR: {Environment.GetEnvironmentVariable("TMPDIR")}");
 
     var forwardedHeadersOptions = new ForwardedHeadersOptions
     {
@@ -77,7 +61,7 @@ try
             new(IPAddress.Parse("::ffff:169.254.0.0"), 112),
         },
     };
-   
+
     app.UseForwardedHeaders(forwardedHeadersOptions);
 
     if (app.Environment.IsDevelopment())
@@ -91,6 +75,16 @@ try
     }
 
     app.UseUrlRewrite();
+
+    // Temporary diagnostic endpoint - REMOVE after debugging
+    app.MapGet("/_diag/find-indexes", () =>
+    {
+        return new
+        {
+            TempPath = Path.GetTempPath(),
+            TmpDir = Environment.GetEnvironmentVariable("TMPDIR"),
+        };
+    });
 
     app.MapGet("robots.txt", () =>
     @$"User-agent: *
