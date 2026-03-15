@@ -77,12 +77,25 @@ try
     app.UseUrlRewrite();
 
     // Temporary diagnostic endpoint - REMOVE after debugging
-    app.MapGet("/_diag/find-indexes", () =>
+    app.MapGet("/_diag/find-indexes", (Umbraco.Cms.Core.Hosting.IHostingEnvironment umbracoEnv) =>
     {
+        var localTempPath = umbracoEnv.LocalTempPath;
+        var distCachePath = Path.Combine(localTempPath, "DistCache");
+        var examineIndexPath = Path.Combine(localTempPath, "ExamineIndexes");
+
         return new
         {
             TempPath = Path.GetTempPath(),
             TmpDir = Environment.GetEnvironmentVariable("TMPDIR"),
+            UmbracoLocalTempPath = localTempPath,
+            app.Environment.ContentRootPath,
+            DistCachePath = distCachePath,
+            DistCacheExists = Directory.Exists(distCachePath),
+            DistCacheFiles = Directory.Exists(distCachePath) ? Directory.GetFiles(distCachePath) : [],
+            ExamineIndexPath = examineIndexPath,
+            ExamineIndexExists = Directory.Exists(examineIndexPath),
+            TmpContents = Directory.Exists("/tmp") ? Directory.GetDirectories("/tmp") : [],
+            HomeMountContents = Directory.Exists("/home") ? Directory.GetDirectories("/home") : [],
         };
     });
 
