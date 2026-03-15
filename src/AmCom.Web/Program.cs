@@ -82,6 +82,26 @@ try
         var localTempPath = umbracoEnv.LocalTempPath;
         var distCachePath = Path.Combine(localTempPath, "DistCache");
         var examineIndexPath = Path.Combine(localTempPath, "ExamineIndexes");
+        var umbracoDataPath = "/tmp/UmbracoData";
+
+        var umbracoDataSubDirs = Directory.Exists(umbracoDataPath)
+            ? Directory.GetDirectories(umbracoDataPath)
+                .SelectMany(dir =>
+                {
+                    var distCache = Path.Combine(dir, "DistCache");
+                    return new[]
+                    {
+                        new
+                        {
+                            Path = dir,
+                            HasDistCache = Directory.Exists(distCache),
+                            DistCacheFiles = Directory.Exists(distCache) ? Directory.GetFiles(distCache) : Array.Empty<string>(),
+                            HasExamineIndexes = Directory.Exists(Path.Combine(dir, "ExamineIndexes")),
+                            Contents = Directory.GetDirectories(dir),
+                        }
+                    };
+                }).ToArray()
+            : [];
 
         return new
         {
@@ -95,7 +115,7 @@ try
             ExamineIndexPath = examineIndexPath,
             ExamineIndexExists = Directory.Exists(examineIndexPath),
             TmpContents = Directory.Exists("/tmp") ? Directory.GetDirectories("/tmp") : [],
-            HomeMountContents = Directory.Exists("/home") ? Directory.GetDirectories("/home") : [],
+            UmbracoDataSubDirs = umbracoDataSubDirs,
         };
     });
 
