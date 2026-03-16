@@ -4,6 +4,7 @@ using Azure.Identity;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.StaticFiles;
+using Umbraco.Cms.Core.Factories;
 
 try
 {
@@ -34,6 +35,8 @@ try
                 new DefaultAzureCredential());
     }
 
+    services.AddUnique<IMachineInfoFactory, Asm.AmCom.Web.Config.FixedMachineInfoFactory>();
+
     umbracoBuilder.AddAzureBlobMediaFileSystem();
 
     if (builder.Environment.IsDevelopment())
@@ -46,9 +49,6 @@ try
     WebApplication app = builder.Build();
 
     await app.BootUmbracoAsync();
-
-    Console.WriteLine($"TempPath: {Path.GetTempPath()}");
-    Console.WriteLine($"TMPDIR: {Environment.GetEnvironmentVariable("TMPDIR")}");
 
     var forwardedHeadersOptions = new ForwardedHeadersOptions
     {
@@ -75,49 +75,6 @@ try
     }
 
     app.UseUrlRewrite();
-
-    // Temporary diagnostic endpoint - REMOVE after debugging
-    app.MapGet("/_diag/find-indexes", (Umbraco.Cms.Core.Hosting.IHostingEnvironment umbracoEnv) =>
-    {
-        var localTempPath = umbracoEnv.LocalTempPath;
-        var distCachePath = Path.Combine(localTempPath, "DistCache");
-        var examineIndexPath = Path.Combine(localTempPath, "ExamineIndexes");
-        var umbracoDataPath = "/tmp/UmbracoData";
-
-        var umbracoDataSubDirs = Directory.Exists(umbracoDataPath)
-            ? Directory.GetDirectories(umbracoDataPath)
-                .SelectMany(dir =>
-                {
-                    var distCache = Path.Combine(dir, "DistCache");
-                    return new[]
-                    {
-                        new
-                        {
-                            Path = dir,
-                            HasDistCache = Directory.Exists(distCache),
-                            DistCacheFiles = Directory.Exists(distCache) ? Directory.GetFiles(distCache) : Array.Empty<string>(),
-                            HasExamineIndexes = Directory.Exists(Path.Combine(dir, "ExamineIndexes")),
-                            Contents = Directory.GetDirectories(dir),
-                        }
-                    };
-                }).ToArray()
-            : [];
-
-        return new
-        {
-            TempPath = Path.GetTempPath(),
-            TmpDir = Environment.GetEnvironmentVariable("TMPDIR"),
-            UmbracoLocalTempPath = localTempPath,
-            app.Environment.ContentRootPath,
-            DistCachePath = distCachePath,
-            DistCacheExists = Directory.Exists(distCachePath),
-            DistCacheFiles = Directory.Exists(distCachePath) ? Directory.GetFiles(distCachePath) : [],
-            ExamineIndexPath = examineIndexPath,
-            ExamineIndexExists = Directory.Exists(examineIndexPath),
-            TmpContents = Directory.Exists("/tmp") ? Directory.GetDirectories("/tmp") : [],
-            UmbracoDataSubDirs = umbracoDataSubDirs,
-        };
-    });
 
     app.MapGet("robots.txt", () =>
     @$"User-agent: *
