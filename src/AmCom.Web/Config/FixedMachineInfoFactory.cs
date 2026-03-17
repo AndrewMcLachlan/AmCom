@@ -11,6 +11,7 @@ namespace Asm.AmCom.Web.Config;
 /// <param name="applicationDiscriminator">Application discriminator.</param>
 public class FixedMachineInfoFactory(IApplicationDiscriminator applicationDiscriminator) : IMachineInfoFactory
 {
+    // Falling back to a fixed value is OK so long as we don't plan to run multiple nodes
     private readonly string _machineName = Environment.GetEnvironmentVariable("MACHINE_NAME") ?? "amcom";
 
     /// <inheritdoc />
