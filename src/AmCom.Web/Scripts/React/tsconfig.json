@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "lib": [ "dom", "es6" ],
+    "lib": [ "dom", "es2022" ],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "allowSyntheticDefaultImports": true,
@@ -13,7 +13,7 @@
     "strict": true,
     "strictBindCallApply": true,
     "strictNullChecks": false,
-    "target": "es6",
+    "target": "es2022",
     "outDir": "../../obj/TypeScript"
   },
   "exclude": [
