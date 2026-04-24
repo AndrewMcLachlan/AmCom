@@ -1,10 +1,12 @@
 using System.Net;
-using Asm.AmCom.Web.Middleware;
+using Asm.AspNetCore.Middleware;
+using Asm.AspNetCore.Reporting;
+using Asm.Umbraco.Authentication.EntraId;
+using Asm.Umbraco.MachineInfo;
 using Azure.Identity;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.StaticFiles;
-using Umbraco.Cms.Core.Factories;
 
 try
 {
@@ -35,7 +37,9 @@ try
                 new DefaultAzureCredential());
     }
 
-    services.AddUnique<IMachineInfoFactory, Asm.AmCom.Web.Config.FixedMachineInfoFactory>();
+    umbracoBuilder.AddFixedMachineInfoFactory(opts => opts.MachineName = "amcom");
+    umbracoBuilder.AddEntraIdAuthentication(builder.Configuration.GetSection("Azure"));
+    services.AddSecurityReporting(opts => opts.RoutePrefix = "api/reporting");
 
     umbracoBuilder.AddAzureBlobMediaFileSystem();
 
@@ -74,7 +78,10 @@ try
         app.UseHsts();
     }
 
-    app.UseUrlRewrite();
+    app.UseCanonicalUrls(opts =>
+    {
+        opts.ExemptPathPrefixes = ["/umbraco", "/install"];
+    });
 
     app.MapGet("robots.txt", () =>
     @$"User-agent: *
@@ -101,9 +108,25 @@ Sitemap: https://www.andrewmclachlan.com/sitemap-xml
     });
 
 
-    app.UseCustomSecurityHeaders();
+    app.UseSecurityHeaders(opts =>
+    {
+        opts.ExemptPathPrefixes = ["/umbraco", "/install"];
+        opts.Headers = new Dictionary<string, string>
+        {
+            ["Content-Security-Policy"] = "default-src 'self'; connect-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; report-to csp-endpoint",
+            ["Cross-Origin-Opener-Policy"] = "same-origin-allow-popups",
+            ["Cross-Origin-Embedder-Policy"] = "require-corp",
+            ["Cross-Origin-Resource-Policy"] = "same-origin",
+            ["X-Frame-Options"] = "same-origin",
+            ["X-Content-Type-Options"] = "nosniff",
+            ["Referrer-Policy"] = "strict-origin-when-cross-origin",
+            ["Permissions-Policy"] = "accelerometer=(), autoplay=(), camera=(), cross-origin-isolated=(), display-capture=(), encrypted-media=(), fullscreen=(self), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()"
+        };
+    });
 
     app.UseStatusCodePagesWithReExecute("/error/error/{0}");
+
+    app.MapSecurityReporting();
 
     app.UseUmbraco()
         .WithMiddleware(u =>
