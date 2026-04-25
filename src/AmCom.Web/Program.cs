@@ -45,7 +45,8 @@ try
 
     if (builder.Environment.IsDevelopment())
     {
-        services.AddControllersWithViews().AddRazorRuntimeCompilation();
+        // Allows hot reloading of Razor files in development
+        services.AddRazorPages().AddRazorRuntimeCompilation();
     }
 
     umbracoBuilder.Build();
@@ -80,7 +81,7 @@ try
 
     app.UseCanonicalUrls(opts =>
     {
-        opts.ExemptPathPrefixes = ["/umbraco", "/install"];
+        opts.ExemptPathPrefixes = ["/umbraco", "/install", "/media"];
     });
 
     app.MapGet("robots.txt", () =>
@@ -110,7 +111,7 @@ Sitemap: https://www.andrewmclachlan.com/sitemap-xml
 
     app.UseSecurityHeaders(opts =>
     {
-        opts.ExemptPathPrefixes = ["/umbraco", "/install"];
+        opts.ExemptPathPrefixes = ["/umbraco", "/install", "/media"];
         opts.Headers = new Dictionary<string, string>
         {
             ["Content-Security-Policy"] = "default-src 'self'; connect-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; report-to csp-endpoint",
