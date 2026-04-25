@@ -20,7 +20,8 @@
     <PackageReference Include="Lucene.Net.Replicator" Version="4.8.0-beta00017" />
     <PackageReference Include="MailKit" Version="4.16.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="10.0.7" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Data.SqlClient.Extensions.Azure" Version="1.0.0" />
     <PackageReference Include="Microsoft.Identity.Client" Version="4.83.3" />
     <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.17.0" />
     <PackageReference Include="MimeKit" Version="4.16.0" />

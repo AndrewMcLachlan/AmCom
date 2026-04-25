@@ -499,3 +499,5 @@ $RECYCLE.BIN/
 /src/AmCom.Web/wwwroot/js/*
 !/src/AmCom.Web/wwwroot/js/bootstrap.*
 /.claude/settings.local.json
+/src/AmCom.Web/*usync*
+/src/AmCom.Web/uSync
