@@ -81,7 +81,7 @@ try
 
     app.UseCanonicalUrls(opts =>
     {
-        opts.ExemptPathPrefixes = ["/umbraco", "/install", "/media"];
+        opts.ExemptPathPrefixes = ["/umbraco", "/install", "/media", "/fonts"];
     });
 
     app.MapGet("robots.txt", () =>
