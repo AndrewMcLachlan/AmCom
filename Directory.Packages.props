@@ -3,12 +3,12 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Asm" Version="3.7.90" />
-    <PackageVersion Include="Asm.AspNetCore" Version="3.7.90" />
-    <PackageVersion Include="Asm.AspNetCore.Mvc" Version="3.7.90" />
-    <PackageVersion Include="Asm.Net" Version="3.7.90" />
-    <PackageVersion Include="Asm.Umbraco" Version="3.7.90" />
-    <PackageVersion Include="Asm.Umbraco.Authentication" Version="3.7.90" />
+    <PackageVersion Include="Asm" Version="3.7.96" />
+    <PackageVersion Include="Asm.AspNetCore" Version="3.7.96" />
+    <PackageVersion Include="Asm.AspNetCore.Mvc" Version="3.7.96" />
+    <PackageVersion Include="Asm.Net" Version="3.7.96" />
+    <PackageVersion Include="Asm.Umbraco" Version="3.7.96" />
+    <PackageVersion Include="Asm.Umbraco.Authentication" Version="3.7.96" />
     <PackageVersion Include="Azure.Extensions.AspNetCore.DataProtection.Blobs" Version="1.5.1" />
     <PackageVersion Include="Azure.Extensions.AspNetCore.DataProtection.Keys" Version="1.6.1" />
     <PackageVersion Include="Azure.Identity" Version="1.21.0" />
