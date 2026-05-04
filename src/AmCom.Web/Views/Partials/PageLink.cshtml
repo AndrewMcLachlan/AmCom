@@ -1,6 +1,4 @@
-﻿@using System.Text.RegularExpressions
-@using Umbraco.Cms.Web.Common.PublishedModels;
-@using Umbraco.Extensions
+﻿@using Umbraco.Extensions
 @{
     var images = Model.PageLinkImage as IEnumerable<IPublishedContent> ?? Enumerable.Empty<IPublishedContent>();
     var image = images.FirstOrDefault();

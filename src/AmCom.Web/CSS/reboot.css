@@ -64,10 +64,6 @@ hr {
   background-color: light-dark(#fff, var(--colour-muted-bone));
 }
 
-strong {
-  font-weight: normal;
-}
-
 blockquote {
   margin: 0 40px;
 
