@@ -1,0 +1,33 @@
+﻿@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.LandingPage>
+@{
+    Layout = "FullPageLayout.cshtml";
+    ViewBag.Title = $"{Model.Title} - Andrew McLachlan";
+    ViewBag.Description = Model.Description;
+    ViewBag.Canonical = Model.Url();
+    ViewBag.PageType = "website";
+    var cards = Model.Cards;
+}
+
+@if (cards != null && cards.Any())
+{
+    <section class="cards-grid reveal-group">
+        @foreach (var card in cards)
+        {
+            await Html.RenderPartialAsync("Card", card.Content, new ViewDataDictionary(ViewData));
+        }
+    </section>
+}
+
+@section Scripts
+{
+    <script type="application/ld+json">
+        {
+            "@@context": "https://schema.org",
+            "@@type": "CollectionPage",
+            "name": "@Html.Raw(Model.Title?.Replace("\"", "\\\""))",
+            "description": "@Html.Raw(Model.Description?.Replace("\"", "\\\""))",
+            "url": "@ViewBag.Canonical"
+        }
+    </script>
+}

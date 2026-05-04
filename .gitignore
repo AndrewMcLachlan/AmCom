@@ -499,5 +499,28 @@ $RECYCLE.BIN/
 /src/AmCom.Web/wwwroot/js/*
 !/src/AmCom.Web/wwwroot/js/bootstrap.*
 /.claude/settings.local.json
-/src/AmCom.Web/*usync*
-/src/AmCom.Web/uSync
+
+# uSync — track only custom content types, templates, and a curated set of
+# custom data types. Built-in Umbraco data types, media types, member types,
+# languages, relation types, and content/media nodes stay environment-local
+# so Umbraco upgrades can manage them.
+/src/AmCom.Web/uSync/*
+!/src/AmCom.Web/uSync/v17
+/src/AmCom.Web/uSync/v17/*
+!/src/AmCom.Web/uSync/v17/ContentTypes
+!/src/AmCom.Web/uSync/v17/Templates
+!/src/AmCom.Web/uSync/v17/DataTypes
+/src/AmCom.Web/uSync/v17/DataTypes/*
+!/src/AmCom.Web/uSync/v17/DataTypes/Card+Link.config
+!/src/AmCom.Web/uSync/v17/DataTypes/Card+Size.config
+!/src/AmCom.Web/uSync/v17/DataTypes/ChangeFrequency.config
+!/src/AmCom.Web/uSync/v17/DataTypes/HomeIntroCallToActionLinkContentPicker.config
+!/src/AmCom.Web/uSync/v17/DataTypes/HorizontalPosition.config
+!/src/AmCom.Web/uSync/v17/DataTypes/ImageScaling.config
+!/src/AmCom.Web/uSync/v17/DataTypes/PageLinks.config
+!/src/AmCom.Web/uSync/v17/DataTypes/PageLinksNestedContent.config
+!/src/AmCom.Web/uSync/v17/DataTypes/PageType.config
+!/src/AmCom.Web/uSync/v17/DataTypes/Cards.config
+!/src/AmCom.Web/uSync/v17/DataTypes/Summaries.config
+!/src/AmCom.Web/uSync/v17/DataTypes/SummariesNestedContent.config
+!/src/AmCom.Web/uSync/v17/DataTypes/ToolList.config
