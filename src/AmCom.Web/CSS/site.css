@@ -1,4 +1,4 @@
-@import "variables-css.css";
+@import "variables.css";
 @import "fonts.css";
 @import "bootstrap.css";
 @import "reboot.css";
@@ -12,5 +12,4 @@
 @import "summary.css";
 @import "word-cloud.css";
 
-@import "dark.css";
 @import "responsive.css";

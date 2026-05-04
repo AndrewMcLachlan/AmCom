@@ -1,17 +1,17 @@
 /* sora - latin (variable) */
 @font-face {
-    font-family: 'Sora';
-    font-style: normal;
-    font-weight: 100 800;
-    font-display: swap;
-    src: url('/fonts/Sora-latin.woff2') format('woff2');
+  font-family: 'Sora';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('/fonts/Sora-latin.woff2') format('woff2');
 }
 
 /* plus-jakarta-sans - latin (variable) */
 @font-face {
-    font-family: 'Plus Jakarta Sans';
-    font-style: normal;
-    font-weight: 200 800;
-    font-display: swap;
-    src: url('/fonts/PlusJakartaSans-latin.woff2') format('woff2');
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('/fonts/PlusJakartaSans-latin.woff2') format('woff2');
 }

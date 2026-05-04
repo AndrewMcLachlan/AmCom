@@ -1,198 +1,192 @@
 @media screen and (max-width: 1399px) {
-    .currentBreakpoint::after {
-        content: '(max-width: 1399px)';
-    }
+  .currentBreakpoint::after {
+    content: '(max-width: 1399px)';
+  }
 }
 
 @media screen and (max-width: 1199px) {
 
-    .currentBreakpoint::after {
-        content: '(max-width: 1199px)';
-    }
-}
-
-@media screen and (max-width: 991px) and (prefers-color-scheme: dark) {
-    body.home main {
-        border-bottom: 1px solid var(--border);
-    }
+  .currentBreakpoint::after {
+    content: '(max-width: 1199px)';
+  }
 }
 
 @media screen and (max-width: 991px) {
 
-    .currentBreakpoint::after {
-        content: '(max-width: 991px)';
+  .currentBreakpoint::after {
+    content: '(max-width: 991px)';
+  }
+
+  body.home main {
+    border-bottom: 1px solid light-dark(transparent, var(--border));
+  }
+
+  .combinedWorks {
+    display: none;
+  }
+
+  .navbar {
+    .navbar-brand span {
+      font-size: 1.3rem;
     }
 
-    body.home.dark main {
-        border-bottom: 1px solid var(--border);
+    .level-last {
+      border-right: none;
+      border-bottom: 1px solid var(--nav-colour);
     }
-
-    .combinedWorks {
-        display: none;
-    }
-
-    .navbar {
-        .navbar-brand span {
-            font-size: 1.3rem;
-        }
-
-        .level-last {
-            border-right: none;
-            border-bottom: 1px solid var(--nav-colour);
-        }
-    }
+  }
 }
 
 @media screen and (max-width: 966px), (max-device-width: 966px) {
 
-    .currentBreakpoint::after {
-        content: '(max-width: 966px), (max-device-width: 966px)';
-    }
+  .currentBreakpoint::after {
+    content: '(max-width: 966px), (max-device-width: 966px)';
+  }
 }
 
 @media screen and (max-width: 767px), (max-device-width: 767px) {
 
-    .navbar > .container-fluid {
-        align-items: normal;
-    }
+  .navbar > .container-fluid {
+    align-items: normal;
+  }
 
-    .navbar-brand {
-        position: absolute;
-        right: 0;
-        margin-top: 0;
-        padding-top: 0;
-        top: 3px;
-    }
+  .navbar-brand {
+    position: absolute;
+    right: 0;
+    margin-top: 0;
+    padding-top: 0;
+    top: 3px;
+  }
 
-    .navbar .level-last {
-        border-right: none;
-        border-bottom: 1px solid var(--colour-blue);
-    }
+  .navbar .level-last {
+    border-right: none;
+    border-bottom: 1px solid var(--colour-blue);
+  }
 
-    .page-header {
-        font-size: 1.8rem;
-        margin-bottom: 0;
-        line-height: 50px;
+  .page-header {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+    line-height: 50px;
 
-        &.long {
-            font-size: 1.5rem;
-        }
+    &.long {
+      font-size: 1.5rem;
     }
+  }
 
     .page-header.has-links {
-        border-bottom-color: var(--colour-dark);
+      border-bottom-color: var(--colour-dark);
     }
 
 
-    .page-links {
-        float: none;
-        justify-content: space-between;
-        background-color: var(--colour-muted-bone);
-        margin-bottom: 0.5rem;
-        border-bottom: 2px solid var(--colour-dark);
-    }
+  .page-links {
+    float: none;
+    justify-content: space-between;
+    background-color: var(--colour-muted-bone);
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid var(--colour-dark);
+  }
 
-    aside.page-link {
-        margin: 0;
-        border: none;
-        border-radius: 0;
-        border-right: 2px solid var(--colour-dark);
-        flex: 1;
-        text-align: center;
+  aside.page-link {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    border-right: 2px solid var(--colour-dark);
+    flex: 1;
+    text-align: center;
 
-        &:last-child {
-            border-right: none;
-        }
+    &:last-child {
+      border-right: none;
     }
+  }
 
-    .hero {
-        min-height: calc(100dvh - var(--header-height, 75px));
-    }
+  .hero {
+    min-height: calc(100dvh - var(--header-height, 75px));
+  }
 
-    #hero .container div, #hero img {
-        display: none !important;
-    }
+  #hero .container div, #hero img {
+    display: none !important;
+  }
 
-    #hero .home-header-container {
-        position: static;
-        margin: 0 auto;
-        width: 100%;
-    }
+  #hero .home-header-container {
+    position: static;
+    margin: 0 auto;
+    width: 100%;
+  }
 
-    .combinedWorks {
-        display: none;
-    }
+  .combinedWorks {
+    display: none;
+  }
 
-    .currentBreakpoint::after {
-        content: '(max-width: 767px), (max-device-width: 767px)';
-    }
+  .currentBreakpoint::after {
+    content: '(max-width: 767px), (max-device-width: 767px)';
+  }
 
-    article {
-        font-size: 0.875rem;
-    }
+  article {
+    font-size: 0.875rem;
+  }
 
-    h1 {
-        font-size: 2.5em;
-        line-height: 50px;
-    }
+  h1 {
+    font-size: 2.5em;
+    line-height: 50px;
+  }
 
-    footer {
-        font-size: 0.875rem;
-    }
+  footer {
+    font-size: 0.875rem;
+  }
 
-    .navbar a {
-        font-size: 1rem;
-    }
+  .navbar a {
+    font-size: 1rem;
+  }
 
-    .combinedWorks {
-        display: none;
-    }
+  .combinedWorks {
+    display: none;
+  }
 
-    #hero .jumbotron {
-        width: auto;
-        left: initial;
-    }
+  #hero .jumbotron {
+    width: auto;
+    left: initial;
+  }
 }
 
 @media screen and (max-width: 575px), (max-device-width: 575px) {
-    .currentBreakpoint::after {
-        content: '(max-width: 575px), (max-device-width: 575px)';
-    }
+  .currentBreakpoint::after {
+    content: '(max-width: 575px), (max-device-width: 575px)';
+  }
 
-    h1 {
-        padding-right: 10px;
-    }
+  h1 {
+    padding-right: 10px;
+  }
 
-    .hero {
-        min-height: calc(100dvh - var(--header-height, 75px));
+  .hero {
+    min-height: calc(100dvh - var(--header-height, 75px));
 
-        .hero-content {
-            padding: 2rem 1rem;
-        }
+    .hero-content {
+      padding: 2rem 1rem;
     }
+  }
 }
 
 @media screen and (min-height: 400px) {
-    article {
-        min-height: 250px;
-    }
+  article {
+    min-height: 250px;
+  }
 }
 
 @media screen and (max-height: 560px) {
-    section.error {
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
+  section.error {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }
 
 @media screen and (min-height: 700px) {
-    article {
-        min-height: 500px;
-    }
+  article {
+    min-height: 500px;
+  }
 }
 
 @media screen and (min-height: 1000px) {
-    article {
-        min-height: 700px;
-    }
+  article {
+    min-height: 700px;
+  }
 }

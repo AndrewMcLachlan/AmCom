@@ -54,6 +54,24 @@ figure.combinedWorks {
     background-image: url(../images/headers/sahara.jpg);
 }
 
+.sitemap {
+    ul.level1 > li {
+        background-color: light-dark(var(--colour-dark), var(--colour-muted-bone));
+
+        > a {
+            color: light-dark(var(--colour-blue), var(--colour-dark));
+        }
+    }
+
+    ul.level2 {
+        background-color: light-dark(#FFF, var(--colour-dark));
+
+        > li {
+            background-color: light-dark(transparent, var(--colour-dark));
+        }
+    }
+}
+
 .consulting h2 {
     background-image: url(../images/headers/london2.jpg);
     background-size: auto;

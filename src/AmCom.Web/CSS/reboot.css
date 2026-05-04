@@ -1,78 +1,87 @@
 html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: var(--colour-dark);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--colour-dark);
 }
 
 body {
-    min-height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: var(--colour-dark);
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--colour-dark);
 }
 
 body, h1, .text {
-    font-family: 'Plus Jakarta Sans', Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-size: 18px;
+  font-family: 'Plus Jakarta Sans', Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-size: 18px;
 }
 
 h2, h3, h4, h5, h6 {
-    font-family: 'Sora', Helvetica, Arial, sans-serif;
-    font-weight: 500;
+  font-family: 'Sora', Helvetica, Arial, sans-serif;
+  font-weight: 500;
 }
 
 h3 {
-    font-size: 1.4rem;
+  font-size: 1.4rem;
 }
 
 a {
-    color: var(--link-colour);
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  color: var(--link-colour);
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 input[readonly] {
-    &:focus-visible {
-        outline: none;
-    }
+  &:focus-visible {
+    outline: none;
+  }
 }
 
 label {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 map {
-    border: none;
+  border: none;
 }
 
 hr {
-    background-image: -webkit-linear-gradient(left, #FFF 0, var(--colour-light-blue) 20%, var(--colour-dark) 50%, var(--colour-light-blue) 80%, #FFF 100%);
-    background-image: -moz-linear-gradient(left, #FFF 0, var(--colour-light-blue) 20%, var(--colour-dark) 50%, var(--colour-light-blue) 80%, #FFF 100%);
-    background-image: linear-gradient(left, #FFF 0, var(--colour-light-blue) 20%, var(--colour-dark) 50%, var(--colour-light-blue) 80%, #FFF 100%);
-    border: none;
-    height: 1px;
-    width: 95%;
+  background-image: linear-gradient(
+    to right,
+    light-dark(#FFF, var(--colour-dark)) 0%,
+    var(--colour-light-blue) 20%,
+    light-dark(var(--colour-dark), #FFF) 50%,
+    var(--colour-light-blue) 80%,
+    light-dark(#FFF, var(--colour-dark)) 100%
+  );
+  border: none;
+  height: 1px;
+  width: 95%;
+}
+
+.form-control {
+  background-color: light-dark(#fff, var(--colour-muted-bone));
 }
 
 strong {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 blockquote {
-    margin: 0 40px;
+  margin: 0 40px;
 
-    p {
-        background-color: var(--quote-background);
-        padding: 10px;
-        border-radius: 10px;
+  p {
+    background-color: var(--quote-background);
+    padding: 10px;
+    border-radius: 10px;
 
-        &:before {
-            content: '\201C';
-        }
-
-        &:after {
-            content: '\201D';
-        }
+    &:before {
+      content: '\201C';
     }
+
+    &:after {
+      content: '\201D';
+    }
+  }
 }

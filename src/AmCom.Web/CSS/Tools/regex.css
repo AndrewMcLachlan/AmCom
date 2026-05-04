@@ -55,20 +55,8 @@ span[id^=capture].hover {
     transition: background-color 200ms linear, padding 200ms linear;
 }
 
-:root, .light {
-    --regex-match: var(--colour-light-blue);
+:root {
+    --regex-match: light-dark(var(--colour-light-blue), var(--colour-lighter));
     --regex-group: var(--colour-rich-blue);
     --regex-group-text: var(--colour-muted-bone);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --regex-match: var(--colour-lighter);
-        --regex-group: var(--colour-rich-blue);
-    }
-}
-
-.dark {
-    --regex-match: var(--colour-lighter);
-    --regex-group: var(--colour-rich-blue);
 }

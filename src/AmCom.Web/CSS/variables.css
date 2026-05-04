@@ -1,0 +1,38 @@
+:root {
+  color-scheme: light dark;
+
+  --header-height: 75px;
+
+  --colour-dark: #091114;
+  --colour-lighter: #142229;
+  --colour-rich-blue: #3C74A8;
+  --colour-blue: #73BEE9;
+  --colour-light-blue: rgb(170,220,247);
+  --colour-bone: #F8F8D2;
+  --colour-muted-bone: #EAEAE3;
+  --colour-orange: #F7922D;
+  --colour-deep-orange: #F55E00;
+  --colour-light-orange: #F4B57A;
+
+  --background-colour: light-dark(white, var(--colour-dark));
+  --brand-colour:      light-dark(var(--colour-rich-blue), var(--colour-blue));
+  --text-colour:       light-dark(#212529, var(--colour-muted-bone));
+  --link-colour:       light-dark(#0d6efd, var(--colour-blue));
+  --nav-background:    light-dark(white, var(--colour-dark));
+  --nav-colour:        light-dark(var(--colour-dark), var(--colour-blue));
+  --nav-active:        var(--colour-orange);
+  --nav-hover:         light-dark(var(--colour-deep-orange), var(--colour-light-orange));
+  --border:            light-dark(var(--colour-deep-orange), var(--colour-orange));
+  --quote-background:  light-dark(var(--colour-bone), var(--colour-lighter));
+  --error: #F00;
+
+  /* Non-color theme values — light-dark() can't carry them, so define a triplet here. */
+  --theme-text-label: 'Dark';
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { --theme-text-label: 'Light'; }
+}
+
+body.light { color-scheme: light; --theme-text-label: 'Dark'; }
+body.dark  { color-scheme: dark;  --theme-text-label: 'Light'; }

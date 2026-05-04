@@ -1,7 +1,7 @@
 .colour ~ div, .colour h4 {
     font-weight: bold;
     font-size: 1em;
-    color: var(--text-colour);
+    color: inherit;
 }
 
 .colour-group, .colour-grid {
@@ -33,7 +33,9 @@
         transition: opacity 100ms linear;
         padding: 10px;
         border: 1px solid #000;
-        color: var(--text-colour);
+
+        &.dark { color: #fff; }
+        &.light { color: #000; }
     }
 }
 
@@ -60,7 +62,7 @@ section.colour-grid > section {
     h4 {
         font-size: 2rem;
         text-align: center;
-        color: var(--text-colour);
+        color: inherit;
     }
 
     &.dark {
