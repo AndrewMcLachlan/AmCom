@@ -10,27 +10,26 @@
     var tagline = Model.Tagline;
     var rawLabel = Model.LinkLabel;
     var label = String.IsNullOrWhiteSpace(rawLabel) ? "Read more" : rawLabel;
-    var sizeClass = $"card--{size}";
-    var imageClass = image != null ? "card--has-image" : "card--text-only";
+    var imageClass = image != null ? "has-image" : "text-only";
     var rel = url != null && Uri.IsWellFormedUriString(url, UriKind.Absolute) ? "external nofollow" : null;
 }
 
-<a class="card reveal @sizeClass @imageClass" href="@url" target="@target" rel="@rel" aria-label="@label">
+<a class="card reveal @size @imageClass" href="@url" target="@target" rel="@rel" aria-label="@label">
     @if (image != null)
     {
-        <div class="card-image">
+        <div class="image">
             <img src="@image.Url()" alt="@title" loading="lazy" />
         </div>
     }
-    <div class="card-text">
+    <div class="text">
         <h3>@title</h3>
         @if (!String.IsNullOrWhiteSpace(tagline))
         {
-            <p class="card-tagline">@tagline</p>
+            <p class="tagline">@tagline</p>
         }
-        <div class="card-description">
+        <div class="description">
             @Model.Description
         </div>
-        <span class="card-cta">@label<span class="arrow">&#10140;</span></span>
+        <span class="cta">@label<span class="arrow">&#10140;</span></span>
     </div>
 </a>

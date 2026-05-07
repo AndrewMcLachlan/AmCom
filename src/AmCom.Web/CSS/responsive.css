@@ -99,7 +99,7 @@
     }
   }
 
-  .hero {
+  main > .hero {
     min-height: calc(100dvh - var(--header-height, 75px));
   }
 
@@ -157,7 +157,7 @@
     padding-right: 10px;
   }
 
-  .hero {
+  main > .hero {
     min-height: calc(100dvh - var(--header-height, 75px));
 
     .hero-content {

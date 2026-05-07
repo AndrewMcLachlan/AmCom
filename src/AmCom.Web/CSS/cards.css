@@ -21,139 +21,145 @@
   grid-column: span 1;
   grid-row: span 1;
   overflow: hidden;
-}
 
-.card:hover {
-  text-decoration: none;
-  color: var(--text-colour);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px light-dark(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.3));
-}
+  &:hover {
+    text-decoration: none;
+    color: var(--text-colour);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px light-dark(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.3));
 
-/* Hero: 2x2, image dominant on top */
-.card--hero {
-  grid-column: span 2;
-  grid-row: span 2;
-  padding: 0;
-}
+    .cta {
+      color: var(--colour-deep-orange);
 
-.card--hero .card-image {
-  flex: 1;
-  margin: 0;
-}
+      .arrow {
+        transform: translateX(5px);
+      }
+    }
+  }
 
-.card--hero .card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 0;
-  display: block;
-}
+  .image {
+    img {
+      display: block;
+    }
+  }
 
-.card--hero .card-text {
-  padding: 2.25rem 2.5rem 2.5rem;
-}
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
 
-/* Standard with image: 2x1, image left, text right */
-.card--standard.card--has-image {
-  grid-column: span 2;
-  flex-direction: row;
-  align-items: stretch;
-  gap: 0;
-  padding: 0;
-}
+    h3 {
+      margin: 0;
+      font-family: 'Sora', Helvetica, Arial, sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--brand-colour);
+      line-height: 1.2;
+    }
+  }
 
-.card--standard.card--has-image .card-image {
-  flex: 0 0 45%;
-  display: flex;
-}
+  .tagline {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.8;
+    line-height: 1.4;
+  }
 
-.card--standard.card--has-image .card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 0;
-  display: block;
-}
+  .description {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-colour);
 
-.card--standard.card--has-image .card-text {
-  flex: 1;
-  padding: 2.25rem 2.5rem;
-  justify-content: center;
-}
+    p {
+      margin: 0 0 0.75rem;
 
-/* Typographic (no image) — default 1x1 layout works as-is */
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
 
-.card-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  align-items: flex-start;
-}
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--colour-orange);
+    transition: color 0.2s ease;
 
-.card-text h3 {
-  margin: 0;
-  font-family: 'Sora', Helvetica, Arial, sans-serif;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--brand-colour);
-  line-height: 1.2;
-}
+    .arrow {
+      font-size: 1.1em;
+      transition: transform 0.2s ease;
+    }
+  }
 
-.card--hero .card-text h3 {
-  font-size: 2.25rem;
-}
+  /* Hero: 2x2, image dominant on top */
+  &.hero {
+    grid-column: span 2;
+    grid-row: span 2;
+    padding: 0;
 
-.card-tagline {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 500;
-  opacity: 0.8;
-  line-height: 1.4;
-}
+    .image {
+      flex: 1;
+      margin: 0;
 
-.card--hero .card-tagline {
-  font-size: 1.15rem;
-}
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: left;
+        border-radius: 0;
+      }
+    }
 
-.card-description {
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--text-colour);
-}
+    .text {
+      padding: 2.25rem 2.5rem 2.5rem;
 
-.card-description p {
-  margin: 0 0 0.75rem;
-}
+      h3 {
+        font-size: 2.25rem;
+      }
+    }
 
-.card-description p:last-child {
-  margin-bottom: 0;
-}
+    .tagline {
+      font-size: 1.15rem;
+    }
+  }
 
-.card-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: auto;
-  padding-top: 0.5rem;
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--colour-orange);
-  transition: color 0.2s ease;
-}
+  /* Standard with image: 2x1, image left, text right */
+  &.standard.has-image {
+    grid-column: span 2;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
 
-.card-cta .arrow {
-  font-size: 1.1em;
-  transition: transform 0.2s ease;
-}
+    .image {
+      flex: 0 0 45%;
+      display: flex;
 
-.card:hover .card-cta {
-  color: var(--colour-deep-orange);
-}
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: left;
+        border-radius: 0;
+      }
+    }
 
-.card:hover .card-cta .arrow {
-  transform: translateX(5px);
+    .text {
+      flex: 1;
+      padding: 2.25rem 2.5rem;
+      justify-content: center;
+    }
+  }
+
+  /* Typographic (no image) — default 1x1 layout works as-is */
 }
 
 /* Tablet: 2 cols, hero collapses to 2x1 */
@@ -163,12 +169,12 @@
     gap: 1.5rem;
   }
 
-  .card--hero {
+  .card.hero {
     grid-row: span 1;
-  }
 
-  .card--hero .card-image img {
-    max-height: 280px;
+    .image img {
+      max-height: 280px;
+    }
   }
 }
 
@@ -180,52 +186,54 @@
     margin: 2rem 0;
   }
 
-  .card,
-  .card--hero,
-  .card--standard.card--has-image {
-    grid-column: span 1;
-    grid-row: span 1;
-    flex-direction: column;
-  }
-
-  .card--standard.card--has-image .card-image,
-  .card--hero .card-image {
-    flex: 0 0 auto;
-  }
-
-  .card--standard.card--has-image .card-image img,
-  .card--hero .card-image img {
-    max-height: 240px;
-  }
-
-  .card--standard.card--has-image .card-text,
-  .card--hero .card-text {
-    padding: 1.75rem 1.75rem 2rem;
-  }
-
   .card {
     padding: 1.75rem;
-  }
 
-  .card-text h3,
-  .card--hero .card-text h3 {
-    font-size: 1.5rem;
+    &.hero,
+    &.standard.has-image {
+      grid-column: span 1;
+      grid-row: span 1;
+      flex-direction: column;
+
+      .image {
+        flex: 0 0 auto;
+
+        img {
+          max-height: 240px;
+        }
+      }
+
+      .text {
+        padding: 1.75rem 1.75rem 2rem;
+      }
+    }
+
+    .text h3 {
+      font-size: 1.5rem;
+    }
+
+    &.hero .text h3 {
+      font-size: 1.5rem;
+    }
   }
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .card,
-  .card-cta,
-  .card-cta .arrow {
+  .card {
     transition: none;
-  }
 
-  .card:hover {
-    transform: none;
-  }
+    .cta,
+    .cta .arrow {
+      transition: none;
+    }
 
-  .card:hover .card-cta .arrow {
-    transform: none;
+    &:hover {
+      transform: none;
+
+      .cta .arrow {
+        transform: none;
+      }
+    }
   }
 }

@@ -1,4 +1,4 @@
-.hero {
+main > .hero {
   min-height: calc(100dvh - var(--header-height, 75px));
   display: flex;
   align-items: center;
