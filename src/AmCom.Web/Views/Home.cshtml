@@ -20,6 +20,7 @@
             <div class="summary reveal-group">
                 @foreach (var summary in summaries)
                 {
+                    if (summary is null || (!summary.Content?.IsVisible() ?? false)) continue;
                     await Html.RenderPartialAsync("Summary", summary.Content, new ViewDataDictionary(ViewData));
                 }
             </div>
