@@ -3,6 +3,7 @@
 @{
     var size = (Model.CardSize ?? "Standard").ToLowerInvariant();
     var image = Model.Image;
+    var altText = image?.Value<string>("umbracoAltText");
     var link = Model.PrimaryLink;
     var url = link?.Url;
     var target = link?.Target;
@@ -10,6 +11,7 @@
     var tagline = Model.Tagline;
     var rawLabel = Model.LinkLabel;
     var label = String.IsNullOrWhiteSpace(rawLabel) ? "Read more" : rawLabel;
+    if (String.IsNullOrWhiteSpace(altText)) { altText = title; }
     var imageClass = image != null ? "has-image" : "text-only";
     var rel = url != null && Uri.IsWellFormedUriString(url, UriKind.Absolute) ? "external nofollow" : null;
 }
@@ -18,7 +20,7 @@
     @if (image != null)
     {
         <div class="image">
-            <img src="@image.Url()" alt="@title" loading="lazy" />
+            <img src="@image.Url()" alt="@altText" loading="lazy" />
         </div>
     }
     <div class="text">

@@ -5,6 +5,8 @@
     var link = Model.Link as IPublishedContent;
     var url = link?.Url();
     var image = Model.SummaryImage;
+    var altText = image?.Value<string>("umbracoAltText");
+    if (String.IsNullOrWhiteSpace(altText)) { altText = Model.Title; }
     var imagePosition = Model.ImagePosition;
     var positionClass = imagePosition == "Left" ? "left" : imagePosition;
 }
@@ -20,7 +22,7 @@
     @if (image != null)
     {
         <div class="summary-image">
-            <img src="@image.Url()" alt="@Model.Title" loading="lazy" />
+            <img src="@image.Url()" alt="@altText" loading="lazy" />
         </div>
     }
 </a>
