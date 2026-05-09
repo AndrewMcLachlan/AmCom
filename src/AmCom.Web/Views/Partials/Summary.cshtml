@@ -6,7 +6,7 @@
     var url = link?.Url();
     var image = Model.SummaryImage;
     var imagePosition = Model.ImagePosition;
-    var positionClass = imagePosition == "left" ? "summary-card--image-left" : "";
+    var positionClass = imagePosition == "Left" ? "left" : imagePosition;
 }
 
 <a class="summary-card reveal @positionClass" href="@url" aria-label="@(Model.LinkLabel)">

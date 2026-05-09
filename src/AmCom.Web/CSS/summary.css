@@ -45,7 +45,7 @@
     box-shadow: 0 12px 40px light-dark(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.3));
   }
   /* Flip layout: image left, text right */
-  &--image-left {
+  &.left {
     .summary-text {
       order: 2;
     }
