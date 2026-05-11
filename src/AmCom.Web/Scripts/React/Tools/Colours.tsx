@@ -21,7 +21,7 @@ export default Colours;
 
 const coreColours: Colour[] = [
     { name: "Dark", r: 0x09, g: 0x11, b: 0x14, },
-    { name: "Lighter", r: 0x14, g: 0x22, b: 0x29, },
+    { name: "Lighter", r: 0x19, g: 0x25, b: 0x35, },
     { name: "Blue", r: 0x73, g: 0xbe, b: 0xe9, },
     { name: "Orange", r: 0xf7, g: 0x92, b: 0x2d },
     { name: "Bone", r: 0xf8, g: 0xf8, b: 0xd2, },
