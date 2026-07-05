@@ -40,7 +40,7 @@ try
     {
         options.AddDefaultSrc().Self();
         options.AddConnectSrc().Self();
-        options.AddImgSrc().Self().From("https://cdn.andrewmclachlan.com");
+        options.AddImgSrc().Self().Data().From("https://cdn.andrewmclachlan.com");
         options.AddStyleSrc().Self().UnsafeInline();
         options.AddScriptSrc().Self();
         options.AddFontSrc().Self().From("https://cdn.andrewmclachlan.com");
