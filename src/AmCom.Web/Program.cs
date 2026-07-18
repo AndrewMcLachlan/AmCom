@@ -36,16 +36,24 @@ try
     umbracoBuilder.AddEntraIdAuthentication(builder.Configuration.GetSection("Azure"));
 
     services.AddSecurityReporting(opts => opts.RoutePrefix = "api/reporting");
-    services.AddStandardSecurityHeaders().AddContentSecurityPolicy(options =>
+    services.AddStandardSecurityHeaders(policies =>
     {
-        options.AddDefaultSrc().Self();
-        options.AddConnectSrc().Self();
-        options.AddImgSrc().Self().Data().From("https://cdn.andrewmclachlan.com");
-        options.AddStyleSrc().Self().UnsafeInline();
-        options.AddScriptSrc().Self();
-        options.AddFontSrc().Self().From("https://cdn.andrewmclachlan.com");
-    })
-    .AddPermissionsPolicyWithDefaultSecureDirectives();
+        policies.AddContentSecurityPolicy(options =>
+        {
+            options.AddDefaultSrc().Self();
+            options.AddConnectSrc().Self();
+            options.AddImgSrc().Self().Data().From("https://cdn.andrewmclachlan.com");
+            options.AddStyleSrc().Self().UnsafeInline();
+            options.AddScriptSrc().Self();
+            options.AddFontSrc().Self().From("https://cdn.andrewmclachlan.com");
+        });
+        policies.AddPermissionsPolicyWithDefaultSecureDirectives();
+    });
+
+    services.AddCanonicalUrls(opts =>
+    {
+        opts.ExemptPathPrefixes = ["/umbraco", "/install", "/media", "/fonts"];
+    });
 
     umbracoBuilder.AddAzureBlobMediaFileSystem();
 
@@ -85,10 +93,7 @@ try
         app.UseHsts();
     }
 
-    app.UseCanonicalUrls(opts =>
-    {
-        opts.ExemptPathPrefixes = ["/umbraco", "/install", "/media", "/fonts"];
-    });
+    app.UseCanonicalUrls();
 
     app.MapGet("robots.txt", () =>
     @$"User-agent: *
