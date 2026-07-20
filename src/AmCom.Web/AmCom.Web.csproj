@@ -29,7 +29,10 @@
     <PackageReference Include="OpenTelemetry.Instrumentation.SqlClient" />
     <PackageReference Include="Serilog.Sinks.Seq" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
-    <PackageReference Include="Umbraco.Cms" />
+    <PackageReference Include="Umbraco.Cms.Targets" />
+    <PackageReference Include="Umbraco.Cms.Imaging.ImageSharp2" />
+    <PackageReference Include="Umbraco.Cms.Persistence.EFCore.SqlServer" />
+    <PackageReference Include="Umbraco.Cms.Persistence.SqlServer" />
     <PackageReference Include="Umbraco.StorageProviders.AzureBlob" />
   </ItemGroup>
 
