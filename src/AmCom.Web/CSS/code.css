@@ -1,0 +1,105 @@
+pre > code[class*="language-"],
+:not(pre) > code[class*="language-"] {
+  color: light-dark(#24292f, #e6edf3);
+  background-color: light-dark(#f6f8fa, #111b20);
+  border: 1px solid light-dark(#d0d7de, #2d3b42);
+  border-radius: 8px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  font-size: 0.9em;
+  text-align: left;
+  text-shadow: none;
+  white-space: pre;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  tab-size: 4;
+  hyphens: none;
+}
+
+pre > code[class*="language-"] {
+  display: block;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  line-height: 1.6;
+}
+
+:not(pre) > code[class*="language-"] {
+  padding: 0.15em 0.35em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: light-dark(#6e7781, #8b949e);
+}
+
+.token.punctuation {
+  color: light-dark(#24292f, #c9d1d9);
+}
+
+.token.namespace {
+  opacity: 0.75;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: light-dark(#cf222e, #ff7b72);
+}
+
+.token.boolean,
+.token.number {
+  color: light-dark(#0550ae, #79c0ff);
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: light-dark(#116329, #7ee787);
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: light-dark(#953800, #ffa657);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: light-dark(#cf222e, #ff7b72);
+}
+
+.token.function,
+.token.class-name {
+  color: light-dark(#8250df, #d2a8ff);
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: light-dark(#953800, #ffa657);
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
