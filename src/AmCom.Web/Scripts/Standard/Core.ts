@@ -1,4 +1,12 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
+﻿import Prism from "prismjs/components/prism-core";
+import "prismjs/components/prism-clike";
+import "prismjs/components/prism-csharp";
+
+Prism.manual = true;
+
+document.addEventListener("DOMContentLoaded", () => {
+    Prism.highlightAll();
+
     const elems: any = document.getElementsByClassName("theme-switch");
     for (const e of elems) {
         e.onclick = switchTheme;
