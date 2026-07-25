@@ -2,7 +2,7 @@
 @inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnv
 @{
     var site = Model.Root();
-    var selection = site.Children().Where(x => x.IsVisible());
+    var selection = site.Children().Where(x => x.IsVisible()).ToArray();
     Layout = null;
 }
 <!DOCTYPE html>
@@ -50,7 +50,7 @@
         @foreach(var item in selection)
         {
           string cssclass = "nav-item" + (item.IsAncestorOrSelf(Model) ? " active" : String.Empty);
-          if (item.Equals(selection.Last()))
+          if (item.Key == selection.Last().Key)
           {
             cssclass += " level-last";
           }
@@ -61,10 +61,6 @@
           foreach (var item in selection.SingleOrDefault(s => s.IsAncestorOrSelf(Model))?.Children().Where(x => x.IsVisible()) ?? Array.Empty<IPublishedContent>())
           {
             string cssclass = "nav-item" + (item.IsAncestorOrSelf(Model) ? " active" : String.Empty);
-            if (item.Equals(selection.Last()))
-            {
-              cssclass += " level-last";
-            }
 
             <li class="@cssclass"><a class="nav-link" href="@item.Url()">@item.ValueOr("navigationText", item.Name())</a></li>
           }
