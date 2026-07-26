@@ -30,8 +30,8 @@ This is a **personal brand site** — it represents Andrew McLachlan professiona
 
 ## Tech Stack
 
-- **Backend:** ASP.NET (.NET 10), Umbraco 17, C#
-- **Frontend:** React 19, TypeScript, Redux Toolkit, Webpack, Sass
+- **Backend:** ASP.NET Core, Umbraco, C#
+- **Frontend:** React, TypeScript, Redux Toolkit, esbuild, Lightning CSS
 - **Hosting:** Azure App Service (staging slot swap deployment)
 - **CI/CD:** GitHub Actions (`.github/workflows/build.yml`)
 
@@ -49,7 +49,7 @@ src/AmCom.Web/                      # Main web project
       Tools/                        # Tool pages (Regex, Cidr, Colours, Base64)
       Redux/                        # Redux store and slices
     Standard/                       # Non-React TypeScript
-  CSS/                              # Sass source files
+  CSS/                              # CSS source files
   wwwroot/                          # Static output (compiled CSS/JS)
   App_Plugins/                      # Umbraco plugins
   Config/                           # App configuration classes
@@ -61,17 +61,21 @@ tests/Asm.AmCom.Tests/              # Test project
 
 ## Build Commands
 
-All npm commands run from `src/Asm.AmCom.Web/`:
+All npm commands run from `src/AmCom.Web/`:
 
 ```bash
 dotnet build                        # Build .NET project (also triggers npm build)
 dotnet publish                      # Publish for deployment
-npm run build:dev                   # Webpack dev build
-npm run build                       # Webpack production build
-npm run build-sass                  # Compile all Sass files
-npm run start                       # Webpack dev with watch
-npm run watch-sass                  # Watch Sass files
+npm run build:dev                   # esbuild dev build
+npm run build                       # esbuild production build
+npm run build-css                   # Compile and bundle all CSS
+npm run start                       # Watch JS and CSS
+npm run typecheck                   # Type-check without emitting
+npm run lint                        # ESLint over Scripts/
 ```
+
+Razor views are only compiled during a Release build, so `dotnet build -c Release` is what catches
+errors in `.cshtml` files.
 
 The .csproj `NPM-Build` target automatically runs npm builds during `dotnet build`.
 

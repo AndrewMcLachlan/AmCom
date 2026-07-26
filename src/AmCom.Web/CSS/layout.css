@@ -26,7 +26,6 @@ body.home main {
   border-bottom: none;
 }
 
-
 article {
   padding-bottom: 2rem;
   font-size: 18px;
@@ -82,8 +81,50 @@ article {
   border-bottom: 2px solid var(--border);
 }
 
+.article-dates {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.5rem;
+  margin-top: 0rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+
+  /* Ordinal suffixes are superscripted; without this they inflate the line box and nudge the row. */
+  sup {
+    line-height: 0;
+  }
+
+  .published {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .updated {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* Decorative separator from the published date. Neutral rather than accent — this line
+       sits above the first heading and shouldn't compete with it. */
+    &::before {
+      content: '';
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background-color: currentcolor;
+      opacity: 0.5;
+    }
+  }
+}
+
 h2 + h3, * + h2 {
   margin-top: 2rem;
+}
+
+p + h2 {
+  margin-top: 0;
+  padding-top: 0;
 }
 
 * + h3 {
@@ -97,7 +138,7 @@ h2 + h3, * + h2 {
     position: absolute;
     left: 0;
     top: 0;
-    width: 300px;
+    width: 300px; 
     height: 30px;
     z-index: 1;
     color: #444;
@@ -218,4 +259,8 @@ body.home > footer {
 
 .theme-text:before {
   content: var(--theme-text-label);
+}
+
+.muted {
+  color: var(--text-muted);
 }

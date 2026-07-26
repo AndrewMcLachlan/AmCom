@@ -1,0 +1,57 @@
+﻿@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Article>
+@{
+    Layout = "FullPageLayout.cshtml";
+    ViewBag.Title = $"{Model.Value("title")} - Andrew McLachlan";
+    ViewBag.Description = Model.Value("description");
+    ViewBag.Canonical = Model.Url();
+    ViewBag.PageType = "article";
+    // Set by LastContentUpdateHandler when the body changes, so metadata-only saves don't show as revisions.
+    // Unset (DateTime.MinValue) on articles not edited since it was introduced — the comparison below then
+    // fails and no update is claimed at all.
+    var lastContentUpdate = Model.LastContentUpdate;
+    var showUpdated = lastContentUpdate.Date > Model.CreateDate.Date;
+}
+
+@section PageLink
+{
+    @if (Model.PageLinks != null)
+    {
+        <section class="page-links">
+            @foreach (var pageLink in Model.PageLinks)
+            {
+                await Html.RenderPartialAsync("PageLink", pageLink.Content);
+            }
+        </section>
+    }
+}
+
+<p class="article-dates">
+    <span class="published">@(showUpdated ? "First Published" : String.Empty) <time datetime="@Model.CreateDate.ToString("yyyy-MM-dd")">@Model.CreateDate.ToString("d MMMM yyyy")</time></span>
+    @if (showUpdated)
+    {
+        <span class="updated">Updated <time datetime="@lastContentUpdate.ToString("yyyy-MM-dd")">@lastContentUpdate.ToString("d MMMM yyyy")</time></span>
+    }
+</p>
+
+@Model.Value("pageContent")
+
+@section Scripts
+{
+    <script type="application/ld+json">
+        {
+            "@@context": "https://schema.org",
+            "@@type": "Article",
+            "headline": "@Html.Raw(Model.Value<string>("title")?.Replace("\"", "\\\""))",
+            "description": "@Html.Raw(Model.Value<string>("description")?.Replace("\"", "\\\""))",
+            "url": "@ViewBag.Canonical",
+            "datePublished": "@Model.CreateDate.ToString("yyyy-MM-dd")",
+            "dateModified": "@(showUpdated ? lastContentUpdate.ToString("yyyy-MM-dd") : Model.CreateDate.ToString("yyyy-MM-dd"))",
+            "author": {
+                "@@type": "Person",
+                "name": "Andrew McLachlan",
+                "url": "https://andrewmclachlan.com"
+            }
+        }
+    </script>
+}
