@@ -17,6 +17,7 @@
   --background-colour: light-dark(white, var(--colour-dark));
   --brand-colour:      light-dark(var(--colour-rich-blue), var(--colour-blue));
   --text-colour:       light-dark(#212529, var(--colour-muted-bone));
+  --text-muted:        light-dark(#5C6670, #9BA6AC);
   --link-colour:       light-dark(#0d6efd, var(--colour-blue));
   --nav-background:    light-dark(white, var(--colour-dark));
   --nav-colour:        light-dark(var(--colour-dark), var(--colour-blue));
