@@ -50,13 +50,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Last Content Update: Set automatically whenever the body changes; metadata-only saves are ignored. Editable so it can be corrected or backfilled — but the next body edit will overwrite it.
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.0.2+26312a3")]
-		[ImplementPropertyType("lastContentUpdate")]
-		public virtual global::System.DateTime LastContentUpdate => this.Value<global::System.DateTime>(_publishedValueFallback, "lastContentUpdate");
-
-		///<summary>
 		/// Page Content
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "18.0.2+26312a3")]
