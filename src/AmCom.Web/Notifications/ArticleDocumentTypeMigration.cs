@@ -13,9 +13,9 @@ namespace Asm.AmCom.Web.Notifications;
 /// <remarks>
 /// The backoffice has no "change document type" action (it was dropped in v8 and never returned), and uSync
 /// only syncs settings, not which type a given node uses — so this has to be done in code. Recreating the
-/// pages by hand is not an option: the published date shown on an article is its <c>CreateDate</c>, and new
-/// nodes would reset it. <see cref="IContent.ChangeContentType(IContentType)"/> preserves CreateDate, keys,
-/// URLs and version history.
+/// pages by hand is not an option: it would orphan their audit and version history, which is where both of
+/// the dates shown on an article are recovered from.
+/// <see cref="IContent.ChangeContentType(IContentType)"/> preserves keys, CreateDate, URLs and history.
 ///
 /// Runs once per environment, guarded by a key/value flag, and is safe to leave in place afterwards.
 /// </remarks>
@@ -63,8 +63,8 @@ public class ArticleDocumentTypeMigration : INotificationHandler<UmbracoApplicat
                                       .Where(c => c.ContentType.Alias == ContentPageAlias)
                                       .ToList();
 
-        // Rewriting the body below is a mechanical rebind, not an edit — keep LastContentUpdateHandler out of it.
-        using var suppression = LastContentUpdateSuppression.Begin();
+        // Rewriting the body below is a mechanical rebind, not an edit — keep LastContentChangeHandler out of it.
+        using var suppression = LastContentChangeSuppression.Begin();
 
         foreach (var child in children)
         {

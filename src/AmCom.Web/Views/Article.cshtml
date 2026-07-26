@@ -1,16 +1,21 @@
 ﻿@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Article>
+@inject Asm.AmCom.Web.Data.IContentDateService ContentDates
 @{
     Layout = "FullPageLayout.cshtml";
     ViewBag.Title = $"{Model.Value("title")} - Andrew McLachlan";
     ViewBag.Description = Model.Value("description");
     ViewBag.Canonical = Model.Url();
     ViewBag.PageType = "article";
-    // Set by LastContentUpdateHandler when the body changes, so metadata-only saves don't show as revisions.
-    // Unset (DateTime.MinValue) on articles not edited since it was introduced — the comparison below then
-    // fails and no update is claimed at all.
-    var lastContentUpdate = Model.LastContentUpdate;
-    var showUpdated = lastContentUpdate.Date > Model.CreateDate.Date;
+
+    var dates = ContentDates.Get(Model.Id);
+    // CreateDate is only the fallback for something never published: it's when the node was created, which
+    // for an article drafted over several days is earlier than it actually went live.
+    var published = dates?.FirstPublished ?? Model.CreateDate;
+    // Null where no body change is on record — either the article hasn't been revised since this was
+    // introduced, or version history had been pruned past the point of proving one. No update is claimed.
+    var lastContentChange = dates?.LastContentChange;
+    var showUpdated = lastContentChange is { } changed && changed.Date > published.Date;
 }
 
 @section PageLink
@@ -27,10 +32,10 @@
 }
 
 <p class="article-dates">
-    <span class="published">@(showUpdated ? "First Published" : String.Empty) <time datetime="@Model.CreateDate.ToString("yyyy-MM-dd")">@Model.CreateDate.ToString("d MMMM yyyy")</time></span>
+    <span class="published">@(showUpdated ? "First Published" : String.Empty) <time datetime="@published.ToString("yyyy-MM-dd")">@published.ToString("d MMMM yyyy")</time></span>
     @if (showUpdated)
     {
-        <span class="updated">Updated <time datetime="@lastContentUpdate.ToString("yyyy-MM-dd")">@lastContentUpdate.ToString("d MMMM yyyy")</time></span>
+        <span class="updated">Updated <time datetime="@lastContentChange!.Value.ToString("yyyy-MM-dd")">@lastContentChange!.Value.ToString("d MMMM yyyy")</time></span>
     }
 </p>
 
@@ -45,8 +50,8 @@
             "headline": "@Html.Raw(Model.Value<string>("title")?.Replace("\"", "\\\""))",
             "description": "@Html.Raw(Model.Value<string>("description")?.Replace("\"", "\\\""))",
             "url": "@ViewBag.Canonical",
-            "datePublished": "@Model.CreateDate.ToString("yyyy-MM-dd")",
-            "dateModified": "@(showUpdated ? lastContentUpdate.ToString("yyyy-MM-dd") : Model.CreateDate.ToString("yyyy-MM-dd"))",
+            "datePublished": "@published.ToString("yyyy-MM-dd")",
+            "dateModified": "@(showUpdated ? lastContentChange!.Value.ToString("yyyy-MM-dd") : published.ToString("yyyy-MM-dd"))",
             "author": {
                 "@@type": "Person",
                 "name": "Andrew McLachlan",
