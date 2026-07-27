@@ -22,7 +22,16 @@ namespace Asm.AmCom.Web.Data;
 /// </remarks>
 public class ContentDatesSeed : INotificationHandler<UmbracoApplicationStartedNotification>
 {
-    private const string StateKey = "AmCom.Migration.ContentDatesSeed";
+    // Versioned: bumping it re-seeds on the next deploy. The first version mistook the document type
+    // migration's own rewrite for an edit and dated every article to deploy day.
+    private const string StateKey = "AmCom.Migration.ContentDatesSeed.v2";
+
+    private const string ArticleNodesSql = """
+        SELECT c.nodeId
+        FROM umbracoContent c
+        JOIN cmsContentType ct ON ct.nodeId = c.contentTypeId
+        WHERE ct.alias = 'article'
+        """;
 
     private const string FirstPublishedSql = $"""
         SELECT l.NodeId AS NodeId, MIN(l.Datestamp) AS FirstPublished
@@ -35,9 +44,16 @@ public class ContentDatesSeed : INotificationHandler<UmbracoApplicationStartedNo
 
     // Leading semicolon: NPoco prepends to the command, and a CTE must start a statement.
     private const string LastContentChangeSql = $"""
-        ;WITH v AS (
-            SELECT cv.nodeId, cv.versionDate,
-                   HASHBYTES('MD5', CAST(pd.textValue AS nvarchar(max))) AS h
+        ;WITH raw AS (
+            SELECT cv.nodeId, cv.id AS versionId, cv.versionDate,
+                   HASHBYTES('MD5', CAST(pd.textValue AS nvarchar(max))) AS h,
+                   -- A version can carry two pageContent rows once the document type migration has run: the
+                   -- one bound to contentPage's property type and the one bound to article's. Keep only the
+                   -- row for the type the node actually uses now, otherwise the pair reads as a body change
+                   -- at the migration's timestamp and every article looks like it was edited on deploy day.
+                   ROW_NUMBER() OVER (
+                       PARTITION BY cv.id
+                       ORDER BY CASE WHEN pt.contentTypeId = c.contentTypeId THEN 0 ELSE 1 END, pd.id) AS rn
             FROM umbracoContentVersion cv
             JOIN umbracoContent c ON c.nodeId = cv.nodeId
             JOIN cmsContentType ct ON ct.nodeId = c.contentTypeId
@@ -47,9 +63,12 @@ public class ContentDatesSeed : INotificationHandler<UmbracoApplicationStartedNo
             JOIN cmsPropertyType pt ON pt.Alias = 'pageContent'
             JOIN umbracoPropertyData pd ON pd.versionId = cv.id AND pd.propertyTypeId = pt.id
             WHERE ct.alias = 'article' AND pd.textValue IS NOT NULL
+        ), v AS (
+            SELECT nodeId, versionId, versionDate, h FROM raw WHERE rn = 1
         ), d AS (
             SELECT nodeId, versionDate, h,
-                   LAG(h) OVER (PARTITION BY nodeId ORDER BY versionDate) AS prevH
+                   -- versionId breaks ties: several versions can share a timestamp to the second.
+                   LAG(h) OVER (PARTITION BY nodeId ORDER BY versionDate, versionId) AS prevH
             FROM v
         )
         SELECT nodeId AS NodeId, MAX(versionDate) AS LastContentChange
@@ -75,10 +94,12 @@ public class ContentDatesSeed : INotificationHandler<UmbracoApplicationStartedNo
     {
         if (_keyValueService.GetValue(StateKey) is not null) return;
 
+        List<int> articles;
         List<SeedRow> published;
         List<SeedRow> changed;
         using (var scope = _scopeProvider.CreateScope(autoComplete: true))
         {
+            articles = scope.Database.Fetch<int>(ArticleNodesSql);
             published = scope.Database.Fetch<SeedRow>(FirstPublishedSql);
             changed = scope.Database.Fetch<SeedRow>(LastContentChangeSql);
         }
@@ -88,13 +109,18 @@ public class ContentDatesSeed : INotificationHandler<UmbracoApplicationStartedNo
             _contentDateService.SetFirstPublished(row.NodeId, row.FirstPublished!.Value);
         }
 
-        foreach (var row in changed.Where(r => r.LastContentChange is not null))
+        // Written for every article, not just the ones with a detectable change, so that a re-seed clears
+        // values an earlier version got wrong rather than leaving them behind.
+        var byNode = changed.Where(r => r.LastContentChange is not null)
+                            .ToDictionary(r => r.NodeId, r => r.LastContentChange);
+
+        foreach (var nodeId in articles)
         {
-            _contentDateService.SetLastContentChange(row.NodeId, row.LastContentChange!.Value);
+            _contentDateService.SetLastContentChange(nodeId, byNode.GetValueOrDefault(nodeId));
         }
 
-        _keyValueService.SetValue(StateKey, $"{published.Count} published, {changed.Count} changed");
-        _logger.LogInformation("Content dates seeded: {Published} first-published, {Changed} last-changed.", published.Count, changed.Count);
+        _keyValueService.SetValue(StateKey, $"{published.Count} published, {byNode.Count} of {articles.Count} changed");
+        _logger.LogInformation("Content dates seeded: {Published} first-published, {Changed} of {Total} with a detectable body change.", published.Count, byNode.Count, articles.Count);
     }
 
     private sealed class SeedRow
