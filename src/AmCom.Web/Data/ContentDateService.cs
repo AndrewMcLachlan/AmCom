@@ -13,7 +13,7 @@ public interface IContentDateService
     void SetFirstPublished(int nodeId, DateTime when);
 
     /// <summary>Records a body change, overwriting any previous value.</summary>
-    void SetLastContentChange(int nodeId, DateTime when);
+    void SetLastContentChange(int nodeId, DateTime? when);
 }
 
 public class ContentDateService : IContentDateService
@@ -45,7 +45,7 @@ public class ContentDateService : IContentDateService
             }
         });
 
-    public void SetLastContentChange(int nodeId, DateTime when) =>
+    public void SetLastContentChange(int nodeId, DateTime? when) =>
         Upsert(nodeId, row => row.LastContentChange = when);
 
     private void Upsert(int nodeId, Action<ContentDateRow> apply)
