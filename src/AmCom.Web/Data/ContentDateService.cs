@@ -12,8 +12,11 @@ public interface IContentDateService
     /// <summary>Records the first publication, leaving an existing value alone.</summary>
     void SetFirstPublished(int nodeId, DateTime when);
 
-    /// <summary>Records a body change, overwriting any previous value.</summary>
-    void SetLastContentChange(int nodeId, DateTime? when);
+    /// <summary>
+    /// Records the body as currently seen, advancing <see cref="ContentDateRow.LastContentChange"/> only if it
+    /// differs from the body seen last time.
+    /// </summary>
+    void RecordBody(int nodeId, string hash, DateTime when);
 }
 
 public class ContentDateService : IContentDateService
@@ -39,16 +42,32 @@ public class ContentDateService : IContentDateService
         Upsert(nodeId, row =>
         {
             // First publication only — a later publish must not restate when something came out.
-            if (row.FirstPublished is null)
-            {
-                row.FirstPublished = when;
-            }
+            if (row.FirstPublished is not null) return false;
+
+            row.FirstPublished = when;
+            return true;
         });
 
-    public void SetLastContentChange(int nodeId, DateTime? when) =>
-        Upsert(nodeId, row => row.LastContentChange = when);
+    public void RecordBody(int nodeId, string hash, DateTime when) =>
+        Upsert(nodeId, row =>
+        {
+            // Same text as last time: a re-publish, a metadata edit, or the serialiser rewriting its own
+            // envelope. None of those are a revision.
+            if (row.ContentHash == hash) return false;
 
-    private void Upsert(int nodeId, Action<ContentDateRow> apply)
+            // Nothing to compare against yet, so there is no evidence of a change — record what the body is
+            // now and leave the date alone. This is what stops a first sighting (a newly created article, or
+            // the backfill running against an existing one) from being reported as an update.
+            if (row.ContentHash is not null)
+            {
+                row.LastContentChange = when;
+            }
+
+            row.ContentHash = hash;
+            return true;
+        });
+
+    private void Upsert(int nodeId, Func<ContentDateRow, bool> apply)
     {
         using var scope = _scopeProvider.CreateScope();
 
@@ -56,7 +75,11 @@ public class ContentDateService : IContentDateService
         var isNew = row is null;
         row ??= new ContentDateRow { NodeId = nodeId };
 
-        apply(row);
+        if (!apply(row) && !isNew)
+        {
+            scope.Complete();
+            return;
+        }
 
         if (isNew)
         {

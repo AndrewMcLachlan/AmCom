@@ -7,25 +7,30 @@ using Umbraco.Extensions;
 namespace Asm.AmCom.Web.Data;
 
 /// <summary>
-/// Backfills <see cref="ContentDateRow"/> from Umbraco's own records, once per environment.
+/// Fills in what is missing from <see cref="ContentDateRow"/>, and only what is missing.
 /// </summary>
 /// <remarks>
-/// Both dates are recovered from real data rather than guessed. <c>firstPublished</c> comes from the earliest
-/// Publish entry in the audit log, which on this site reaches back to 2022. <c>lastContentChange</c> is
-/// reconstructed by hashing <c>pageContent</c> across retained versions and taking the last version where it
-/// differs from the one before it.
-///
-/// That second reconstruction is deliberately conservative: a change is only counted between two *retained*
-/// versions. The earliest retained version is skipped, because "oldest snapshot still held" is
-/// indistinguishable from "created then", and counting it would manufacture an update date out of version
-/// cleanup. Articles with nothing detectable are left null and simply show no updated date.
+/// <para>
+/// Runs on every startup and is deliberately incapable of changing a value that is already there. There is no
+/// state key to bump: nothing here is a one-shot that has to be replayed, so nothing here can undo a date that
+/// was set by hand.
+/// </para>
+/// <para>
+/// <c>firstPublished</c> is read from the earliest Publish entry in the audit log, which on this site reaches
+/// back to 2022 and is a record of something that actually happened.
+/// </para>
+/// <para>
+/// <c>lastContentChange</c> is not reconstructed. It was, by hashing <c>pageContent</c> across retained
+/// versions and taking the last version whose hash differed — but a stored version is a snapshot of a
+/// serialisation, not of an edit, so re-saving an article with no changes produces a new hash whenever the
+/// serialiser's output has drifted. That is not a bug that can be patched out with a better query: version
+/// history genuinely does not record whether the text changed, only that it was written. So this seeds the
+/// hash of the body as it stands now, and from that point on the date moves when the text really does.
+/// Articles from before then simply have no updated date until one is set, and a date set by hand stays set.
+/// </para>
 /// </remarks>
 public class ContentDatesSeed : INotificationHandler<UmbracoApplicationStartedNotification>
 {
-    // Versioned: bumping it re-seeds on the next deploy. The first version mistook the document type
-    // migration's own rewrite for an edit and dated every article to deploy day.
-    private const string StateKey = "AmCom.Migration.ContentDatesSeed.v2";
-
     private const string ArticleNodesSql = """
         SELECT c.nodeId
         FROM umbracoContent c
@@ -33,7 +38,7 @@ public class ContentDatesSeed : INotificationHandler<UmbracoApplicationStartedNo
         WHERE ct.alias = 'article'
         """;
 
-    private const string FirstPublishedSql = $"""
+    private const string FirstPublishedSql = """
         SELECT l.NodeId AS NodeId, MIN(l.Datestamp) AS FirstPublished
         FROM umbracoLog l
         JOIN umbracoContent c ON c.nodeId = l.NodeId
@@ -42,91 +47,64 @@ public class ContentDatesSeed : INotificationHandler<UmbracoApplicationStartedNo
         GROUP BY l.NodeId
         """;
 
-    // Leading semicolon: NPoco prepends to the command, and a CTE must start a statement.
-    private const string LastContentChangeSql = $"""
-        ;WITH raw AS (
-            SELECT cv.nodeId, cv.id AS versionId, cv.versionDate,
-                   HASHBYTES('MD5', CAST(pd.textValue AS nvarchar(max))) AS h,
-                   -- A version can carry two pageContent rows once the document type migration has run: the
-                   -- one bound to contentPage's property type and the one bound to article's. Keep only the
-                   -- row for the type the node actually uses now, otherwise the pair reads as a body change
-                   -- at the migration's timestamp and every article looks like it was edited on deploy day.
-                   ROW_NUMBER() OVER (
-                       PARTITION BY cv.id
-                       ORDER BY CASE WHEN pt.contentTypeId = c.contentTypeId THEN 0 ELSE 1 END, pd.id) AS rn
-            FROM umbracoContentVersion cv
-            JOIN umbracoContent c ON c.nodeId = cv.nodeId
-            JOIN cmsContentType ct ON ct.nodeId = c.contentTypeId
-            -- Matched by alias alone, not scoped to the article type: versions predating the document type
-            -- migration still reference contentPage's pageContent property type, and excluding them would
-            -- hide every change made before the move.
-            JOIN cmsPropertyType pt ON pt.Alias = 'pageContent'
-            JOIN umbracoPropertyData pd ON pd.versionId = cv.id AND pd.propertyTypeId = pt.id
-            WHERE ct.alias = 'article' AND pd.textValue IS NOT NULL
-        ), v AS (
-            SELECT nodeId, versionId, versionDate, h FROM raw WHERE rn = 1
-        ), d AS (
-            SELECT nodeId, versionDate, h,
-                   -- versionId breaks ties: several versions can share a timestamp to the second.
-                   LAG(h) OVER (PARTITION BY nodeId ORDER BY versionDate, versionId) AS prevH
-            FROM v
-        )
-        SELECT nodeId AS NodeId, MAX(versionDate) AS LastContentChange
-        FROM d
-        WHERE prevH IS NOT NULL AND h <> prevH
-        GROUP BY nodeId
-        """;
-
     private readonly IScopeProvider _scopeProvider;
-    private readonly IKeyValueService _keyValueService;
+    private readonly IContentService _contentService;
     private readonly IContentDateService _contentDateService;
     private readonly ILogger<ContentDatesSeed> _logger;
 
-    public ContentDatesSeed(IScopeProvider scopeProvider, IKeyValueService keyValueService, IContentDateService contentDateService, ILogger<ContentDatesSeed> logger)
+    public ContentDatesSeed(IScopeProvider scopeProvider, IContentService contentService, IContentDateService contentDateService, ILogger<ContentDatesSeed> logger)
     {
         _scopeProvider = scopeProvider;
-        _keyValueService = keyValueService;
+        _contentService = contentService;
         _contentDateService = contentDateService;
         _logger = logger;
     }
 
     public void Handle(UmbracoApplicationStartedNotification notification)
     {
-        if (_keyValueService.GetValue(StateKey) is not null) return;
-
         List<int> articles;
-        List<SeedRow> published;
-        List<SeedRow> changed;
+        List<FirstPublishedRow> published;
+
         using (var scope = _scopeProvider.CreateScope(autoComplete: true))
         {
             articles = scope.Database.Fetch<int>(ArticleNodesSql);
-            published = scope.Database.Fetch<SeedRow>(FirstPublishedSql);
-            changed = scope.Database.Fetch<SeedRow>(LastContentChangeSql);
+            published = scope.Database.Fetch<FirstPublishedRow>(FirstPublishedSql);
         }
 
         foreach (var row in published.Where(r => r.FirstPublished is not null))
         {
+            // Ignored when a value is already stored.
             _contentDateService.SetFirstPublished(row.NodeId, row.FirstPublished!.Value);
         }
 
-        // Written for every article, not just the ones with a detectable change, so that a re-seed clears
-        // values an earlier version got wrong rather than leaving them behind.
-        var byNode = changed.Where(r => r.LastContentChange is not null)
-                            .ToDictionary(r => r.NodeId, r => r.LastContentChange);
+        var recorded = 0;
 
         foreach (var nodeId in articles)
         {
-            _contentDateService.SetLastContentChange(nodeId, byNode.GetValueOrDefault(nodeId));
+            var content = _contentService.GetById(nodeId);
+            if (content is null) continue;
+
+            // Hashed through the same path the save handler uses, so the first real edit after this compares
+            // like with like rather than tripping over two different ways of reading the same body.
+            var hash = ArticleBody.Hash(content);
+
+            if (hash is null)
+            {
+                _logger.LogWarning("No body found on article {Id} ({Name}); its changes cannot be tracked.", nodeId, content.Name);
+                continue;
+            }
+
+            // Only writes where no hash is stored yet; never moves a date on its own.
+            _contentDateService.RecordBody(nodeId, hash, DateTime.UtcNow);
+            recorded++;
         }
 
-        _keyValueService.SetValue(StateKey, $"{published.Count} published, {byNode.Count} of {articles.Count} changed");
-        _logger.LogInformation("Content dates seeded: {Published} first-published, {Changed} of {Total} with a detectable body change.", published.Count, byNode.Count, articles.Count);
+        _logger.LogInformation("Content dates reconciled: {Published} first-published date(s) available, {Recorded} of {Total} article bodies hashed.", published.Count, recorded, articles.Count);
     }
 
-    private sealed class SeedRow
+    private sealed class FirstPublishedRow
     {
         public int NodeId { get; set; }
         public DateTime? FirstPublished { get; set; }
-        public DateTime? LastContentChange { get; set; }
     }
 }

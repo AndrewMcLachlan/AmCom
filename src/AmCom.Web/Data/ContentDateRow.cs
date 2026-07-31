@@ -35,8 +35,19 @@ public class ContentDateRow
     [NullSetting(NullSetting = NullSettings.Null)]
     public DateTime? FirstPublished { get; set; }
 
-    /// <summary>When the body last actually changed, ignoring metadata-only saves.</summary>
+    /// <summary>
+    /// When the body last actually changed. Authoritative: set it by hand and nothing will overwrite it
+    /// until the article is genuinely edited again.
+    /// </summary>
     [Column("lastContentChange")]
     [NullSetting(NullSetting = NullSettings.Null)]
     public DateTime? LastContentChange { get; set; }
+
+    /// <summary>
+    /// Hash of the body as last seen, so a save can be told from a re-serialisation of the same text.
+    /// </summary>
+    [Column("contentHash")]
+    [NullSetting(NullSetting = NullSettings.Null)]
+    [Length(64)]
+    public string? ContentHash { get; set; }
 }
