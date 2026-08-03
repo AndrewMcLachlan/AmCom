@@ -4,16 +4,16 @@
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Asm" Version="5.0.3" />
-    <PackageVersion Include="Asm.AspNetCore" Version="5.0.3" />
-    <PackageVersion Include="Asm.AspNetCore.Mvc" Version="5.0.3" />
-    <PackageVersion Include="Asm.Net" Version="5.0.3" />
-    <PackageVersion Include="Asm.Umbraco" Version="5.0.3" />
-    <PackageVersion Include="Asm.Umbraco.Authentication" Version="5.0.3" />
+    <PackageVersion Include="Asm" Version="5.0.13" />
+    <PackageVersion Include="Asm.AspNetCore" Version="5.0.13" />
+    <PackageVersion Include="Asm.AspNetCore.Mvc" Version="5.0.13" />
+    <PackageVersion Include="Asm.Net" Version="5.0.13" />
+    <PackageVersion Include="Asm.Umbraco" Version="5.0.13" />
+    <PackageVersion Include="Asm.Umbraco.Authentication" Version="5.0.13" />
     <PackageVersion Include="Azure.Extensions.AspNetCore.DataProtection.Blobs" Version="1.5.3" />
     <PackageVersion Include="Azure.Extensions.AspNetCore.DataProtection.Keys" Version="1.6.3" />
     <PackageVersion Include="Azure.Identity" Version="1.21.0" />
-    <PackageVersion Include="BouncyCastle.Cryptography" Version="2.6.2" />
+    <PackageVersion Include="BouncyCastle.Cryptography" Version="2.7.0" />
     <PackageVersion Include="Lucene.Net.Replicator" Version="4.8.0-beta00018" />
     <PackageVersion Include="MailKit" Version="4.17.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="10.0.10" />
@@ -21,7 +21,7 @@
     <PackageVersion Include="Microsoft.Data.SqlClient.Extensions.Azure" Version="7.0.2" />
     <PackageVersion Include="Microsoft.ICU.ICU4C.Runtime" Version="72.1.0.3" />
     <PackageVersion Include="Microsoft.Identity.Client" Version="4.87.0" />
-    <PackageVersion Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.21.0" />
+    <PackageVersion Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.22.0" />
     <PackageVersion Include="Microsoft.OpenApi" Version="2.9.0" />
     <PackageVersion Include="MimeKit" Version="4.17.0" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.EntityFrameworkCore" Version="1.17.0-beta.1" />
@@ -32,7 +32,7 @@
     <PackageVersion Include="SQLitePCLRaw.core" Version="2.1.12" />
     <PackageVersion Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.12" />
     <PackageVersion Include="SQLitePCLRaw.provider.e_sqlite3" Version="2.1.12" />
-    <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="8.21.0" />
+    <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="8.22.0" />
     <!-- Umbraco.Cms metapackage decomposed so imaging can use ImageSharp 2 (Apache-2.0) instead of ImageSharp 3 (Six Labors Split License). -->
     <PackageVersion Include="Umbraco.Cms.Imaging.ImageSharp2" Version="18.0.2" />
     <!-- SQLite persistence omitted: dev uses SQL Express, production Azure SQL. -->
