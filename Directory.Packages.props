@@ -4,12 +4,12 @@
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Asm" Version="5.0.13" />
-    <PackageVersion Include="Asm.AspNetCore" Version="5.0.13" />
-    <PackageVersion Include="Asm.AspNetCore.Mvc" Version="5.0.13" />
-    <PackageVersion Include="Asm.Net" Version="5.0.13" />
-    <PackageVersion Include="Asm.Umbraco" Version="5.0.13" />
-    <PackageVersion Include="Asm.Umbraco.Authentication" Version="5.0.13" />
+    <PackageVersion Include="Asm" Version="5.0.17" />
+    <PackageVersion Include="Asm.AspNetCore" Version="5.0.17" />
+    <PackageVersion Include="Asm.AspNetCore.Mvc" Version="5.0.17" />
+    <PackageVersion Include="Asm.Net" Version="5.0.17" />
+    <PackageVersion Include="Asm.Umbraco" Version="5.0.17" />
+    <PackageVersion Include="Asm.Umbraco.Authentication" Version="5.0.17" />
     <PackageVersion Include="Azure.Extensions.AspNetCore.DataProtection.Blobs" Version="1.5.3" />
     <PackageVersion Include="Azure.Extensions.AspNetCore.DataProtection.Keys" Version="1.6.3" />
     <PackageVersion Include="Azure.Identity" Version="1.21.0" />
@@ -34,10 +34,10 @@
     <PackageVersion Include="SQLitePCLRaw.provider.e_sqlite3" Version="2.1.12" />
     <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="8.22.0" />
     <!-- Umbraco.Cms metapackage decomposed so imaging can use ImageSharp 2 (Apache-2.0) instead of ImageSharp 3 (Six Labors Split License). -->
-    <PackageVersion Include="Umbraco.Cms.Imaging.ImageSharp2" Version="18.0.2" />
+    <PackageVersion Include="Umbraco.Cms.Imaging.ImageSharp2" Version="18.1.0" />
     <!-- SQLite persistence omitted: dev uses SQL Express, production Azure SQL. -->
-    <PackageVersion Include="Umbraco.Cms.Persistence.EFCore.SqlServer" Version="18.0.2" />
-    <PackageVersion Include="Umbraco.Cms.Persistence.SqlServer" Version="18.0.2" />
+    <PackageVersion Include="Umbraco.Cms.Persistence.EFCore.SqlServer" Version="18.1.0" />
+    <PackageVersion Include="Umbraco.Cms.Persistence.SqlServer" Version="18.1.0" />
     <PackageVersion Include="Umbraco.Cms.Targets" Version="18.0.2" />
     <PackageVersion Include="Umbraco.StorageProviders.AzureBlob" Version="18.0.0" />
     <PackageVersion Include="uSync" Version="18.0.3" />
