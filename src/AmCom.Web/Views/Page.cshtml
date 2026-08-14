@@ -4,7 +4,7 @@
     Layout = "FullPageLayout.cshtml";
     ViewBag.Title = $"{Model.Value("title")} - Andrew McLachlan";
     ViewBag.Description = Model.Value("description");
-    ViewBag.Canonical = Model.Url();
+    ViewBag.Canonical = Model.Url(mode: UrlMode.Absolute);
     ViewBag.PageType = Model.Value("pageType") ?? "website";
     var pageLinks = Model.PageLinks;// Model.Value<IEnumerable<Umbraco.Cms.Web.Common.PublishedModels.PageLink>>("PageLinks") ?? [];
 }

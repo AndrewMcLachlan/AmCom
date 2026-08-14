@@ -4,7 +4,7 @@
     Layout = "Layout.cshtml";
     ViewBag.Title = Model.Value("title");
     ViewBag.Description = Model.Value("description");
-    ViewBag.Canonical = Model.Url();
+    ViewBag.Canonical = Model.Url(mode: UrlMode.Absolute);
     ViewBag.PageType = "website";
 }
 
