@@ -34,10 +34,10 @@
     <PackageVersion Include="SQLitePCLRaw.provider.e_sqlite3" Version="2.1.12" />
     <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="8.22.0" />
     <!-- Umbraco.Cms metapackage decomposed so imaging can use ImageSharp 2 (Apache-2.0) instead of ImageSharp 3 (Six Labors Split License). -->
-    <PackageVersion Include="Umbraco.Cms.Imaging.ImageSharp2" Version="18.0.2" />
+    <PackageVersion Include="Umbraco.Cms.Imaging.ImageSharp2" Version="18.1.0" />
     <!-- SQLite persistence omitted: dev uses SQL Express, production Azure SQL. -->
-    <PackageVersion Include="Umbraco.Cms.Persistence.EFCore.SqlServer" Version="18.0.2" />
-    <PackageVersion Include="Umbraco.Cms.Persistence.SqlServer" Version="18.0.2" />
+    <PackageVersion Include="Umbraco.Cms.Persistence.EFCore.SqlServer" Version="18.1.0" />
+    <PackageVersion Include="Umbraco.Cms.Persistence.SqlServer" Version="18.1.0" />
     <PackageVersion Include="Umbraco.Cms.Targets" Version="18.0.2" />
     <PackageVersion Include="Umbraco.StorageProviders.AzureBlob" Version="18.0.0" />
     <PackageVersion Include="uSync" Version="18.0.3" />
