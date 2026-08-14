@@ -5,7 +5,7 @@
     Layout = "FullPageLayout.cshtml";
     ViewBag.Title = $"{Model.Value("title")} - Andrew McLachlan";
     ViewBag.Description = Model.Value("description");
-    ViewBag.Canonical = Model.Url();
+    ViewBag.Canonical = Model.Url(mode: UrlMode.Absolute);
     ViewBag.PageType = "article";
 
     var dates = ContentDates.Get(Model.Id);
