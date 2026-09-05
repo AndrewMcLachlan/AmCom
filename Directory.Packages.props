@@ -22,7 +22,7 @@
     <PackageVersion Include="Microsoft.ICU.ICU4C.Runtime" Version="72.1.0.3" />
     <PackageVersion Include="Microsoft.Identity.Client" Version="4.88.0" />
     <PackageVersion Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.22.0" />
-    <PackageVersion Include="Microsoft.OpenApi" Version="2.9.0" />
+    <PackageVersion Include="Microsoft.OpenApi" Version="2.11.0" />
     <PackageVersion Include="MimeKit" Version="4.17.0" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.EntityFrameworkCore" Version="1.17.0-beta.1" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.SqlClient" Version="1.18.0" />
@@ -38,7 +38,7 @@
     <!-- SQLite persistence omitted: dev uses SQL Express, production Azure SQL. -->
     <PackageVersion Include="Umbraco.Cms.Persistence.EFCore.SqlServer" Version="18.1.1" />
     <PackageVersion Include="Umbraco.Cms.Persistence.SqlServer" Version="18.1.1" />
-    <PackageVersion Include="Umbraco.Cms.Targets" Version="18.0.2" />
+    <PackageVersion Include="Umbraco.Cms.Targets" Version="18.1.1" />
     <PackageVersion Include="Umbraco.StorageProviders.AzureBlob" Version="18.0.0" />
     <PackageVersion Include="uSync" Version="18.0.3" />
   </ItemGroup>
