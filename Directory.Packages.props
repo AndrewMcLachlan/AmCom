@@ -40,6 +40,6 @@
     <PackageVersion Include="Umbraco.Cms.Persistence.SqlServer" Version="18.1.1" />
     <PackageVersion Include="Umbraco.Cms.Targets" Version="18.1.1" />
     <PackageVersion Include="Umbraco.StorageProviders.AzureBlob" Version="18.0.0" />
-    <PackageVersion Include="uSync" Version="18.0.3" />
+    <PackageVersion Include="uSync" Version="18.1.2" />
   </ItemGroup>
 </Project>
