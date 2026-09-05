@@ -36,6 +36,16 @@
     <PackageReference Include="Umbraco.StorageProviders.AzureBlob" />
   </ItemGroup>
 
+  <!-- Referenced directly only so Dependabot will update them: it ignores a PackageVersion with no matching
+       PackageReference, and these pins include a security fix. -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.OpenApi" />
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" />
+    <PackageReference Include="SQLitePCLRaw.core" />
+    <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" />
+    <PackageReference Include="SQLitePCLRaw.provider.e_sqlite3" />
+  </ItemGroup>
+
   <!-- Force windows to use ICU. Otherwise Windows 10 2019H1+ will do it, but older windows 10 and most if not all windows servers will run NLS -->
   <ItemGroup>
     <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" />
