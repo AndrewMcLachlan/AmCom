@@ -43,6 +43,13 @@ updates:
         applies-to: version-updates
         patterns:
           - "*"
+    # Transitive-only pins. They must stay on the major their dependents were compiled against: transitive
+    # pinning makes the pin win, so a major bump forces the new assembly onto those packages at runtime.
+    ignore:
+      - dependency-name: "Microsoft.OpenApi"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "SQLitePCLRaw.*"
+        update-types: ["version-update:semver-major"]
     open-pull-requests-limit: 20
     registries: "*"
 
