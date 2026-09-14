@@ -4,18 +4,18 @@
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Asm" Version="5.0.41" />
-    <PackageVersion Include="Asm.AspNetCore" Version="5.0.41" />
-    <PackageVersion Include="Asm.AspNetCore.Mvc" Version="5.0.41" />
-    <PackageVersion Include="Asm.Net" Version="5.0.41" />
-    <PackageVersion Include="Asm.Umbraco" Version="5.0.41" />
-    <PackageVersion Include="Asm.Umbraco.Authentication" Version="5.0.41" />
+    <PackageVersion Include="Asm" Version="5.1.10" />
+    <PackageVersion Include="Asm.AspNetCore" Version="5.1.10" />
+    <PackageVersion Include="Asm.AspNetCore.Mvc" Version="5.1.10" />
+    <PackageVersion Include="Asm.Net" Version="5.1.10" />
+    <PackageVersion Include="Asm.Umbraco" Version="5.1.10" />
+    <PackageVersion Include="Asm.Umbraco.Authentication" Version="5.1.10" />
     <PackageVersion Include="Azure.Extensions.AspNetCore.DataProtection.Blobs" Version="1.5.4" />
     <PackageVersion Include="Azure.Extensions.AspNetCore.DataProtection.Keys" Version="1.6.4" />
     <PackageVersion Include="Azure.Identity" Version="1.21.0" />
     <PackageVersion Include="BouncyCastle.Cryptography" Version="2.7.0" />
     <PackageVersion Include="Lucene.Net.Replicator" Version="4.8.0-beta00018" />
-    <PackageVersion Include="MailKit" Version="4.17.0" />
+    <PackageVersion Include="MailKit" Version="4.18.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="10.0.12" />
     <PackageVersion Include="Microsoft.Data.SqlClient" Version="7.0.3" />
     <PackageVersion Include="Microsoft.Data.SqlClient.Extensions.Azure" Version="7.0.3" />
@@ -23,7 +23,7 @@
     <PackageVersion Include="Microsoft.Identity.Client" Version="4.89.0" />
     <PackageVersion Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.22.0" />
     <PackageVersion Include="Microsoft.OpenApi" Version="2.12.2" />
-    <PackageVersion Include="MimeKit" Version="4.17.0" />
+    <PackageVersion Include="MimeKit" Version="4.18.0" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.EntityFrameworkCore" Version="1.17.0-beta.1" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.SqlClient" Version="1.18.0" />
     <PackageVersion Include="Serilog.Sinks.Seq" Version="9.1.0" />
@@ -40,6 +40,6 @@
     <PackageVersion Include="Umbraco.Cms.Persistence.SqlServer" Version="18.1.1" />
     <PackageVersion Include="Umbraco.Cms.Targets" Version="18.1.1" />
     <PackageVersion Include="Umbraco.StorageProviders.AzureBlob" Version="18.0.0" />
-    <PackageVersion Include="uSync" Version="18.1.2" />
+    <PackageVersion Include="uSync" Version="18.1.3" />
   </ItemGroup>
 </Project>
