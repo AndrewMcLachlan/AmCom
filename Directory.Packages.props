@@ -4,12 +4,12 @@
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Asm" Version="5.1.32" />
-    <PackageVersion Include="Asm.AspNetCore" Version="5.1.32" />
-    <PackageVersion Include="Asm.AspNetCore.Mvc" Version="5.1.32" />
-    <PackageVersion Include="Asm.Net" Version="5.1.32" />
-    <PackageVersion Include="Asm.Umbraco" Version="5.1.32" />
-    <PackageVersion Include="Asm.Umbraco.Authentication" Version="5.1.32" />
+    <PackageVersion Include="Asm" Version="5.1.52" />
+    <PackageVersion Include="Asm.AspNetCore" Version="5.1.52" />
+    <PackageVersion Include="Asm.AspNetCore.Mvc" Version="5.1.52" />
+    <PackageVersion Include="Asm.Net" Version="5.1.52" />
+    <PackageVersion Include="Asm.Umbraco" Version="5.1.52" />
+    <PackageVersion Include="Asm.Umbraco.Authentication" Version="5.1.52" />
     <PackageVersion Include="Azure.Extensions.AspNetCore.DataProtection.Blobs" Version="1.5.4" />
     <PackageVersion Include="Azure.Extensions.AspNetCore.DataProtection.Keys" Version="1.6.4" />
     <PackageVersion Include="Azure.Identity" Version="1.21.0" />
@@ -20,12 +20,12 @@
     <PackageVersion Include="Microsoft.Data.SqlClient" Version="7.1.1" />
     <PackageVersion Include="Microsoft.Data.SqlClient.Extensions.Azure" Version="7.1.1" />
     <PackageVersion Include="Microsoft.ICU.ICU4C.Runtime" Version="72.1.0.3" />
-    <PackageVersion Include="Microsoft.Identity.Client" Version="4.91.0" />
+    <PackageVersion Include="Microsoft.Identity.Client" Version="4.91.1" />
     <PackageVersion Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.23.0" />
-    <PackageVersion Include="Microsoft.OpenApi" Version="2.12.2" />
+    <PackageVersion Include="Microsoft.OpenApi" Version="2.13.0" />
     <PackageVersion Include="MimeKit" Version="4.18.1" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.EntityFrameworkCore" Version="1.17.0-beta.1" />
-    <PackageVersion Include="OpenTelemetry.Instrumentation.SqlClient" Version="1.19.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.SqlClient" Version="1.20.0" />
     <PackageVersion Include="Serilog.Sinks.Seq" Version="9.1.0" />
     <!-- Pinned above Umbraco's transitive 2.1.11 to clear GHSA-2m69-gcr7-jv3q. -->
     <PackageVersion Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.14" />
