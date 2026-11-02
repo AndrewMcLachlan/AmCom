@@ -33,11 +33,7 @@
     <PackageVersion Include="SQLitePCLRaw.lib.e_sqlite3" Version="2.1.14" />
     <PackageVersion Include="SQLitePCLRaw.provider.e_sqlite3" Version="2.1.14" />
     <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="8.23.0" />
-    <PackageVersion Include="Umbraco.Cms.Imaging.ImageSharp" Version="18.2.1" />
-    <!-- SQLite persistence omitted: dev uses SQL Express, production Azure SQL. -->
-    <PackageVersion Include="Umbraco.Cms.Persistence.EFCore.SqlServer" Version="18.2.1" />
-    <PackageVersion Include="Umbraco.Cms.Persistence.SqlServer" Version="18.2.1" />
-    <PackageVersion Include="Umbraco.Cms.Targets" Version="18.2.1" />
+    <PackageVersion Include="Umbraco.Cms" Version="18.2.1" />
     <PackageVersion Include="Umbraco.StorageProviders.AzureBlob" Version="18.0.0" />
     <PackageVersion Include="uSync" Version="18.1.5" />
   </ItemGroup>
