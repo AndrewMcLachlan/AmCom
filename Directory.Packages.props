@@ -20,7 +20,7 @@
     <PackageVersion Include="Microsoft.Data.SqlClient" Version="7.1.1" />
     <PackageVersion Include="Microsoft.Data.SqlClient.Extensions.Azure" Version="7.1.1" />
     <PackageVersion Include="Microsoft.ICU.ICU4C.Runtime" Version="72.1.0.3" />
-    <PackageVersion Include="Microsoft.Identity.Client" Version="4.91.1" />
+    <PackageVersion Include="Microsoft.Identity.Client" Version="4.92.0" />
     <PackageVersion Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.23.0" />
     <PackageVersion Include="Microsoft.OpenApi" Version="2.13.0" />
     <PackageVersion Include="MimeKit" Version="4.18.2" />
@@ -34,12 +34,12 @@
     <PackageVersion Include="SQLitePCLRaw.provider.e_sqlite3" Version="2.1.14" />
     <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="8.23.0" />
     <!-- Umbraco.Cms metapackage decomposed so imaging can use ImageSharp 2 (Apache-2.0) instead of ImageSharp 3 (Six Labors Split License). -->
-    <PackageVersion Include="Umbraco.Cms.Imaging.ImageSharp2" Version="18.2.1" />
+    <PackageVersion Include="Umbraco.Cms.Imaging.ImageSharp2" Version="18.3.0" />
     <!-- SQLite persistence omitted: dev uses SQL Express, production Azure SQL. -->
-    <PackageVersion Include="Umbraco.Cms.Persistence.EFCore.SqlServer" Version="18.2.1" />
-    <PackageVersion Include="Umbraco.Cms.Persistence.SqlServer" Version="18.2.1" />
-    <PackageVersion Include="Umbraco.Cms.Targets" Version="18.2.1" />
+    <PackageVersion Include="Umbraco.Cms.Persistence.EFCore.SqlServer" Version="18.3.0" />
+    <PackageVersion Include="Umbraco.Cms.Persistence.SqlServer" Version="18.3.0" />
+    <PackageVersion Include="Umbraco.Cms.Targets" Version="18.3.0" />
     <PackageVersion Include="Umbraco.StorageProviders.AzureBlob" Version="18.0.0" />
-    <PackageVersion Include="uSync" Version="18.2.0" />
+    <PackageVersion Include="uSync" Version="18.2.1" />
   </ItemGroup>
 </Project>
