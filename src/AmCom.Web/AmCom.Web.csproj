@@ -16,15 +16,11 @@
     <PackageReference Include="Azure.Extensions.AspNetCore.DataProtection.Blobs" />
     <PackageReference Include="Azure.Extensions.AspNetCore.DataProtection.Keys" />
     <PackageReference Include="Azure.Identity" />
-    <PackageReference Include="BouncyCastle.Cryptography" />
-    <PackageReference Include="Lucene.Net.Replicator" />
-    <PackageReference Include="MailKit" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" />
     <PackageReference Include="Microsoft.Data.SqlClient" />
     <PackageReference Include="Microsoft.Data.SqlClient.Extensions.Azure" />
     <PackageReference Include="Microsoft.Identity.Client" />
     <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" />
-    <PackageReference Include="MimeKit" />
     <PackageReference Include="OpenTelemetry.Instrumentation.EntityFrameworkCore" />
     <PackageReference Include="OpenTelemetry.Instrumentation.SqlClient" />
     <PackageReference Include="Serilog.Sinks.Seq" />
